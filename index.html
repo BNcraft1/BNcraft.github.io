@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BNcraft | Mod Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #000b10;
+            --card-bg: #00161f;
+            --accent-cyan: #00e5ff;
+            --modal-bg: #001a24;
+            --glow: 0 0 25px rgba(0, 229, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAV */
+        nav {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            background: rgba(0, 11, 16, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo-img {
+            height: 45px;
+            filter: drop-shadow(0 0 8px var(--accent-cyan));
+        }
+
+        .nav-btn {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            box-shadow: var(--glow);
+        }
+
+        /* HERO */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-logo {
+            width: clamp(180px, 30vw, 250px);
+            margin-bottom: 30px;
+            filter: drop-shadow(var(--glow));
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 8vw, 56px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(14px, 4vw, 18px);
+            opacity: 0.7;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-btn {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: white;
+            box-shadow: var(--glow);
+        }
+
+        /* PROMO CARDS */
+        .promo-section {
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .promo-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .promo-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(10px);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .promo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .promo-text {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .promo-text b {
+            color: var(--accent-cyan);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            margin-top: 40px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+            filter: drop-shadow(0 0 10px var(--accent-cyan));
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(12px);
+        }
+
+        .modal-content {
+            background: var(--modal-bg);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 450px;
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: var(--glow);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #ff4d4d;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .dl-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .dl-option:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 15px; }
+            .promo-section { padding: 0 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img">
+        <button class="nav-btn" onclick="openModal()">Download MC</button>
+    </nav>
+
+    <div class="hero">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="hero-logo">
+        <h1 class="hero-title">BNCRAFT MODS</h1>
+        <p class="hero-subtitle">Premium Minecraft marketplace mods completely free</p>
+        <a href="MODLAR_SAYFASI_LINKI" class="hero-btn">BROWSE ALL MODS</a>
+
+        <div class="promo-section">
+            <a href="https://discord.gg/kVghJQUHbJ" class="promo-card" target="_blank">
+                <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988200073_orig.png" class="promo-icon">
+                <div class="promo-text">Join Discord for <b>secret mods!</b></div>
+            </a>
+            <a href="https://discord.gg/kVghJQUHbJ" class="promo-card" target="_blank">
+                <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1736816490446_orig.png" class="promo-icon">
+                <div class="promo-text">Join <b>Yasho's Discord!</b></div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://discord.gg/kVghJQUHbJ" target="_blank">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988200073_orig.png" class="social-icon">
+        </a>
+        <a href="#" target="_blank">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988111224_orig.png" class="social-icon">
+        </a>
+        <a href="#" target="_blank">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988057347_orig.png" class="social-icon">
+        </a>
+        <a href="mailto:destek@bncraft.com">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1736825513881_orig.png" class="social-icon">
+        </a>
+    </footer>
+
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <div class="modal-title">Download Minecraft</div>
+            <a href="WINDOWS_LINK" class="dl-option" target="_blank">
+                <span>Minecraft for Windows</span>
+                <span>→</span>
+            </a>
+            <a href="ANDROID_LINK" class="dl-option" target="_blank">
+                <span>Minecraft for Android</span>
+                <span>→</span>
+            </a>
+            <a href="PATCHED_LINK" class="dl-option" target="_blank">
+                <span>Minecraft Patched</span>
+                <span>→</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = (e) => {
+            if(e.target == document.getElementById('downloadModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
