@@ -12,6 +12,7 @@
             --accent-cyan: #00e5ff;
             --modal-bg: #001a24;
             --glow: 0 0 25px rgba(0, 229, 255, 0.4);
+            --glow-strong: 0 0 45px rgba(0, 229, 255, 0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,9 +24,44 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* NAV */
+        /* Animated background grid - links page'deki gibi */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glowing orb background - links page'deki gibi */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* NAV - aynen eski home page'deki gibi */
         nav {
             width: 100%;
             height: 70px;
@@ -36,6 +72,8 @@
             border-bottom: 1px solid rgba(0, 229, 255, 0.2);
             background: rgba(0, 11, 16, 0.95);
             backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
         }
 
         .nav-logo-img {
@@ -54,6 +92,8 @@
             font-size: 13px;
             transition: 0.3s;
             text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
         .nav-btn:hover {
@@ -61,7 +101,7 @@
             box-shadow: var(--glow);
         }
 
-        /* HERO */
+        /* HERO - aynen eski home page'deki gibi */
         .hero {
             flex: 1;
             display: flex;
@@ -70,6 +110,8 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-logo {
@@ -121,7 +163,7 @@
             box-shadow: var(--glow);
         }
 
-        /* PROMO CARDS */
+        /* PROMO CARDS - aynen eski home page'deki gibi */
         .promo-section {
             width: 100%;
             max-width: 500px;
@@ -165,7 +207,7 @@
             color: var(--accent-cyan);
         }
 
-        /* FOOTER */
+        /* FOOTER - aynen eski home page'deki gibi + FACEBOOK EKLENDİ */
         footer {
             padding: 30px;
             display: flex;
@@ -173,6 +215,9 @@
             justify-content: center;
             border-top: 1px solid rgba(0, 229, 255, 0.2);
             margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
         }
 
         .social-icon {
@@ -188,7 +233,20 @@
             filter: drop-shadow(0 0 10px var(--accent-cyan));
         }
 
-        /* MODAL */
+        footer a img {
+            width: 40px;
+            height: 40px;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
+
+        footer a img:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+            filter: drop-shadow(0 0 10px var(--accent-cyan));
+        }
+
+        /* MODAL - aynen eski home page'deki gibi */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -297,21 +355,25 @@
         </div>
     </div>
 
-<footer>
+    <footer>
         <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank" rel="noopener noreferrer">
             <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" class="social-icon" alt="YouTube">
         </a>
         <a href="https://www.instagram.com/bncraft.2?igsh=MTBtYjR4YXBya3c5YQ==" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png" class="social-icon" alt="Instagram">
         </a>
         <a href="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" target="_blank" rel="noopener noreferrer">
-            <img src="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" alt="TikTok">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075231857_orig.png" class="social-icon" alt="TikTok">
+        </a>
+        <!-- FACEBOOK EKLENDİ -->
+        <a href="https://www.facebook.com/share/18RcvbYuF1/" target="_blank" rel="noopener noreferrer">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075254063_orig.png" class="social-icon" alt="Facebook">
         </a>
         <a href="https://discord.gg/KHdG3A7dtw" target="_blank" rel="noopener noreferrer">
             <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" class="social-icon" alt="Discord">
         </a>
         <a href="mailto:bncraft.to@gmail.com">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" alt="Email">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" class="social-icon" alt="Email">
         </a>
     </footer>
 
@@ -350,4 +412,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
