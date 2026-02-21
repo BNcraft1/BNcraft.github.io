@@ -16,6 +16,39 @@
             --mash-up-yellow: #ffd700;
         }
 
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glowing orb background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -480,6 +513,40 @@
             color: #000;
             transform: translateY(-2px);
         }
+
+        /* FOOTER SOSYAL MEDYA */
+        .social-footer {
+            width: 100%;
+            padding: 30px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.3));
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            opacity: 1;
+            filter: drop-shadow(0 0 15px var(--accent-cyan));
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            padding-bottom: 30px;
+        }
     </style>
 </head>
 <body>
@@ -506,6 +573,32 @@
 </div>
 
 <div class="mod-grid" id="mainGrid"></div>
+
+<!-- SOSYAL MEDYA FOOTER -->
+<div class="social-footer">
+    <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" class="social-icon" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/bncraft.2?igsh=MTBtYjR4YXBya3c5YQ==" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png" class="social-icon" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075231857_orig.png" class="social-icon" alt="TikTok">
+    </a>
+    <a href="https://www.facebook.com/share/18RcvbYuF1/" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075254063_orig.png" class="social-icon" alt="Facebook">
+    </a>
+    <a href="https://discord.gg/KHdG3A7dtw" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" class="social-icon" alt="Discord">
+    </a>
+    <a href="mailto:bncraft.to@gmail.com">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" class="social-icon" alt="Email">
+    </a>
+</div>
+
+<div class="footer-text">
+    © 2026 BNcraft • Professional Mod Hub
+</div>
 
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
@@ -551,7 +644,7 @@
 <script>
 const coinIconUrl = "https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png";
 
-// MOD DATABASE
+// MOD DATABASE - TÜM MODLAR (HİÇBİRİ EKSİK DEĞİL)
 const mods = [
     {
         name: "Actions & Stuff",
@@ -569,7 +662,7 @@ const mods = [
             {label: "Download v1.7", size: "12.40 MB", url: "https://loot-link.com/s?4HNGoKjm"}
         ]
     },
-        {
+    {
         name: "Mini Blocks",
         img: "https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/photo-2026-01-29-13-09-57_orig.jpg",
         studio: "Float Studios",
@@ -583,7 +676,6 @@ const mods = [
             { label: "Download v1.0", size: "1.2 MB", url: "https://loot-link.com/s?RlPy16U6" }
         ]
     },
-
     {
         name: "Royal Mages",
         img: "https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/untitled-project_orig.jpg",
@@ -1244,7 +1336,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "35.9 MB", url: "https://lootdest.org/s?0aP5zDP6"}]
     },
-
     {
         name: "Pure Gold",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770986405/1770986404_Pure_Gold-By-BN-Craft.jpg",
@@ -1256,7 +1347,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "26 KB", url: "https://loot-link.com/s?Ii9XOyTO"}]
     },
-
     {
         name: "Cottage Core Animals",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770988109/1770988107_Cottage_Core_Animals-By-BN-Craft.jpg",
@@ -1268,8 +1358,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "20 KB", url: "https://loot-link.com/s?pqIUA5Vm"}]
     },
-
-
     {
         name: "Golden Couples",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770989590/1770989589_Golden_Couples-By-BN-Craft.jpg",
@@ -1281,7 +1369,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "19 KB", url: "https://loot-link.com/s?tTQ8KvwR"}]
     },
-
     {
         name: "Ghost Pets",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770990519/1770990518_Ghost_Pets-By-BN-Craft.jpg",
@@ -1293,7 +1380,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.4 MB", url: "https://loot-link.com/s?DzcHKNPE"}]
     },
-
     {
         name: "Be an SCP",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770991120/1770991120_Be_an_SCP-By-BN-Craft.jpg",
@@ -1305,7 +1391,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "55.8 MB", url: "https://loot-link.com/s?FA3vkNpZ"}]
     },
-
     {
         name: "Emerald Extravagance",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770993232/1770993231_Emerald_Extravagance-By-BN-Craft.jpg",
@@ -1317,7 +1402,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "20 KB", url: "https://lootdest.org/s?OjSe9R25"}]
     },
-
     {
         name: "Essentials",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770993590/1770993590_Essentials-By-BN-Craft.jpg",
@@ -1329,7 +1413,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "1.8 MB", url: "https://lootdest.org/s?YwkYxNCq"}]
     },
-
     {
         name: "Hydra Bosses",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770995270/1770995269_Hydra_Bosses-By-BN-Craft.jpg",
@@ -1341,7 +1424,6 @@ const mods = [
         downloadSource: "Lootlabs > Dropbox",
         links: [{label: "Download", size: "3.9 MB", url: "https://loot-link.com/s?tdW8I1zv"}]
     },
-
     {
         name: "Advanced Movement",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770997148/1770997147_Advanced_Movement-By-BN-Craft.jpg",
@@ -1353,7 +1435,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "170 KB", url: "https://loot-link.com/s?nkujbCOZ"}]
     },
-
     {
         name: "Mini-Mob Buddies",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771001618/1771001618_Mini-Mob_Buddies-By-BN-Craft.jpg",
@@ -1365,7 +1446,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "422 KB", url: "https://loot-link.com/s?isAMNDvy"}]
     },
-
     {
         name: "Fleecesuit Teens",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771004234/1771004232_Fleecesuit_Teens-By-BN-Craft.jpg",
@@ -1377,7 +1457,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "23 KB", url: "https://loot-link.com/s?Q8215c9Y"}]
     },
-
     {
         name: "Shinobi vs Samurai",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771004711/1771004711_Shinobi_vs_Samurai-By-BN-Craft.jpg",
@@ -1389,7 +1468,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "22 KB", url: "https://loot-link.com/s?YapRpqsI"}]
     },
-
     {
         name: "Moana 2",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771006919/1771006918_Moana_2-By-BN-Craft.jpg",
@@ -1401,7 +1479,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "126.4 MB", url: "https://lootdest.org/s?AX1aYrXe"}]
     },
-
     {
         name: "Extreme Survival 1.0",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771049363/1771049362_Extreme_Survival_1.0-By-BN-Craft.jpg",
@@ -1413,7 +1490,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "13.7 MB", url: "https://loot-link.com/s?BagjqcdS"}]
     },
-
     {
         name: "Ender Dragon Teens",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771050124/1771050123_Ender_Dragon_Teens-By-BN-Craft.jpg",
@@ -1425,7 +1501,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "21 KB", url: "https://loot-link.com/s?4XZyeSDO"}]
     },
-
     {
         name: "Steven Universe Mash-up",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771052582/1771052580_Steven_Universe_Mash-up-By-BN-Craft.jpg",
@@ -1437,7 +1512,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "157.9 MB", url: "https://loot-link.com/s?4nEB6J6W"}]
     },
-
     {
         name: "Totems+ RP",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771145247/1771145246_Totems%2B_RP-By-BN-Craft.jpg",
@@ -1449,7 +1523,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "455 KB", url: "https://lootdest.org/s?l7maGRe8"}]
     },
-    
     {
         name: "World Builder",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771153324/1771153323_World_Builder-By-BN-Craft.jpg",
@@ -1461,7 +1534,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "874 KB", url: "https://lootdest.org/s?jrBl9YFH"}]
     },
-
     {
         name: "Becoming Ice Dragon",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771169867/1771169866_Becoming_Ice_Dragon_--By-BN-Craft.jpg",
@@ -1473,7 +1545,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "8.6 MB", url: "https://lootdest.org/s?nehRFZs7"}]
     },
-
     {
         name: "Fantasy Ducks",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771171099/1771171099_Fantasy_Ducks_--By-BN-Craft.jpg",
@@ -1485,7 +1556,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "13 KB", url: "https://lootdest.org/s?j3ClqDMq"}]
     },
-
     {
         name: "Dark Knights",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771178380/1771178379_Dark_Knights_--By-BN-Craft.jpg",
@@ -1497,7 +1567,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "69 KB", url: "https://lootdest.org/s?P4kJhC8C"}]
     },
-
     {
         name: "Planes Pro",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771253818/1771253817_Planes_Pro_--By-BN-Craft.jpg",
@@ -1509,7 +1578,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "3.8 MB", url: "https://lootdest.org/s?ZMVduHnj"}]
     },
-
     {
         name: "Tech Craft INTERNAL",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771254466/1771254465_Tech_Craft_INTERNAL_--By-BN-Craft.jpg",
@@ -1521,7 +1589,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "1.4 MB", url: "https://loot-link.com/s?iyl2rtWj"}]
     },
-
     {
         name: "Knights",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771254779/1771254779_Knights.besirhas.sas.jpg",
@@ -1533,7 +1600,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "29 KB", url: "https://lootdest.org/s?VqFdS93m"}]
     },
-
     {
         name: "Mowzie’s Mobs",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771255488/1771255487_Mowzie%E2%80%99s_Mobs_--By-BN-Craft.jpg",
@@ -1545,7 +1611,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "17.4 MB", url: "https://loot-link.com/s?KusNJLXV"}]
     },
-
     {
         name: "RLCraft_Bedrock_Edition",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771263698/1771263697_RLCraft_Bedrock_Edition_--By-BN-Craft.jpg",
@@ -1557,7 +1622,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "36.3 MB", url: "https://loot-link.com/s?dyqOfgqw"}]
     },
-
     {
         name: "RANDOM SKIN PACK 6",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771265907/1771265906_RANDOM_SKIN_PACK_6_--By-BN-Craft.jpg",
@@ -1569,7 +1633,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "30 KB", url: "https://lootdest.org/s?Ce2UHoeT"}]
     },
-
     {
         name: "Scp Add On",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771269915/1771269914_Scp_Add_On_--By-BN-Craft.jpg",
@@ -1581,7 +1644,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.0 MB", url: "https://lootdest.org/s?D3ODWu63"}]
     },
-
     {
         name: "Furniture+",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771270445/1771270444_Furniture%2B_--By-BN-Craft.jpg",
@@ -1593,7 +1655,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "20.6 MB", url: "https://lootdest.org/s?s7orsKGF"}]
     },
-
     {
         name: "The One Who Watches",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771338230/1771338228_The_One_Who_Watches_--By-BN-Craft.jpg",
@@ -1605,7 +1666,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "3.4 MB", url: "https://lootdest.org/s?0YafYiFl"}]
     },
-
     {
         name: "Avatar_ Rites of Passage",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771418851/1771418850_Avatar__Rites_of_Passage_--By-BN-Craft.jpg",
@@ -1617,7 +1677,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "42.3 MB", url: "https://loot-link.com/s?WK2nHk5I"}]
     },
-
     {
         name: "Avatar Legends",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771420254/1771420253_Avatar_Legends_--By-BN-Craft.jpg",
@@ -1629,7 +1688,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "35.9 MB", url: "https://loot-link.com/s?nOSUU9xx"}]
     },
-
     {
         name: "Magic Hats [DX]",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771502840/1771502839_Magic_Hats_%5BDX%5D_--By-BN-Craft.jpg",
@@ -1641,7 +1699,6 @@ const mods = [
         downloadSource: "Lootlabs > Dropbox",
         links: [{label: "Download", size: "3.8 MB", url: "https://loot-link.com/s?N9uoiwWY"}]
     },
-
     {
         name: "Anime Blades",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770658255/1770658255_Anime_Blades-By-BN-Craft.jpg",
@@ -1653,8 +1710,6 @@ const mods = [
         downloadSource: "Lootlabs &gt; Mega",
         links: [{label: "Download", size: "28.3 MB", url: "https://lootdest.org/s?QvQ5Frcv"}]
     },
-
-
     {
         name: "DRAGON PETS",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770661284/1770661284_DRAGON_PETS-By-BN-Craft.jpg",
@@ -1666,7 +1721,6 @@ const mods = [
         downloadSource: "Lootlabs &gt; Mega",
         links: [{label: "Download", size: "49.7 MB", url: "https://loot-link.com/s?Xr6Dpohn"}]
     },
-
     {
         name: "Anime Jutsu",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1770660424/1770660422_Anime_Jutsu-By-BN-Craft.jpg",
@@ -1678,7 +1732,6 @@ const mods = [
         downloadSource: "Lootlabs &gt; Mega",
         links: [{label: "Download", size: "9.6 MB", url: "https://loot-link.com/s?25NWUqN1"}]
     },
-
     {
         name: "Train Your Dragon",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771515059/1771515058_Train_Your_Dragon_--By-BN-Craft.jpg",
@@ -1689,7 +1742,7 @@ const mods = [
         market: "https://www.minecraft.net/en-us/marketplace/pdp/pixell-studio/train-your-dragon-add--on/7467584a-1741-409c-bb7b-aaa37e8feb36",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.4 MB", url: "https://loot-link.com/s?EKtUE9a9"}]
-    },
+    }
 ];
 
 // RENDER MODS TO GRID
