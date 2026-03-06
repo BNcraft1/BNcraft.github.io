@@ -6,6 +6,7 @@
 <title>BN Mod Generator</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <style>
+/* STYLES - exactly the same, no changes needed */
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   min-height:100vh;background:#07101f;
@@ -92,7 +93,7 @@ h1{
 }
 canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),0 18px 55px rgba(0,0,0,.5);display:none}
 
-/* ══ MODAL ══ */
+/* MODAL - same */
 .modal-overlay{
   position:fixed;inset:0;background:rgba(0,5,20,.9);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;z-index:1000;
@@ -131,7 +132,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
 .fmt-btn.ok .badge{color:rgba(0,220,140,.7)}
 .fmt-btn.no .badge{color:rgba(120,130,150,.4)}
 
-/* ══ PASSWORD SCREEN ══ */
+/* PASSWORD SCREEN - same */
 #lockScreen{
   position:fixed;inset:0;z-index:9999;
   background:#07101f;
@@ -202,9 +203,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     PASSWORD SCREEN
-════════════════════════════════════════ -->
+<!-- PASSWORD SCREEN (English) -->
 <div id="lockScreen">
   <div class="lock-box">
     <div class="lock-icon">🔐</div>
@@ -222,10 +221,8 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     MAIN APP
-════════════════════════════════════════ -->
-<div id="app" style="display:none;width:100%;display:none;flex-direction:column;align-items:center">
+<!-- MAIN APP (Everything in English now) -->
+<div id="app" style="display:none;width:100%;flex-direction:column;align-items:center">
   <h1>BN Mod Generator</h1>
   <p class="sub">Automatic Announcement Image Creator</p>
 
@@ -240,8 +237,19 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
         <label>Mod Download Link</label>
         <input type="text" id="modLink" placeholder="https://lootdest.org/s?...">
       </div>
+
+      <!-- NEW: Thumbnail Image URL field (English) -->
       <div class="field">
-        <label>Thumbnail Image (16:9)</label>
+        <label>Thumbnail Image URL</label>
+        <div style="display:flex; gap:5px;">
+          <input type="text" id="imageUrl" placeholder="https://example.com/image.jpg" style="flex:1;">
+          <button class="tag-btn" onclick="loadFromUrl()" style="padding:7px 12px;">⬇️ Load from URL</button>
+        </div>
+      </div>
+
+      <!-- Existing Upload Area (File) -->
+      <div class="field">
+        <label>... or Upload File (16:9)</label>
         <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
           <div class="ico">📁</div>
           <span>Click or drag & drop</span>
@@ -250,6 +258,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
         <input type="file" id="fileInput" accept="image/*" onchange="onFileChange(event)">
         <div class="status-bar" id="imgStatus"></div>
       </div>
+      
       <div class="divider"></div>
       <div class="field">
         <label>Label (Top Left Corner)</label>
@@ -274,7 +283,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
   </div>
 </div>
 
-<!-- FORMAT MODAL -->
+<!-- FORMAT MODAL (English) -->
 <div class="modal-overlay" id="modal" style="display:none" onclick="overlayClick(event)">
   <div class="modal-box">
     <div class="modal-head">
@@ -302,9 +311,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
 </div>
 
 <script>
-// ══════════════════════════════════════
-// PASSWORD GATE
-// ══════════════════════════════════════
+// PASSWORD GATE (English error messages)
 const CORRECT = 'osas';
 let attempts = 0;
 const MAX_ATTEMPTS = 5;
@@ -322,7 +329,7 @@ function checkPW(){
     attempts++;
     const inp = document.getElementById('pwInput');
     inp.classList.remove('shake');
-    void inp.offsetWidth; // reflow to restart animation
+    void inp.offsetWidth;
     inp.classList.add('shake');
     inp.value = '';
 
@@ -363,9 +370,7 @@ function toggleEye(){
   }
 }
 
-// ══════════════════════════════════════
-// APP LOGIC
-// ══════════════════════════════════════
+// APP LOGIC (English status messages)
 let loadedImg = null;
 let tagValue  = "";
 let generated = false;
@@ -375,6 +380,7 @@ function pickTag(btn){
   btn.classList.add('on'); tagValue=btn.dataset.v;
 }
 
+// File upload (existing)
 function onFileChange(e){ if(e.target.files[0]) loadFile(e.target.files[0]); }
 const dz=document.getElementById('dropZone');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='rgba(0,220,255,.85)';});
@@ -384,6 +390,7 @@ dz.addEventListener('drop',e=>{
   const f=e.dataTransfer.files[0];
   if(f&&f.type.startsWith('image/')) loadFile(f);
 });
+
 function loadFile(file){
   const st=document.getElementById('imgStatus');
   st.textContent='Loading...';st.className='status-bar';
@@ -394,13 +401,47 @@ function loadFile(file){
       loadedImg=img;
       const p=document.getElementById('thumbPreview');
       p.src=ev.target.result;p.style.display='block';
-      st.textContent=`✓ ${img.naturalWidth}×${img.naturalHeight}px`;st.className='status-bar ok';
+      st.textContent=`✓ ${img.naturalWidth}×${img.naturalHeight}px (File)`;st.className='status-bar ok';
     };
     img.src=ev.target.result;
   };
   r.readAsDataURL(file);
 }
 
+// NEW: Load from URL function (English messages)
+function loadFromUrl() {
+  const url = document.getElementById('imageUrl').value.trim();
+  const st = document.getElementById('imgStatus');
+  if (!url) {
+    st.textContent = '✗ Please enter a URL';
+    st.className = 'status-bar err';
+    return;
+  }
+
+  st.textContent = 'Loading from URL...';
+  st.className = 'status-bar';
+  
+  const img = new Image();
+  img.crossOrigin = 'Anonymous'; // Try to bypass CORS issues
+  img.onload = () => {
+    loadedImg = img;
+    const p = document.getElementById('thumbPreview');
+    p.src = img.src;
+    p.style.display = 'block';
+    st.textContent = `✓ ${img.naturalWidth}×${img.naturalHeight}px (URL)`;
+    st.className = 'status-bar ok';
+    document.getElementById('imageUrl').value = url; 
+  };
+  img.onerror = () => {
+    st.textContent = '✗ Failed to load image. Check URL or CORS.';
+    st.className = 'status-bar err';
+    loadedImg = null;
+    document.getElementById('thumbPreview').style.display = 'none';
+  };
+  img.src = url;
+}
+
+// Drawing functions (no text changes needed)
 function rr(ctx,x,y,w,h,r){
   ctx.beginPath();
   ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
