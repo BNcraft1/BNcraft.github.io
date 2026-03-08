@@ -231,7 +231,7 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
       <div class="panel-title">⚡ Settings</div>
       <div class="field">
         <label>Mod / Pack Name</label>
-        <input type="text" id="modName" placeholder="e.g. Weapons Mashup">
+        <input type="text" id="modName" placeholder="e.g. Weapons Mashup" value="mod-adı">
       </div>
       <div class="field">
         <label>Mod Download Link</label>
@@ -271,6 +271,16 @@ canvas{max-width:100%;border-radius:12px;box-shadow:0 0 55px rgba(0,90,255,.28),
           <button class="tag-btn"     data-v="Mash-Up"        onclick="pickTag(this)">Mash-Up</button>
         </div>
       </div>
+      
+      <!-- ADDED: Copy Text Section with English button -->
+      <div class="field" style="margin-top: 15px;">
+        <label>📋 Text to Copy</label>
+        <div style="background:rgba(0,15,40,.9); border:1px solid rgba(0,130,255,.3); border-radius:8px; padding:12px; margin-bottom:8px; word-break:break-word; font-size:13px; color:#88ddff; max-height:150px; overflow-y:auto;" id="announcementText">
+          download the mod-adı mod for free on bncraft
+        </div>
+        <button class="tag-btn" onclick="copyAnnouncement()" id="copyBtn" style="width:100%; padding:10px; background:rgba(0,90,190,.6); border-color:#00aaff;">📋 COPY TEXT</button>
+      </div>
+      
       <button class="btn-gen" onclick="generate()">⚡ GENERATE</button>
       <button class="btn-dl" id="dlBtn" onclick="openModal()">⬇ DOWNLOAD</button>
     </div>
@@ -441,6 +451,80 @@ function loadFromUrl() {
   img.src = url;
 }
 
+// NEW: Update announcement text and copy (ENGLISH VERSION)
+function updateAnnouncementText() {
+  const modName = document.getElementById('modName').value.trim() || 'mod-adı';
+  // Replace spaces with hyphens for URL-friendly format
+  const formattedModName = modName.replace(/\s+/g, '-').toLowerCase();
+  const announcement = `download the ${formattedModName} mod for free on bncraft
+hit up our site from the bio or comments to grab more mods and join the discord for the lowdown on some extra hidden features
+
+Actions & Stuff - Biomes O' Plenty - Visual Effects Add-On - Dark Fantasy Visuals - Prizma Visuals - REALISM | Fields+Forests - Realism Visuals - Realistic Biomes - RealismCraft  - DWELLERS - Essentials - RLCraft Bedrock Edition - Mowzie’s Mobs - Scp Add On - Beyond Biomes - Spellcards Add-On 
+
+
+- Free Minecarft Addons 
+- free addons 
+- free minecarft mods
+- free mcpe addons
+- minecarft bedrock mods
+- best mods
+- free dlc
+- minecarft hacks
+- skins minecarft 
+
+
+- Bncraft 
+- bncraft 
+- bncraft free
+- Bn
+- bn craft
+- Bn craft site 
+
+
+#bncraft #minecraft #mc #mcpe #fy 
+
+@BNcraft`;
+  document.getElementById('announcementText').textContent = announcement;
+  return announcement;
+}
+
+function copyAnnouncement() {
+  const text = updateAnnouncementText(); // First update the text
+  
+  // Modern clipboard API
+  navigator.clipboard.writeText(text).then(() => {
+    // Find button and temporarily change it
+    const btn = document.getElementById('copyBtn');
+    const originalText = btn.textContent;
+    btn.textContent = '✅ COPIED!';
+    btn.style.background = 'rgba(0,150,50,.6)';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = 'rgba(0,90,190,.6)';
+    }, 2000);
+  }).catch(err => {
+    // Fallback: Old method
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      const btn = document.getElementById('copyBtn');
+      const originalText = btn.textContent;
+      btn.textContent = '✅ COPIED!';
+      btn.style.background = 'rgba(0,150,50,.6)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = 'rgba(0,90,190,.6)';
+      }, 2000);
+    } catch (e) {
+      alert('Text could not be copied. Please select and copy manually.');
+    }
+    document.body.removeChild(textarea);
+  });
+}
+
 // Drawing functions (no text changes needed)
 function rr(ctx,x,y,w,h,r){
   ctx.beginPath();
@@ -538,6 +622,9 @@ function generate(){
   canvas.style.display='block';
   document.getElementById('dlBtn').style.display='block';
   generated=true;
+  
+  // Auto update text
+  updateAnnouncementText();
 }
 
 function openModal(){
@@ -619,6 +706,14 @@ async function canvasToICO(srcCanvas){
   new Uint8Array(buf).set(pngArr,22);
   return new Blob([buf],{type:'image/x-icon'});
 }
+
+// Auto update text when mod name changes
+document.getElementById('modName').addEventListener('input', updateAnnouncementText);
+
+// Update text on page load
+window.addEventListener('load', function() {
+  updateAnnouncementText();
+});
 </script>
 </body>
 </html>
