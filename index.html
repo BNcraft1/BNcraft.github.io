@@ -1,47 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="blue">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BNcraft | Mod Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
+        /* ============================================================
+           THEME VARIABLES — aynı mod hub ile eşleşiyor
+        ============================================================ */
+        :root,
+        [data-theme="blue"] {
             --bg-dark: #000b10;
             --card-bg: #00161f;
-            --accent-cyan: #00e5ff;
+            --accent: #00e5ff;
             --modal-bg: #001a24;
-            --glow: 0 0 25px rgba(0, 229, 255, 0.4);
-            --glow-strong: 0 0 45px rgba(0, 229, 255, 0.6);
+            --glow: 0 0 25px rgba(0,229,255,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,11,16,0.95);
+            --grid-color: rgba(0,229,255,0.03);
+            --border-color: rgba(0,229,255,0.2);
+            --card-hover-bg: rgba(0,229,255,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(0,229,255,0.08);
+        }
+        [data-theme="purple"] {
+            --bg-dark: #080010;
+            --card-bg: #12001e;
+            --accent: #bf00ff;
+            --modal-bg: #160022;
+            --glow: 0 0 25px rgba(191,0,255,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(8,0,16,0.95);
+            --grid-color: rgba(191,0,255,0.03);
+            --border-color: rgba(191,0,255,0.2);
+            --card-hover-bg: rgba(191,0,255,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(191,0,255,0.08);
+        }
+        [data-theme="red"] {
+            --bg-dark: #0f0000;
+            --card-bg: #1e0000;
+            --accent: #ff2222;
+            --modal-bg: #220000;
+            --glow: 0 0 25px rgba(255,34,34,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(15,0,0,0.95);
+            --grid-color: rgba(255,34,34,0.03);
+            --border-color: rgba(255,34,34,0.2);
+            --card-hover-bg: rgba(255,34,34,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(255,34,34,0.08);
+        }
+        [data-theme="green"] {
+            --bg-dark: #001008;
+            --card-bg: #001d10;
+            --accent: #00ff88;
+            --modal-bg: #001a10;
+            --glow: 0 0 25px rgba(0,255,136,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,16,8,0.95);
+            --grid-color: rgba(0,255,136,0.03);
+            --border-color: rgba(0,255,136,0.2);
+            --card-hover-bg: rgba(0,255,136,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(0,255,136,0.08);
+        }
+        [data-theme="yellow"] {
+            --bg-dark: #0e0e00;
+            --card-bg: #1c1c00;
+            --accent: #ffe000;
+            --modal-bg: #1a1900;
+            --glow: 0 0 25px rgba(255,224,0,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(14,14,0,0.95);
+            --grid-color: rgba(255,224,0,0.03);
+            --border-color: rgba(255,224,0,0.2);
+            --card-hover-bg: rgba(255,224,0,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(255,224,0,0.08);
+        }
+        [data-theme="orange"] {
+            --bg-dark: #0e0700;
+            --card-bg: #1e1000;
+            --accent: #ff8c00;
+            --modal-bg: #1a0d00;
+            --glow: 0 0 25px rgba(255,140,0,0.4);
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(14,7,0,0.95);
+            --grid-color: rgba(255,140,0,0.03);
+            --border-color: rgba(255,140,0,0.2);
+            --card-hover-bg: rgba(255,140,0,0.05);
+            --info-card-bg: rgba(255,255,255,0.05);
+            --menu-item-hover: rgba(255,140,0,0.08);
+        }
+        [data-theme="white"] {
+            --bg-dark: #eef2f7;
+            --card-bg: #ffffff;
+            --accent: #0077cc;
+            --modal-bg: #f4f8fc;
+            --glow: 0 0 20px rgba(0,119,204,0.25);
+            --text-main: #111111;
+            --text-sub: rgba(0,0,0,0.75);
+            --text-label: rgba(0,0,0,0.5);
+            --nav-bg: rgba(238,242,247,0.97);
+            --grid-color: rgba(0,119,204,0.05);
+            --border-color: rgba(0,119,204,0.2);
+            --card-hover-bg: rgba(0,119,204,0.05);
+            --info-card-bg: rgba(0,0,0,0.04);
+            --menu-item-hover: rgba(0,119,204,0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
             background-color: var(--bg-dark);
-            color: white;
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
         }
 
-        /* Animated background grid - links page'deki gibi */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Glowing orb background - links page'deki gibi */
         body::after {
             content: '';
             position: fixed;
@@ -56,52 +166,168 @@
             animation: pulse 4s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        [data-theme="white"] body::after {
+            background: radial-gradient(circle, rgba(0,119,204,0.06) 0%, transparent 70%);
         }
 
-        /* NAV - aynen eski home page'deki gibi */
+        @keyframes pulse {
+            0%,100% { opacity:.6; transform:translateX(-50%) scale(1); }
+            50% { opacity:1; transform:translateX(-50%) scale(1.1); }
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
         nav {
             width: 100%;
             height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 30px;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
-            background: rgba(0, 11, 16, 0.95);
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.35s ease, border-color 0.35s ease;
         }
 
         .nav-logo-img {
             height: 45px;
-            filter: drop-shadow(0 0 8px var(--accent-cyan));
+            filter: drop-shadow(0 0 8px var(--accent));
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .nav-btn {
-            background: var(--accent-cyan);
+            background: var(--accent);
             color: #000;
             border: none;
-            padding: 10px 24px;
+            padding: 10px 22px;
             border-radius: 10px;
             font-weight: 800;
             cursor: pointer;
             font-size: 13px;
-            transition: 0.3s;
+            transition: .3s;
             text-transform: uppercase;
-            position: relative;
-            z-index: 1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
+        .nav-btn:hover { opacity:.85; box-shadow:var(--glow); }
 
-        .nav-btn:hover {
-            background: white;
+        /* Hamburger */
+        .hamburger-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: .3s;
+        }
+        .hamburger-btn:hover { border-color:var(--accent); box-shadow:var(--glow); }
+        .hamburger-btn span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: .3s;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity:0; }
+        .hamburger-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+        /* Dropdown menu */
+        .hamburger-menu {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--modal-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 10px;
+            z-index: 5000;
+            display: none;
+            min-width: 220px;
             box-shadow: var(--glow);
+            transition: background 0.35s ease;
+        }
+        .hamburger-menu.open { display:block; animation:menuSlide .2s ease; }
+        @keyframes menuSlide {
+            from { opacity:0; transform:translateY(-8px); }
+            to   { opacity:1; transform:translateY(0); }
         }
 
-        /* HERO - aynen eski home page'deki gibi */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 14px;
+            transition: .2s;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        .menu-item:hover { background:var(--menu-item-hover); color:var(--accent); }
+        .menu-item svg { width:18px; height:18px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .menu-divider { height:1px; background:var(--border-color); margin:6px 0; }
+
+        /* Theme sub-panel */
+        .theme-sub { display:none; padding:10px 8px 4px; }
+        .theme-sub.open { display:block; }
+        .theme-sub-title {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-label);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+        }
+        .theme-dots-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding-bottom:6px; }
+        .theme-dot-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+        .theme-dot {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: .25s;
+        }
+        .theme-dot:hover { transform:scale(1.15); }
+        .theme-dot.active-theme { border-color:var(--text-main); box-shadow:0 0 8px rgba(255,255,255,0.35); }
+        .theme-dot[data-t="blue"]   { background:radial-gradient(circle at 35% 35%,#00e5ff,#002d3f); }
+        .theme-dot[data-t="purple"] { background:radial-gradient(circle at 35% 35%,#bf00ff,#200035); }
+        .theme-dot[data-t="red"]    { background:radial-gradient(circle at 35% 35%,#ff2222,#380000); }
+        .theme-dot[data-t="green"]  { background:radial-gradient(circle at 35% 35%,#00ff88,#003015); }
+        .theme-dot[data-t="yellow"] { background:radial-gradient(circle at 35% 35%,#ffe000,#302e00); }
+        .theme-dot[data-t="orange"] { background:radial-gradient(circle at 35% 35%,#ff8c00,#351c00); }
+        .theme-dot[data-t="white"]  { background:radial-gradient(circle at 35% 35%,#ffffff,#aabbd0); border-color:#bbb; }
+        .theme-dot-lbl { font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-label); }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
         .hero {
             flex: 1;
             display: flex;
@@ -122,28 +348,29 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            0%,100% { transform:translateY(0); }
+            50% { transform:translateY(-15px); }
         }
 
         .hero-title {
             font-size: clamp(32px, 8vw, 56px);
             font-weight: 900;
             margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff, var(--accent-cyan));
+            background: linear-gradient(to bottom, var(--text-main), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
             font-size: clamp(14px, 4vw, 18px);
-            opacity: 0.7;
+            color: var(--text-label);
             margin-bottom: 40px;
             max-width: 600px;
         }
 
         .hero-btn {
-            background: var(--accent-cyan);
+            background: var(--accent);
             color: #000;
             border: none;
             padding: 18px 50px;
@@ -151,19 +378,20 @@
             font-weight: 900;
             font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: .3s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
         .hero-btn:hover {
             transform: scale(1.05) translateY(-3px);
-            background: white;
+            opacity: .88;
             box-shadow: var(--glow);
         }
 
-        /* PROMO CARDS - aynen eski home page'deki gibi */
+        /* ============================================================
+           PROMO CARDS
+        ============================================================ */
         .promo-section {
             width: 100%;
             max-width: 500px;
@@ -176,84 +404,63 @@
 
         .promo-card {
             background: var(--card-bg);
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            border: 1px solid var(--border-color);
             border-radius: 15px;
             padding: 20px;
             display: flex;
             align-items: center;
             gap: 20px;
             text-decoration: none;
-            color: white;
-            transition: 0.3s;
+            color: var(--text-main);
+            transition: .3s;
         }
-
         .promo-card:hover {
-            border-color: var(--accent-cyan);
+            border-color: var(--accent);
             transform: translateX(10px);
-            background: rgba(0, 229, 255, 0.05);
+            background: var(--card-hover-bg);
         }
 
-        .promo-icon {
-            width: 50px;
-            height: 50px;
-        }
+        .promo-icon { width:50px; height:50px; }
 
-        .promo-text {
-            font-size: 15px;
-            font-weight: 600;
-        }
+        .promo-text { font-size:15px; font-weight:600; color:var(--text-main); }
+        .promo-text b { color:var(--accent); }
 
-        .promo-text b {
-            color: var(--accent-cyan);
-        }
-
-        /* FOOTER - aynen eski home page'deki gibi + FACEBOOK EKLENDİ */
+        /* ============================================================
+           FOOTER
+        ============================================================ */
         footer {
             padding: 30px;
             display: flex;
             gap: 20px;
             justify-content: center;
-            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            border-top: 1px solid var(--border-color);
             margin-top: 40px;
             position: relative;
             z-index: 1;
             flex-wrap: wrap;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            transition: 0.3s;
-            opacity: 0.7;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px);
-            opacity: 1;
-            filter: drop-shadow(0 0 10px var(--accent-cyan));
+            transition: border-color 0.35s ease;
         }
 
         footer a img {
             width: 40px;
             height: 40px;
-            transition: 0.3s;
-            opacity: 0.7;
+            transition: .3s;
+            opacity: .7;
         }
-
         footer a img:hover {
             transform: translateY(-5px);
             opacity: 1;
-            filter: drop-shadow(0 0 10px var(--accent-cyan));
+            filter: drop-shadow(0 0 10px var(--accent));
         }
 
-        /* MODAL - aynen eski home page'deki gibi */
+        /* ============================================================
+           MODAL
+        ============================================================ */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             display: none;
             justify-content: center;
             align-items: center;
@@ -263,22 +470,20 @@
 
         .modal-content {
             background: var(--modal-bg);
-            border: 2px solid var(--accent-cyan);
+            border: 2px solid var(--accent);
             border-radius: 24px;
-            width: 90%;
-            max-width: 450px;
+            width: 90%; max-width: 450px;
             padding: 40px 30px;
             position: relative;
             box-shadow: var(--glow);
+            transition: background 0.35s ease, border-color 0.35s ease;
         }
 
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            background: rgba(0, 0, 0, 0.8);
+            top: 20px; right: 20px;
+            width: 32px; height: 32px;
+            background: rgba(0,0,0,0.8);
             border: 1px solid #ff4d4d;
             color: #ff4d4d;
             border-radius: 50%;
@@ -287,129 +492,231 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            transition: 0.3s;
+            transition: .3s;
         }
-
-        .close-btn:hover {
-            background: #ff4d4d;
-            color: white;
-            transform: rotate(90deg);
-        }
+        .close-btn:hover { background:#ff4d4d; color:white; transform:rotate(90deg); }
 
         .modal-title {
             font-size: 26px;
             font-weight: 900;
             margin-bottom: 25px;
             text-align: center;
+            color: var(--text-main);
         }
 
         .dl-option {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--info-card-bg);
             padding: 18px 20px;
             border-radius: 12px;
             margin-bottom: 12px;
             text-decoration: none;
-            color: white;
+            color: var(--text-main);
             font-weight: 700;
-            transition: 0.3s;
-            border: 1px solid rgba(0, 229, 255, 0.1);
+            transition: .3s;
+            border: 1px solid var(--border-color);
         }
+        .dl-option:hover { background:var(--accent); color:#000; transform:translateY(-2px); }
 
-        .dl-option:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            transform: translateY(-2px);
-        }
+        /* White theme fixes */
+        [data-theme="white"] .hero-title { color:#111; }
+        [data-theme="white"] .promo-text { color:#111; }
 
         @media (max-width: 768px) {
-            nav { padding: 0 15px; }
-            .promo-section { padding: 0 15px; }
+            nav { padding:0 15px; }
+            .promo-section { padding:0 15px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img">
+<nav>
+    <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img" alt="BNcraft">
+    <div class="nav-right">
         <button class="nav-btn" onclick="openModal()">Download MC</button>
-    </nav>
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
 
-    <div class="hero">
-        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="hero-logo">
-        <h1 class="hero-title">BNCRAFT MODS</h1>
-        <p class="hero-subtitle">Premium Minecraft marketplace mods completely free</p>
-        <a href="https://bncraft1.github.io/BNcraft.github.io/all-mods.html" class="hero-btn">BROWSE ALL MODS</a>
-
-        <div class="promo-section">
-            <a href="https://discord.gg/KHdG3A7dtw" class="promo-card" target="_blank">
-                <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988200073_orig.png" class="promo-icon">
-                <div class="promo-text">Join Discord for <b>secret mods!</b></div>
-            </a>
-            <a href="https://discord.gg/yTXf8R7cGb" class="promo-card" target="_blank">
-                <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1736816490446_orig.png" class="promo-icon">
-                <div class="promo-text">Join <b>Yasho's Discord!</b></div>
-            </a>
+<!-- HAMBURGER MENU -->
+<div class="hamburger-menu" id="hamburgerMenu">
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-Official-Links.html" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Social Media Links
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-tuturial.html" target="_blank">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Tutorial
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-other-mods.html" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Other Mods
+    </a>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="toggleThemeSub()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20 5 5 0 010-10 5 5 0 000-10z"/></svg>
+        Themes
+        <svg id="themeArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="theme-sub" id="themeSub">
+        <div class="theme-sub-title">Select Theme</div>
+        <div class="theme-dots-row">
+            <div class="theme-dot-wrap">
+                <div class="theme-dot active-theme" data-t="blue" onclick="setTheme('blue')"></div>
+                <div class="theme-dot-lbl">Blue</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="purple" onclick="setTheme('purple')"></div>
+                <div class="theme-dot-lbl">Purple</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="red" onclick="setTheme('red')"></div>
+                <div class="theme-dot-lbl">Red</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="green" onclick="setTheme('green')"></div>
+                <div class="theme-dot-lbl">Green</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="yellow" onclick="setTheme('yellow')"></div>
+                <div class="theme-dot-lbl">Yellow</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="orange" onclick="setTheme('orange')"></div>
+                <div class="theme-dot-lbl">Orange</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="white" onclick="setTheme('white')"></div>
+                <div class="theme-dot-lbl">White</div>
+            </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" class="social-icon" alt="YouTube">
-        </a>
-        <a href="https://www.instagram.com/bncraft.2?igsh=MTBtYjR4YXBya3c5YQ==" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png" class="social-icon" alt="Instagram">
-        </a>
-        <a href="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075231857_orig.png" class="social-icon" alt="TikTok">
-        </a>
-        <!-- FACEBOOK EKLENDİ -->
-        <a href="https://www.facebook.com/share/18RcvbYuF1/" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075254063_orig.png" class="social-icon" alt="Facebook">
-        </a>
-        <a href="https://discord.gg/KHdG3A7dtw" target="_blank" rel="noopener noreferrer">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" class="social-icon" alt="Discord">
-        </a>
-        <a href="mailto:bncraft.to@gmail.com">
-            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" class="social-icon" alt="Email">
-        </a>
-    </footer>
+<!-- HERO -->
+<div class="hero">
+    <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="hero-logo" alt="BNcraft Logo">
+    <h1 class="hero-title">BNCRAFT MODS</h1>
+    <p class="hero-subtitle">Premium Minecraft marketplace mods completely free</p>
+    <a href="https://bncraft1.github.io/BNcraft.github.io/all-mods.html" class="hero-btn">BROWSE ALL MODS</a>
 
-    <div class="modal-overlay" id="downloadModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">✕</button>
-            <div class="modal-title">Download Minecraft</div>
-            <a href="https://bedrocklauncher.github.io" class="dl-option" target="_blank">
-                <span>Minecraft for Windows</span>
-                <span>→</span>
-            </a>
-            <a href="https://mcpedl.org/downloading/" class="dl-option" target="_blank">
-                <span>Minecraft for Android</span>
-                <span>→</span>
-            </a>
-            <a href="https://www.mc-mod.net/mcpe-patched/" class="dl-option" target="_blank">
-                <span>Minecraft Patched</span>
-                <span>→</span>
-            </a>
-        </div>
+    <div class="promo-section">
+        <a href="https://discord.gg/KHdG3A7dtw" class="promo-card" target="_blank">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735988200073_orig.png" class="promo-icon" alt="Discord">
+            <div class="promo-text">Join Discord for <b>secret mods!</b></div>
+        </a>
+        <a href="https://discord.gg/yTXf8R7cGb" class="promo-card" target="_blank">
+            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1736816490446_orig.png" class="promo-icon" alt="Discord">
+            <div class="promo-text">Join <b>Yasho's Discord!</b></div>
+        </a>
     </div>
+</div>
 
-    <script>
-        function openModal() {
-            document.getElementById('downloadModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+<!-- FOOTER -->
+<footer>
+    <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank" rel="noopener noreferrer">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/bncraft.2?igsh=MTBtYjR4YXBya3c5YQ==" target="_blank" rel="noopener noreferrer">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" target="_blank" rel="noopener noreferrer">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075231857_orig.png" alt="TikTok">
+    </a>
+    <a href="https://www.facebook.com/share/18RcvbYuF1/" target="_blank" rel="noopener noreferrer">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075254063_orig.png" alt="Facebook">
+    </a>
+    <a href="https://discord.gg/KHdG3A7dtw" target="_blank" rel="noopener noreferrer">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" alt="Discord">
+    </a>
+    <a href="mailto:bncraft.to@gmail.com">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" alt="Email">
+    </a>
+</footer>
 
-        function closeModal() {
-            document.getElementById('downloadModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+<!-- DOWNLOAD MC MODAL -->
+<div class="modal-overlay" id="downloadModal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <div class="modal-title">Download Minecraft</div>
+        <a href="https://bedrocklauncher.github.io" class="dl-option" target="_blank">
+            <span>Minecraft for Windows</span><span>→</span>
+        </a>
+        <a href="https://mcpedl.org/downloading/" class="dl-option" target="_blank">
+            <span>Minecraft for Android</span><span>→</span>
+        </a>
+        <a href="https://www.mc-mod.net/mcpe-patched/" class="dl-option" target="_blank">
+            <span>Minecraft Patched</span><span>→</span>
+        </a>
+    </div>
+</div>
 
-        window.onclick = (e) => {
-            if(e.target == document.getElementById('downloadModal')) closeModal();
+<script>
+    // ============================================================
+    // THEME SYSTEM
+    // ============================================================
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('bncraft-theme', theme);
+        document.querySelectorAll('.theme-dot').forEach(d => {
+            d.classList.toggle('active-theme', d.getAttribute('data-t') === theme);
+        });
+    }
+
+    function toggleThemeSub() {
+        const sub = document.getElementById('themeSub');
+        const arrow = document.getElementById('themeArrow');
+        sub.classList.toggle('open');
+        arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    // ============================================================
+    // HAMBURGER MENU
+    // ============================================================
+    function toggleMenu() {
+        const menu = document.getElementById('hamburgerMenu');
+        const btn  = document.getElementById('hamburgerBtn');
+        menu.classList.toggle('open');
+        btn.classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('hamburgerMenu');
+        const btn  = document.getElementById('hamburgerBtn');
+        if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.remove('open');
+            btn.classList.remove('open');
         }
-    </script>
+    });
+
+    // ============================================================
+    // DOWNLOAD MODAL
+    // ============================================================
+    function openModal() {
+        document.getElementById('downloadModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('downloadModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = (e) => {
+        if (e.target == document.getElementById('downloadModal')) closeModal();
+    };
+
+    // ============================================================
+    // INIT — saved theme yükle
+    // ============================================================
+    (function init() {
+        const saved = localStorage.getItem('bncraft-theme');
+        if (saved) setTheme(saved);
+    })();
+</script>
 </body>
 </html>
