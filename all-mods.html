@@ -1,580 +1,760 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="blue">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BNcraft | Professional Mod Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
+        /* ============================================================
+           THEME VARIABLES
+        ============================================================ */
+        :root,
+        [data-theme="blue"] {
             --bg-dark: #000b10;
             --card-bg: #00161f;
-            --accent-cyan: #00e5ff;
+            --accent: #00e5ff;
             --modal-bg: #001a24;
-            --glow: 0 0 25px rgba(0, 229, 255, 0.4);
+            --glow: 0 0 25px rgba(0,229,255,0.4);
             --coin-gold: #ffcc00;
             --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,11,16,0.95);
+            --grid-color: rgba(0,229,255,0.03);
+            --border-color: rgba(0,229,255,0.15);
+            --border-hover: rgba(0,229,255,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(0,229,255,0.08);
+        }
+        [data-theme="purple"] {
+            --bg-dark: #080010;
+            --card-bg: #12001e;
+            --accent: #bf00ff;
+            --modal-bg: #160022;
+            --glow: 0 0 25px rgba(191,0,255,0.4);
+            --coin-gold: #ffcc00;
+            --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(8,0,16,0.95);
+            --grid-color: rgba(191,0,255,0.03);
+            --border-color: rgba(191,0,255,0.15);
+            --border-hover: rgba(191,0,255,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(191,0,255,0.08);
+        }
+        [data-theme="red"] {
+            --bg-dark: #0f0000;
+            --card-bg: #1e0000;
+            --accent: #ff2222;
+            --modal-bg: #220000;
+            --glow: 0 0 25px rgba(255,34,34,0.4);
+            --coin-gold: #ffcc00;
+            --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(15,0,0,0.95);
+            --grid-color: rgba(255,34,34,0.03);
+            --border-color: rgba(255,34,34,0.15);
+            --border-hover: rgba(255,34,34,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(255,34,34,0.08);
+        }
+        [data-theme="green"] {
+            --bg-dark: #001008;
+            --card-bg: #001d10;
+            --accent: #00ff88;
+            --modal-bg: #001a10;
+            --glow: 0 0 25px rgba(0,255,136,0.4);
+            --coin-gold: #ffcc00;
+            --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,16,8,0.95);
+            --grid-color: rgba(0,255,136,0.03);
+            --border-color: rgba(0,255,136,0.15);
+            --border-hover: rgba(0,255,136,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(0,255,136,0.08);
+        }
+        [data-theme="yellow"] {
+            --bg-dark: #0e0e00;
+            --card-bg: #1c1c00;
+            --accent: #ffe000;
+            --modal-bg: #1a1900;
+            --glow: 0 0 25px rgba(255,224,0,0.4);
+            --coin-gold: #ffaa00;
+            --mash-up-yellow: #ffaa00;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(14,14,0,0.95);
+            --grid-color: rgba(255,224,0,0.03);
+            --border-color: rgba(255,224,0,0.15);
+            --border-hover: rgba(255,224,0,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(255,224,0,0.08);
+        }
+        [data-theme="orange"] {
+            --bg-dark: #0e0700;
+            --card-bg: #1e1000;
+            --accent: #ff8c00;
+            --modal-bg: #1a0d00;
+            --glow: 0 0 25px rgba(255,140,0,0.4);
+            --coin-gold: #ffcc00;
+            --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(14,7,0,0.95);
+            --grid-color: rgba(255,140,0,0.03);
+            --border-color: rgba(255,140,0,0.15);
+            --border-hover: rgba(255,140,0,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(255,140,0,0.08);
+        }
+        [data-theme="white"] {
+            --bg-dark: #eef2f7;
+            --card-bg: #ffffff;
+            --accent: #0077cc;
+            --modal-bg: #f4f8fc;
+            --glow: 0 0 20px rgba(0,119,204,0.25);
+            --coin-gold: #bb7700;
+            --mash-up-yellow: #bb7700;
+            --text-main: #111111;
+            --text-sub: rgba(0,0,0,0.75);
+            --text-label: rgba(0,0,0,0.5);
+            --nav-bg: rgba(238,242,247,0.97);
+            --grid-color: rgba(0,119,204,0.05);
+            --border-color: rgba(0,119,204,0.2);
+            --border-hover: rgba(0,119,204,0.8);
+            --info-card-bg: rgba(0,0,0,0.04);
+            --desc-bg: rgba(0,0,0,0.04);
+            --menu-item-hover: rgba(0,119,204,0.08);
         }
 
-        /* Animated background grid */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Glowing orb background */
-        body::after {
-            content: '';
-            position: fixed;
-            top: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
             background-color: var(--bg-dark);
-            color: white;
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
         }
 
-        /* NAVIGATION */
+        body::before {
+            content:'';
+            position:fixed;
+            inset:0;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size:40px 40px;
+            pointer-events:none;
+            z-index:0;
+        }
+        body::after {
+            content:'';
+            position:fixed;
+            top:-150px;
+            left:50%;
+            transform:translateX(-50%);
+            width:600px;
+            height:600px;
+            background:radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events:none;
+            z-index:0;
+            animation:pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}
+            50%{opacity:1;transform:translateX(-50%) scale(1.1);}
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
         nav {
-            width: 100%;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
-            background: rgba(0, 11, 16, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            width:100%;
+            height:70px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 20px;
+            border-bottom:1px solid var(--border-color);
+            background:var(--nav-bg);
+            backdrop-filter:blur(10px);
+            position:sticky;
+            top:0;
+            z-index:1000;
+            transition: background 0.35s ease, border-color 0.35s ease;
         }
-
         .nav-logo-img {
-            height: 45px;
-            filter: drop-shadow(0 0 8px var(--accent-cyan));
+            height:45px;
+            filter:drop-shadow(0 0 8px var(--accent));
         }
-
+        .nav-right {
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
         .nav-btn {
-            background: var(--accent-cyan);
-            color: #000;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 10px;
-            font-weight: 800;
-            cursor: pointer;
-            font-size: 13px;
-            transition: 0.3s;
-            text-transform: uppercase;
+            background:var(--accent);
+            color:#000;
+            border:none;
+            padding:10px 22px;
+            border-radius:10px;
+            font-weight:800;
+            cursor:pointer;
+            font-size:13px;
+            transition:.3s;
+            text-transform:uppercase;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
         }
-
         .nav-btn:hover {
-            background: white;
-            box-shadow: var(--glow);
+            opacity:.85;
+            box-shadow:var(--glow);
         }
 
-        /* HEADER */
-        .header-section {
-            padding: 40px 20px 20px;
-            text-align: center;
+        /* Hamburger */
+        .hamburger-btn {
+            background:transparent;
+            border:1px solid var(--border-color);
+            color:var(--text-main);
+            width:42px;
+            height:42px;
+            border-radius:10px;
+            cursor:pointer;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:5px;
+            transition:.3s;
         }
+        .hamburger-btn:hover {
+            border-color:var(--accent);
+            box-shadow:var(--glow);
+        }
+        .hamburger-btn span {
+            display:block;
+            width:18px;
+            height:2px;
+            background:var(--text-main);
+            border-radius:2px;
+            transition:.3s;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity:0; }
+        .hamburger-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
+        /* Dropdown menu */
+        .hamburger-menu {
+            position:fixed;
+            top:80px;
+            right:20px;
+            background:var(--modal-bg);
+            border:1px solid var(--border-color);
+            border-radius:16px;
+            padding:10px;
+            z-index:5000;
+            display:none;
+            min-width:220px;
+            box-shadow:var(--glow);
+            transition: background 0.35s ease;
+        }
+        .hamburger-menu.open { display:block; animation:menuSlide .2s ease; }
+        @keyframes menuSlide {
+            from{opacity:0;transform:translateY(-8px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+        .menu-item {
+            display:flex;
+            align-items:center;
+            gap:12px;
+            padding:12px 16px;
+            border-radius:10px;
+            cursor:pointer;
+            text-decoration:none;
+            color:var(--text-main);
+            font-weight:700;
+            font-size:14px;
+            transition:.2s;
+            background:transparent;
+            border:none;
+            width:100%;
+            text-align:left;
+        }
+        .menu-item:hover { background:var(--menu-item-hover); color:var(--accent); }
+        .menu-item svg { width:18px; height:18px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .menu-divider { height:1px; background:var(--border-color); margin:6px 0; }
+
+        /* Theme sub-panel inside menu */
+        .theme-sub {
+            display:none;
+            padding:10px 8px 4px;
+        }
+        .theme-sub.open { display:block; }
+        .theme-sub-title {
+            font-size:10px;
+            font-weight:900;
+            text-transform:uppercase;
+            color:var(--text-label);
+            letter-spacing:1px;
+            margin-bottom:10px;
+            padding-left:8px;
+        }
+        .theme-dots-row {
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            justify-content:center;
+            padding-bottom:6px;
+        }
+        .theme-dot-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+        .theme-dot {
+            width:32px; height:32px;
+            border-radius:50%;
+            cursor:pointer;
+            border:2px solid transparent;
+            transition:.25s;
+        }
+        .theme-dot:hover { transform:scale(1.15); }
+        .theme-dot.active-theme { border-color:var(--text-main); box-shadow:0 0 8px rgba(255,255,255,0.35); }
+        .theme-dot[data-t="blue"]   { background:radial-gradient(circle at 35% 35%,#00e5ff,#002d3f); }
+        .theme-dot[data-t="purple"] { background:radial-gradient(circle at 35% 35%,#bf00ff,#200035); }
+        .theme-dot[data-t="red"]    { background:radial-gradient(circle at 35% 35%,#ff2222,#380000); }
+        .theme-dot[data-t="green"]  { background:radial-gradient(circle at 35% 35%,#00ff88,#003015); }
+        .theme-dot[data-t="yellow"] { background:radial-gradient(circle at 35% 35%,#ffe000,#302e00); }
+        .theme-dot[data-t="orange"] { background:radial-gradient(circle at 35% 35%,#ff8c00,#351c00); }
+        .theme-dot[data-t="white"]  { background:radial-gradient(circle at 35% 35%,#ffffff,#aabbd0); border-color:#bbb; }
+        .theme-dot-lbl { font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-label); }
+
+        /* Favorites active indicator */
+        .fav-count-badge {
+            background:var(--accent);
+            color:#000;
+            font-size:9px;
+            font-weight:900;
+            border-radius:10px;
+            padding:1px 6px;
+            margin-left:auto;
+            display:none;
+        }
+        .fav-count-badge.visible { display:inline-block; }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        .header-section { padding:40px 20px 20px; text-align:center; }
         .header-title {
-            font-size: clamp(24px, 8vw, 42px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin: 0;
+            font-size:clamp(24px,8vw,42px);
+            font-weight:900;
+            text-transform:uppercase;
+            color:var(--text-main);
         }
 
-        /* CONTROLS */
-        .controls {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            padding: 0 15px;
-        }
-
+        /* ============================================================
+           CONTROLS
+        ============================================================ */
+        .controls { max-width:800px; margin:0 auto 30px; padding:0 15px; }
         .search-input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(0, 22, 31, 0.8);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 12px;
-            color: white;
-            outline: none;
-            font-size: 16px;
-            text-align: center;
-            margin-bottom: 20px;
+            width:100%;
+            padding:15px;
+            background:var(--info-card-bg);
+            border:1px solid var(--accent);
+            border-radius:12px;
+            color:var(--text-main);
+            outline:none;
+            font-size:16px;
+            text-align:center;
+            margin-bottom:20px;
+            transition: background 0.35s ease;
         }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .category-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
+        .search-input::placeholder { color:var(--text-label); }
+        .category-container { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
         .cat-btn {
-            background: transparent;
-            border: 1px solid rgba(0, 229, 255, 0.4);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            background:transparent;
+            border:1px solid var(--border-color);
+            color:var(--text-main);
+            padding:8px 20px;
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:600;
+            font-size:13px;
+            transition:all .3s ease;
+            text-transform:uppercase;
         }
-
-        .cat-btn:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-2px);
-        }
-
+        .cat-btn:hover { border-color:var(--accent); transform:translateY(-2px); }
         .cat-btn.active {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+            background:var(--accent);
+            color:#000;
+            box-shadow:0 0 15px rgba(0,0,0,0.3);
+            border-color:var(--accent);
         }
 
-        /* MOD GRID */
+        /* ============================================================
+           MOD GRID & CARDS
+        ============================================================ */
         .mod-grid {
-            display: grid;
-            gap: 20px;
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display:grid;
+            gap:20px;
+            width:95%;
+            max-width:1200px;
+            margin:0 auto 60px;
+            grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
         }
-
         .mod-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 229, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
+            background:var(--card-bg);
+            border-radius:20px;
+            overflow:hidden;
+            border:1px solid var(--border-color);
+            transition:all .3s ease;
+            position:relative;
+            cursor:pointer;
         }
-
         .mod-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-            box-shadow: var(--glow);
+            transform:translateY(-5px);
+            border-color:var(--accent);
+            box-shadow:var(--glow);
         }
-
         .type-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 5;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--accent-cyan);
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            border: 1px solid var(--accent-cyan);
-            backdrop-filter: blur(6px);
-            pointer-events: none;
+            position:absolute;
+            top:10px; left:10px;
+            z-index:5;
+            background:rgba(0,0,0,0.8);
+            color:var(--accent);
+            padding:5px 12px;
+            border-radius:8px;
+            font-size:10px; font-weight:900;
+            text-transform:uppercase;
+            border:1px solid var(--accent);
+            backdrop-filter:blur(6px);
+            pointer-events:none;
         }
-
-        .type-badge.mash-up {
-            color: var(--mash-up-yellow);
-            border-color: var(--mash-up-yellow);
-        }
-
-        .img-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56%;
-        }
-
-        .mod-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .mod-info {
-            padding: 20px;
-            text-align: center;
-        }
-
+        .type-badge.mash-up { color:var(--mash-up-yellow); border-color:var(--mash-up-yellow); }
+        .img-container { position:relative; width:100%; padding-top:56%; }
+        .mod-card img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+        .mod-info { padding:20px; text-align:center; }
         .mod-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size:18px; font-weight:800;
+            margin-bottom:15px;
+            height:44px;
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-main);
         }
-
         .dl-trigger {
-            width: 100%;
-            background: var(--accent-cyan);
-            color: #000;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            width:100%;
+            background:var(--accent);
+            color:#000;
+            border:none;
+            padding:12px;
+            border-radius:10px;
+            font-weight:800;
+            cursor:pointer;
+            transition:all .3s ease;
+            font-size:14px;
         }
+        .dl-trigger:hover { opacity:.85; transform:scale(1.02); }
 
-        .dl-trigger:hover {
-            background: #00b8cc;
-            transform: scale(1.02);
+        /* Empty state */
+        .empty-state {
+            grid-column:1/-1;
+            text-align:center;
+            padding:80px 20px;
+            color:var(--text-label);
         }
+        .empty-state svg { width:64px; height:64px; margin-bottom:16px; opacity:.3; stroke:var(--accent); fill:none; stroke-width:1.5; }
+        .empty-state p { font-size:18px; font-weight:700; }
+        .empty-state span { font-size:13px; }
 
-        /* MODAL */
+        /* ============================================================
+           MODAL
+        ============================================================ */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            backdrop-filter: blur(12px);
-            padding: 15px;
+            position:fixed; top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.95);
+            display:none;
+            justify-content:center; align-items:center;
+            z-index:9999;
+            backdrop-filter:blur(12px);
+            padding:15px;
         }
-
         .modal-content {
-            background: var(--modal-bg);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 24px;
-            width: 100%;
-            max-width: 520px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--glow);
+            background:var(--modal-bg);
+            border:2px solid var(--accent);
+            border-radius:24px;
+            width:100%; max-width:520px;
+            position:relative;
+            max-height:90vh;
+            overflow-y:auto;
+            box-shadow:var(--glow);
+            transition: background 0.35s ease, border-color 0.35s ease;
         }
+        .modal-content::-webkit-scrollbar { width:6px; }
+        .modal-content::-webkit-scrollbar-track { background:rgba(0,0,0,0.3); border-radius:10px; }
+        .modal-content::-webkit-scrollbar-thumb { background:var(--accent); border-radius:10px; }
+        .modal-banner { padding:10px; position:relative; }
+        .modal-banner img { width:100%; border-radius:16px; display:block; }
 
-        .modal-banner {
-            padding: 10px;
-            position: relative;
+        /* Modal action buttons row (heart + close) */
+        .modal-actions {
+            position:absolute;
+            top:20px; right:20px;
+            display:flex;
+            gap:8px;
+            z-index:10;
         }
-
-        .modal-banner img {
-            width: 100%;
-            border-radius: 16px;
-            display: block;
+        .modal-heart-btn {
+            width:32px; height:32px;
+            background:rgba(0,0,0,0.8);
+            border:1px solid rgba(255,80,120,0.6);
+            color:rgba(255,80,120,0.7);
+            border-radius:50%;
+            cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            transition:all .3s ease;
         }
-
+        .modal-heart-btn:hover { background:rgba(255,80,120,0.15); }
+        .modal-heart-btn.faved {
+            background:rgba(255,80,120,0.2);
+            border-color:#ff5078;
+            color:#ff5078;
+        }
+        .modal-heart-btn svg { width:16px; height:16px; }
         .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ff4d4d;
-            color: #ff4d4d;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            width:32px; height:32px;
+            background:rgba(0,0,0,0.8);
+            border:1px solid #ff4d4d;
+            color:#ff4d4d;
+            border-radius:50%;
+            cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            font-size:18px;
+            transition:all .3s ease;
         }
+        .close-btn:hover { background:#ff4d4d; color:white; transform:rotate(90deg); }
 
-        .close-btn:hover {
-            background: #ff4d4d;
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 0 25px 25px;
-            text-align: center;
-        }
-
-        .m-title {
-            font-size: 26px;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .m-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
+        .modal-body { padding:0 25px 25px; text-align:center; }
+        .m-title { font-size:26px; font-weight:900; margin-bottom:20px; color:var(--text-main); }
+        .m-info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:20px; }
         .info-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 229, 255, 0.1);
+            background:var(--info-card-bg);
+            padding:10px;
+            border-radius:12px;
+            border:1px solid var(--border-color);
         }
-
-        .info-label {
-            display: block;
-            font-size: 10px;
-            text-transform: uppercase;
-            opacity: 0.6;
-            margin-bottom: 4px;
-        }
-
-        .info-val {
-            font-weight: 900;
-            font-size: 14px;
-            color: var(--accent-cyan);
-        }
-
-        .coin-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .coin-val {
-            color: var(--coin-gold);
-            font-size: 18px;
-        }
-
-        .coin-icon {
-            height: 26px;
-        }
-
+        .info-label { display:block; font-size:10px; text-transform:uppercase; color:var(--text-label); margin-bottom:4px; }
+        .info-val { font-weight:900; font-size:14px; color:var(--accent); }
+        .coin-wrapper { display:flex; align-items:center; justify-content:center; gap:6px; }
+        .coin-val { color:var(--coin-gold); font-size:18px; }
+        .coin-icon { height:26px; }
         .m-desc {
-            text-align: left;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 13px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            border-left: 3px solid var(--accent-cyan);
-            white-space: pre-line;
-            height: 180px;
-            overflow-y: auto;
+            text-align:left;
+            background:var(--desc-bg);
+            padding:15px;
+            border-radius:12px;
+            font-size:13px; line-height:1.6;
+            color:var(--text-sub);
+            margin-bottom:20px;
+            border-left:3px solid var(--accent);
+            white-space:pre-line;
+            height:180px;
+            overflow-y:auto;
         }
-
-        .m-desc::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .m-desc::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-
-        .m-desc::-webkit-scrollbar-thumb {
-            background: var(--accent-cyan);
-            border-radius: 10px;
-        }
-
-        .m-desc::-webkit-scrollbar-thumb:hover {
-            background: #00b8cc;
-        }
-
+        .m-desc::-webkit-scrollbar { width:6px; }
+        .m-desc::-webkit-scrollbar-track { background:rgba(0,0,0,0.3); border-radius:10px; }
+        .m-desc::-webkit-scrollbar-thumb { background:var(--accent); border-radius:10px; }
         .market-link {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-size: 11px;
-            margin-bottom: 15px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            display:block; color:var(--text-main); text-decoration:none;
+            padding:10px; border:1px solid var(--border-color);
+            border-radius:10px; font-size:11px;
+            margin-bottom:15px; opacity:.7; transition:all .3s ease;
         }
-
-        .market-link:hover {
-            opacity: 1;
-            border-color: var(--accent-cyan);
-        }
-
-        .v-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
+        .market-link:hover { opacity:1; border-color:var(--accent); }
+        .v-list { display:flex; flex-direction:column; gap:10px; }
         .v-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--accent-cyan);
-            color: #000;
-            text-decoration: none;
-            padding: 16px;
-            border-radius: 15px;
-            font-weight: 900;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            display:flex; justify-content:space-between; align-items:center;
+            background:var(--accent); color:#000; text-decoration:none;
+            padding:16px; border-radius:15px; font-weight:900; font-size:14px;
+            transition:all .3s ease;
         }
+        .v-btn:hover { opacity:.85; transform:scale(1.02); }
 
-        .v-btn:hover {
-            background: #00b8cc;
-            transform: scale(1.02);
-        }
-
-        /* DOWNLOAD MC MODAL */
+        /* ============================================================
+           DOWNLOAD MC MODAL
+        ============================================================ */
         .download-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            backdrop-filter: blur(12px);
-            padding: 20px;
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.95);
+            display:none; justify-content:center; align-items:center;
+            z-index:9999; backdrop-filter:blur(12px); padding:20px;
         }
-
         .download-modal-content {
-            background: var(--modal-bg);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 24px;
-            width: 90%;
-            max-width: 450px;
-            padding: 40px 30px;
-            position: relative;
-            box-shadow: var(--glow);
+            background:var(--modal-bg);
+            border:2px solid var(--accent);
+            border-radius:24px; width:90%; max-width:450px;
+            padding:40px 30px; position:relative; box-shadow:var(--glow);
         }
-
-        .download-modal-title {
-            font-size: 26px;
-            font-weight: 900;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
+        .download-modal-title { font-size:26px; font-weight:900; margin-bottom:25px; text-align:center; color:var(--text-main); }
         .dl-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            transition: 0.3s;
-            border: 1px solid rgba(0, 229, 255, 0.1);
+            display:flex; justify-content:space-between; align-items:center;
+            background:var(--info-card-bg); padding:18px 20px; border-radius:12px;
+            margin-bottom:12px; text-decoration:none; color:var(--text-main);
+            font-weight:700; transition:.3s; border:1px solid var(--border-color);
         }
+        .dl-option:hover { background:var(--accent); color:#000; transform:translateY(-2px); }
 
-        .dl-option:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            transform: translateY(-2px);
-        }
-
-        /* FOOTER SOSYAL MEDYA */
+        /* ============================================================
+           FOOTER
+        ============================================================ */
         .social-footer {
-            width: 100%;
-            padding: 30px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            border-top: 1px solid rgba(0, 229, 255, 0.2);
-            margin-top: 20px;
+            width:100%; padding:30px 20px;
+            display:flex; flex-wrap:wrap; gap:20px; justify-content:center;
+            border-top:1px solid var(--border-color); margin-top:20px;
         }
-
         .social-icon {
-            width: 45px;
-            height: 45px;
-            transition: all 0.3s ease;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.3));
+            width:45px; height:45px; transition:all .3s ease;
+            opacity:.8; filter:drop-shadow(0 0 5px rgba(0,0,0,0.3));
         }
+        .social-icon:hover { transform:translateY(-5px) scale(1.1); opacity:1; filter:drop-shadow(0 0 15px var(--accent)); }
+        .footer-text { text-align:center; font-size:12px; color:var(--text-label); letter-spacing:1px; padding-bottom:30px; }
 
-        .social-icon:hover {
-            transform: translateY(-5px) scale(1.1);
-            opacity: 1;
-            filter: drop-shadow(0 0 15px var(--accent-cyan));
-        }
-
-        .footer-text {
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 1px;
-            padding-bottom: 30px;
+        /* ============================================================
+           WHITE THEME EXTRA FIXES
+        ============================================================ */
+        [data-theme="white"] .header-title { color:#111; }
+        [data-theme="white"] .type-badge { background:rgba(255,255,255,0.92); }
+        [data-theme="white"] .search-input { background:#fff; }
+        [data-theme="white"] .cat-btn { color:#333; }
+        [data-theme="white"] .cat-btn.active { color:#fff; }
+        [data-theme="white"] .mod-name { color:#111; }
+        [data-theme="white"] .m-title { color:#111; }
+        [data-theme="white"] .download-modal-title { color:#111; }
+        [data-theme="white"] .dl-option:hover { color:#fff; }
+        [data-theme="white"] .v-btn { color:#fff; }
+        [data-theme="white"] body::after {
+            background:radial-gradient(circle,rgba(0,119,204,0.06) 0%,transparent 70%);
         }
     </style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-    <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img">
-    <button class="nav-btn" onclick="openDownloadModal()">Download MC</button>
+    <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img" alt="BNcraft">
+    <div class="nav-right">
+        <button class="nav-btn" onclick="openDownloadModal()">Download MC</button>
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </nav>
 
-<div class="header-section">
-    <h1 class="header-title">BNCRAFT MODS</h1>
+<!-- HAMBURGER DROPDOWN MENU -->
+<div class="hamburger-menu" id="hamburgerMenu">
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-Official-Links.html" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Social Media Links
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-tuturial.html" target="_blank">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Tutorial
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-other-mods.html" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Other Mods
+    </a>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="toggleThemeSub()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20 5 5 0 010-10 5 5 0 000-10z"/></svg>
+        Themes
+        <svg id="themeArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="theme-sub" id="themeSub">
+        <div class="theme-sub-title">Select Theme</div>
+        <div class="theme-dots-row">
+            <div class="theme-dot-wrap">
+                <div class="theme-dot active-theme" data-t="blue" onclick="setTheme('blue')"></div>
+                <div class="theme-dot-lbl">Blue</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="purple" onclick="setTheme('purple')"></div>
+                <div class="theme-dot-lbl">Purple</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="red" onclick="setTheme('red')"></div>
+                <div class="theme-dot-lbl">Red</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="green" onclick="setTheme('green')"></div>
+                <div class="theme-dot-lbl">Green</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="yellow" onclick="setTheme('yellow')"></div>
+                <div class="theme-dot-lbl">Yellow</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="orange" onclick="setTheme('orange')"></div>
+                <div class="theme-dot-lbl">Orange</div>
+            </div>
+            <div class="theme-dot-wrap">
+                <div class="theme-dot" data-t="white" onclick="setTheme('white')"></div>
+                <div class="theme-dot-lbl">White</div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="showFavorites()">
+        <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Favorites
+        <span class="fav-count-badge" id="favCountBadge">0</span>
+    </button>
 </div>
 
+<!-- HEADER -->
+<div class="header-section">
+    <h1 class="header-title" id="pageTitle">BNCRAFT MODS</h1>
+</div>
+
+<!-- CONTROLS -->
 <div class="controls">
     <input type="text" id="searchInput" class="search-input" placeholder="Search mods..." onkeyup="filterMods()">
     <div class="category-container">
-        <button class="cat-btn active" data-cat="ALL" onclick="filterCategory('ALL', this)">ALL</button>
-        <button class="cat-btn" data-cat="Add-Ons" onclick="filterCategory('Add-Ons', this)">ADD-ONS</button>
-        <button class="cat-btn" data-cat="Texture_Pack" onclick="filterCategory('Texture_Pack', this)">TEXTURES</button>
-        <button class="cat-btn" data-cat="World_Template" onclick="filterCategory('World_Template', this)">WORLDS</button>
-        <button class="cat-btn" data-cat="Skin_pack" onclick="filterCategory('Skin_pack', this)">SKINS</button>
-        <button class="cat-btn" data-cat="Mash-Up" onclick="filterCategory('Mash-Up', this)">MASH-UP</button>
+        <button class="cat-btn active" data-cat="ALL" onclick="filterCategory('ALL',this)">ALL</button>
+        <button class="cat-btn" data-cat="Add-Ons" onclick="filterCategory('Add-Ons',this)">ADD-ONS</button>
+        <button class="cat-btn" data-cat="Texture_Pack" onclick="filterCategory('Texture_Pack',this)">TEXTURES</button>
+        <button class="cat-btn" data-cat="World_Template" onclick="filterCategory('World_Template',this)">WORLDS</button>
+        <button class="cat-btn" data-cat="Skin_pack" onclick="filterCategory('Skin_pack',this)">SKINS</button>
+        <button class="cat-btn" data-cat="Mash-Up" onclick="filterCategory('Mash-Up',this)">MASH-UP</button>
     </div>
 </div>
 
 <div class="mod-grid" id="mainGrid"></div>
 
-<!-- SOSYAL MEDYA FOOTER -->
+<!-- SOCIAL FOOTER -->
 <div class="social-footer">
     <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank">
         <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" class="social-icon" alt="YouTube">
@@ -595,15 +775,20 @@
         <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" class="social-icon" alt="Email">
     </a>
 </div>
+<div class="footer-text">© 2026 BNcraft • Professional Mod Hub</div>
 
-<div class="footer-text">
-    © 2026 BNcraft • Professional Mod Hub
-</div>
-
+<!-- MOD DETAIL MODAL -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
         <div class="modal-banner">
-            <button class="close-btn" onclick="closeModal()">✕</button>
+            <div class="modal-actions">
+                <button class="modal-heart-btn" id="modalHeartBtn" onclick="toggleFavorite()">
+                    <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                </button>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
             <img id="m-img" src="" alt="">
         </div>
         <div class="modal-body">
@@ -613,38 +798,32 @@
                 <div class="info-card"><span class="info-label">Type</span><span class="info-val" id="m-cat"></span></div>
                 <div class="info-card"><span class="info-label">Size</span><span class="info-val" id="m-size"></span></div>
                 <div class="info-card"><span class="info-label">Value</span><div class="info-val" id="m-coin"></div></div>
-                <div class="info-card" style="grid-column: 1 / -1;"><span class="info-label">Download Source</span><span class="info-val" id="m-download-source"></span></div>
+                <div class="info-card" style="grid-column:1/-1"><span class="info-label">Download Source</span><span class="info-val" id="m-download-source"></span></div>
             </div>
             <div class="m-desc" id="m-desc"></div>
-            <a href="#" id="m-origin" target="_blank" class="market-link">🛒 View on Official Marketplace</a>
+            <a href="#" id="m-origin" target="_blank" class="market-link">View on Official Marketplace</a>
             <div class="v-list" id="v-list"></div>
         </div>
     </div>
 </div>
 
+<!-- DOWNLOAD MC MODAL -->
 <div class="download-modal-overlay" id="downloadModal">
     <div class="download-modal-content">
-        <button class="close-btn" onclick="closeDownloadModal()">✕</button>
+        <button class="close-btn" onclick="closeDownloadModal()" style="position:absolute;top:20px;right:20px;">✕</button>
         <div class="download-modal-title">Download Minecraft</div>
-        <a href="https://bedrocklauncher.github.io" class="dl-option" target="_blank">
-            <span>Minecraft for Windows</span>
-            <span>→</span>
-        </a>
-        <a href="https://mcpedl.org/downloading/" class="dl-option" target="_blank">
-            <span>Minecraft for Android</span>
-            <span>→</span>
-        </a>
-        <a href="https://www.mc-mod.net/mcpe-patched//" class="dl-option" target="_blank">
-            <span>Minecraft Patched</span>
-            <span>→</span>
-        </a>
+        <a href="https://bedrocklauncher.github.io" class="dl-option" target="_blank"><span>Minecraft for Windows</span><span>→</span></a>
+        <a href="https://mcpedl.org/downloading/" class="dl-option" target="_blank"><span>Minecraft for Android</span><span>→</span></a>
+        <a href="https://www.mc-mod.net/mcpe-patched//" class="dl-option" target="_blank"><span>Minecraft Patched</span><span>→</span></a>
     </div>
 </div>
 
 <script>
 const coinIconUrl = "https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png";
 
-// MOD DATABASE - TÜM MODLAR (HİÇBİRİ EKSİK DEĞİL)
+// ============================================================
+// MOD DATABASE — FORMATLAR DOKUNULMADI
+// ============================================================
 const mods = [
     {
         name: "Actions & Stuff",
@@ -737,7 +916,7 @@ const mods = [
         studio: "Aurrora",
         cat: ["Add-Ons"],
         minecoin: "660",
-        desc: "Bring Your World to Life with Dynamic Lighting & Wisps! Every light‑emitting block now shines realistically as you move. Tame your own cute wisp companion! These glowing pets follow you on your adventures & can be customized with hats, glasses, & working backpacks!\n\n+ 170+ New light blocks\n+ 150+ Cosmetic items for wisps\n+ Working backpacks\n+ Golwie Pets\n+ Craftable",
+        desc: "Bring Your World to Life with Dynamic Lighting & Wisps! Every light-emitting block now shines realistically as you move. Tame your own cute wisp companion! These glowing pets follow you on your adventures & can be customized with hats, glasses, & working backpacks!\n\n+ 170+ New light blocks\n+ 150+ Cosmetic items for wisps\n+ Working backpacks\n+ Golwie Pets\n+ Craftable",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/aurrora/light-plus/7268ac7f-f5fc-43f6-bc94-6405bdc924a7",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "1.7 MB", url: "https://loot-link.com/s?a1UM36ks"}]
@@ -1221,7 +1400,7 @@ const mods = [
         studio: "Minty",
         cat: ["Add-Ons"],
         minecoin: "310",
-        desc: "Magic Wands – Harness the Power of Sorcery!\n\nUnleash your inner wizard with the Wands Add‑On! This pack introduces a collection of powerful & magical wands to your world. Cast dynamic light spells & light up your world, bind gunpowder to your wand & blow enemies away, or bind any potion of your choice & become the ultimate wizard!\n\nBy Minty",
+        desc: "Magic Wands - Harness the Power of Sorcery!\n\nUnleash your inner wizard with the Wands Add-On! This pack introduces a collection of powerful & magical wands to your world. Cast dynamic light spells & light up your world, bind gunpowder to your wand & blow enemies away, or bind any potion of your choice & become the ultimate wizard!\n\nBy Minty",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/minty/wands/5dd8a83a-dd59-4bb7-8298-3e04c39b9966",
         downloadSource: "Lootlabs > Dropbox",
         links: [{label: "Download", size: "751 KB", url: "https://loot-link.com/s?YzKO12Ew"}]
@@ -1463,7 +1642,7 @@ const mods = [
         studio: "Lunar Client",
         cat: ["Skin_pack"],
         minecoin: "310",
-        desc: "With this skinpack, these Shinobi skins exude stealth with sleek, dark attire, while these Samurai skins radiate honor in ornate armor adorned with intricate patterns\n\n\n\n+8 Skins\n+By Lunar Client",
+        desc: "With this skinpack, these Shinobi skins exude stealth with sleek, dark attire, while these Samurai skins radiate honor in ornate armor adorned with intricate patterns\n\n+8 Skins\n+By Lunar Client",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/lunar-client/shinobi-vs-samurai/09104126-b48f-43fd-a4e0-87d98a8b6357",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "22 KB", url: "https://loot-link.com/s?YapRpqsI"}]
@@ -1601,12 +1780,12 @@ const mods = [
         links: [{label: "Download", size: "29 KB", url: "https://lootdest.org/s?VqFdS93m"}]
     },
     {
-        name: "Mowzie’s Mobs",
+        name: "Mowzie's Mobs",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771255488/1771255487_Mowzie%E2%80%99s_Mobs_--By-BN-Craft.jpg",
         studio: "Honeyfrost",
         cat: ["Add-Ons"],
         minecoin: "1690",
-        desc: "Mowzie’s Mobs adds a variety of fictional creatures to Minecraft, priding itself in unique AI, rich atmosphere, and fluid animations. Prove your might against new bosses and enemies and claim their magical abilities as your own.\n\n+ Includes 12 Unique Mobs with new gameplay mechanics, structures, items, powers and more!\n+ The official bedrock edition of Mowzie’s Mobs",
+        desc: "Mowzie's Mobs adds a variety of fictional creatures to Minecraft, priding itself in unique AI, rich atmosphere, and fluid animations. Prove your might against new bosses and enemies and claim their magical abilities as your own.\n\n+ Includes 12 Unique Mobs with new gameplay mechanics, structures, items, powers and more!\n+ The official bedrock edition of Mowzie's Mobs",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/honeyfrost/mowzie",
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "17.4 MB", url: "https://loot-link.com/s?KusNJLXV"}]
@@ -1617,7 +1796,7 @@ const mods = [
         studio: "Honeyfrost",
         cat: ["World_Template"],
         minecoin: "1690",
-        desc: "RLCraft is here. It's hardcore. It's unforgiving. It's unfair. It's the hardest, most realistic Dynamic World out there! GLHF.\n+ Explore new world generation with structures &amp; dungeons\n+ Progress on skills &amp; wield powerful new gear\n+ Custom player &amp; weapon animations\n+ Elemental dragons\n+ Based on the original RLCraft Modpack by Shivaxi\n+ You're going to die... a lot",
+        desc: "RLCraft is here. It's hardcore. It's unforgiving. It's unfair. It's the hardest, most realistic Dynamic World out there! GLHF.\n+ Explore new world generation with structures & dungeons\n+ Progress on skills & wield powerful new gear\n+ Custom player & weapon animations\n+ Elemental dragons\n+ Based on the original RLCraft Modpack by Shivaxi\n+ You're going to die... a lot",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/honeyfrost/rlcraft-bedrock-edition-1.2/062d87b7-819a-437d-9493-2a6603449220",
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "36.3 MB", url: "https://loot-link.com/s?dyqOfgqw"}]
@@ -1672,7 +1851,7 @@ const mods = [
         studio: "Gamemode One",
         cat: ["World_Template", "Skin_pack"],
         minecoin: "1510",
-        desc: "Embark on an exciting journey with the Avatar DLC!\nBecome a Na’vi of the Omatikaya Clan. Master survival skills and tackle traditional rites of passage. Bond with a banshee, climb the Hallelujah Mountains, and explore the bioluminescent rainforest! Meet breathtaking creatures and plant life along the way.\nIncludes popular skins!",
+        desc: "Embark on an exciting journey with the Avatar DLC!\nBecome a Na'vi of the Omatikaya Clan. Master survival skills and tackle traditional rites of passage. Bond with a banshee, climb the Hallelujah Mountains, and explore the bioluminescent rainforest! Meet breathtaking creatures and plant life along the way.\nIncludes popular skins!",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/gamemode-one/avatar:-rites-of-passage/c65cc4c5-8a2f-46f3-bdc6-5bc7c4f7d54f",
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "42.3 MB", url: "https://loot-link.com/s?WK2nHk5I"}]
@@ -1743,21 +1922,18 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.4 MB", url: "https://loot-link.com/s?EKtUE9a9"}]
     },
-
     {
         name: "Huggy Friends",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771673512/1771673511_image.jpg",
         studio: "Spark Universe",
         cat: ["Add-Ons"],
         minecoin: "990",
-        desc: "It’s time to bring the toys from Poppy’s world into your own. Grab a Playtime Co. GrabPack and try to survive Huggy Wuggy, Mommy Long Legs, CatNap, and The Doctor — or make friends with Doey and the Smiling Critters! OFFICIAL Add-On in collaboration with Mob Entertainment",
+        desc: "It's time to bring the toys from Poppy's world into your own. Grab a Playtime Co. GrabPack and try to survive Huggy Wuggy, Mommy Long Legs, CatNap, and The Doctor — or make friends with Doey and the Smiling Critters! OFFICIAL Add-On in collaboration with Mob Entertainment",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/spark-universe/huggy--friends-add--on/30d1852c-d8a5-4e29-8631-bc14d96d35f2",
-        downloadSource: "Lootlabs &gt; Mega",
+        downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "18.1 MB", url: "https://lootdest.org/s?6P9jhbWG"}]
     },
-    
     {
-    
         name: "Dino Fashion",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771693131/1771693130_Dino_Fashion_--By-BN-Craft.jpg",
         studio: "Cypress Games",
@@ -1768,21 +1944,19 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "44 KB", url: "https://loot-link.com/s?mxjmb20X"}]
     },
-
     {
         name: "Huggy Friends Skin Pack",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771686808/1771686807_Huggy_Friends_Skin_Pack_--By-BN-Craft.jpg",
         studio: "Spark Universe",
         cat: ["Skin_pack"],
         minecoin: "990",
-        desc: "Itʼs playtime! Become one of the iconic toys from Poppyʼs world. Choose from over 20 unique 3D skins and surprise yo\nur friends. Play as familiar characters like Huggy Wuggy, Kissy Missy, CatNap, Doey, Mommy Long Legs, Poppy, and\nmany more...\nOfficial collaboration with Mob Entertainment.",
+        desc: "It's playtime! Become one of the iconic toys from Poppy's world. Choose from over 20 unique 3D skins and surprise your friends. Play as familiar characters like Huggy Wuggy, Kissy Missy, CatNap, Doey, Mommy Long Legs, Poppy, and many more...\nOfficial collaboration with Mob Entertainment.",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/spark-universe/huggy--friends-skin-pack/f37489e5-0266-41ef-8350-ebc16d1613e5",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "82 KB", url: "https://loot-link.com/s?Pfwx0CtV"}]
     },
-
     {
-        name: "Dino Fashion",
+        name: "Dino Fashion 2",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771692446/1771692445_Dino_Fashion_--By-BN-Craft.jpg",
         studio: "Architects Edge",
         cat: ["Skin_pack"],
@@ -1792,8 +1966,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "35 KB", url: "https://loot-link.com/s?kHmDnSPg"}]
     },
-
-
     {
         name: "Realism+",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771694126/1771694126_Realism%2B_--By-BN-Craft.jpg",
@@ -1805,7 +1977,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "9.9 MB", url: "https://lootdest.org/s?Xhyk7Yy2"}]
     },
-
     {
         name: "Epic Kill Animations 1.2",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771695025/1771695024_Epic_Kill_Animations_1.2_--By-BN-Craft.jpg",
@@ -1817,7 +1988,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "8.2 MB", url: "https://loot-link.com/s?sFUMZ9gi"}]
     },
-
     {
         name: "MOB CITY Mash-up",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1771695550/1771695550_MOB_CITY_Mash-up_--By-BN-Craft.jpg",
@@ -1829,8 +1999,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "48.8 MB", url: "https://lootdest.org/s?C9IO6RbB"}]
     },
-    
-
     {
         name: "Void",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772137699/1772137697_Void_--By-BN-Craft.jpg",
@@ -1842,7 +2010,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "19 KB", url: "https://lootdest.org/s?3KHotBT6"}]
     },
-
     {
         name: "Realism Shades",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772201953/1772201951_Realism_Shades_--By-BN-Craft.jpg",
@@ -1854,7 +2021,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "4.6 MB", url: "https://loot-link.com/s?H7EwDZYe"}]
     },
-
     {
         name: "Airplanes",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772202382/1772202379_Airplanes_--By-BN-Craft.jpg",
@@ -1866,7 +2032,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "10.4 MB", url: "https://loot-link.com/s?Qbp6PrBd"}]
     },
-
     {
         name: "Builders Tools",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772360261/1772360260_Builders_Tools_--By-BN-Craft.jpg",
@@ -1878,19 +2043,17 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.4 MB", url: "https://loot-link.com/s?3Im8GhE7"}]
     },
-
     {
         name: "How to Train Your Dragon BP",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772458663/1772458662_How_to_Train_Your_Dragon_BP_--By-BN-Craft.jpg",
         studio: "Gamemode One",
         cat: ["Add-Ons"],
         minecoin: "1340",
-        desc: "Discover Toothless and other beloved dragons in your Minecraft Worlds! Become a dragon rider with this Add-On based on Universal Pictures’ live-action reimagining of DreamWorks Animation’s How to Train Your Dragon.\nTake off into the skies, learn each dragon's personality, and bond with them to unlock unique abilities. Embark on an iconic adventure with your new dragon!",
+        desc: "Discover Toothless and other beloved dragons in your Minecraft Worlds! Become a dragon rider with this Add-On based on Universal Pictures' live-action reimagining of DreamWorks Animation's How to Train Your Dragon.\nTake off into the skies, learn each dragon's personality, and bond with them to unlock unique abilities. Embark on an iconic adventure with your new dragon!",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/gamemode-one/how-to-train-your-dragon-add--on/10b469b6-f196-428c-b98e-c572cc55e83e",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "12.9 MB", url: "https://lootdest.org/s?EM6D8QUV"}]
     },
-
     {
         name: "Extreme Horror 1.0.0",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772459637/1772459636_Extreme_Horror_1.0.0_--By-BN-Craft.jpg",
@@ -1902,7 +2065,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "13.9 MB", url: "https://lootdest.org/s?Pz7j82ho"}]
     },
-
     {
         name: "Street Style",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772563041/1772563038_Street_Style_--By-BN-Craft.jpg",
@@ -1914,7 +2076,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "11 KB", url: "https://loot-link.com/s?QxQk7R9I"}]
     },
-
     {
         name: "Totem",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772878902/1772878900_Totem_--By-BN-Craft.jpg",
@@ -1926,7 +2087,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "288 KB", url: "https://loot-link.com/s?TeS7nnAX"}]
     },
-
     {
         name: "Dragon Heart",
         img: "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/99fcfaa8-ad84-416a-ae0d-330ec32b64f9/DragonHeart_ContentThumbnail_0.jpg",
@@ -1938,7 +2098,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "47.6 MB", url: "https://loot-link.com/s?zKFywXWY"}]
     },
-
     {
         name: "X3 - Pixel Realism",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773297356/1773297356_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -1950,7 +2109,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "254.9 MB", url: "https://loot-link.com/s?yNEueqS5"}]
     },
-
     {
         name: "Ghast Riders",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772887595/1772887593_Ghast_Riders_--By-BN-Craft.jpg",
@@ -1962,19 +2120,17 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "7.8 MB", url: "https://loot-link.com/s?y8uFu7Bc"}]
     },
-
     {
         name: "Beyond Biomes",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772888688/1772888686_Beyond_Biomes_--By-BN-Craft.jpg",
         studio: "Verart",
         cat: ["Add-Ons"],
         minecoin: "1340",
-        desc: "Add on your world the Beyond Biomes Add-On, featuring new biomes & animal mobs!\n\n- Explore 48 unique biomes\n- Discover 50 new animal mobs\n- New biome mob variants\n- Total of 350 new blocks, new trees, wood sets, &amp; stone sets\n- Revamped forest, mountain, swamp, desert, &amp; enhanced biomes\n- Improved overworld dimension!\n\nAdd this Add-On to any world Today!",
+        desc: "Add on your world the Beyond Biomes Add-On, featuring new biomes & animal mobs!\n\n- Explore 48 unique biomes\n- Discover 50 new animal mobs\n- New biome mob variants\n- Total of 350 new blocks, new trees, wood sets, & stone sets\n- Revamped forest, mountain, swamp, desert, & enhanced biomes\n- Improved overworld dimension!\n\nAdd this Add-On to any world Today!",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/verart/beyond-biomes-add--on/b9969054-2ab6-4bd8-ab9b-161d7d3c146d",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "12.1 MB", url: "https://loot-link.com/s?nd7OXyNA"}]
     },
-
     {
         name: "Better Backpacks",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772889690/1772889689_Better_Backpacks_--By-BN-Craft.jpg",
@@ -1986,7 +2142,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "1.1 MB", url: "https://lootdest.org/s?I3SPZ8ls"}]
     },
-
     {
         name: "Chop Chop",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1772889934/1772889934_Chop_Chop_--By-BN-Craft.jpg",
@@ -1998,7 +2153,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "532 KB", url: "https://lootdest.org/s?Bs75tQ5c"}]
     },
-
     {
         name: "Oneblock Realism",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296553/1773296553_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2010,7 +2164,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "38.2 MB", url: "https://loot-link.com/s?R7CviAR6"}]
     },
-
     {
         name: "Secret Doors",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296621/1773296621_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2022,7 +2175,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "105 KB", url: "https://lootdest.org/s?NgMJMUGW"}]
     },
-
     {
         name: "Backpacks and Jetpacks",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296695/1773296695_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2034,7 +2186,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.7 MB", url: "https://lootdest.org/s?8amDwsL8"}]
     },
-
     {
         name: "Rich Royals",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296774/1773296774_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2046,7 +2197,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "18 KB", url: "https://loot-link.com/s?bOKfG2V1"}]
     },
-
     {
         name: "Factions Add-On",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296215/1773296214_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2058,31 +2208,28 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "3.3 MB", url: "https://lootdest.org/s?8a72AVSG"}]
     },
-
     {
         name: "The Backrooms Darkness",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296157/1773296157_url_image_U0ACGKR98UR_BNCRAFT.jpg",
         studio: "Float Studios",
         cat: ["World_Template", "Skin_pack"],
         minecoin: "1340",
-        desc: "Noclip once more into The Backrooms. Delve deep into the Skin Stealer’s domain, collect Frank Faceling’s notes and piece together the story of The Backrooms to finally escape once and for all.\n\n+ Explore Level Fun, Waiting Rooms and Sewer levels!\n+ Discover 4 secret levels!\n+ Escape The Skin Stealer and Smilers.\n+ Find 30 notes!\n+ Multiple Endings!",
+        desc: "Noclip once more into The Backrooms. Delve deep into the Skin Stealer's domain, collect Frank Faceling's notes and piece together the story of The Backrooms to finally escape once and for all.\n\n+ Explore Level Fun, Waiting Rooms and Sewer levels!\n+ Discover 4 secret levels!\n+ Escape The Skin Stealer and Smilers.\n+ Find 30 notes!\n+ Multiple Endings!",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/float-studios/the-backrooms-darkness/fb21f08d-9932-46b9-816d-6df505bdd9d9",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "71.9 MB", url: "https://lootdest.org/s?MNutal2M"}]
     },
-
     {
         name: "Universal Studios Experience",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773296019/1773296019_url_image_U0ACGKR98UR_BNCRAFT.jpg",
         studio: "Everbloom Games",
         cat: ["World_Template", "Skin_pack"],
         minecoin: "1510",
-        desc: "Let’s go to Universal Studios, right here in Minecraft! You’ll start your adventure at the gates of Universal Studios, where Woody Woodpecker will greet you and ask for your help restoring the letters on the Universal globe. As you venture forward, you’ll encounter riveting rides, souvenir shops, amazing minigames, and more marvelous characters like Shrek and E.T.",
+        desc: "Let's go to Universal Studios, right here in Minecraft! You'll start your adventure at the gates of Universal Studios, where Woody Woodpecker will greet you and ask for your help restoring the letters on the Universal globe. As you venture forward, you'll encounter riveting rides, souvenir shops, amazing minigames, and more marvelous characters like Shrek and E.T.",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/everbloom-games/universal-studios-experience/48be3635-f289-4865-91ea-118a7ffa8646",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "174.4 MB", url: "https://loot-link.com/s?6gCr0fEH"}]
     },
-
     {
         name: "Shadow Squad",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295871/1773295871_image.jpg",
@@ -2094,7 +2241,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "21 KB", url: "https://loot-link.com/s?aNKBBleL"}]
     },
-
     {
         name: "Biome Survival Mash-Up",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295697/1773295696_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2106,7 +2252,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "19.5 MB", url: "https://loot-link.com/s?8X92BeLC"}]
     },
-
     {
         name: "Better Bit PvP RP",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295415/1773295415_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2118,9 +2263,6 @@ const mods = [
         downloadSource: "Lootlabs > Multi-Host Mirror",
         links: [{label: "Download", size: "2.0 MB", url: "https://mir.cr/17EAF7CA"}]
     },
-
-
-
     {
         name: "Crimson moon v1.1.0 Add-On",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295317/1773295316_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2132,7 +2274,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.8 MB", url: "https://lootdest.org/s?hHcl7dtj"}]
     },
-
     {
         name: "Lime",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295268/1773295268_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2144,7 +2285,6 @@ const mods = [
         downloadSource: "Lootlabs > Multi-Host Mirror",
         links: [{label: "Download", size: "26 KB", url: "https://loot-link.com/s?afm6QsQM"}]
     },
-
     {
         name: "Nether Dimension",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295214/1773295213_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2156,7 +2296,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "42 KB", url: "https://lootdest.org/s?x79IgaEF"}]
     },
-
     {
         name: "Scary Mobs Add-On 1.0",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295169/1773295169_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2168,7 +2307,6 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "8.0 MB", url: "https://lootdest.org/s?LHQ2byud"}]
     },
-
     {
         name: "The Extinct - Dinosaurs Add-On 1.1",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295089/1773295089_url_image_U0ACGKR98UR_BNCRAFT.jpg",
@@ -2180,67 +2318,61 @@ const mods = [
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "54.0 MB", url: "https://loot-link.com/s?bADaa5gu"}]
     },
-
     {
         name: "Dinos & Biomes Add-On",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773295558/1773295558_url_image_U0ACGKR98UR_BNCRAFT.jpg",
         studio: "Foxel Games",
         cat: ["Add-Ons"],
         minecoin: "1340",
-        desc: "DINOS &amp; BIOMES! Bring prehistory into your world with the ultimate Dinosaur Add-On!\n- 20+ Realistic Dinosaurs\n- New Vehicles, Weapons, and Armor\n- Procedural Dungeons, Custom Loot, and New Crafting\n- 7 New Prehistoric Biomes and VFX\n- Custom Structures and Outposts\n\nAdd-On fully compatible with all worlds",
+        desc: "DINOS & BIOMES! Bring prehistory into your world with the ultimate Dinosaur Add-On!\n- 20+ Realistic Dinosaurs\n- New Vehicles, Weapons, and Armor\n- Procedural Dungeons, Custom Loot, and New Crafting\n- 7 New Prehistoric Biomes and VFX\n- Custom Structures and Outposts\n\nAdd-On fully compatible with all worlds",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/foxel-games/dinos--biomes-add--on/b8793fe5-e162-4cd2-b552-81e406966e3e",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "58.8 MB", url: "https://lootdest.org/s?SAtJrOtL"}]
     },
-
     {
         name: "Armors+",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773294952/1773294952_url_image_U0ACGKR98UR_BNCRAFT.jpg",
         studio: "Eco Studios",
         cat: ["Add-Ons"],
         minecoin: "310",
-        desc: "Boost your style with neon-powered, gamer-themed skins that turn every adventure into a highlight reel. Stand out, shine bright, and dominate the world with pure RGB energy!+ 10 Bold colors skins! + Next-level style! By Hielke Maps.",
+        desc: "Boost your style with neon-powered, gamer-themed skins that turn every adventure into a highlight reel. Stand out, shine bright, and dominate the world with pure RGB energy!\n+ 10 Bold colors skins!\n+ Next-level style!\nBy Hielke Maps.",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/eco-studios/armors+/0d6793d3-03cd-4d08-b2b1-e8c119238f64",
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "5.5 MB", url: "https://loot-link.com/s?xeUJJoJQ"}]
     },
-
     {
         name: "Dynamic Tree Generation",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773294869/1773294856_image.jpg",
         studio: "Ka Studios",
         cat: ["Add-Ons"],
         minecoin: "310",
-        desc: "This Add-On brings more life to your world with dynamic big trees that spawn everywhere, giving the terrain a richer and more ambient feel as you explore. These trees grow unique fruits that you can use to craft new food items, and you’ll also come across multiple tree houses hidden throughout the world.\nWorks in any world!\n\nBy KA Studios",
+        desc: "This Add-On brings more life to your world with dynamic big trees that spawn everywhere, giving the terrain a richer and more ambient feel as you explore. These trees grow unique fruits that you can use to craft new food items, and you'll also come across multiple tree houses hidden throughout the world.\nWorks in any world!\n\nBy KA Studios",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/ka-studios/dynamic-tree-generation-add--on/8ad1d698-a2db-4d25-91af-4efad11708ee",
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "7.2 MB", url: "https://lootdest.org/s?qalVJbSf"}]
     },
-
     {
         name: "Trains",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773298564/1773298563_Trains_--By-BN-Craft.jpg",
         studio: "Lifeboat",
         cat: ["Add-Ons"],
         minecoin: "990",
-        desc: "All aboard the Trains Add-On; build your dream railroad today!\n- 14 train engines including steam, diesel, and subway locomotives\n- 18 railroad cars for transporting players, mobs, and more\n- Custom stations and signals for autonomous trains\n- 500+ unique locomotive and wagon color variants\n- Easy-to-use train coupling\nNow with 100% more Vibrant Visuals. Comparisons below!",
+        desc: "All aboard the Trains Add-On; build your dream railroad today!\n- 14 train engines including steam, diesel, and subway locomotives\n- 18 railroad cars for transporting players, mobs, and more\n- Custom stations and signals for autonomous trains\n- 500+ unique locomotive and wagon color variants\n- Easy-to-use train coupling\nNow with 100% more Vibrant Visuals.",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/lifeboat/trains-add--on-2.5/d42ac193-22e7-4aaf-a6ba-21349e9f13ca",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "7.1 MB", url: "https://loot-link.com/s?f7b2Xcev"}]
     },
-
     {
         name: "Armor Stand Soldiers",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773299796/1773299796_Armor_Stand_Soldiers_--By-BN-Craft.jpg",
         studio: "Lifeboat",
         cat: ["Add-Ons"],
         minecoin: "990",
-        desc: "Bring Armor Stands to LIFE! Equip them with weapons and armor, then command epic battles of good vs. evil.\n- Equip with any armor, weapons, or tools\n- Lead armies into simulated battles\n- Explore structures, lore, &amp; boss fights\n- Custom armor and tools with special abilities\n- Horse armor stand, which can also be brought to life!",
+        desc: "Bring Armor Stands to LIFE! Equip them with weapons and armor, then command epic battles of good vs. evil.\n- Equip with any armor, weapons, or tools\n- Lead armies into simulated battles\n- Explore structures, lore, & boss fights\n- Custom armor and tools with special abilities\n- Horse armor stand, which can also be brought to life!",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/lifeboat/armor-stand-soldiers-add--on/dad404c6-20eb-4e53-9397-1c43cebc84a7",
         downloadSource: "Lootlabs > Multi-Host Mirror",
         links: [{label: "Download", size: "7.8 MB", url: "https://loot-link.com/s?EBQSpt4M"}]
     },
-
     {
         name: "Master Chef Expansion Pack",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773300867/1773300866_Master_Chef_Expansion_Pack_--By-BN-Craft.jpg",
@@ -2252,7 +2384,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "8.0 MB", url: "https://loot-link.com/s?c6fRKqXa"}]
     },
-
     {
         name: "Street Build Set",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773301170/1773301170_Street_Build_Set_--By-BN-Craft.jpg",
@@ -2264,7 +2395,6 @@ const mods = [
         downloadSource: "Lootlabs > Multi-Host Mirror",
         links: [{label: "Download", size: "3.0 MB", url: "https://lootdest.org/s?eD1hAbHf"}]
     },
-
     {
         name: "voidshade",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773302732/1773302731_voidshade_--By-BN-Craft.png",
@@ -2276,7 +2406,6 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "66 KB", url: "https://lootdest.org/s?QAgDxSk1"}]
     },
-
     {
         name: "Rise Of Horror",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773303273/1773303272_Rise_Of_Horror_--By-BN-Craft.jpg",
@@ -2288,78 +2417,189 @@ const mods = [
         downloadSource: "Lootlabs > MediaFire",
         links: [{label: "Download", size: "4.0 MB", url: "https://lootdest.org/s?gPl04d5I"}]
     },
-
     {
         name: "Afreshed Pets",
         img: "https://res.cloudinary.com/dzbl9re1l/image/upload/v1773307188/1773307187_url_image_U0ACGKR98UR_BNCRAFT.jpg",
         studio: "Creatorlabs",
         cat: ["Add-Ons"],
         minecoin: "830",
-        desc: "Discover the ultimate pet experience with dogs, cats and more, offering over 140 variants, adorable animations, level progression and fun customization.\n\n+ 140+ pet variants\n+ Dogs, cats &amp; small pets\n+ Level up abilities\n+ Fun hats &amp; cosmetics\n+ Track, teleport &amp; revive\n+ Toys, fetching &amp; whistle commands",
+        desc: "Discover the ultimate pet experience with dogs, cats and more, offering over 140 variants, adorable animations, level progression and fun customization.\n\n+ 140+ pet variants\n+ Dogs, cats & small pets\n+ Level up abilities\n+ Fun hats & cosmetics\n+ Track, teleport & revive\n+ Toys, fetching & whistle commands",
         market: "https://www.minecraft.net/en-us/marketplace/pdp/creatorlabs/afreshed-pets-add--on/482b0407-0540-411c-ad57-a09bee627cbb",
         downloadSource: "Lootlabs > Mega",
         links: [{label: "Download", size: "2.8 MB", url: "https://lootdest.org/s?YApK5iIL"}]
-    },
+    }
 ];
 
-// RENDER MODS TO GRID
+// ============================================================
+// FAVORITES SYSTEM
+// ============================================================
+let favorites = JSON.parse(localStorage.getItem('bncraft-favorites') || '[]');
+let currentModalName = '';
+let showingFavorites = false;
+
+function saveFavorites() {
+    localStorage.setItem('bncraft-favorites', JSON.stringify(favorites));
+}
+
+function isFavorite(name) {
+    return favorites.includes(name);
+}
+
+function toggleFavorite() {
+    if (!currentModalName) return;
+    const btn = document.getElementById('modalHeartBtn');
+    if (isFavorite(currentModalName)) {
+        favorites = favorites.filter(f => f !== currentModalName);
+        btn.classList.remove('faved');
+        btn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+    } else {
+        favorites.push(currentModalName);
+        btn.classList.add('faved');
+        btn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:#ff5078;stroke:#ff5078;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+    }
+    saveFavorites();
+    updateFavBadge();
+    if (showingFavorites) filterMods();
+}
+
+function updateFavBadge() {
+    const badge = document.getElementById('favCountBadge');
+    if (favorites.length > 0) {
+        badge.textContent = favorites.length;
+        badge.classList.add('visible');
+    } else {
+        badge.classList.remove('visible');
+    }
+}
+
+function showFavorites() {
+    showingFavorites = true;
+    document.getElementById('pageTitle').textContent = 'MY FAVORITES';
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    closeMenu();
+    filterMods();
+}
+
+// ============================================================
+// THEME SYSTEM
+// ============================================================
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('bncraft-theme', theme);
+    document.querySelectorAll('.theme-dot').forEach(d => {
+        d.classList.toggle('active-theme', d.getAttribute('data-t') === theme);
+    });
+}
+
+function toggleThemeSub() {
+    const sub = document.getElementById('themeSub');
+    const arrow = document.getElementById('themeArrow');
+    sub.classList.toggle('open');
+    arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+// ============================================================
+// HAMBURGER MENU
+// ============================================================
+function toggleMenu() {
+    const menu = document.getElementById('hamburgerMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+
+function closeMenu() {
+    document.getElementById('hamburgerMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('hamburgerMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+    }
+});
+
+// ============================================================
+// RENDER MODS
+// ============================================================
 function renderMods(data) {
     const grid = document.getElementById('mainGrid');
+
+    if (data.length === 0) {
+        grid.innerHTML = `
+            <div class="empty-state">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                <p>${showingFavorites ? 'No favorites yet' : 'No mods found'}</p>
+                <span>${showingFavorites ? 'Open a mod and tap the heart button to add it here' : 'Try a different search term'}</span>
+            </div>`;
+        return;
+    }
+
     grid.innerHTML = data.map(m => {
         const isMashUp = m.cat.includes('Mash-Up');
         const displayCat = isMashUp ? 'MASH-UP' : m.cat[0].replace(/_/g, " ");
         const badgeClass = isMashUp ? 'type-badge mash-up' : 'type-badge';
-        
+        const favIcon = isFavorite(m.name)
+            ? `<svg viewBox="0 0 24 24" style="position:absolute;top:10px;right:10px;width:22px;height:22px;fill:#ff5078;stroke:#ff5078;stroke-width:1.5;z-index:6;pointer-events:none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`
+            : '';
         return `
             <div class="mod-card">
                 <div class="${badgeClass}">${displayCat}</div>
-                <div class="img-container"><img src="${m.img}" alt="${m.name}"></div>
+                ${favIcon}
+                <div class="img-container"><img src="${m.img}" alt="${m.name}" loading="lazy"></div>
                 <div class="mod-info">
                     <div class="mod-name">${m.name}</div>
                     <button class="dl-trigger" onclick="openPopup('${m.name.replace(/'/g, "\\'")}')">DOWNLOAD</button>
                 </div>
-            </div>
-        `;
+            </div>`;
     }).join('');
 }
 
-// FILTER BY CATEGORY
+// ============================================================
+// FILTER CATEGORY
+// ============================================================
 function filterCategory(category, btn) {
+    showingFavorites = false;
+    document.getElementById('pageTitle').textContent = 'BNCRAFT MODS';
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     filterMods();
 }
 
+// ============================================================
 // FILTER MODS
+// ============================================================
 function filterMods() {
     const term = document.getElementById('searchInput').value.toLowerCase();
     const activeBtn = document.querySelector('.cat-btn.active');
-    const targetCat = activeBtn.getAttribute('data-cat');
-    
-    const filtered = mods.filter(m => {
-        const matchesSearch = m.name.toLowerCase().includes(term);
-        if (!matchesSearch) return false;
-        
+    const targetCat = activeBtn ? activeBtn.getAttribute('data-cat') : 'ALL';
+
+    let filtered = mods.filter(m => {
+        if (!m.name.toLowerCase().includes(term)) return false;
+        if (showingFavorites) return isFavorite(m.name);
         const isMashUp = m.cat.includes('Mash-Up');
-        
         if (targetCat === 'ALL') return true;
         if (targetCat === 'Mash-Up') return isMashUp;
         if (isMashUp) return false;
-        
-        const mainCategory = m.cat[0];
-        return mainCategory === targetCat;
+        return m.cat[0] === targetCat;
     });
-    
+
     renderMods(filtered);
 }
 
+// ============================================================
 // OPEN MODAL
+// ============================================================
 function openPopup(name) {
     const m = mods.find(x => x.name === name);
-    
+    currentModalName = name;
+
     const categoriesWithoutMashUp = m.cat.filter(c => c !== 'Mash-Up');
     const categoryDisplay = categoriesWithoutMashUp.join(" + ").replace(/_/g, " ");
-    
+
     document.getElementById('m-img').src = m.img;
     document.getElementById('m-title').innerText = m.name;
     document.getElementById('m-studio').innerText = m.studio;
@@ -2368,7 +2608,7 @@ function openPopup(name) {
     document.getElementById('m-download-source').innerText = m.downloadSource;
     document.getElementById('m-coin').innerHTML = `
         <div class="coin-wrapper">
-            <img src="${coinIconUrl}" class="coin-icon">
+            <img src="${coinIconUrl}" class="coin-icon" alt="coin">
             <span class="coin-val">${m.minecoin}</span>
         </div>`;
     document.getElementById('m-desc').innerText = m.desc;
@@ -2376,17 +2616,27 @@ function openPopup(name) {
     document.getElementById('v-list').innerHTML = m.links.map(l => `
         <a href="${l.url}" target="_blank" class="v-btn"><span>${l.label}</span><span>${l.size}</span></a>
     `).join('');
+
+    // Set heart state
+    const heartBtn = document.getElementById('modalHeartBtn');
+    if (isFavorite(name)) {
+        heartBtn.classList.add('faved');
+        heartBtn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:#ff5078;stroke:#ff5078;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+    } else {
+        heartBtn.classList.remove('faved');
+        heartBtn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+    }
+
     document.getElementById('modalOverlay').style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
-// CLOSE MODAL
-function closeModal() { 
-    document.getElementById('modalOverlay').style.display = 'none'; 
-    document.body.style.overflow = 'auto'; 
+function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentModalName = '';
 }
 
-// DOWNLOAD MODAL FUNCTIONS
 function openDownloadModal() {
     document.getElementById('downloadModal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -2397,14 +2647,20 @@ function closeDownloadModal() {
     document.body.style.overflow = 'auto';
 }
 
-// CLOSE MODAL ON OUTSIDE CLICK
-window.onclick = (e) => { 
-    if(e.target == document.getElementById('modalOverlay')) closeModal();
-    if(e.target == document.getElementById('downloadModal')) closeDownloadModal();
+window.onclick = (e) => {
+    if (e.target == document.getElementById('modalOverlay')) closeModal();
+    if (e.target == document.getElementById('downloadModal')) closeDownloadModal();
 };
 
-// INITIALIZE
-renderMods(mods);
+// ============================================================
+// INIT
+// ============================================================
+(function init() {
+    const savedTheme = localStorage.getItem('bncraft-theme');
+    if (savedTheme) setTheme(savedTheme);
+    updateFavBadge();
+    renderMods(mods);
+})();
 </script>
 </body>
 </html>
