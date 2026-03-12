@@ -1,0 +1,2763 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="blue">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BNcraft | Help Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           THEME VARIABLES — Exact match to BNcraft main site
+        ============================================================ */
+        :root,
+        [data-theme="blue"] {
+            --bg-dark: #000b10;
+            --card-bg: #00161f;
+            --accent: #00e5ff;
+            --modal-bg: #001a24;
+            --glow: 0 0 25px rgba(0,229,255,0.4);
+            --coin-gold: #ffcc00;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,11,16,0.95);
+            --grid-color: rgba(0,229,255,0.03);
+            --border-color: rgba(0,229,255,0.15);
+            --border-hover: rgba(0,229,255,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(0,229,255,0.08);
+            --step-num-bg: rgba(0,229,255,0.12);
+            --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4);
+            --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="purple"] {
+            --bg-dark: #080010; --card-bg: #12001e; --accent: #bf00ff;
+            --modal-bg: #160022; --glow: 0 0 25px rgba(191,0,255,0.4);
+            --coin-gold: #ffcc00; --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(8,0,16,0.95);
+            --grid-color: rgba(191,0,255,0.03); --border-color: rgba(191,0,255,0.15);
+            --border-hover: rgba(191,0,255,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(191,0,255,0.08);
+            --step-num-bg: rgba(191,0,255,0.12); --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4); --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="red"] {
+            --bg-dark: #0f0000; --card-bg: #1e0000; --accent: #ff2222;
+            --modal-bg: #220000; --glow: 0 0 25px rgba(255,34,34,0.4);
+            --coin-gold: #ffcc00; --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(15,0,0,0.95);
+            --grid-color: rgba(255,34,34,0.03); --border-color: rgba(255,34,34,0.15);
+            --border-hover: rgba(255,34,34,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,34,34,0.08);
+            --step-num-bg: rgba(255,34,34,0.12); --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4); --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="green"] {
+            --bg-dark: #001008; --card-bg: #001d10; --accent: #00ff88;
+            --modal-bg: #001a10; --glow: 0 0 25px rgba(0,255,136,0.4);
+            --coin-gold: #ffcc00; --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(0,16,8,0.95);
+            --grid-color: rgba(0,255,136,0.03); --border-color: rgba(0,255,136,0.15);
+            --border-hover: rgba(0,255,136,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(0,255,136,0.08);
+            --step-num-bg: rgba(0,255,136,0.12); --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4); --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="yellow"] {
+            --bg-dark: #0e0e00; --card-bg: #1c1c00; --accent: #ffe000;
+            --modal-bg: #1a1900; --glow: 0 0 25px rgba(255,224,0,0.4);
+            --coin-gold: #ffaa00; --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(14,14,0,0.95);
+            --grid-color: rgba(255,224,0,0.03); --border-color: rgba(255,224,0,0.15);
+            --border-hover: rgba(255,224,0,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,224,0,0.08);
+            --step-num-bg: rgba(255,224,0,0.12); --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4); --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="orange"] {
+            --bg-dark: #0e0700; --card-bg: #1e1000; --accent: #ff8c00;
+            --modal-bg: #1a0d00; --glow: 0 0 25px rgba(255,140,0,0.4);
+            --coin-gold: #ffcc00; --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(14,7,0,0.95);
+            --grid-color: rgba(255,140,0,0.03); --border-color: rgba(255,140,0,0.15);
+            --border-hover: rgba(255,140,0,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,140,0,0.08);
+            --step-num-bg: rgba(255,140,0,0.12); --warning-bg: rgba(255,180,0,0.08);
+            --warning-border: rgba(255,180,0,0.4); --success-bg: rgba(0,255,100,0.06);
+            --success-border: rgba(0,255,100,0.3);
+        }
+        [data-theme="white"] {
+            --bg-dark: #eef2f7; --card-bg: #ffffff; --accent: #0077cc;
+            --modal-bg: #f4f8fc; --glow: 0 0 20px rgba(0,119,204,0.25);
+            --coin-gold: #bb7700; --text-main: #111111; --text-sub: rgba(0,0,0,0.75);
+            --text-label: rgba(0,0,0,0.5); --nav-bg: rgba(238,242,247,0.97);
+            --grid-color: rgba(0,119,204,0.05); --border-color: rgba(0,119,204,0.2);
+            --border-hover: rgba(0,119,204,0.8); --info-card-bg: rgba(0,0,0,0.04);
+            --desc-bg: rgba(0,0,0,0.04); --menu-item-hover: rgba(0,119,204,0.08);
+            --step-num-bg: rgba(0,119,204,0.1); --warning-bg: rgba(180,120,0,0.08);
+            --warning-border: rgba(180,120,0,0.4); --success-bg: rgba(0,150,60,0.06);
+            --success-border: rgba(0,150,60,0.3);
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+        body::before {
+            content:'';
+            position:fixed;
+            inset:0;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size:40px 40px;
+            pointer-events:none;
+            z-index:0;
+        }
+        body::after {
+            content:'';
+            position:fixed;
+            top:-150px;
+            left:50%;
+            transform:translateX(-50%);
+            width:600px;
+            height:600px;
+            background:radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events:none;
+            z-index:0;
+            animation:pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}
+            50%{opacity:1;transform:translateX(-50%) scale(1.1);}
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        nav {
+            width:100%;
+            height:70px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 20px;
+            border-bottom:1px solid var(--border-color);
+            background:var(--nav-bg);
+            backdrop-filter:blur(10px);
+            position:sticky;
+            top:0;
+            z-index:1000;
+            transition: background 0.35s ease, border-color 0.35s ease;
+        }
+        .nav-logo-img {
+            height:45px;
+            filter:drop-shadow(0 0 8px var(--accent));
+        }
+        .nav-right {
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .nav-btn {
+            background:var(--accent);
+            color:#000;
+            border:none;
+            padding:10px 22px;
+            border-radius:10px;
+            font-weight:800;
+            cursor:pointer;
+            font-size:13px;
+            transition:.3s;
+            text-transform:uppercase;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+        }
+        .nav-btn:hover {
+            opacity:.85;
+            box-shadow:var(--glow);
+        }
+
+        /* Hamburger */
+        .hamburger-btn {
+            background:transparent;
+            border:1px solid var(--border-color);
+            color:var(--text-main);
+            width:42px; height:42px;
+            border-radius:10px;
+            cursor:pointer;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            gap:5px; transition:.3s;
+        }
+        .hamburger-btn:hover { border-color:var(--accent); box-shadow:var(--glow); }
+        .hamburger-btn span {
+            display:block; width:18px; height:2px;
+            background:var(--text-main); border-radius:2px; transition:.3s;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity:0; }
+        .hamburger-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+        /* Dropdown */
+        .hamburger-menu {
+            position:fixed;
+            top:80px; right:20px;
+            background:var(--modal-bg);
+            border:1px solid var(--border-color);
+            border-radius:16px;
+            padding:10px;
+            z-index:5000;
+            display:none;
+            min-width:220px;
+            box-shadow:var(--glow);
+            transition: background 0.35s ease;
+        }
+        .hamburger-menu.open { display:block; animation:menuSlide .2s ease; }
+        @keyframes menuSlide {
+            from{opacity:0;transform:translateY(-8px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+        .menu-item {
+            display:flex; align-items:center; gap:12px;
+            padding:12px 16px; border-radius:10px;
+            cursor:pointer; text-decoration:none;
+            color:var(--text-main); font-weight:700; font-size:14px;
+            transition:.2s; background:transparent;
+            border:none; width:100%; text-align:left;
+        }
+        .menu-item:hover { background:var(--menu-item-hover); color:var(--accent); }
+        .menu-item svg { width:18px; height:18px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .menu-divider { height:1px; background:var(--border-color); margin:6px 0; }
+
+        /* Theme sub */
+        .theme-sub { display:none; padding:10px 8px 4px; }
+        .theme-sub.open { display:block; }
+        .theme-sub-title {
+            font-size:10px; font-weight:900; text-transform:uppercase;
+            color:var(--text-label); letter-spacing:1px; margin-bottom:10px; padding-left:8px;
+        }
+        .theme-dots-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding-bottom:6px; }
+        .theme-dot-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+        .theme-dot { width:32px; height:32px; border-radius:50%; cursor:pointer; border:2px solid transparent; transition:.25s; }
+        .theme-dot:hover { transform:scale(1.15); }
+        .theme-dot.active-theme { border-color:var(--text-main); box-shadow:0 0 8px rgba(255,255,255,0.35); }
+        .theme-dot[data-t="blue"]   { background:radial-gradient(circle at 35% 35%,#00e5ff,#002d3f); }
+        .theme-dot[data-t="purple"] { background:radial-gradient(circle at 35% 35%,#bf00ff,#200035); }
+        .theme-dot[data-t="red"]    { background:radial-gradient(circle at 35% 35%,#ff2222,#380000); }
+        .theme-dot[data-t="green"]  { background:radial-gradient(circle at 35% 35%,#00ff88,#003015); }
+        .theme-dot[data-t="yellow"] { background:radial-gradient(circle at 35% 35%,#ffe000,#302e00); }
+        .theme-dot[data-t="orange"] { background:radial-gradient(circle at 35% 35%,#ff8c00,#351c00); }
+        .theme-dot[data-t="white"]  { background:radial-gradient(circle at 35% 35%,#ffffff,#aabbd0); border-color:#bbb; }
+        .theme-dot-lbl { font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-label); }
+
+        /* Language sub */
+        .lang-sub { display:none; padding:6px 8px 4px; }
+        .lang-sub.open { display:block; }
+        .lang-option {
+            display:flex; align-items:center; gap:10px;
+            padding:10px 14px; border-radius:8px;
+            cursor:pointer; font-size:13px; font-weight:700;
+            color:var(--text-sub); transition:.2s;
+            border:none; background:transparent; width:100%;
+        }
+        .lang-option:hover { background:var(--menu-item-hover); color:var(--accent); }
+        .lang-option.active-lang { color:var(--accent); }
+        .lang-flag { font-size:18px; }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .help-hero {
+            text-align:center;
+            padding:60px 20px 40px;
+            position:relative;
+            z-index:1;
+        }
+        .help-hero-badge {
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            background:var(--step-num-bg);
+            border:1px solid var(--border-color);
+            border-radius:50px;
+            padding:6px 18px;
+            font-size:11px;
+            font-weight:900;
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+            color:var(--accent);
+            margin-bottom:20px;
+        }
+        .help-hero-badge svg { width:14px; height:14px; stroke:var(--accent); fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+        .help-hero h1 {
+            font-size:clamp(28px,8vw,52px);
+            font-weight:900;
+            text-transform:uppercase;
+            letter-spacing:-1px;
+            margin-bottom:12px;
+        }
+        .help-hero h1 span { color:var(--accent); }
+        .help-hero p {
+            font-size:16px;
+            color:var(--text-sub);
+            max-width:500px;
+            margin:0 auto;
+            line-height:1.6;
+        }
+
+        /* ============================================================
+           PLATFORM TABS
+        ============================================================ */
+        .platform-tabs {
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            flex-wrap:wrap;
+            padding:0 20px 40px;
+            position:relative;
+            z-index:1;
+        }
+        .platform-tab {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            padding:14px 28px;
+            border-radius:16px;
+            border:1.5px solid var(--border-color);
+            background:var(--card-bg);
+            color:var(--text-main);
+            font-weight:800;
+            font-size:14px;
+            cursor:pointer;
+            transition:all .3s ease;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+        }
+        .platform-tab svg { width:22px; height:22px; flex-shrink:0; }
+        .platform-tab:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:var(--glow); }
+        .platform-tab.active {
+            background:var(--accent);
+            color:#000;
+            border-color:var(--accent);
+            box-shadow:var(--glow);
+            transform:translateY(-3px);
+        }
+        .platform-tab.active svg { stroke:#000; }
+
+        /* ============================================================
+           MAIN CONTENT
+        ============================================================ */
+        .help-main {
+            max-width:860px;
+            margin:0 auto;
+            padding:0 20px 80px;
+            position:relative;
+            z-index:1;
+        }
+
+        /* Section divider label */
+        .section-label {
+            display:flex;
+            align-items:center;
+            gap:12px;
+            margin-bottom:20px;
+            margin-top:50px;
+        }
+        .section-label-text {
+            font-size:11px;
+            font-weight:900;
+            text-transform:uppercase;
+            letter-spacing:2px;
+            color:var(--accent);
+        }
+        .section-label-line {
+            flex:1;
+            height:1px;
+            background:var(--border-color);
+        }
+        .section-label svg {
+            width:18px; height:18px; stroke:var(--accent); fill:none;
+            stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;
+        }
+
+        /* Install Card */
+        .install-card {
+            background:var(--card-bg);
+            border:1px solid var(--border-color);
+            border-radius:20px;
+            margin-bottom:16px;
+            overflow:hidden;
+            transition:border-color .3s, box-shadow .3s;
+        }
+        .install-card:hover { border-color:var(--border-hover); }
+        .install-card-header {
+            display:flex;
+            align-items:center;
+            gap:14px;
+            padding:20px 22px;
+            cursor:pointer;
+            user-select:none;
+        }
+        .install-card-icon {
+            width:44px; height:44px;
+            border-radius:12px;
+            background:var(--step-num-bg);
+            border:1px solid var(--border-color);
+            display:flex; align-items:center; justify-content:center;
+            flex-shrink:0;
+            color:var(--accent);
+        }
+        .install-card-icon svg { width:22px; height:22px; stroke:var(--accent); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .install-card-title {
+            flex:1;
+        }
+        .install-card-title h3 {
+            font-size:15px; font-weight:800;
+            color:var(--text-main);
+            margin-bottom:2px;
+        }
+        .install-card-title span {
+            font-size:12px; color:var(--text-label);
+        }
+        .install-card-arrow {
+            width:28px; height:28px;
+            border-radius:8px;
+            border:1px solid var(--border-color);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-label);
+            transition:.3s;
+            flex-shrink:0;
+        }
+        .install-card-arrow svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; transition:.3s; }
+        .install-card.open .install-card-arrow svg { transform:rotate(180deg); }
+        .install-card.open .install-card-arrow { border-color:var(--accent); color:var(--accent); }
+
+        .install-card-body {
+            display:none;
+            padding:0 22px 22px;
+            border-top:1px solid var(--border-color);
+            margin-top:0;
+        }
+        .install-card.open .install-card-body { display:block; animation:fadeIn .25s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);} }
+
+        /* Steps */
+        .steps { margin-top:16px; }
+        .step {
+            display:flex;
+            gap:16px;
+            margin-bottom:18px;
+            align-items:flex-start;
+        }
+        .step-num {
+            width:32px; height:32px; min-width:32px;
+            border-radius:10px;
+            background:var(--step-num-bg);
+            border:1px solid var(--border-color);
+            display:flex; align-items:center; justify-content:center;
+            font-size:13px; font-weight:900;
+            color:var(--accent);
+        }
+        .step-content {}
+        .step-content strong {
+            display:block;
+            font-size:14px; font-weight:800;
+            color:var(--text-main);
+            margin-bottom:4px;
+        }
+        .step-content p {
+            font-size:13px;
+            color:var(--text-sub);
+            line-height:1.65;
+        }
+        .step-content code {
+            display:inline-block;
+            background:var(--step-num-bg);
+            border:1px solid var(--border-color);
+            border-radius:6px;
+            padding:1px 8px;
+            font-family:monospace;
+            font-size:12px;
+            color:var(--accent);
+            word-break:break-all;
+        }
+
+        /* Warning / info box */
+        .note-box {
+            display:flex;
+            gap:12px;
+            padding:14px 16px;
+            border-radius:12px;
+            margin-top:6px;
+            margin-bottom:6px;
+        }
+        .note-box.warning { background:var(--warning-bg); border:1px solid var(--warning-border); }
+        .note-box.success { background:var(--success-bg); border:1px solid var(--success-border); }
+        .note-box.info { background:var(--step-num-bg); border:1px solid var(--border-color); }
+        .note-box svg { width:18px; height:18px; flex-shrink:0; margin-top:1px; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .note-box.warning svg { stroke:#ffb400; }
+        .note-box.success svg { stroke:#00ff88; }
+        .note-box.info svg { stroke:var(--accent); }
+        .note-box p { font-size:13px; color:var(--text-sub); line-height:1.6; }
+        .note-box strong { color:var(--text-main); }
+
+        /* Path display */
+        .path-display {
+            display:flex;
+            align-items:center;
+            gap:8px;
+            flex-wrap:wrap;
+            background:var(--desc-bg);
+            border:1px solid var(--border-color);
+            border-radius:10px;
+            padding:10px 14px;
+            margin-top:8px;
+        }
+        .path-part {
+            font-size:12px; font-weight:700;
+            color:var(--accent);
+            font-family:monospace;
+        }
+        .path-arrow { color:var(--text-label); font-size:12px; }
+
+        /* ============================================================
+           PLATFORM PANELS
+        ============================================================ */
+        .platform-panel { display:none; }
+        .platform-panel.active { display:block; }
+
+        /* ============================================================
+           FAQ / LOOTLABS SECTION
+        ============================================================ */
+        .faq-card {
+            background:var(--card-bg);
+            border:1px solid var(--border-color);
+            border-radius:20px;
+            margin-bottom:14px;
+            overflow:hidden;
+            transition:border-color .3s;
+        }
+        .faq-card:hover { border-color:var(--border-hover); }
+        .faq-header {
+            display:flex;
+            align-items:flex-start;
+            gap:14px;
+            padding:20px 22px;
+            cursor:pointer;
+            user-select:none;
+        }
+        .faq-icon {
+            width:38px; height:38px; min-width:38px;
+            border-radius:10px;
+            background:var(--step-num-bg);
+            border:1px solid var(--border-color);
+            display:flex; align-items:center; justify-content:center;
+        }
+        .faq-icon svg { width:18px; height:18px; stroke:var(--accent); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .faq-title-wrap { flex:1; }
+        .faq-title { font-size:14px; font-weight:800; color:var(--text-main); margin-bottom:3px; }
+        .faq-subtitle { font-size:12px; color:var(--text-label); }
+        .faq-arrow { width:28px; height:28px; min-width:28px; border-radius:8px; border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; color:var(--text-label); transition:.3s; margin-top:2px; }
+        .faq-arrow svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; transition:.3s; }
+        .faq-card.open .faq-arrow svg { transform:rotate(180deg); }
+        .faq-card.open .faq-arrow { border-color:var(--accent); color:var(--accent); }
+        .faq-body {
+            display:none;
+            padding:0 22px 22px;
+            border-top:1px solid var(--border-color);
+        }
+        .faq-card.open .faq-body { display:block; animation:fadeIn .25s ease; }
+
+        /* Fix steps inside faq */
+        .fix-step {
+            display:flex;
+            gap:14px;
+            padding:14px 0;
+            border-bottom:1px solid var(--border-color);
+            align-items:flex-start;
+        }
+        .fix-step:last-child { border-bottom:none; padding-bottom:0; }
+        .fix-num {
+            width:28px; height:28px; min-width:28px;
+            border-radius:8px;
+            background:var(--step-num-bg);
+            display:flex; align-items:center; justify-content:center;
+            font-size:12px; font-weight:900;
+            color:var(--accent);
+        }
+        .fix-content strong { display:block; font-size:13px; font-weight:800; color:var(--text-main); margin-bottom:3px; }
+        .fix-content p { font-size:13px; color:var(--text-sub); line-height:1.6; }
+        .fix-content code { background:var(--step-num-bg); border:1px solid var(--border-color); border-radius:5px; padding:1px 7px; font-family:monospace; font-size:12px; color:var(--accent); }
+
+        /* ============================================================
+           DISCORD BANNER
+        ============================================================ */
+        .discord-banner {
+            background:linear-gradient(135deg, var(--card-bg) 0%, rgba(88,101,242,0.15) 100%);
+            border:1px solid rgba(88,101,242,0.4);
+            border-radius:20px;
+            padding:30px;
+            text-align:center;
+            margin-top:50px;
+        }
+        .discord-banner-icon { font-size:40px; margin-bottom:12px; display:block; }
+        .discord-banner h3 { font-size:20px; font-weight:900; margin-bottom:8px; }
+        .discord-banner p { font-size:14px; color:var(--text-sub); margin-bottom:20px; }
+        .discord-btn {
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background:#5865F2;
+            color:#fff;
+            padding:14px 28px;
+            border-radius:12px;
+            font-weight:900;
+            font-size:14px;
+            text-decoration:none;
+            transition:.3s;
+        }
+        .discord-btn:hover { opacity:.85; transform:translateY(-2px); box-shadow:0 0 20px rgba(88,101,242,0.5); }
+        .discord-btn svg { width:20px; height:20px; fill:#fff; }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .social-footer {
+            width:100%; padding:30px 20px;
+            display:flex; flex-wrap:wrap; gap:20px; justify-content:center;
+            border-top:1px solid var(--border-color); margin-top:20px;
+            position:relative; z-index:1;
+        }
+        .social-icon {
+            width:45px; height:45px; transition:all .3s ease;
+            opacity:.8; filter:drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        .social-icon:hover { transform:translateY(-5px) scale(1.1); opacity:1; filter:drop-shadow(0 0 15px var(--accent)); }
+        .footer-text { text-align:center; font-size:12px; color:var(--text-label); letter-spacing:1px; padding-bottom:30px; position:relative; z-index:1; }
+
+        /* ============================================================
+           WHITE THEME FIXES
+        ============================================================ */
+        [data-theme="white"] .install-card-title h3 { color:#111; }
+        [data-theme="white"] .faq-title { color:#111; }
+        [data-theme="white"] .step-content strong { color:#111; }
+        [data-theme="white"] .fix-content strong { color:#111; }
+        [data-theme="white"] .discord-banner h3 { color:#111; }
+        [data-theme="white"] body::after { background:radial-gradient(circle,rgba(0,119,204,0.06) 0%,transparent 70%); }
+
+        /* ============================================================
+           RTL (Arabic)
+        ============================================================ */
+        [dir="rtl"] .install-card-header { flex-direction:row-reverse; }
+        [dir="rtl"] .install-card-title { text-align:right; }
+        [dir="rtl"] .install-card-arrow { margin-left:0; }
+        [dir="rtl"] .step { flex-direction:row-reverse; }
+        [dir="rtl"] .step-content { text-align:right; }
+        [dir="rtl"] .faq-header { flex-direction:row-reverse; }
+        [dir="rtl"] .faq-title-wrap { text-align:right; }
+        [dir="rtl"] .fix-step { flex-direction:row-reverse; }
+        [dir="rtl"] .fix-content { text-align:right; }
+        [dir="rtl"] .note-box { flex-direction:row-reverse; }
+        [dir="rtl"] .note-box p { text-align:right; }
+        [dir="rtl"] .path-display { flex-direction:row-reverse; }
+        [dir="rtl"] .section-label { flex-direction:row-reverse; }
+        [dir="rtl"] .menu-item { flex-direction:row-reverse; text-align:right; }
+        [dir="rtl"] .hamburger-menu { right:auto; left:20px; }
+        [dir="rtl"] .platform-tab { flex-direction:row-reverse; }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media(max-width:500px){
+            .platform-tab { padding:12px 18px; font-size:13px; }
+            .install-card-header { padding:16px; }
+            .install-card-body { padding:0 16px 16px; }
+            .faq-header { padding:16px; }
+            .faq-body { padding:0 16px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav>
+    <a href="https://bncraft1.github.io/BNcraft.github.io/" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img" alt="BNcraft">
+    </a>
+    <div class="nav-right">
+        <a class="nav-btn" href="https://bncraft1.github.io/BNcraft.github.io/" target="_blank">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span data-i18n="nav_home">Home</span>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ============================================================
+     HAMBURGER MENU
+============================================================ -->
+<div class="hamburger-menu" id="hamburgerMenu">
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span data-i18n="menu_home">Home</span>
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-Official-Links.html" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span data-i18n="menu_social">Social Media</span>
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-tuturial.html" target="_blank">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span data-i18n="menu_tutorial">Tutorial</span>
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-other-mods.html" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span data-i18n="menu_mods">Other Mods</span>
+    </a>
+    <div class="menu-divider"></div>
+
+    <!-- LANGUAGE -->
+    <button class="menu-item" onclick="toggleLangSub()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20M4.2 7h15.6M4.2 17h15.6"/></svg>
+        <span data-i18n="menu_language">Language</span>
+        <svg id="langArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="lang-sub" id="langSub">
+        <button class="lang-option active-lang" onclick="setLang('en')" id="lang-en">
+            <span class="lang-flag">🇬🇧</span> English
+        </button>
+        <button class="lang-option" onclick="setLang('tr')" id="lang-tr">
+            <span class="lang-flag">🇹🇷</span> Türkçe
+        </button>
+        <button class="lang-option" onclick="setLang('ar')" id="lang-ar">
+            <span class="lang-flag">🇸🇦</span> العربية
+        </button>
+        <!-- ═══════════════════════════════════════════════════
+             TO ADD A NEW LANGUAGE:
+             1. Add a button here: <button class="lang-option" onclick="setLang('XX')" id="lang-XX"><span class="lang-flag">🏳️</span> Language Name</button>
+             2. Add the translation object in the TRANSLATIONS section in the <script> below.
+             3. If RTL language, add 'rtl' to the lang config object.
+             That's it!
+        ═══════════════════════════════════════════════════ -->
+    </div>
+    <div class="menu-divider"></div>
+
+    <!-- THEMES -->
+    <button class="menu-item" onclick="toggleThemeSub()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20 5 5 0 010-10 5 5 0 000-10z"/></svg>
+        <span data-i18n="menu_themes">Themes</span>
+        <svg id="themeArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="theme-sub" id="themeSub">
+        <div class="theme-sub-title" data-i18n="theme_select">Select Theme</div>
+        <div class="theme-dots-row">
+            <div class="theme-dot-wrap"><div class="theme-dot active-theme" data-t="blue" onclick="setTheme('blue')"></div><div class="theme-dot-lbl">Blue</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="purple" onclick="setTheme('purple')"></div><div class="theme-dot-lbl">Purple</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="red" onclick="setTheme('red')"></div><div class="theme-dot-lbl">Red</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="green" onclick="setTheme('green')"></div><div class="theme-dot-lbl">Green</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="yellow" onclick="setTheme('yellow')"></div><div class="theme-dot-lbl">Yellow</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="orange" onclick="setTheme('orange')"></div><div class="theme-dot-lbl">Orange</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="white" onclick="setTheme('white')"></div><div class="theme-dot-lbl">White</div></div>
+        </div>
+    </div>
+    <div class="menu-divider"></div>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-help.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span data-i18n="menu_help">Help Center</span>
+    </a>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<div class="help-hero">
+    <div class="help-hero-badge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span data-i18n="hero_badge">Support Center</span>
+    </div>
+    <h1 data-i18n="hero_title">BNcraft <span>Help</span></h1>
+    <p data-i18n="hero_sub">Everything you need to install mods, fix issues, and get the most out of BNcraft.</p>
+</div>
+
+<!-- ============================================================
+     PLATFORM TABS
+============================================================ -->
+<div class="platform-tabs">
+    <button class="platform-tab active" onclick="showPlatform('android', this)">
+        <!-- Android icon -->
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 16V8a7 7 0 0114 0v8"/><rect x="3" y="16" width="18" height="5" rx="2"/><line x1="8" y1="5" x2="6" y2="3"/><line x1="16" y1="5" x2="18" y2="3"/>
+        </svg>
+        <span data-i18n="tab_android">Android</span>
+    </button>
+    <button class="platform-tab" onclick="showPlatform('ios', this)">
+        <!-- Apple icon -->
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-1.5 0-3 .8-3.8 2C7.3 6.4 7 8 7 8s-3 .5-3 4c0 5 4.5 9 4.5 9h7S20 17 20 12c0-3.5-3-4-3-4s-.3-1.6-1.2-3C14.9 3.8 13.5 3 12 3z"/>
+            <line x1="12" y1="3" x2="12" y2="6"/>
+        </svg>
+        <span data-i18n="tab_ios">iPhone / iOS</span>
+    </button>
+    <button class="platform-tab" onclick="showPlatform('pc', this)">
+        <!-- Monitor icon -->
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span data-i18n="tab_pc">Windows PC</span>
+    </button>
+    <button class="platform-tab" onclick="showPlatform('lootlabs', this)">
+        <!-- Link icon -->
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+        </svg>
+        <span data-i18n="tab_lootlabs">LootLabs</span>
+    </button>
+    <button class="platform-tab" onclick="showPlatform('faq', this)">
+        <!-- Help circle icon -->
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span data-i18n="tab_faq">FAQ</span>
+    </button>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+============================================================ -->
+<div class="help-main">
+
+    <!-- ══════════════════════════════════════════════
+         ANDROID PANEL
+    ══════════════════════════════════════════════ -->
+    <div class="platform-panel active" id="panel-android">
+
+        <div class="section-label">
+            <svg viewBox="0 0 24 24"><path d="M5 16V8a7 7 0 0114 0v8"/><rect x="3" y="16" width="18" height="5" rx="2"/><line x1="8" y1="5" x2="6" y2="3"/><line x1="16" y1="5" x2="18" y2="3"/></svg>
+            <span class="section-label-text" data-i18n="android_install_title">Android — Installation Guide</span>
+            <div class="section-label-line"></div>
+        </div>
+
+        <!-- .mcaddon -->
+        <div class="install-card" id="card-android-1">
+            <div class="install-card-header" onclick="toggleCard('card-android-1')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="android_mcaddon_title">Install .mcaddon File (Add-Ons)</h3>
+                    <span data-i18n="android_mcaddon_sub">Full add-on with behavior + resource pack</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="a1_s1_title">Download the file</strong>
+                            <p data-i18n="a1_s1_desc">Download the Add-On (.mcaddon) file from the BNcraft website. It will be saved to your Downloads folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="a1_s2_title">Open with File Manager</strong>
+                            <p data-i18n="a1_s2_desc">Open your phone's File Manager app and navigate to the Downloads folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="a1_s3_title">Tap the .mcaddon file once</strong>
+                            <p data-i18n="a1_s3_desc">Your phone will ask which app to open it with. Select Minecraft from the list.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong data-i18n="a1_s4_title">Wait for import to finish</strong>
+                            <p data-i18n="a1_s4_desc">Minecraft will open automatically and show "Import started…". Wait until you see "Successfully imported".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <strong data-i18n="a1_s5_title">Activate on your world</strong>
+                            <p data-i18n="a1_s5_desc">Create or edit a world → scroll to Resource Packs and Behavior Packs → enable both. Then tap Play.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- .mcpack -->
+        <div class="install-card" id="card-android-2">
+            <div class="install-card-header" onclick="toggleCard('card-android-2')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="android_mcpack_title">Install .mcpack File (Skin / Texture Packs)</h3>
+                    <span data-i18n="android_mcpack_sub">Single pack — skins or textures only</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="a2_s1_title">Download the .mcpack file</strong>
+                            <p data-i18n="a2_s1_desc">Download the skin pack or texture pack (.mcpack) from BNcraft. It saves to your Downloads folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="a2_s2_title">Tap the file to open</strong>
+                            <p data-i18n="a2_s2_desc">Open your File Manager, go to Downloads, tap the .mcpack file. Choose Minecraft when prompted.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="a2_s3_title">Confirm import success</strong>
+                            <p data-i18n="a2_s3_desc">Minecraft imports the pack and shows a success message. For skin packs: go to Appearance → select your new skin. For texture packs: activate in world settings under Resource Packs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- .mctemplate -->
+        <div class="install-card" id="card-android-3">
+            <div class="install-card-header" onclick="toggleCard('card-android-3')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="android_mctemplate_title">Install .mctemplate File (World Templates)</h3>
+                    <span data-i18n="android_mctemplate_sub">Ready-made worlds and maps</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="a3_s1_title">Download the .mctemplate</strong>
+                            <p data-i18n="a3_s1_desc">Get the World Template file from BNcraft. It saves to Downloads.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="a3_s2_title">Open with Minecraft</strong>
+                            <p data-i18n="a3_s2_desc">Tap the file in your File Manager and select Minecraft. The template will be imported.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="a3_s3_title">Find it in World Templates</strong>
+                            <p data-i18n="a3_s3_desc">In Minecraft, go to Create New World → Templates → My Templates. Select the template and create a new world from it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-box info">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <p data-i18n="a3_note">World Templates create a brand new world — they do not modify an existing one.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- .zip Mash-Up -->
+        <div class="install-card" id="card-android-4">
+            <div class="install-card-header" onclick="toggleCard('card-android-4')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="android_zip_title">Install .zip Archive (Mash-Ups)</h3>
+                    <span data-i18n="android_zip_sub">Bundle containing multiple file types</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="note-box warning">
+                    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <p data-i18n="android_zip_warn">A .zip Mash-Up contains multiple files inside (e.g. a world template + skin pack + texture pack). You must extract and install each file separately.</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="a4_s1_title">Install ZArchiver</strong>
+                            <p data-i18n="a4_s1_desc">Download and install ZArchiver from the Google Play Store (free). This is the best tool to extract .zip files on Android.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="a4_s2_title">Open the .zip with ZArchiver</strong>
+                            <p data-i18n="a4_s2_desc">Open ZArchiver, navigate to your Downloads folder, and tap the .zip file. Select "Extract here" or "Extract to folder".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="a4_s3_title">Identify the files inside</strong>
+                            <p data-i18n="a4_s3_desc">After extraction you will find files like: <code>.mctemplate</code> <code>.mcpack</code> <code>.mcaddon</code>. Install each one by tapping it and choosing Minecraft.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong data-i18n="a4_s4_title">Install in the correct order</strong>
+                            <p data-i18n="a4_s4_desc">Recommended order: first the world template (.mctemplate), then texture/skin packs (.mcpack), then add-ons (.mcaddon).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ZArchiver Date problem -->
+        <div class="install-card" id="card-android-5">
+            <div class="install-card-header" onclick="toggleCard('card-android-5')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="android_zarch_title">ZArchiver: Apps Not Showing in "Date" Tab</h3>
+                    <span data-i18n="android_zarch_sub">Files visible in Date section but can't open in Minecraft</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="note-box info">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <p data-i18n="android_zarch_info">This happens because Android restricts access to the Downloads folder from certain apps. ZArchiver needs special storage permission to see files there.</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="az_s1_title">Grant Full Storage Access to ZArchiver</strong>
+                            <p data-i18n="az_s1_desc">Go to Phone Settings → Apps → ZArchiver → Permissions → Storage → choose "Allow access to manage all files" (or "All files access"). Restart ZArchiver.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="az_s2_title">Move the file to Internal Storage root</strong>
+                            <p data-i18n="az_s2_desc">In ZArchiver, move your .zip or .mcaddon file out of Downloads and into the root of Internal Storage (the main storage folder). Try opening it from there.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="az_s3_title">Still not working? Use Shizuku</strong>
+                            <p data-i18n="az_s3_desc">If neither fix above works, Shizuku gives apps elevated access to the file system without rooting. Follow the guide below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shizuku guide -->
+                <div style="margin-top:16px;">
+                    <div class="section-label" style="margin-top:0;">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span class="section-label-text" data-i18n="shizuku_title">Shizuku Setup Guide</span>
+                        <div class="section-label-line"></div>
+                    </div>
+                    <div class="note-box warning">
+                        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <p data-i18n="shizuku_warn">Shizuku requires ADB (Android Debug Bridge) from a PC or wireless ADB on Android 11+. No root needed.</p>
+                    </div>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong data-i18n="sh_s1_title">Install Shizuku</strong>
+                                <p data-i18n="sh_s1_desc">Download Shizuku from Google Play Store. It's free and safe.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong data-i18n="sh_s2_title">Enable Developer Options on your phone</strong>
+                                <p data-i18n="sh_s2_desc">Go to Settings → About Phone → tap "Build Number" 7 times. Developer Options will appear in Settings.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong data-i18n="sh_s3_title">Wireless ADB (Android 11+) — No PC needed</strong>
+                                <p data-i18n="sh_s3_desc">Go to Settings → Developer Options → enable "Wireless debugging". Tap "Wireless debugging" → "Pair device with pairing code". Note the IP, port, and code shown. Back in Shizuku → tap "Pairing" → enter those details. Then tap "Start via Wireless ADB".</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <strong data-i18n="sh_s4_title">Using a PC (ADB method)</strong>
+                                <p data-i18n="sh_s4_desc">Install ADB on your PC. Connect phone via USB with USB Debugging enabled. Run: <code>adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</code> — Shizuku will activate.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">5</div>
+                            <div class="step-content">
+                                <strong data-i18n="sh_s5_title">Grant ZArchiver permission in Shizuku</strong>
+                                <p data-i18n="sh_s5_desc">Once Shizuku is running (green indicator), open ZArchiver → it will ask for Shizuku permission → tap Allow. Now ZArchiver can access all files including those in the Downloads folder.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /panel-android -->
+
+    <!-- ══════════════════════════════════════════════
+         iOS PANEL
+    ══════════════════════════════════════════════ -->
+    <div class="platform-panel" id="panel-ios">
+
+        <div class="section-label">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-1.5 0-3 .8-3.8 2C7.3 6.4 7 8 7 8s-3 .5-3 4c0 5 4.5 9 4.5 9h7S20 17 20 12c0-3.5-3-4-3-4s-.3-1.6-1.2-3C14.9 3.8 13.5 3 12 3z"/><line x1="12" y1="3" x2="12" y2="6"/></svg>
+            <span class="section-label-text" data-i18n="ios_install_title">iPhone / iOS — Installation Guide</span>
+            <div class="section-label-line"></div>
+        </div>
+
+        <!-- .mcaddon iOS -->
+        <div class="install-card" id="card-ios-1">
+            <div class="install-card-header" onclick="toggleCard('card-ios-1')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="ios_mcaddon_title">Install .mcaddon / .mcpack File</h3>
+                    <span data-i18n="ios_mcaddon_sub">Add-ons, skins, and texture packs</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios1_s1_title">Download the file in Safari or Chrome</strong>
+                            <p data-i18n="ios1_s1_desc">Download the .mcaddon or .mcpack file from BNcraft. When the download finishes, tap the download icon in the top right of your browser.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios1_s2_title">Tap the file → Share → Copy to Minecraft</strong>
+                            <p data-i18n="ios1_s2_desc">In the Downloads panel, tap the file. Then tap the Share icon (box with arrow) → scroll and select "Copy to Minecraft". Minecraft will open and import it automatically.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios1_s3_title">Alternative: Open with Files app</strong>
+                            <p data-i18n="ios1_s3_desc">Open the Files app → Browse → Downloads → long-press the file → Share → Copy to Minecraft.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios1_s4_title">Activate in world settings</strong>
+                            <p data-i18n="ios1_s4_desc">After import, create or edit a world in Minecraft. Activate the pack under Resource Packs / Behavior Packs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-box warning">
+                    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <p data-i18n="ios_safari_note">Always use Safari on iOS for the best download experience. Chrome may block certain file types.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- .mctemplate iOS -->
+        <div class="install-card" id="card-ios-2">
+            <div class="install-card-header" onclick="toggleCard('card-ios-2')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="ios_mctemplate_title">Install .mctemplate (World Templates)</h3>
+                    <span data-i18n="ios_mctemplate_sub">Ready-made worlds for iPhone</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios2_s1_title">Download the .mctemplate in Safari</strong>
+                            <p data-i18n="ios2_s1_desc">Download from BNcraft using Safari. The file will appear in your Downloads.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios2_s2_title">Open with Minecraft via Share</strong>
+                            <p data-i18n="ios2_s2_desc">Tap the file → Share button → Copy to Minecraft. Minecraft imports the template.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios2_s3_title">Create world from template</strong>
+                            <p data-i18n="ios2_s3_desc">In Minecraft: Create New World → Templates → My Templates. Choose the template and tap Create.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- .zip iOS -->
+        <div class="install-card" id="card-ios-3">
+            <div class="install-card-header" onclick="toggleCard('card-ios-3')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="ios_zip_title">Install .zip Archive (Mash-Ups)</h3>
+                    <span data-i18n="ios_zip_sub">Extract and install multiple files</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios3_s1_title">Download the .zip in Safari</strong>
+                            <p data-i18n="ios3_s1_desc">Download the Mash-Up .zip from BNcraft using Safari.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios3_s2_title">Extract using the Files app</strong>
+                            <p data-i18n="ios3_s2_desc">Open Files app → Downloads → tap the .zip file once. iOS will automatically extract it into a folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="ios3_s3_title">Install each file inside</strong>
+                            <p data-i18n="ios3_s3_desc">Open the extracted folder. For each .mctemplate, .mcpack, or .mcaddon file: long-press → Share → Copy to Minecraft.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /panel-ios -->
+
+    <!-- ══════════════════════════════════════════════
+         PC PANEL
+    ══════════════════════════════════════════════ -->
+    <div class="platform-panel" id="panel-pc">
+
+        <div class="section-label">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="section-label-text" data-i18n="pc_install_title">Windows PC — Installation Guide</span>
+            <div class="section-label-line"></div>
+        </div>
+
+        <!-- .mcaddon / .mcpack PC auto -->
+        <div class="install-card" id="card-pc-1">
+            <div class="install-card-header" onclick="toggleCard('card-pc-1')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="pc_auto_title">Quick Install: .mcaddon / .mcpack (Double-click)</h3>
+                    <span data-i18n="pc_auto_sub">Fastest method — works for most files</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="pc1_s1_title">Download the file</strong>
+                            <p data-i18n="pc1_s1_desc">Download the .mcaddon or .mcpack file from BNcraft. It will be in your Downloads folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="pc1_s2_title">Double-click the file</strong>
+                            <p data-i18n="pc1_s2_desc">Double-click the file. Windows will open it with Minecraft automatically. The pack imports and you will see a success notification.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="pc1_s3_title">Activate in world</strong>
+                            <p data-i18n="pc1_s3_desc">Create or edit a world in Minecraft → activate the pack under Resource Packs / Behavior Packs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manual PC install -->
+        <div class="install-card" id="card-pc-2">
+            <div class="install-card-header" onclick="toggleCard('card-pc-2')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="pc_manual_title">Manual Install (Without Double-Clicking)</h3>
+                    <span data-i18n="pc_manual_sub">Full guide — behavior packs, resource packs, worlds</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="note-box info">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <p data-i18n="pc_manual_info">This method works when double-clicking fails, or when you want to install files directly without opening Minecraft.</p>
+                </div>
+
+                <!-- Step 1: Rename to .zip -->
+                <div class="steps" style="margin-top:16px;">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="pm_s1_title">Rename the file extension to .zip</strong>
+                            <p data-i18n="pm_s1_desc">Example: rename <code>TrainHouse(skin_pack).mcpack</code> → <code>TrainHouse(skin_pack).zip</code>. Right-click the file → Rename. If you don't see the extension, open File Explorer → View → check "File name extensions".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="pm_s2_title">Extract the .zip</strong>
+                            <p data-i18n="pm_s2_desc">Right-click the renamed .zip → "Extract All" (or use 7-Zip / WinRAR). Extract to a folder you can find easily, like your Desktop.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="pm_s3_title">Find the correct Minecraft folder</strong>
+                            <p data-i18n="pm_s3_desc">Press <code>Win + R</code> → type <code>%localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang</code> → press Enter. This is the Minecraft data folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong data-i18n="pm_s4_title">Copy to the right subfolder</strong>
+                            <p data-i18n="pm_s4_desc">Now you need to copy the extracted folder to the correct location based on what type of pack it is:</p>
+                            <div class="note-box success" style="margin-top:8px;">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                <div>
+                                    <p><strong data-i18n="pm_resource_label">Resource Pack / Texture Pack / Skin Pack (.mcpack):</strong></p>
+                                    <div class="path-display">
+                                        <span class="path-part">com.mojang</span><span class="path-arrow">›</span>
+                                        <span class="path-part">resource_packs</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-box warning" style="margin-top:8px;">
+                                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                                <div>
+                                    <p><strong data-i18n="pm_behavior_label">Behavior Pack (.mcaddon behavior part):</strong></p>
+                                    <div class="path-display">
+                                        <span class="path-part">com.mojang</span><span class="path-arrow">›</span>
+                                        <span class="path-part">behavior_packs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- .mcaddon manual -->
+                <div style="margin-top:20px;">
+                    <div class="section-label" style="margin-top:0;">
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span class="section-label-text" data-i18n="pm_addon_label">For .mcaddon files (contains BOTH packs)</span>
+                        <div class="section-label-line"></div>
+                    </div>
+                    <div class="note-box info">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <p data-i18n="pm_addon_info">A .mcaddon file contains TWO folders inside: one behavior pack folder and one resource pack folder. After renaming to .zip and extracting, you will see both folders. Copy the behavior pack folder to <code>behavior_packs</code> and the resource pack folder to <code>resource_packs</code>.</p>
+                    </div>
+                </div>
+
+                <!-- .mctemplate manual -->
+                <div style="margin-top:20px;">
+                    <div class="section-label" style="margin-top:0;">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                        <span class="section-label-text" data-i18n="pm_template_label">For .mctemplate files (World Templates)</span>
+                        <div class="section-label-line"></div>
+                    </div>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmt_s1_title">Rename to .zip and extract</strong>
+                                <p data-i18n="pmt_s1_desc">Rename the .mctemplate file to .zip → extract it. The extracted folder is your world data.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmt_s2_title">Copy to minecraftWorlds</strong>
+                                <p data-i18n="pmt_s2_desc">Copy the extracted folder into:</p>
+                                <div class="path-display">
+                                    <span class="path-part">com.mojang</span><span class="path-arrow">›</span>
+                                    <span class="path-part">minecraftWorlds</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmt_s3_title">Open Minecraft and find the world</strong>
+                                <p data-i18n="pmt_s3_desc">Open Minecraft → Play → the world will appear in your worlds list. Tap it to load.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-zip manual -->
+                <div style="margin-top:20px;">
+                    <div class="section-label" style="margin-top:0;">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        <span class="section-label-text" data-i18n="pm_multizip_label">For .zip Mash-Up (Multiple files inside)</span>
+                        <div class="section-label-line"></div>
+                    </div>
+                    <div class="note-box warning">
+                        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <p data-i18n="pm_multizip_warn">A Mash-Up .zip contains several different pack types inside. Each needs to go to its own folder. Extract the .zip first, then handle each sub-folder separately.</p>
+                    </div>
+                    <div class="steps" style="margin-top:12px;">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmz_s1_title">Extract the main .zip</strong>
+                                <p data-i18n="pmz_s1_desc">Right-click → Extract All. You will see multiple folders/files inside.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmz_s2_title">Identify each folder type</strong>
+                                <p data-i18n="pmz_s2_desc">Look inside each sub-folder for a <code>manifest.json</code> file. If it says <code>"type": "resources"</code> → it goes to <code>resource_packs</code>. If <code>"type": "data"</code> → it goes to <code>behavior_packs</code>. If it has level.dat → it's a world, goes to <code>minecraftWorlds</code>.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong data-i18n="pmz_s3_title">Copy each to the correct folder</strong>
+                                <p data-i18n="pmz_s3_desc">Place each identified folder into the matching Minecraft directory as shown above.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- .mctemplate PC quick -->
+        <div class="install-card" id="card-pc-3">
+            <div class="install-card-header" onclick="toggleCard('card-pc-3')">
+                <div class="install-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="install-card-title">
+                    <h3 data-i18n="pc_template_title">Install .mctemplate (Quick Method)</h3>
+                    <span data-i18n="pc_template_sub">Double-click import for world templates</span>
+                </div>
+                <div class="install-card-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="install-card-body">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="pct_s1_title">Download the .mctemplate</strong>
+                            <p data-i18n="pct_s1_desc">Download from BNcraft. Find it in your Downloads folder.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="pct_s2_title">Double-click to import</strong>
+                            <p data-i18n="pct_s2_desc">Double-click the .mctemplate file. Minecraft will open and import it as a world template.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong data-i18n="pct_s3_title">Create world from template</strong>
+                            <p data-i18n="pct_s3_desc">In Minecraft → Create New World → Templates → My Templates → select and create.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /panel-pc -->
+
+    <!-- ══════════════════════════════════════════════
+         LOOTLABS PANEL
+    ══════════════════════════════════════════════ -->
+    <div class="platform-panel" id="panel-lootlabs">
+
+        <div class="section-label">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            <span class="section-label-text" data-i18n="loot_section_title">LootLabs — Troubleshooting</span>
+            <div class="section-label-line"></div>
+        </div>
+
+        <!-- Frozen screen -->
+        <div class="faq-card" id="faq-l1">
+            <div class="faq-header" onclick="toggleFaq('faq-l1')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="l1_title">Screen freezing / page stuck loading</div>
+                    <div class="faq-subtitle" data-i18n="l1_sub">LootLabs page won't load or stays blank</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="l1_f1_title">Turn OFF your VPN</strong><p data-i18n="l1_f1_desc">If you have an active VPN, disable it. LootLabs blocks many VPN IP addresses, causing the page to freeze or stay blank. This is the #1 fix.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="l1_f2_title">Disable ad blockers</strong><p data-i18n="l1_f2_desc">LootLabs relies on ads to function. If you have AdBlock, uBlock Origin, or any ad blocker extension, disable it specifically for lootlabs.gg.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="l1_f3_title">Clear browser cache</strong><p data-i18n="l1_f3_desc">In browser settings, clear cookies and cache for lootlabs.gg. In Chrome: Settings → Privacy → Clear browsing data.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="l1_f4_title">Hard refresh the page</strong><p data-i18n="l1_f4_desc">Press <code>Ctrl+F5</code> (Windows) or <code>Cmd+Shift+R</code> (Mac) to reload without cache.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">5</div>
+                    <div class="fix-content"><strong data-i18n="l1_f5_title">Try a different browser</strong><p data-i18n="l1_f5_desc">If Chrome is freezing, try Firefox or Edge. Some browsers work better with LootLabs.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">6</div>
+                    <div class="fix-content"><strong data-i18n="l1_f6_title">Change your DNS</strong><p data-i18n="l1_f6_desc">Switch DNS to Google: <code>8.8.8.8 / 8.8.4.4</code> or Cloudflare: <code>1.1.1.1 / 1.0.0.1</code>.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blank page -->
+        <div class="faq-card" id="faq-l2">
+            <div class="faq-header" onclick="toggleFaq('faq-l2')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="l2_title">Page showing blank / white screen</div>
+                    <div class="faq-subtitle" data-i18n="l2_sub">Nothing visible on the LootLabs page</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="l2_f1_title">Disable ALL browser extensions</strong><p data-i18n="l2_f1_desc">Temporarily disable every extension. Ad blockers, privacy tools, and tracker blockers all cause blank screens on LootLabs.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="l2_f2_title">Disable VPN / Proxy</strong><p data-i18n="l2_f2_desc">Make sure no VPN or proxy is running in the background. Also check your phone's settings.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="l2_f3_title">Flush DNS cache</strong><p data-i18n="l2_f3_desc">On Windows: open Command Prompt and type <code>ipconfig /flushdns</code> → press Enter. Then retry.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="l2_f4_title">Use Incognito / Private mode</strong><p data-i18n="l2_f4_desc">Open an incognito window (<code>Ctrl+Shift+N</code>) and access LootLabs from there. This disables most extensions automatically.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks not completing -->
+        <div class="faq-card" id="faq-l3">
+            <div class="faq-header" onclick="toggleFaq('faq-l3')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="l3_title">Tasks not completing / download button missing</div>
+                    <div class="faq-subtitle" data-i18n="l3_sub">LootLabs tasks aren't being saved</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="l3_f1_title">Complete tasks properly</strong><p data-i18n="l3_f1_desc">Every task must be fully completed. For YouTube tasks: watch the entire video. For Discord tasks: actually join the server.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="l3_f2_title">Wait a few seconds after completing</strong><p data-i18n="l3_f2_desc">After finishing a task, wait 5–10 seconds before clicking "Done". The system needs time to verify.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="l3_f3_title">Do not use bypass tools</strong><p data-i18n="l3_f3_desc">Don't use any scripts or extensions to skip tasks — LootLabs detects this and blocks the download.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="l3_f4_title">Try mobile data</strong><p data-i18n="l3_f4_desc">If tasks won't save on Wi-Fi, switch to mobile data. Some home networks block the tracking pixels LootLabs uses.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slow loading -->
+        <div class="faq-card" id="faq-l4">
+            <div class="faq-header" onclick="toggleFaq('faq-l4')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="l4_title">LootLabs loading very slowly</div>
+                    <div class="faq-subtitle" data-i18n="l4_sub">Pages taking minutes to load</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="l4_f1_title">Check your internet speed</strong><p data-i18n="l4_f1_desc">LootLabs loads many ads. You need at least a stable 5 Mbps connection. Test your speed at fast.com or speedtest.net.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="l4_f2_title">Close other tabs</strong><p data-i18n="l4_f2_desc">Close all unnecessary browser tabs. Too many open tabs can slow down LootLabs ad loading.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="l4_f3_title">Switch DNS to Google</strong><p data-i18n="l4_f3_desc">Slow DNS resolution can cause delays. Set DNS to <code>8.8.8.8</code> for faster lookups.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="l4_f4_title">Try at a different time</strong><p data-i18n="l4_f4_desc">LootLabs servers may be congested during peak hours. Try downloading early morning or late at night.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Captcha issues -->
+        <div class="faq-card" id="faq-l5">
+            <div class="faq-header" onclick="toggleFaq('faq-l5')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="l5_title">CAPTCHA keeps appearing / failing</div>
+                    <div class="faq-subtitle" data-i18n="l5_sub">Verification loop on LootLabs</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="l5_f1_title">Disable VPN and try again</strong><p data-i18n="l5_f1_desc">CAPTCHAs appear more often with VPN IPs flagged as suspicious. Disable your VPN and refresh.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="l5_f2_title">Allow JavaScript</strong><p data-i18n="l5_f2_desc">Make sure JavaScript is enabled in your browser. CAPTCHAs won't load without it.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="l5_f3_title">Switch to a different network</strong><p data-i18n="l5_f3_desc">Try switching from Wi-Fi to mobile data, or vice versa. Your current IP may be flagged.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="l5_f4_title">Use a different browser</strong><p data-i18n="l5_f4_desc">Open the LootLabs link in a fresh browser that has no extensions installed.</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /panel-lootlabs -->
+
+    <!-- ══════════════════════════════════════════════
+         FAQ PANEL
+    ══════════════════════════════════════════════ -->
+    <div class="platform-panel" id="panel-faq">
+
+        <div class="section-label">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span class="section-label-text" data-i18n="faq_section_title">Frequently Asked Questions</span>
+            <div class="section-label-line"></div>
+        </div>
+
+        <div class="faq-card" id="faq-1">
+            <div class="faq-header" onclick="toggleFaq('faq-1')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq1_title">What's the difference between .mcaddon, .mcpack, .mctemplate, and .zip?</div>
+                    <div class="faq-subtitle" data-i18n="faq1_sub">Understanding all Minecraft file types</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                    <div class="fix-content"><strong>.mcaddon</strong><p data-i18n="faq1_mcaddon">A complete Add-On containing both a Behavior Pack and a Resource Pack in one file. This is the most common type for full mods.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+                    <div class="fix-content"><strong>.mcpack</strong><p data-i18n="faq1_mcpack">A single pack file — either a Skin Pack or a Texture/Resource Pack. Contains only one type of content.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+                    <div class="fix-content"><strong>.mctemplate</strong><p data-i18n="faq1_mctemplate">A World Template file that creates a ready-made world. Used for adventure maps, survival worlds, and game modes.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                    <div class="fix-content"><strong>.zip (Mash-Up)</strong><p data-i18n="faq1_zip">An archive containing multiple files — commonly used for Mash-Up packs that include a world + skins + textures all together. Extract the .zip first, then install each file inside separately.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-card" id="faq-2">
+            <div class="faq-header" onclick="toggleFaq('faq-2')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq2_title">Mod is crashing my game — what do I do?</div>
+                    <div class="faq-subtitle" data-i18n="faq2_sub">Game closes when entering a modded world</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step"><div class="fix-num">1</div><div class="fix-content"><strong data-i18n="faq2_f1_title">Check Minecraft version compatibility</strong><p data-i18n="faq2_f1_desc">The mod was built for a specific Minecraft version. Make sure you are using that exact version. Check the mod page on BNcraft for version info.</p></div></div>
+                <div class="fix-step"><div class="fix-num">2</div><div class="fix-content"><strong data-i18n="faq2_f2_title">Enable Experimental Gameplay</strong><p data-i18n="faq2_f2_desc">Go to world settings → Experiments → enable all relevant toggles. Many mods require experimental features to be turned on.</p></div></div>
+                <div class="fix-step"><div class="fix-num">3</div><div class="fix-content"><strong data-i18n="faq2_f3_title">Remove conflicting mods</strong><p data-i18n="faq2_f3_desc">Try disabling other active mods one by one. Two mods may be conflicting with each other.</p></div></div>
+                <div class="fix-step"><div class="fix-num">4</div><div class="fix-content"><strong data-i18n="faq2_f4_title">Reinstall the mod</strong><p data-i18n="faq2_f4_desc">Delete the pack from Minecraft storage and re-import the file fresh from BNcraft.</p></div></div>
+            </div>
+        </div>
+
+        <div class="faq-card" id="faq-3">
+            <div class="faq-header" onclick="toggleFaq('faq-3')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq3_title">I enabled the mod but nothing changed in my world</div>
+                    <div class="faq-subtitle" data-i18n="faq3_sub">Mod appears to do nothing</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step"><div class="fix-num">1</div><div class="fix-content"><strong data-i18n="faq3_f1_title">Enable BOTH Behavior Pack and Resource Pack</strong><p data-i18n="faq3_f1_desc">If the mod has two parts, both must be activated in the world settings. Go to world settings → Resource Packs → activate, AND → Behavior Packs → activate.</p></div></div>
+                <div class="fix-step"><div class="fix-num">2</div><div class="fix-content"><strong data-i18n="faq3_f2_title">Turn on Experimental Gameplay</strong><p data-i18n="faq3_f2_desc">In world settings → Experiments → enable the required toggles (Holiday Creator Features, etc.).</p></div></div>
+                <div class="fix-step"><div class="fix-num">3</div><div class="fix-content"><strong data-i18n="faq3_f3_title">Fully close and reopen Minecraft</strong><p data-i18n="faq3_f3_desc">Completely close Minecraft from your recent apps, then reopen. Some mods require a full restart to load.</p></div></div>
+            </div>
+        </div>
+
+        <div class="faq-card" id="faq-4">
+            <div class="faq-header" onclick="toggleFaq('faq-4')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq4_title">I downloaded the file but can't find it on my phone</div>
+                    <div class="faq-subtitle" data-i18n="faq4_sub">File downloaded but missing from storage</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step"><div class="fix-num">📱</div><div class="fix-content"><strong>Android</strong><p data-i18n="faq4_android">Open your File Manager → Downloads folder. On some Android phones, it may be in Internal Storage → Download. If still missing, try a different browser to download.</p></div></div>
+                <div class="fix-step"><div class="fix-num">🍎</div><div class="fix-content"><strong>iOS</strong><p data-i18n="faq4_ios">Open the Files app → Browse → Downloads. Or check in Safari's download manager (top right icon in Safari).</p></div></div>
+            </div>
+        </div>
+
+        <div class="faq-card" id="faq-5">
+            <div class="faq-header" onclick="toggleFaq('faq-5')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq5_title">"Duplicate Pack Detected" error</div>
+                    <div class="faq-subtitle" data-i18n="faq5_sub">Error when importing a mod</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step"><div class="fix-num">1</div><div class="fix-content"><strong data-i18n="faq5_f1_title">Delete the old version first</strong><p data-i18n="faq5_f1_desc">This mod is already installed. Go to Minecraft → Settings → Storage → Resource Packs (or Behavior Packs) → find the old version → delete it. Then re-import the new file.</p></div></div>
+            </div>
+        </div>
+
+        <div class="faq-card" id="faq-6">
+            <div class="faq-header" onclick="toggleFaq('faq-6')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M1 6s0-2 2-2c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2c2 0 2 2 2 2v13s0-2-2-2c-2 0-2 2-4 2s-2-2-4-2-2 2-4 2-2-2-2-2H1V6z"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="faq6_title">Do I need internet to use mods after installing?</div>
+                    <div class="faq-subtitle" data-i18n="faq6_sub">Playing offline with mods</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#00ff88" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="fix-content"><strong data-i18n="faq6_ans_title">No! Mods work completely offline.</strong><p data-i18n="faq6_ans_desc">Once a mod is installed and activated on a world, you can play fully offline. You only need internet to download mods from BNcraft. After installation, all mod files are stored locally on your device.</p></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /panel-faq -->
+
+    <!-- ══════════════════════════════════════════════
+         DISCORD BANNER
+    ══════════════════════════════════════════════ -->
+    <div class="discord-banner">
+        <span class="discord-banner-icon">💬</span>
+        <h3 data-i18n="discord_title">Still need help?</h3>
+        <p data-i18n="discord_desc">Join our Discord community for live support from the BNcraft team and community.</p>
+        <a href="https://discord.gg/KHdG3A7dtw" target="_blank" class="discord-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.01.041.028.053a19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+            <span data-i18n="discord_btn">Join Discord</span>
+        </a>
+    </div>
+
+</div><!-- /help-main -->
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<div class="social-footer">
+    <a href="https://www.youtube.com/@BNcraft_official" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075459680_orig.png" class="social-icon" alt="YouTube">
+    </a>
+    <a href="https://discord.gg/KHdG3A7dtw" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" class="social-icon" alt="Discord">
+    </a>
+    <a href="mailto:bncraft@email.com">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075920348_orig.png" class="social-icon" alt="Email">
+    </a>
+</div>
+<div class="footer-text">© 2026 BNcraft • Professional Mod Hub</div>
+
+<!-- ============================================================
+     SCRIPT
+============================================================ -->
+<script>
+// ============================================================
+// TRANSLATIONS
+// ============================================================
+// HOW TO ADD A NEW LANGUAGE:
+// 1. Copy one of the language blocks below (e.g. 'en')
+// 2. Paste it and rename the key (e.g. 'de' for German)
+// 3. Translate all the string values
+// 4. Add the button in the menu HTML above (search for "TO ADD A NEW LANGUAGE")
+// 5. Done! The system handles everything automatically.
+// ============================================================
+const LANG_CONFIG = {
+    en: { dir: 'ltr', name: 'English' },
+    tr: { dir: 'ltr', name: 'Türkçe' },
+    ar: { dir: 'rtl', name: 'العربية' }
+    // Add new language configs here, e.g:
+    // de: { dir: 'ltr', name: 'Deutsch' }
+};
+
+const TRANSLATIONS = {
+    en: {
+        nav_home: 'Home',
+        menu_home: 'Home',
+        menu_social: 'Social Media',
+        menu_tutorial: 'Tutorial',
+        menu_mods: 'Other Mods',
+        menu_language: 'Language',
+        menu_themes: 'Themes',
+        menu_help: 'Help Center',
+        theme_select: 'Select Theme',
+        hero_badge: 'Support Center',
+        hero_title: 'BNcraft <span>Help</span>',
+        hero_sub: 'Everything you need to install mods, fix issues, and get the most out of BNcraft.',
+        tab_android: 'Android',
+        tab_ios: 'iPhone / iOS',
+        tab_pc: 'Windows PC',
+        tab_lootlabs: 'LootLabs',
+        tab_faq: 'FAQ',
+        android_install_title: 'Android — Installation Guide',
+        android_mcaddon_title: 'Install .mcaddon File (Add-Ons)',
+        android_mcaddon_sub: 'Full add-on with behavior + resource pack',
+        a1_s1_title: 'Download the file',
+        a1_s1_desc: 'Download the Add-On (.mcaddon) file from the BNcraft website. It will be saved to your Downloads folder.',
+        a1_s2_title: 'Open with File Manager',
+        a1_s2_desc: "Open your phone's File Manager app and navigate to the Downloads folder.",
+        a1_s3_title: 'Tap the .mcaddon file once',
+        a1_s3_desc: 'Your phone will ask which app to open it with. Select Minecraft from the list.',
+        a1_s4_title: 'Wait for import to finish',
+        a1_s4_desc: 'Minecraft will open automatically and show "Import started…". Wait until you see "Successfully imported".',
+        a1_s5_title: 'Activate on your world',
+        a1_s5_desc: 'Create or edit a world → scroll to Resource Packs and Behavior Packs → enable both. Then tap Play.',
+        android_mcpack_title: 'Install .mcpack File (Skin / Texture Packs)',
+        android_mcpack_sub: 'Single pack — skins or textures only',
+        a2_s1_title: 'Download the .mcpack file',
+        a2_s1_desc: 'Download the skin pack or texture pack (.mcpack) from BNcraft. It saves to your Downloads folder.',
+        a2_s2_title: 'Tap the file to open',
+        a2_s2_desc: 'Open your File Manager, go to Downloads, tap the .mcpack file. Choose Minecraft when prompted.',
+        a2_s3_title: 'Confirm import success',
+        a2_s3_desc: 'Minecraft imports the pack and shows a success message. For skin packs: go to Appearance → select your new skin. For texture packs: activate in world settings under Resource Packs.',
+        android_mctemplate_title: 'Install .mctemplate File (World Templates)',
+        android_mctemplate_sub: 'Ready-made worlds and maps',
+        a3_s1_title: 'Download the .mctemplate',
+        a3_s1_desc: 'Get the World Template file from BNcraft. It saves to Downloads.',
+        a3_s2_title: 'Open with Minecraft',
+        a3_s2_desc: 'Tap the file in your File Manager and select Minecraft. The template will be imported.',
+        a3_s3_title: 'Find it in World Templates',
+        a3_s3_desc: 'In Minecraft, go to Create New World → Templates → My Templates. Select the template and create a new world from it.',
+        a3_note: 'World Templates create a brand new world — they do not modify an existing one.',
+        android_zip_title: 'Install .zip Archive (Mash-Ups)',
+        android_zip_sub: 'Bundle containing multiple file types',
+        android_zip_warn: 'A .zip Mash-Up contains multiple files inside (e.g. a world template + skin pack + texture pack). You must extract and install each file separately.',
+        a4_s1_title: 'Install ZArchiver',
+        a4_s1_desc: 'Download and install ZArchiver from the Google Play Store (free). This is the best tool to extract .zip files on Android.',
+        a4_s2_title: 'Open the .zip with ZArchiver',
+        a4_s2_desc: 'Open ZArchiver, navigate to your Downloads folder, and tap the .zip file. Select "Extract here" or "Extract to folder".',
+        a4_s3_title: 'Identify the files inside',
+        a4_s3_desc: 'After extraction you will find files like: .mctemplate .mcpack .mcaddon. Install each one by tapping it and choosing Minecraft.',
+        a4_s4_title: 'Install in the correct order',
+        a4_s4_desc: 'Recommended order: first the world template (.mctemplate), then texture/skin packs (.mcpack), then add-ons (.mcaddon).',
+        android_zarch_title: 'ZArchiver: Apps Not Showing in "Date" Tab',
+        android_zarch_sub: 'Files visible in Date section but can\'t open in Minecraft',
+        android_zarch_info: 'This happens because Android restricts access to the Downloads folder from certain apps. ZArchiver needs special storage permission to see files there.',
+        az_s1_title: 'Grant Full Storage Access to ZArchiver',
+        az_s1_desc: 'Go to Phone Settings → Apps → ZArchiver → Permissions → Storage → choose "Allow access to manage all files". Restart ZArchiver.',
+        az_s2_title: 'Move the file to Internal Storage root',
+        az_s2_desc: 'In ZArchiver, move your file out of Downloads and into the root of Internal Storage. Try opening it from there.',
+        az_s3_title: 'Still not working? Use Shizuku',
+        az_s3_desc: 'If neither fix works, Shizuku gives apps elevated access to the file system without rooting. Follow the guide below.',
+        shizuku_title: 'Shizuku Setup Guide',
+        shizuku_warn: 'Shizuku requires ADB (Android Debug Bridge) from a PC or wireless ADB on Android 11+. No root needed.',
+        sh_s1_title: 'Install Shizuku',
+        sh_s1_desc: 'Download Shizuku from Google Play Store. It\'s free and safe.',
+        sh_s2_title: 'Enable Developer Options on your phone',
+        sh_s2_desc: 'Go to Settings → About Phone → tap "Build Number" 7 times. Developer Options will appear in Settings.',
+        sh_s3_title: 'Wireless ADB (Android 11+) — No PC needed',
+        sh_s3_desc: 'Go to Settings → Developer Options → enable "Wireless debugging". Tap "Wireless debugging" → "Pair device with pairing code". Note the IP, port, and code. Back in Shizuku → tap "Pairing" → enter those details. Then tap "Start via Wireless ADB".',
+        sh_s4_title: 'Using a PC (ADB method)',
+        sh_s4_desc: 'Install ADB on your PC. Connect phone via USB with USB Debugging enabled. Run: adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh — Shizuku will activate.',
+        sh_s5_title: 'Grant ZArchiver permission in Shizuku',
+        sh_s5_desc: 'Once Shizuku is running (green indicator), open ZArchiver → it will ask for Shizuku permission → tap Allow. ZArchiver can now access all files including the Downloads folder.',
+        ios_install_title: 'iPhone / iOS — Installation Guide',
+        ios_mcaddon_title: 'Install .mcaddon / .mcpack File',
+        ios_mcaddon_sub: 'Add-ons, skins, and texture packs',
+        ios1_s1_title: 'Download the file in Safari or Chrome',
+        ios1_s1_desc: 'Download the .mcaddon or .mcpack file from BNcraft. When the download finishes, tap the download icon in the top right of your browser.',
+        ios1_s2_title: 'Tap the file → Share → Copy to Minecraft',
+        ios1_s2_desc: 'In the Downloads panel, tap the file. Then tap the Share icon (box with arrow) → scroll and select "Copy to Minecraft". Minecraft will open and import it automatically.',
+        ios1_s3_title: 'Alternative: Open with Files app',
+        ios1_s3_desc: 'Open the Files app → Browse → Downloads → long-press the file → Share → Copy to Minecraft.',
+        ios1_s4_title: 'Activate in world settings',
+        ios1_s4_desc: 'After import, create or edit a world in Minecraft. Activate the pack under Resource Packs / Behavior Packs.',
+        ios_safari_note: 'Always use Safari on iOS for the best download experience. Chrome may block certain file types.',
+        ios_mctemplate_title: 'Install .mctemplate (World Templates)',
+        ios_mctemplate_sub: 'Ready-made worlds for iPhone',
+        ios2_s1_title: 'Download the .mctemplate in Safari',
+        ios2_s1_desc: 'Download from BNcraft using Safari. The file will appear in your Downloads.',
+        ios2_s2_title: 'Open with Minecraft via Share',
+        ios2_s2_desc: 'Tap the file → Share button → Copy to Minecraft. Minecraft imports the template.',
+        ios2_s3_title: 'Create world from template',
+        ios2_s3_desc: 'In Minecraft: Create New World → Templates → My Templates. Choose the template and tap Create.',
+        ios_zip_title: 'Install .zip Archive (Mash-Ups)',
+        ios_zip_sub: 'Extract and install multiple files',
+        ios3_s1_title: 'Download the .zip in Safari',
+        ios3_s1_desc: 'Download the Mash-Up .zip from BNcraft using Safari.',
+        ios3_s2_title: 'Extract using the Files app',
+        ios3_s2_desc: 'Open Files app → Downloads → tap the .zip file once. iOS will automatically extract it into a folder.',
+        ios3_s3_title: 'Install each file inside',
+        ios3_s3_desc: 'Open the extracted folder. For each .mctemplate, .mcpack, or .mcaddon file: long-press → Share → Copy to Minecraft.',
+        pc_install_title: 'Windows PC — Installation Guide',
+        pc_auto_title: 'Quick Install: .mcaddon / .mcpack (Double-click)',
+        pc_auto_sub: 'Fastest method — works for most files',
+        pc1_s1_title: 'Download the file',
+        pc1_s1_desc: 'Download the .mcaddon or .mcpack file from BNcraft. It will be in your Downloads folder.',
+        pc1_s2_title: 'Double-click the file',
+        pc1_s2_desc: 'Double-click the file. Windows will open it with Minecraft automatically. The pack imports and you will see a success notification.',
+        pc1_s3_title: 'Activate in world',
+        pc1_s3_desc: 'Create or edit a world in Minecraft → activate the pack under Resource Packs / Behavior Packs.',
+        pc_manual_title: 'Manual Install (Without Double-Clicking)',
+        pc_manual_sub: 'Full guide — behavior packs, resource packs, worlds',
+        pc_manual_info: 'This method works when double-clicking fails, or when you want to install files directly without opening Minecraft.',
+        pm_s1_title: 'Rename the file extension to .zip',
+        pm_s1_desc: 'Example: rename TrainHouse(skin_pack).mcpack → TrainHouse(skin_pack).zip. Right-click the file → Rename. If you don\'t see the extension, open File Explorer → View → check "File name extensions".',
+        pm_s2_title: 'Extract the .zip',
+        pm_s2_desc: 'Right-click the renamed .zip → "Extract All". Extract to a folder you can find easily, like your Desktop.',
+        pm_s3_title: 'Find the correct Minecraft folder',
+        pm_s3_desc: 'Press Win+R → type the com.mojang path → press Enter. This is the Minecraft data folder.',
+        pm_s4_title: 'Copy to the right subfolder',
+        pm_s4_desc: 'Copy the extracted folder to the correct location based on what type of pack it is:',
+        pm_resource_label: 'Resource Pack / Texture Pack / Skin Pack (.mcpack):',
+        pm_behavior_label: 'Behavior Pack (.mcaddon behavior part):',
+        pm_addon_label: 'For .mcaddon files (contains BOTH packs)',
+        pm_addon_info: 'A .mcaddon file contains TWO folders inside: one behavior pack folder and one resource pack folder. After extracting, copy the behavior pack folder to behavior_packs and the resource pack folder to resource_packs.',
+        pm_template_label: 'For .mctemplate files (World Templates)',
+        pmt_s1_title: 'Rename to .zip and extract',
+        pmt_s1_desc: 'Rename the .mctemplate file to .zip → extract it. The extracted folder is your world data.',
+        pmt_s2_title: 'Copy to minecraftWorlds',
+        pmt_s2_desc: 'Copy the extracted folder into:',
+        pmt_s3_title: 'Open Minecraft and find the world',
+        pmt_s3_desc: 'Open Minecraft → Play → the world will appear in your worlds list.',
+        pm_multizip_label: 'For .zip Mash-Up (Multiple files inside)',
+        pm_multizip_warn: 'A Mash-Up .zip contains several different pack types inside. Each needs to go to its own folder. Extract the .zip first, then handle each sub-folder separately.',
+        pmz_s1_title: 'Extract the main .zip',
+        pmz_s1_desc: 'Right-click → Extract All. You will see multiple folders/files inside.',
+        pmz_s2_title: 'Identify each folder type',
+        pmz_s2_desc: 'Look inside each sub-folder for a manifest.json file. "type": "resources" → resource_packs. "type": "data" → behavior_packs. Has level.dat → world → minecraftWorlds.',
+        pmz_s3_title: 'Copy each to the correct folder',
+        pmz_s3_desc: 'Place each identified folder into the matching Minecraft directory.',
+        pc_template_title: 'Install .mctemplate (Quick Method)',
+        pc_template_sub: 'Double-click import for world templates',
+        pct_s1_title: 'Download the .mctemplate',
+        pct_s1_desc: 'Download from BNcraft. Find it in your Downloads folder.',
+        pct_s2_title: 'Double-click to import',
+        pct_s2_desc: 'Double-click the .mctemplate file. Minecraft will open and import it as a world template.',
+        pct_s3_title: 'Create world from template',
+        pct_s3_desc: 'In Minecraft → Create New World → Templates → My Templates → select and create.',
+        loot_section_title: 'LootLabs — Troubleshooting',
+        l1_title: 'Screen freezing / page stuck loading',
+        l1_sub: 'LootLabs page won\'t load or stays blank',
+        l1_f1_title: 'Turn OFF your VPN',
+        l1_f1_desc: 'If you have an active VPN, disable it. LootLabs blocks many VPN IP addresses, causing the page to freeze or stay blank. This is the #1 fix.',
+        l1_f2_title: 'Disable ad blockers',
+        l1_f2_desc: 'LootLabs relies on ads to function. Disable AdBlock, uBlock Origin, or any ad blocker extension specifically for lootlabs.gg.',
+        l1_f3_title: 'Clear browser cache',
+        l1_f3_desc: 'In browser settings, clear cookies and cache for lootlabs.gg. In Chrome: Settings → Privacy → Clear browsing data.',
+        l1_f4_title: 'Hard refresh the page',
+        l1_f4_desc: 'Press Ctrl+F5 (Windows) or Cmd+Shift+R (Mac) to reload without cache.',
+        l1_f5_title: 'Try a different browser',
+        l1_f5_desc: 'If Chrome is freezing, try Firefox or Edge.',
+        l1_f6_title: 'Change your DNS',
+        l1_f6_desc: 'Switch DNS to Google: 8.8.8.8 / 8.8.4.4 or Cloudflare: 1.1.1.1 / 1.0.0.1.',
+        l2_title: 'Page showing blank / white screen',
+        l2_sub: 'Nothing visible on the LootLabs page',
+        l2_f1_title: 'Disable ALL browser extensions',
+        l2_f1_desc: 'Temporarily disable every extension. Ad blockers, privacy tools, and tracker blockers all cause blank screens on LootLabs.',
+        l2_f2_title: 'Disable VPN / Proxy',
+        l2_f2_desc: 'Make sure no VPN or proxy is running in the background. Also check your phone\'s settings.',
+        l2_f3_title: 'Flush DNS cache',
+        l2_f3_desc: 'On Windows: open Command Prompt and type ipconfig /flushdns → press Enter. Then retry.',
+        l2_f4_title: 'Use Incognito / Private mode',
+        l2_f4_desc: 'Open an incognito window (Ctrl+Shift+N) and access LootLabs from there.',
+        l3_title: 'Tasks not completing / download button missing',
+        l3_sub: 'LootLabs tasks aren\'t being saved',
+        l3_f1_title: 'Complete tasks properly',
+        l3_f1_desc: 'Every task must be fully completed. For YouTube tasks: watch the entire video. For Discord tasks: actually join the server.',
+        l3_f2_title: 'Wait a few seconds after completing',
+        l3_f2_desc: 'After finishing a task, wait 5–10 seconds before clicking "Done". The system needs time to verify.',
+        l3_f3_title: 'Do not use bypass tools',
+        l3_f3_desc: 'Don\'t use any scripts or extensions to skip tasks — LootLabs detects this and blocks the download.',
+        l3_f4_title: 'Try mobile data',
+        l3_f4_desc: 'If tasks won\'t save on Wi-Fi, switch to mobile data. Some home networks block the tracking pixels LootLabs uses.',
+        l4_title: 'LootLabs loading very slowly',
+        l4_sub: 'Pages taking minutes to load',
+        l4_f1_title: 'Check your internet speed',
+        l4_f1_desc: 'LootLabs loads many ads. You need at least a stable 5 Mbps connection. Test at fast.com or speedtest.net.',
+        l4_f2_title: 'Close other tabs',
+        l4_f2_desc: 'Close all unnecessary browser tabs. Too many open tabs can slow down LootLabs ad loading.',
+        l4_f3_title: 'Switch DNS to Google',
+        l4_f3_desc: 'Slow DNS resolution can cause delays. Set DNS to 8.8.8.8 for faster lookups.',
+        l4_f4_title: 'Try at a different time',
+        l4_f4_desc: 'LootLabs servers may be congested during peak hours. Try early morning or late at night.',
+        l5_title: 'CAPTCHA keeps appearing / failing',
+        l5_sub: 'Verification loop on LootLabs',
+        l5_f1_title: 'Disable VPN and try again',
+        l5_f1_desc: 'CAPTCHAs appear more often with VPN IPs flagged as suspicious. Disable your VPN and refresh.',
+        l5_f2_title: 'Allow JavaScript',
+        l5_f2_desc: 'Make sure JavaScript is enabled in your browser. CAPTCHAs won\'t load without it.',
+        l5_f3_title: 'Switch to a different network',
+        l5_f3_desc: 'Try switching from Wi-Fi to mobile data, or vice versa. Your current IP may be flagged.',
+        l5_f4_title: 'Use a different browser',
+        l5_f4_desc: 'Open the LootLabs link in a fresh browser that has no extensions installed.',
+        faq_section_title: 'Frequently Asked Questions',
+        faq1_title: 'What\'s the difference between .mcaddon, .mcpack, .mctemplate, and .zip?',
+        faq1_sub: 'Understanding all Minecraft file types',
+        faq1_mcaddon: 'A complete Add-On containing both a Behavior Pack and a Resource Pack in one file. The most common type for full mods.',
+        faq1_mcpack: 'A single pack file — either a Skin Pack or a Texture/Resource Pack. Contains only one type of content.',
+        faq1_mctemplate: 'A World Template file that creates a ready-made world. Used for adventure maps, survival worlds, and game modes.',
+        faq1_zip: 'An archive containing multiple files — commonly used for Mash-Up packs with a world + skins + textures. Extract the .zip first, then install each file inside.',
+        faq2_title: 'Mod is crashing my game — what do I do?',
+        faq2_sub: 'Game closes when entering a modded world',
+        faq2_f1_title: 'Check Minecraft version compatibility',
+        faq2_f1_desc: 'The mod was built for a specific Minecraft version. Use that exact version.',
+        faq2_f2_title: 'Enable Experimental Gameplay',
+        faq2_f2_desc: 'Go to world settings → Experiments → enable all relevant toggles.',
+        faq2_f3_title: 'Remove conflicting mods',
+        faq2_f3_desc: 'Try disabling other active mods one by one to find conflicts.',
+        faq2_f4_title: 'Reinstall the mod',
+        faq2_f4_desc: 'Delete the pack from Minecraft storage and re-import the file fresh.',
+        faq3_title: 'I enabled the mod but nothing changed in my world',
+        faq3_sub: 'Mod appears to do nothing',
+        faq3_f1_title: 'Enable BOTH Behavior Pack and Resource Pack',
+        faq3_f1_desc: 'If the mod has two parts, both must be activated. Go to world settings → Resource Packs → activate, AND → Behavior Packs → activate.',
+        faq3_f2_title: 'Turn on Experimental Gameplay',
+        faq3_f2_desc: 'In world settings → Experiments → enable the required toggles.',
+        faq3_f3_title: 'Fully close and reopen Minecraft',
+        faq3_f3_desc: 'Completely close Minecraft from recent apps, then reopen. Some mods require a full restart.',
+        faq4_title: 'I downloaded the file but can\'t find it on my phone',
+        faq4_sub: 'File downloaded but missing from storage',
+        faq4_android: 'Open your File Manager → Downloads folder. On some Android phones, check Internal Storage → Download. If missing, try a different browser.',
+        faq4_ios: 'Open the Files app → Browse → Downloads. Or check Safari\'s download manager (top right icon).',
+        faq5_title: '"Duplicate Pack Detected" error',
+        faq5_sub: 'Error when importing a mod',
+        faq5_f1_title: 'Delete the old version first',
+        faq5_f1_desc: 'This mod is already installed. Go to Minecraft → Settings → Storage → Resource Packs or Behavior Packs → find the old version → delete it. Then re-import.',
+        faq6_title: 'Do I need internet to use mods after installing?',
+        faq6_sub: 'Playing offline with mods',
+        faq6_ans_title: 'No! Mods work completely offline.',
+        faq6_ans_desc: 'Once a mod is installed and activated on a world, you can play fully offline. You only need internet to download mods from BNcraft. After installation, all files are stored locally.',
+        discord_title: 'Still need help?',
+        discord_desc: 'Join our Discord community for live support from the BNcraft team and community.',
+        discord_btn: 'Join Discord'
+    },
+
+    tr: {
+        nav_home: 'Ana Sayfa',
+        menu_home: 'Ana Sayfa',
+        menu_social: 'Sosyal Medya',
+        menu_tutorial: 'Nasıl Yapılır',
+        menu_mods: 'Diğer Modlar',
+        menu_language: 'Dil',
+        menu_themes: 'Temalar',
+        menu_help: 'Yardım Merkezi',
+        theme_select: 'Tema Seç',
+        hero_badge: 'Destek Merkezi',
+        hero_title: 'BNcraft <span>Yardım</span>',
+        hero_sub: 'Mod yüklemek, sorunları çözmek ve BNcraft\'tan en iyi şekilde yararlanmak için ihtiyacınız olan her şey.',
+        tab_android: 'Android',
+        tab_ios: 'iPhone / iOS',
+        tab_pc: 'Windows PC',
+        tab_lootlabs: 'LootLabs',
+        tab_faq: 'SSS',
+        android_install_title: 'Android — Kurulum Rehberi',
+        android_mcaddon_title: '.mcaddon Dosyası Kurma (Add-Ons)',
+        android_mcaddon_sub: 'Behavior + resource pack içeren tam eklenti',
+        a1_s1_title: 'Dosyayı indirin',
+        a1_s1_desc: 'BNcraft web sitesinden Add-On (.mcaddon) dosyasını indirin. İndirilenler (Downloads) klasörüne kaydedilecektir.',
+        a1_s2_title: 'Dosya Yöneticisi ile açın',
+        a1_s2_desc: 'Telefonunuzun Dosya Yöneticisi uygulamasını açın ve İndirilenler klasörüne gidin.',
+        a1_s3_title: '.mcaddon dosyasına bir kez dokunun',
+        a1_s3_desc: 'Telefonunuz hangi uygulama ile açmak istediğinizi soracaktır. Listeden Minecraft\'ı seçin.',
+        a1_s4_title: 'İçe aktarmayı bekleyin',
+        a1_s4_desc: 'Minecraft otomatik olarak açılacak ve "İçe aktarma başladı..." yazısını gösterecektir. "Başarıyla içe aktarıldı" yazısını görene kadar bekleyin.',
+        a1_s5_title: 'Dünyada etkinleştirin',
+        a1_s5_desc: 'Bir dünya oluşturun veya düzenleyin → Kaynak Paketleri ve Davranış Paketleri\'ne kaydırın → ikisini de etkinleştirin. Ardından Oyna\'ya basın.',
+        android_mcpack_title: '.mcpack Dosyası Kurma (Skin / Doku Paketleri)',
+        android_mcpack_sub: 'Tek paket — yalnızca skin veya doku',
+        a2_s1_title: '.mcpack dosyasını indirin',
+        a2_s1_desc: 'BNcraft\'tan skin paketi veya doku paketi (.mcpack) dosyasını indirin. İndirilenler klasörüne kaydedilir.',
+        a2_s2_title: 'Dosyaya dokunarak açın',
+        a2_s2_desc: 'Dosya Yöneticisini açın, İndirilenler\'e gidin, .mcpack dosyasına dokunun. İstendiğinde Minecraft\'ı seçin.',
+        a2_s3_title: 'Başarılı içe aktarmayı onaylayın',
+        a2_s3_desc: 'Minecraft paketi içe aktarır ve başarı mesajı gösterir. Skin paketleri için: Görünüm\'e gidin → yeni skininizi seçin. Doku paketleri için: dünya ayarlarında Kaynak Paketleri altında etkinleştirin.',
+        android_mctemplate_title: '.mctemplate Dosyası Kurma (Dünya Şablonları)',
+        android_mctemplate_sub: 'Hazır dünyalar ve haritalar',
+        a3_s1_title: '.mctemplate dosyasını indirin',
+        a3_s1_desc: 'BNcraft\'tan Dünya Şablonu dosyasını alın. İndirilenler klasörüne kaydedilir.',
+        a3_s2_title: 'Minecraft ile açın',
+        a3_s2_desc: 'Dosya Yöneticisinde dosyaya dokunun ve Minecraft\'ı seçin. Şablon içe aktarılacaktır.',
+        a3_s3_title: 'Dünya Şablonlarında bulun',
+        a3_s3_desc: 'Minecraft\'ta Yeni Dünya Oluştur → Şablonlar → Şablonlarım\'a gidin. Şablonu seçin ve ondan yeni bir dünya oluşturun.',
+        a3_note: 'Dünya Şablonları yeni bir dünya oluşturur — mevcut bir dünyayı değiştirmez.',
+        android_zip_title: '.zip Arşivi Kurma (Mash-Ups)',
+        android_zip_sub: 'Birden fazla dosya türü içeren paket',
+        android_zip_warn: 'Bir .zip Mash-Up, içinde birden fazla dosya barındırır (örn. dünya şablonu + skin paketi + doku paketi). Her dosyayı ayrı ayrı çıkarıp kurmanız gerekir.',
+        a4_s1_title: 'ZArchiver\'ı yükleyin',
+        a4_s1_desc: 'Google Play Store\'dan ZArchiver\'ı ücretsiz indirip yükleyin. Android\'de .zip dosyalarını açmak için en iyi araçtır.',
+        a4_s2_title: '.zip dosyasını ZArchiver ile açın',
+        a4_s2_desc: 'ZArchiver\'ı açın, İndirilenler klasörüne gidin ve .zip dosyasına dokunun. "Buraya çıkar" veya "Klasöre çıkar"ı seçin.',
+        a4_s3_title: 'İçindeki dosyaları tanımlayın',
+        a4_s3_desc: 'Çıkarma sonrasında şunlar gibi dosyalar göreceksiniz: .mctemplate .mcpack .mcaddon. Her birine dokunarak Minecraft\'ı seçin.',
+        a4_s4_title: 'Doğru sırayla yükleyin',
+        a4_s4_desc: 'Önerilen sıra: önce dünya şablonu (.mctemplate), sonra doku/skin paketleri (.mcpack), sonra eklentiler (.mcaddon).',
+        android_zarch_title: 'ZArchiver: "Tarih" Sekmesinde Uygulamalar Görünmüyor',
+        android_zarch_sub: 'Dosyalar Tarih bölümünde görünüyor ama Minecraft ile açılamıyor',
+        android_zarch_info: 'Bu sorun, Android\'in belirli uygulamaların İndirilenler klasörüne erişimini kısıtlamasından kaynaklanır. ZArchiver\'ın dosyaları görmesi için özel depolama izni gerekir.',
+        az_s1_title: 'ZArchiver\'a Tam Depolama Erişimi Ver',
+        az_s1_desc: 'Telefon Ayarları → Uygulamalar → ZArchiver → İzinler → Depolama → "Tüm dosyaları yönetmeye izin ver"i seçin. ZArchiver\'ı yeniden başlatın.',
+        az_s2_title: 'Dosyayı İç Depolama köküne taşıyın',
+        az_s2_desc: 'ZArchiver\'da dosyanızı İndirilenler\'den çıkarıp İç Depolama\'nın köküne taşıyın. Oradan açmayı deneyin.',
+        az_s3_title: 'Hâlâ çalışmıyor mu? Shizuku kullanın',
+        az_s3_desc: 'Hiçbir çözüm işe yaramazsa Shizuku, root yapmadan uygulamalara yüksek dosya sistemi erişimi sağlar. Aşağıdaki rehberi izleyin.',
+        shizuku_title: 'Shizuku Kurulum Rehberi',
+        shizuku_warn: 'Shizuku, PC\'den ADB (Android Debug Bridge) veya Android 11+ için kablosuz ADB gerektirir. Root gerekmez.',
+        sh_s1_title: 'Shizuku\'yu yükleyin',
+        sh_s1_desc: 'Google Play Store\'dan Shizuku\'yu indirin. Ücretsiz ve güvenlidir.',
+        sh_s2_title: 'Telefonunuzda Geliştirici Seçeneklerini etkinleştirin',
+        sh_s2_desc: 'Ayarlar → Telefon Hakkında → "Derleme Numarası"na 7 kez dokunun. Geliştirici Seçenekleri Ayarlar\'da görünecektir.',
+        sh_s3_title: 'Kablosuz ADB (Android 11+) — PC gerekmez',
+        sh_s3_desc: 'Ayarlar → Geliştirici Seçenekleri → "Kablosuz hata ayıklama"yı etkinleştirin. "Kablosuz hata ayıklama" → "Eşleştirme kodu ile cihaz eşleştir"e dokunun. IP, port ve kodu not edin. Shizuku\'da → "Eşleştirme"ye dokunun → bilgileri girin. Ardından "Kablosuz ADB ile başlat"a dokunun.',
+        sh_s4_title: 'PC kullanarak (ADB yöntemi)',
+        sh_s4_desc: 'PC\'nize ADB yükleyin. USB Hata Ayıklama etkinken telefonu USB ile bağlayın. Şunu çalıştırın: adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh — Shizuku etkinleşecek.',
+        sh_s5_title: 'Shizuku\'da ZArchiver\'a izin verin',
+        sh_s5_desc: 'Shizuku çalışırken (yeşil gösterge) ZArchiver\'ı açın → Shizuku izni isteyecek → İzin Ver\'e dokunun. ZArchiver artık İndirilenler klasörü dahil tüm dosyalara erişebilir.',
+        ios_install_title: 'iPhone / iOS — Kurulum Rehberi',
+        ios_mcaddon_title: '.mcaddon / .mcpack Dosyası Kurma',
+        ios_mcaddon_sub: 'Eklentiler, skinler ve doku paketleri',
+        ios1_s1_title: 'Dosyayı Safari veya Chrome ile indirin',
+        ios1_s1_desc: 'BNcraft\'tan .mcaddon veya .mcpack dosyasını indirin. İndirme tamamlandığında tarayıcınızın sağ üstündeki indirme simgesine dokunun.',
+        ios1_s2_title: 'Dosyaya dokunun → Paylaş → Minecraft\'a Kopyala',
+        ios1_s2_desc: 'İndirilenler panelinde dosyaya dokunun. Ardından Paylaş simgesine (ok çıkan kutu) dokunun → kaydırın ve "Minecraft\'a Kopyala"yı seçin. Minecraft açılıp otomatik olarak içe aktarır.',
+        ios1_s3_title: 'Alternatif: Dosyalar uygulaması ile açın',
+        ios1_s3_desc: 'Dosyalar uygulamasını açın → Gözat → İndirilenler → dosyaya uzun basın → Paylaş → Minecraft\'a Kopyala.',
+        ios1_s4_title: 'Dünya ayarlarında etkinleştirin',
+        ios1_s4_desc: 'İçe aktarmadan sonra Minecraft\'ta bir dünya oluşturun veya düzenleyin. Paketi Kaynak Paketleri / Davranış Paketleri altında etkinleştirin.',
+        ios_safari_note: 'iOS\'ta en iyi indirme deneyimi için her zaman Safari kullanın. Chrome bazı dosya türlerini engelleyebilir.',
+        ios_mctemplate_title: '.mctemplate Kurma (Dünya Şablonları)',
+        ios_mctemplate_sub: 'iPhone için hazır dünyalar',
+        ios2_s1_title: 'Safari ile .mctemplate indirin',
+        ios2_s1_desc: 'Safari kullanarak BNcraft\'tan indirin. Dosya İndirilenler\'de görünecektir.',
+        ios2_s2_title: 'Paylaş aracılığıyla Minecraft ile açın',
+        ios2_s2_desc: 'Dosyaya dokunun → Paylaş düğmesi → Minecraft\'a Kopyala. Minecraft şablonu içe aktarır.',
+        ios2_s3_title: 'Şablondan dünya oluşturun',
+        ios2_s3_desc: 'Minecraft\'ta: Yeni Dünya Oluştur → Şablonlar → Şablonlarım. Şablonu seçin ve Oluştur\'a dokunun.',
+        ios_zip_title: '.zip Arşivi Kurma (Mash-Ups)',
+        ios_zip_sub: 'Birden fazla dosyayı çıkarın ve kurun',
+        ios3_s1_title: 'Safari ile .zip indirin',
+        ios3_s1_desc: 'Safari kullanarak BNcraft\'tan Mash-Up .zip dosyasını indirin.',
+        ios3_s2_title: 'Dosyalar uygulaması ile çıkarın',
+        ios3_s2_desc: 'Dosyalar uygulamasını açın → İndirilenler → .zip dosyasına bir kez dokunun. iOS otomatik olarak bir klasöre çıkarır.',
+        ios3_s3_title: 'İçindeki her dosyayı kurun',
+        ios3_s3_desc: 'Çıkarılan klasörü açın. Her .mctemplate, .mcpack veya .mcaddon dosyası için: uzun basın → Paylaş → Minecraft\'a Kopyala.',
+        pc_install_title: 'Windows PC — Kurulum Rehberi',
+        pc_auto_title: 'Hızlı Kurulum: .mcaddon / .mcpack (Çift Tıklama)',
+        pc_auto_sub: 'En hızlı yöntem — çoğu dosya için çalışır',
+        pc1_s1_title: 'Dosyayı indirin',
+        pc1_s1_desc: 'BNcraft\'tan .mcaddon veya .mcpack dosyasını indirin. İndirilenler klasöründe olacak.',
+        pc1_s2_title: 'Dosyaya çift tıklayın',
+        pc1_s2_desc: 'Dosyaya çift tıklayın. Windows otomatik olarak Minecraft ile açacak. Paket içe aktarılır ve başarı bildirimi görürsünüz.',
+        pc1_s3_title: 'Dünyada etkinleştirin',
+        pc1_s3_desc: 'Minecraft\'ta bir dünya oluşturun veya düzenleyin → paketi Kaynak Paketleri / Davranış Paketleri altında etkinleştirin.',
+        pc_manual_title: 'Manuel Kurulum (Çift Tıklama Olmadan)',
+        pc_manual_sub: 'Tam rehber — behavior, resource paketleri ve dünyalar',
+        pc_manual_info: 'Bu yöntem çift tıklama başarısız olduğunda veya dosyaları Minecraft\'ı açmadan doğrudan yüklemek istediğinizde kullanılır.',
+        pm_s1_title: 'Dosya uzantısını .zip olarak yeniden adlandırın',
+        pm_s1_desc: 'Örnek: TrainHouse(skin_pack).mcpack → TrainHouse(skin_pack).zip olarak yeniden adlandırın. Dosyaya sağ tıklayın → Yeniden Adlandır. Uzantıyı görmüyorsanız Dosya Gezgini → Görünüm → "Dosya adı uzantıları"nı işaretleyin.',
+        pm_s2_title: '.zip dosyasını çıkarın',
+        pm_s2_desc: 'Yeniden adlandırılan .zip\'e sağ tıklayın → "Tümünü Çıkar". Masaüstünüz gibi kolayca bulabileceğiniz bir klasöre çıkarın.',
+        pm_s3_title: 'Doğru Minecraft klasörünü bulun',
+        pm_s3_desc: 'Win+R tuşlarına basın → com.mojang yolunu yazın → Enter\'a basın. Bu Minecraft veri klasörüdür.',
+        pm_s4_title: 'Doğru alt klasöre kopyalayın',
+        pm_s4_desc: 'Çıkarılan klasörü, paketin türüne göre doğru konuma kopyalayın:',
+        pm_resource_label: 'Kaynak Paketi / Doku Paketi / Skin Paketi (.mcpack):',
+        pm_behavior_label: 'Davranış Paketi (.mcaddon behavior bölümü):',
+        pm_addon_label: '.mcaddon dosyaları için (İKİ paketi de içerir)',
+        pm_addon_info: 'Bir .mcaddon dosyasının içinde İKİ klasör bulunur: biri behavior pack, diğeri resource pack klasörü. Çıkardıktan sonra behavior pack klasörünü behavior_packs\'a, resource pack klasörünü resource_packs\'a kopyalayın.',
+        pm_template_label: '.mctemplate dosyaları için (Dünya Şablonları)',
+        pmt_s1_title: '.zip olarak yeniden adlandırın ve çıkarın',
+        pmt_s1_desc: '.mctemplate dosyasını .zip olarak yeniden adlandırın → çıkarın. Çıkarılan klasör dünya verinizdir.',
+        pmt_s2_title: 'minecraftWorlds\'e kopyalayın',
+        pmt_s2_desc: 'Çıkarılan klasörü şuraya kopyalayın:',
+        pmt_s3_title: 'Minecraft\'ı açın ve dünyayı bulun',
+        pmt_s3_desc: 'Minecraft\'ı açın → Oyna → dünya listenizde görünecektir.',
+        pm_multizip_label: '.zip Mash-Up için (İçinde birden fazla dosya)',
+        pm_multizip_warn: 'Bir Mash-Up .zip, içinde farklı paket türleri barındırır. Her biri kendi klasörüne gitmek zorundadır. Önce .zip\'i çıkarın, ardından her alt klasörü ayrı ayrı ele alın.',
+        pmz_s1_title: 'Ana .zip\'i çıkarın',
+        pmz_s1_desc: 'Sağ tıklayın → Tümünü Çıkar. İçinde birden fazla klasör/dosya göreceksiniz.',
+        pmz_s2_title: 'Her klasör türünü tanımlayın',
+        pmz_s2_desc: 'Her alt klasörde manifest.json dosyasını açın. "type": "resources" → resource_packs. "type": "data" → behavior_packs. level.dat içeriyorsa → dünya → minecraftWorlds.',
+        pmz_s3_title: 'Her birini doğru klasöre kopyalayın',
+        pmz_s3_desc: 'Her tanımlanan klasörü ilgili Minecraft dizinine yerleştirin.',
+        pc_template_title: '.mctemplate Kurma (Hızlı Yöntem)',
+        pc_template_sub: 'Dünya şablonları için çift tıklama ile içe aktarma',
+        pct_s1_title: '.mctemplate dosyasını indirin',
+        pct_s1_desc: 'BNcraft\'tan indirin. İndirilenler klasörünüzde bulacaksınız.',
+        pct_s2_title: 'Çift tıklayarak içe aktarın',
+        pct_s2_desc: '.mctemplate dosyasına çift tıklayın. Minecraft açılacak ve bir dünya şablonu olarak içe aktaracak.',
+        pct_s3_title: 'Şablondan dünya oluşturun',
+        pct_s3_desc: 'Minecraft → Yeni Dünya Oluştur → Şablonlar → Şablonlarım → seçin ve oluşturun.',
+        loot_section_title: 'LootLabs — Sorun Giderme',
+        l1_title: 'Ekran donuyor / sayfa yüklenirken takılıyor',
+        l1_sub: 'LootLabs sayfası yüklenmiyor veya boş kalıyor',
+        l1_f1_title: 'VPN\'inizi KAPATIN',
+        l1_f1_desc: 'Aktif bir VPN\'iniz varsa kapatın. LootLabs, sayfanın donmasına neden olan birçok VPN IP adresini engeller. Bu 1 numaralı çözümdür.',
+        l1_f2_title: 'Reklam engelleyicileri devre dışı bırakın',
+        l1_f2_desc: 'LootLabs çalışmak için reklamlara ihtiyaç duyar. AdBlock, uBlock Origin gibi uzantıları lootlabs.gg için devre dışı bırakın.',
+        l1_f3_title: 'Tarayıcı önbelleğini temizleyin',
+        l1_f3_desc: 'Tarayıcı ayarlarında lootlabs.gg için çerezleri ve önbelleği temizleyin. Chrome\'da: Ayarlar → Gizlilik → Tarama verilerini temizle.',
+        l1_f4_title: 'Sayfayı sert yenileyin',
+        l1_f4_desc: 'Önbellek olmadan yeniden yüklemek için Ctrl+F5 (Windows) veya Cmd+Shift+R (Mac) tuşlarına basın.',
+        l1_f5_title: 'Farklı bir tarayıcı deneyin',
+        l1_f5_desc: 'Chrome donuyorsa Firefox veya Edge\'i deneyin.',
+        l1_f6_title: 'DNS\'inizi değiştirin',
+        l1_f6_desc: 'DNS\'i Google\'a değiştirin: 8.8.8.8 / 8.8.4.4 veya Cloudflare: 1.1.1.1 / 1.0.0.1.',
+        l2_title: 'Sayfa boş / beyaz ekran gösteriyor',
+        l2_sub: 'LootLabs sayfasında hiçbir şey görünmüyor',
+        l2_f1_title: 'Tüm tarayıcı uzantılarını devre dışı bırakın',
+        l2_f1_desc: 'TÜM uzantıları geçici olarak devre dışı bırakın. Reklam engelleyiciler, gizlilik araçları ve izleyici engelleyiciler LootLabs\'ta boş ekranlara neden olur.',
+        l2_f2_title: 'VPN / Proxy\'yi kapatın',
+        l2_f2_desc: 'Arka planda hiçbir VPN veya proxy çalışmadığından emin olun. Telefonunuzun ayarlarını da kontrol edin.',
+        l2_f3_title: 'DNS önbelleğini temizleyin',
+        l2_f3_desc: 'Windows\'ta: Komut İstemi\'ni açın ve ipconfig /flushdns yazın → Enter\'a basın. Ardından yeniden deneyin.',
+        l2_f4_title: 'Gizli / özel mod kullanın',
+        l2_f4_desc: 'Gizli bir pencere açın (Ctrl+Shift+N) ve LootLabs\'a oradan erişin.',
+        l3_title: 'Görevler tamamlanmıyor / indirme düğmesi eksik',
+        l3_sub: 'LootLabs görevleri kaydedilmiyor',
+        l3_f1_title: 'Görevleri doğru şekilde tamamlayın',
+        l3_f1_desc: 'Her görevin tamamen tamamlanması gerekir. YouTube görevleri için videonun tamamını izleyin. Discord görevleri için sunucuya gerçekten katılın.',
+        l3_f2_title: 'Birkaç saniye bekleyin',
+        l3_f2_desc: 'Bir görevi tamamladıktan sonra "Bitti"yi tıklamadan önce 5-10 saniye bekleyin. Sistemin doğrulama yapması için zaman gerekir.',
+        l3_f3_title: 'Atlama araçları kullanmayın',
+        l3_f3_desc: 'Görevleri atlamak için herhangi bir komut dosyası veya uzantı kullanmayın — LootLabs bunu algılar ve indirmeyi engeller.',
+        l3_f4_title: 'Mobil veri ile deneyin',
+        l3_f4_desc: 'Wi-Fi\'de görevler kaydedilmiyorsa mobil veriye geçin. Bazı ev ağları LootLabs\'ın kullandığı izleme piksellerini engeller.',
+        l4_title: 'LootLabs çok yavaş yükleniyor',
+        l4_sub: 'Sayfaların yüklenmesi dakikalar alıyor',
+        l4_f1_title: 'İnternet hızınızı kontrol edin',
+        l4_f1_desc: 'LootLabs çok sayıda reklam yükler. En az 5 Mbps kararlı bağlantıya ihtiyacınız var. Hızınızı fast.com veya speedtest.net\'te test edin.',
+        l4_f2_title: 'Diğer sekmeleri kapatın',
+        l4_f2_desc: 'Gereksiz tüm tarayıcı sekmelerini kapatın. Çok fazla sekme LootLabs reklam yüklemesini yavaşlatabilir.',
+        l4_f3_title: 'DNS\'i Google\'a değiştirin',
+        l4_f3_desc: 'Yavaş DNS çözümlemesi gecikmelere neden olabilir. Daha hızlı aramalar için DNS\'i 8.8.8.8 olarak ayarlayın.',
+        l4_f4_title: 'Farklı bir zamanda deneyin',
+        l4_f4_desc: 'LootLabs sunucuları yoğun saatlerde sıkışık olabilir. Sabah erken veya gece geç indirmeyi deneyin.',
+        l5_title: 'CAPTCHA sürekli çıkıyor / başarısız oluyor',
+        l5_sub: 'LootLabs\'ta doğrulama döngüsü',
+        l5_f1_title: 'VPN\'i devre dışı bırakın ve tekrar deneyin',
+        l5_f1_desc: 'VPN IP\'leri şüpheli olarak işaretlendiğinden CAPTCHA\'lar daha sık görünür. VPN\'i kapatın ve yenileyin.',
+        l5_f2_title: 'JavaScript\'e izin verin',
+        l5_f2_desc: 'Tarayıcınızda JavaScript\'in etkin olduğundan emin olun. CAPTCHA\'lar onsuz yüklenmez.',
+        l5_f3_title: 'Farklı bir ağa geçin',
+        l5_f3_desc: 'Wi-Fi\'den mobil veriye veya tersine geçin. Mevcut IP\'niz işaretlenmiş olabilir.',
+        l5_f4_title: 'Farklı bir tarayıcı kullanın',
+        l5_f4_desc: 'LootLabs bağlantısını uzantı kurulmamış temiz bir tarayıcıda açın.',
+        faq_section_title: 'Sıkça Sorulan Sorular',
+        faq1_title: '.mcaddon, .mcpack, .mctemplate ve .zip arasındaki fark nedir?',
+        faq1_sub: 'Tüm Minecraft dosya türlerini anlama',
+        faq1_mcaddon: 'Tek dosyada hem Davranış Paketi hem de Kaynak Paketi içeren eksiksiz bir Eklenti. Tam modlar için en yaygın tür.',
+        faq1_mcpack: 'Tek paket dosyası — ya Skin Paketi ya da Doku/Kaynak Paketi. Yalnızca bir tür içerik barındırır.',
+        faq1_mctemplate: 'Hazır bir dünya oluşturan Dünya Şablonu dosyası. Macera haritaları, hayatta kalma dünyaları ve oyun modları için kullanılır.',
+        faq1_zip: 'Birden fazla dosya içeren arşiv — genellikle bir dünya + skinler + dokular içeren Mash-Up paketlerinde kullanılır. Önce .zip\'i çıkarın, ardından içindeki her dosyayı ayrı ayrı yükleyin.',
+        faq2_title: 'Mod oyunumu çökertiyor — ne yapmalıyım?',
+        faq2_sub: 'Modlu dünyaya girerken oyun kapanıyor',
+        faq2_f1_title: 'Minecraft sürüm uyumluluğunu kontrol edin',
+        faq2_f1_desc: 'Mod belirli bir Minecraft sürümü için yapılmıştır. O sürümü kullandığınızdan emin olun.',
+        faq2_f2_title: 'Deneysel Oyun\'u etkinleştirin',
+        faq2_f2_desc: 'Dünya ayarları → Deneyler → ilgili tüm geçişleri etkinleştirin.',
+        faq2_f3_title: 'Çakışan modları kaldırın',
+        faq2_f3_desc: 'Diğer aktif modları tek tek devre dışı bırakmayı deneyin. İki mod birbirleriyle çakışıyor olabilir.',
+        faq2_f4_title: 'Modu yeniden yükleyin',
+        faq2_f4_desc: 'Paketi Minecraft depolama alanından silin ve BNcraft\'tan dosyayı yeniden içe aktarın.',
+        faq3_title: 'Modu etkinleştirdim ama dünyamda hiçbir şey değişmedi',
+        faq3_sub: 'Mod çalışmıyor gibi görünüyor',
+        faq3_f1_title: 'HEM Davranış Paketi HEM de Kaynak Paketi\'ni etkinleştirin',
+        faq3_f1_desc: 'Modun iki parçası varsa ikisi de etkinleştirilmelidir. Dünya ayarları → Kaynak Paketleri → etkinleştir VE → Davranış Paketleri → etkinleştir.',
+        faq3_f2_title: 'Deneysel Oyun\'u açın',
+        faq3_f2_desc: 'Dünya ayarları → Deneyler → gerekli geçişleri etkinleştirin.',
+        faq3_f3_title: 'Minecraft\'ı tamamen kapatıp yeniden açın',
+        faq3_f3_desc: 'Minecraft\'ı son açık uygulamalardan tamamen kapatın, ardından yeniden açın. Bazı modların yüklenmesi için yeniden başlatma gerekir.',
+        faq4_title: 'Dosyayı indirdim ama telefonumda bulamıyorum',
+        faq4_sub: 'Dosya indirildi ama hiçbir yerde bulunamıyor',
+        faq4_android: 'Dosya Yöneticinizde İndirilenler klasörünü açın. Bazı Android telefonlarda İç Depolama → Download konumunda olabilir. Hâlâ bulamıyorsanız farklı bir tarayıcı deneyin.',
+        faq4_ios: 'Dosyalar uygulamasını açın → Gözat → İndirilenler. Ya da Safari\'nin indirme yöneticisini (sağ üst simge) kontrol edin.',
+        faq5_title: '"Yinelenen Paket Algılandı" hatası',
+        faq5_sub: 'Mod içe aktarılırken hata',
+        faq5_f1_title: 'Önce eski sürümü silin',
+        faq5_f1_desc: 'Bu mod zaten kurulu. Minecraft → Ayarlar → Depolama → Kaynak Paketleri veya Davranış Paketleri → eski sürümü bulun → silin. Ardından yeni dosyayı tekrar içe aktarın.',
+        faq6_title: 'Kurulumdan sonra modları kullanmak için internete ihtiyacım var mı?',
+        faq6_sub: 'Modlarla çevrimdışı oynama',
+        faq6_ans_title: 'Hayır! Modlar tamamen çevrimdışı çalışır.',
+        faq6_ans_desc: 'Bir mod kurulup bir dünyada etkinleştirildikten sonra tamamen çevrimdışı oynayabilirsiniz. BNcraft\'tan mod indirmek için yalnızca internete ihtiyacınız var. Kurulumdan sonra tüm dosyalar cihazınızda yerel olarak saklanır.',
+        discord_title: 'Hâlâ yardıma mı ihtiyacınız var?',
+        discord_desc: 'BNcraft ekibinden ve topluluğundan canlı destek için Discord\'umuza katılın.',
+        discord_btn: 'Discord\'a Katıl'
+    },
+
+    ar: {
+        nav_home: 'الرئيسية',
+        menu_home: 'الرئيسية',
+        menu_social: 'وسائل التواصل الاجتماعي',
+        menu_tutorial: 'كيفية الاستخدام',
+        menu_mods: 'مودات أخرى',
+        menu_language: 'اللغة',
+        menu_themes: 'السمات',
+        menu_help: 'مركز المساعدة',
+        theme_select: 'اختر السمة',
+        hero_badge: 'مركز الدعم',
+        hero_title: 'مساعدة <span>BNcraft</span>',
+        hero_sub: 'كل ما تحتاجه لتثبيت المودات وحل المشاكل والاستفادة القصوى من BNcraft.',
+        tab_android: 'أندرويد',
+        tab_ios: 'آيفون / iOS',
+        tab_pc: 'كمبيوتر Windows',
+        tab_lootlabs: 'LootLabs',
+        tab_faq: 'الأسئلة الشائعة',
+        android_install_title: 'أندرويد — دليل التثبيت',
+        android_mcaddon_title: 'تثبيت ملف .mcaddon (الإضافات)',
+        android_mcaddon_sub: 'إضافة كاملة تحتوي على حزمة السلوك والموارد',
+        a1_s1_title: 'تحميل الملف',
+        a1_s1_desc: 'قم بتحميل ملف الإضافة (.mcaddon) من موقع BNcraft. سيتم حفظه في مجلد التنزيلات.',
+        a1_s2_title: 'فتح مدير الملفات',
+        a1_s2_desc: 'افتح تطبيق مدير الملفات في هاتفك وانتقل إلى مجلد التنزيلات.',
+        a1_s3_title: 'انقر على ملف .mcaddon مرة واحدة',
+        a1_s3_desc: 'سيسألك هاتفك عن التطبيق الذي تريد فتح الملف به. اختر Minecraft من القائمة.',
+        a1_s4_title: 'انتظر اكتمال الاستيراد',
+        a1_s4_desc: 'سيفتح Minecraft تلقائياً ويعرض "بدأ الاستيراد...". انتظر حتى ترى "تم الاستيراد بنجاح".',
+        a1_s5_title: 'تفعيل في عالمك',
+        a1_s5_desc: 'أنشئ عالماً أو قم بتعديله ← انتقل إلى حزم الموارد وحزم السلوك ← فعّل كلتيهما. ثم اضغط على العب.',
+        android_mcpack_title: 'تثبيت ملف .mcpack (حزم السكن / القوام)',
+        android_mcpack_sub: 'حزمة واحدة — سكن أو قوام فقط',
+        a2_s1_title: 'تحميل ملف .mcpack',
+        a2_s1_desc: 'حمّل حزمة السكن أو حزمة القوام (.mcpack) من BNcraft. تُحفظ في مجلد التنزيلات.',
+        a2_s2_title: 'انقر على الملف لفتحه',
+        a2_s2_desc: 'افتح مدير الملفات، انتقل إلى التنزيلات، انقر على ملف .mcpack. اختر Minecraft عند الطلب.',
+        a2_s3_title: 'تأكيد نجاح الاستيراد',
+        a2_s3_desc: 'يستورد Minecraft الحزمة ويعرض رسالة نجاح. لحزم السكن: اذهب إلى المظهر ← اختر سكنك الجديد. لحزم القوام: فعّلها في إعدادات العالم تحت حزم الموارد.',
+        android_mctemplate_title: 'تثبيت ملف .mctemplate (قوالب العوالم)',
+        android_mctemplate_sub: 'عوالم وخرائط جاهزة',
+        a3_s1_title: 'تحميل ملف .mctemplate',
+        a3_s1_desc: 'احصل على ملف قالب العالم من BNcraft. يُحفظ في التنزيلات.',
+        a3_s2_title: 'فتح مع Minecraft',
+        a3_s2_desc: 'انقر على الملف في مدير الملفات واختر Minecraft. سيتم استيراد القالب.',
+        a3_s3_title: 'ابحث عنه في قوالب العوالم',
+        a3_s3_desc: 'في Minecraft، اذهب إلى إنشاء عالم جديد ← القوالب ← قوالبي. اختر القالب وأنشئ منه عالماً جديداً.',
+        a3_note: 'تنشئ قوالب العوالم عالماً جديداً تماماً — لا تعدّل العالم الحالي.',
+        android_zip_title: 'تثبيت أرشيف .zip (حزم Mash-Up)',
+        android_zip_sub: 'حزمة تحتوي على أنواع ملفات متعددة',
+        android_zip_warn: 'يحتوي ملف .zip من نوع Mash-Up على ملفات متعددة بداخله (مثل قالب عالم + حزمة سكن + حزمة قوام). يجب استخراج كل ملف وتثبيته بشكل منفصل.',
+        a4_s1_title: 'تثبيت ZArchiver',
+        a4_s1_desc: 'حمّل ZArchiver مجاناً من متجر Google Play. إنه أفضل أداة لاستخراج ملفات .zip على أندرويد.',
+        a4_s2_title: 'فتح ملف .zip مع ZArchiver',
+        a4_s2_desc: 'افتح ZArchiver، انتقل إلى مجلد التنزيلات، وانقر على ملف .zip. اختر "استخراج هنا" أو "استخراج إلى مجلد".',
+        a4_s3_title: 'تحديد الملفات بداخله',
+        a4_s3_desc: 'بعد الاستخراج ستجد ملفات مثل: .mctemplate .mcpack .mcaddon. ثبّت كل منها بالنقر عليه واختيار Minecraft.',
+        a4_s4_title: 'التثبيت بالترتيب الصحيح',
+        a4_s4_desc: 'الترتيب الموصى به: أولاً قالب العالم (.mctemplate)، ثم حزم القوام/السكن (.mcpack)، ثم الإضافات (.mcaddon).',
+        android_zarch_title: 'ZArchiver:Date التطبيقات لا تظهر في تبويب ""',
+        android_zarch_sub: 'الملفات مرئية في قسم التاريخ لكن لا يمكن فتحها في Minecraft',
+        android_zarch_info: 'يحدث هذا لأن أندرويد يقيّد وصول بعض التطبيقات إلى مجلد التنزيلات. يحتاج ZArchiver إلى إذن تخزين خاص لرؤية الملفات هناك.',
+        az_s1_title: 'منح ZArchiver وصولاً كاملاً للتخزين',
+        az_s1_desc: 'اذهب إلى إعدادات الهاتف ← التطبيقات ← ZArchiver ← الأذونات ← التخزين ← اختر "السماح بإدارة جميع الملفات". أعد تشغيل ZArchiver.',
+        az_s2_title: 'نقل الملف إلى الجذر الرئيسي للتخزين الداخلي',
+        az_s2_desc: 'في ZArchiver، انقل ملفك من التنزيلات إلى جذر التخزين الداخلي. حاول فتحه من هناك.',
+        az_s3_title: 'لا يزال لا يعمل؟ استخدم Shizuku',
+        az_s3_desc: 'إذا لم ينجح أي من الحلين، يمنح Shizuku التطبيقات وصولاً متقدماً لنظام الملفات دون الحاجة إلى root. اتبع الدليل أدناه.',
+        shizuku_title: 'دليل إعداد Shizuku',
+        shizuku_warn: 'يتطلب Shizuku استخدام ADB (جسر تصحيح أخطاء أندرويد) من جهاز كمبيوتر أو ADB لاسلكي على أندرويد 11+. لا حاجة لـ root.',
+        sh_s1_title: 'تثبيت Shizuku',
+        sh_s1_desc: 'حمّل Shizuku من متجر Google Play. مجاني وآمن.',
+        sh_s2_title: 'تفعيل خيارات المطور على هاتفك',
+        sh_s2_desc: 'اذهب إلى الإعدادات ← حول الهاتف ← اضغط على "رقم الإصدار" 7 مرات. ستظهر خيارات المطور في الإعدادات.',
+        sh_s3_title: 'ADB اللاسلكي (أندرويد 11+) — لا حاجة لكمبيوتر',
+        sh_s3_desc: 'اذهب إلى الإعدادات ← خيارات المطور ← فعّل "تصحيح الأخطاء اللاسلكي". اضغط على "تصحيح الأخطاء اللاسلكي" ← "إقران الجهاز برمز الإقران". سجّل عنوان IP والمنفذ والرمز. في Shizuku ← اضغط "إقران" ← أدخل التفاصيل. ثم اضغط "البدء عبر ADB اللاسلكي".',
+        sh_s4_title: 'استخدام الكمبيوتر (طريقة ADB)',
+        sh_s4_desc: 'ثبّت ADB على كمبيوترك. صل الهاتف عبر USB مع تفعيل تصحيح أخطاء USB. نفّذ: adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh — سيتفعل Shizuku.',
+        sh_s5_title: 'منح ZArchiver إذناً في Shizuku',
+        sh_s5_desc: 'بعد تشغيل Shizuku (المؤشر الأخضر)، افتح ZArchiver ← سيطلب إذن Shizuku ← اضغط سماح. يمكن لـ ZArchiver الآن الوصول إلى جميع الملفات بما فيها مجلد التنزيلات.',
+        ios_install_title: 'آيفون / iOS — دليل التثبيت',
+        ios_mcaddon_title: 'تثبيت ملف .mcaddon / .mcpack',
+        ios_mcaddon_sub: 'الإضافات والسكن وحزم القوام',
+        ios1_s1_title: 'تحميل الملف عبر Safari أو Chrome',
+        ios1_s1_desc: 'حمّل ملف .mcaddon أو .mcpack من BNcraft. عند اكتمال التحميل، انقر على أيقونة التحميل في أعلى يمين متصفحك.',
+        ios1_s2_title: 'انقر على الملف ← مشاركة ← نسخ إلى Minecraft',
+        ios1_s2_desc: 'في لوحة التنزيلات، انقر على الملف. ثم اضغط أيقونة المشاركة (مربع بسهم) ← مرّر واختر "نسخ إلى Minecraft". سيفتح Minecraft ويستورده تلقائياً.',
+        ios1_s3_title: 'بديل: الفتح عبر تطبيق الملفات',
+        ios1_s3_desc: 'افتح تطبيق الملفات ← استعراض ← التنزيلات ← اضغط مطولاً على الملف ← مشاركة ← نسخ إلى Minecraft.',
+        ios1_s4_title: 'تفعيل في إعدادات العالم',
+        ios1_s4_desc: 'بعد الاستيراد، أنشئ عالماً أو قم بتعديله في Minecraft. فعّل الحزمة تحت حزم الموارد / حزم السلوك.',
+        ios_safari_note: 'استخدم دائماً Safari على iOS للحصول على أفضل تجربة تحميل. قد يحجب Chrome بعض أنواع الملفات.',
+        ios_mctemplate_title: 'تثبيت .mctemplate (قوالب العوالم)',
+        ios_mctemplate_sub: 'عوالم جاهزة لآيفون',
+        ios2_s1_title: 'تحميل .mctemplate عبر Safari',
+        ios2_s1_desc: 'حمّل من BNcraft باستخدام Safari. سيظهر الملف في تنزيلاتك.',
+        ios2_s2_title: 'فتح مع Minecraft عبر المشاركة',
+        ios2_s2_desc: 'انقر على الملف ← زر المشاركة ← نسخ إلى Minecraft. يستورد Minecraft القالب.',
+        ios2_s3_title: 'إنشاء عالم من القالب',
+        ios2_s3_desc: 'في Minecraft: إنشاء عالم جديد ← القوالب ← قوالبي. اختر القالب واضغط إنشاء.',
+        ios_zip_title: 'تثبيت أرشيف .zip (حزم Mash-Up)',
+        ios_zip_sub: 'استخراج وتثبيت ملفات متعددة',
+        ios3_s1_title: 'تحميل .zip عبر Safari',
+        ios3_s1_desc: 'حمّل ملف .zip الخاص بـ Mash-Up من BNcraft باستخدام Safari.',
+        ios3_s2_title: 'الاستخراج عبر تطبيق الملفات',
+        ios3_s2_desc: 'افتح تطبيق الملفات ← التنزيلات ← انقر على ملف .zip مرة واحدة. سيستخرجه iOS تلقائياً في مجلد.',
+        ios3_s3_title: 'تثبيت كل ملف بداخله',
+        ios3_s3_desc: 'افتح المجلد المستخرج. لكل ملف .mctemplate أو .mcpack أو .mcaddon: اضغط مطولاً ← مشاركة ← نسخ إلى Minecraft.',
+        pc_install_title: 'كمبيوتر Windows — دليل التثبيت',
+        pc_auto_title: 'تثبيت سريع: .mcaddon / .mcpack (نقر مزدوج)',
+        pc_auto_sub: 'الطريقة الأسرع — تعمل مع معظم الملفات',
+        pc1_s1_title: 'تحميل الملف',
+        pc1_s1_desc: 'حمّل ملف .mcaddon أو .mcpack من BNcraft. سيكون في مجلد التنزيلات.',
+        pc1_s2_title: 'انقر نقراً مزدوجاً على الملف',
+        pc1_s2_desc: 'انقر نقراً مزدوجاً على الملف. سيفتحه Windows تلقائياً مع Minecraft. تُستورد الحزمة وسترى إشعار نجاح.',
+        pc1_s3_title: 'تفعيل في العالم',
+        pc1_s3_desc: 'أنشئ عالماً أو قم بتعديله في Minecraft ← فعّل الحزمة تحت حزم الموارد / حزم السلوك.',
+        pc_manual_title: 'تثبيت يدوي (بدون نقر مزدوج)',
+        pc_manual_sub: 'دليل كامل — حزم السلوك والموارد والعوالم',
+        pc_manual_info: 'تعمل هذه الطريقة عندما يفشل النقر المزدوج، أو عندما تريد تثبيت الملفات مباشرة دون فتح Minecraft.',
+        pm_s1_title: 'إعادة تسمية امتداد الملف إلى .zip',
+        pm_s1_desc: 'مثال: أعد تسمية TrainHouse(skin_pack).mcpack إلى TrainHouse(skin_pack).zip. انقر بالزر الأيمن على الملف ← إعادة تسمية. إذا لم تر الامتداد، افتح مستكشف الملفات ← عرض ← حدد "امتدادات أسماء الملفات".',
+        pm_s2_title: 'استخراج ملف .zip',
+        pm_s2_desc: 'انقر بالزر الأيمن على .zip المعاد تسميته ← "استخراج الكل". استخرج في مجلد يمكنك إيجاده بسهولة مثل سطح المكتب.',
+        pm_s3_title: 'البحث عن مجلد Minecraft الصحيح',
+        pm_s3_desc: 'اضغط Win+R ← اكتب مسار com.mojang ← اضغط Enter. هذا هو مجلد بيانات Minecraft.',
+        pm_s4_title: 'نسخ إلى المجلد الفرعي الصحيح',
+        pm_s4_desc: 'انسخ المجلد المستخرج إلى الموقع الصحيح بناءً على نوع الحزمة:',
+        pm_resource_label: 'حزمة الموارد / القوام / السكن (.mcpack):',
+        pm_behavior_label: 'حزمة السلوك (الجزء السلوكي من .mcaddon):',
+        pm_addon_label: 'لملفات .mcaddon (تحتوي على كلتا الحزمتين)',
+        pm_addon_info: 'يحتوي ملف .mcaddon على مجلدين بداخله: مجلد حزمة السلوك ومجلد حزمة الموارد. بعد الاستخراج، انسخ مجلد حزمة السلوك إلى behavior_packs ومجلد حزمة الموارد إلى resource_packs.',
+        pm_template_label: 'لملفات .mctemplate (قوالب العوالم)',
+        pmt_s1_title: 'إعادة التسمية إلى .zip والاستخراج',
+        pmt_s1_desc: 'أعد تسمية ملف .mctemplate إلى .zip ← استخرجه. المجلد المستخرج هو بيانات عالمك.',
+        pmt_s2_title: 'النسخ إلى minecraftWorlds',
+        pmt_s2_desc: 'انسخ المجلد المستخرج إلى:',
+        pmt_s3_title: 'افتح Minecraft وابحث عن العالم',
+        pmt_s3_desc: 'افتح Minecraft ← العب ← سيظهر العالم في قائمة عوالمك.',
+        pm_multizip_label: 'لملف .zip Mash-Up (ملفات متعددة بداخله)',
+        pm_multizip_warn: 'يحتوي .zip من نوع Mash-Up على أنواع حزم مختلفة بداخله. كل منها يجب أن يذهب إلى مجلده الخاص. استخرج .zip أولاً، ثم تعامل مع كل مجلد فرعي بشكل منفصل.',
+        pmz_s1_title: 'استخراج .zip الرئيسي',
+        pmz_s1_desc: 'انقر بالزر الأيمن ← استخراج الكل. سترى عدة مجلدات/ملفات بداخله.',
+        pmz_s2_title: 'تحديد نوع كل مجلد',
+        pmz_s2_desc: 'ابحث عن ملف manifest.json داخل كل مجلد فرعي. "type": "resources" ← resource_packs. "type": "data" ← behavior_packs. يحتوي على level.dat ← عالم ← minecraftWorlds.',
+        pmz_s3_title: 'نسخ كل مجلد إلى المكان الصحيح',
+        pmz_s3_desc: 'ضع كل مجلد محدد في مجلد Minecraft المناسب.',
+        pc_template_title: 'تثبيت .mctemplate (الطريقة السريعة)',
+        pc_template_sub: 'استيراد قوالب العوالم بنقرة مزدوجة',
+        pct_s1_title: 'تحميل .mctemplate',
+        pct_s1_desc: 'حمّل من BNcraft. ستجده في مجلد التنزيلات.',
+        pct_s2_title: 'نقر مزدوج للاستيراد',
+        pct_s2_desc: 'انقر نقراً مزدوجاً على ملف .mctemplate. سيفتح Minecraft ويستورده كقالب عالم.',
+        pct_s3_title: 'إنشاء عالم من القالب',
+        pct_s3_desc: 'في Minecraft ← إنشاء عالم جديد ← القوالب ← قوالبي ← اختر وأنشئ.',
+        loot_section_title: 'LootLabs — استكشاف الأخطاء وإصلاحها',
+        l1_title: 'تجمد الشاشة / الصفحة عالقة في التحميل',
+        l1_sub: 'صفحة LootLabs لا تُحمَّل أو تظل فارغة',
+        l1_f1_title: 'أوقف تشغيل VPN',
+        l1_f1_desc: 'إذا كان لديك VPN نشط، أوقف تشغيله. تحجب LootLabs كثيراً من عناوين IP الخاصة بـ VPN مما يتسبب في تجمد الصفحة. هذا هو الحل الأول.',
+        l1_f2_title: 'عطّل أدوات حجب الإعلانات',
+        l1_f2_desc: 'تعمل LootLabs بالاعتماد على الإعلانات. عطّل AdBlock أو uBlock Origin أو أي امتداد لحجب الإعلانات خصيصاً لـ lootlabs.gg.',
+        l1_f3_title: 'امسح ذاكرة التخزين المؤقت للمتصفح',
+        l1_f3_desc: 'في إعدادات المتصفح، امسح ملفات تعريف الارتباط والذاكرة المؤقتة لـ lootlabs.gg. في Chrome: الإعدادات ← الخصوصية ← مسح بيانات التصفح.',
+        l1_f4_title: 'إعادة التحميل القسرية للصفحة',
+        l1_f4_desc: 'اضغط Ctrl+F5 (Windows) أو Cmd+Shift+R (Mac) لإعادة التحميل بدون ذاكرة مؤقتة.',
+        l1_f5_title: 'جرّب متصفحاً مختلفاً',
+        l1_f5_desc: 'إذا كان Chrome يتجمد، جرّب Firefox أو Edge.',
+        l1_f6_title: 'غيّر إعدادات DNS',
+        l1_f6_desc: 'غيّر DNS إلى Google: 8.8.8.8 / 8.8.4.4 أو Cloudflare: 1.1.1.1 / 1.0.0.1.',
+        l2_title: 'الصفحة تظهر فارغة / شاشة بيضاء',
+        l2_sub: 'لا شيء مرئي على صفحة LootLabs',
+        l2_f1_title: 'عطّل جميع امتدادات المتصفح',
+        l2_f1_desc: 'عطّل مؤقتاً جميع الامتدادات. أدوات حجب الإعلانات والخصوصية وحاجب المتتبعين جميعها تتسبب في شاشات بيضاء على LootLabs.',
+        l2_f2_title: 'عطّل VPN / Proxy',
+        l2_f2_desc: 'تأكد من عدم تشغيل أي VPN أو proxy في الخلفية. تحقق أيضاً من إعدادات هاتفك.',
+        l2_f3_title: 'مسح ذاكرة تخزين DNS المؤقتة',
+        l2_f3_desc: 'على Windows: افتح موجه الأوامر واكتب ipconfig /flushdns ← اضغط Enter. ثم أعد المحاولة.',
+        l2_f4_title: 'استخدم وضع التصفح الخاص',
+        l2_f4_desc: 'افتح نافذة تصفح خاص (Ctrl+Shift+N) وادخل إلى LootLabs منها.',
+        l3_title: 'المهام لا تكتمل / زر التحميل مفقود',
+        l3_sub: 'مهام LootLabs لا تُحفظ',
+        l3_f1_title: 'أكمل المهام بشكل صحيح',
+        l3_f1_desc: 'يجب إكمال كل مهمة بالكامل. لمهام YouTube: شاهد الفيديو كاملاً. لمهام Discord: انضم للخادم فعلياً.',
+        l3_f2_title: 'انتظر بضع ثوانٍ بعد الإكمال',
+        l3_f2_desc: 'بعد إنهاء المهمة، انتظر 5-10 ثوانٍ قبل النقر على "تم". يحتاج النظام وقتاً للتحقق.',
+        l3_f3_title: 'لا تستخدم أدوات التجاوز',
+        l3_f3_desc: 'لا تستخدم أي سكريبت أو امتداد لتخطي المهام — تكتشف LootLabs ذلك وتحجب التحميل.',
+        l3_f4_title: 'جرّب بيانات الجوال',
+        l3_f4_desc: 'إذا لم تُحفظ المهام على Wi-Fi، انتقل إلى بيانات الجوال. بعض الشبكات المنزلية تحجب بكسلات التتبع التي تستخدمها LootLabs.',
+        l4_title: 'LootLabs يحمّل ببطء شديد',
+        l4_sub: 'تحميل الصفحات يستغرق دقائق',
+        l4_f1_title: 'تحقق من سرعة الإنترنت',
+        l4_f1_desc: 'تحمّل LootLabs إعلانات كثيرة. تحتاج اتصالاً مستقراً لا يقل عن 5 ميغابت/ثانية. اختبر سرعتك على fast.com أو speedtest.net.',
+        l4_f2_title: 'أغلق التبويبات الأخرى',
+        l4_f2_desc: 'أغلق جميع تبويبات المتصفح غير الضرورية. كثرة التبويبات المفتوحة قد تبطئ تحميل إعلانات LootLabs.',
+        l4_f3_title: 'بدّل DNS إلى Google',
+        l4_f3_desc: 'قد يتسبب حل DNS البطيء في تأخيرات. اضبط DNS على 8.8.8.8 لبحث أسرع.',
+        l4_f4_title: 'جرّب في وقت مختلف',
+        l4_f4_desc: 'قد تكون خوادم LootLabs مزدحمة في ساعات الذروة. جرّب التحميل في الصباح الباكر أو في وقت متأخر من الليل.',
+        l5_title: 'CAPTCHA يظهر باستمرار / يفشل',
+        l5_sub: 'حلقة التحقق على LootLabs',
+        l5_f1_title: 'عطّل VPN وأعد المحاولة',
+        l5_f1_desc: 'تظهر CAPTCHA بشكل متكرر مع عناوين IP لـ VPN المشبوهة. عطّل VPN وأعد التحديث.',
+        l5_f2_title: 'اسمح بـ JavaScript',
+        l5_f2_desc: 'تأكد من تفعيل JavaScript في متصفحك. لن تُحمَّل CAPTCHA بدونه.',
+        l5_f3_title: 'انتقل إلى شبكة مختلفة',
+        l5_f3_desc: 'جرّب التبديل من Wi-Fi إلى بيانات الجوال أو العكس. ربما تم تصنيف عنوان IP الحالي.',
+        l5_f4_title: 'استخدم متصفحاً مختلفاً',
+        l5_f4_desc: 'افتح رابط LootLabs في متصفح جديد لا توجد فيه امتدادات.',
+        faq_section_title: 'الأسئلة المتكررة',
+        faq1_title: 'ما الفرق بين .mcaddon و .mcpack و .mctemplate و .zip؟',
+        faq1_sub: 'فهم جميع أنواع ملفات Minecraft',
+        faq1_mcaddon: 'إضافة كاملة تحتوي على حزمة السلوك وحزمة الموارد معاً في ملف واحد. أكثر أنواع المودات الكاملة شيوعاً.',
+        faq1_mcpack: 'ملف حزمة واحدة — إما حزمة سكن أو حزمة قوام/موارد. يحتوي على نوع محتوى واحد فقط.',
+        faq1_mctemplate: 'ملف قالب عالم ينشئ عالماً جاهزاً. يُستخدم لخرائط المغامرات وعوالم البقاء وأوضاع اللعب.',
+        faq1_zip: 'أرشيف يحتوي على ملفات متعددة — يُستخدم عادةً في حزم Mash-Up التي تتضمن عالماً + سكناً + قواماً معاً. استخرج .zip أولاً، ثم ثبّت كل ملف بداخله بشكل منفصل.',
+        faq2_title: 'المود يتسبب في تعطل لعبتي — ماذا أفعل؟',
+        faq2_sub: 'اللعبة تغلق عند الدخول إلى العالم المعدّل',
+        faq2_f1_title: 'تحقق من توافق إصدار Minecraft',
+        faq2_f1_desc: 'تم تطوير المود لإصدار Minecraft محدد. تأكد من استخدام ذلك الإصدار بالضبط.',
+        faq2_f2_title: 'فعّل الألعاب التجريبية',
+        faq2_f2_desc: 'اذهب إلى إعدادات العالم ← التجارب ← فعّل جميع الخيارات ذات الصلة.',
+        faq2_f3_title: 'أزل المودات المتعارضة',
+        faq2_f3_desc: 'جرّب تعطيل المودات النشطة الأخرى واحدة تلو الأخرى للعثور على التعارض.',
+        faq2_f4_title: 'أعد تثبيت المود',
+        faq2_f4_desc: 'احذف الحزمة من تخزين Minecraft وأعد استيراد الملف من BNcraft.',
+        faq3_title: 'فعّلت المود لكن لم يتغير شيء في عالمي',
+        faq3_sub: 'يبدو أن المود لا يعمل',
+        faq3_f1_title: 'فعّل حزمة السلوك وحزمة الموارد معاً',
+        faq3_f1_desc: 'إذا كان للمود جزءان، يجب تفعيل كليهما. اذهب إلى إعدادات العالم ← حزم الموارد ← فعّل، وأيضاً ← حزم السلوك ← فعّل.',
+        faq3_f2_title: 'شغّل الألعاب التجريبية',
+        faq3_f2_desc: 'في إعدادات العالم ← التجارب ← فعّل الخيارات المطلوبة.',
+        faq3_f3_title: 'أغلق Minecraft تماماً وأعد تشغيله',
+        faq3_f3_desc: 'أغلق Minecraft نهائياً من التطبيقات الأخيرة، ثم أعد تشغيله. بعض المودات تحتاج إلى إعادة تشغيل كاملة.',
+        faq4_title: 'حمّلت الملف لكن لا أجده على هاتفي',
+        faq4_sub: 'تم التحميل لكن الملف مفقود',
+        faq4_android: 'افتح مدير الملفات ← مجلد التنزيلات. على بعض هواتف أندرويد قد يكون في التخزين الداخلي ← Download. إذا لم تجده، جرّب متصفحاً مختلفاً للتحميل.',
+        faq4_ios: 'افتح تطبيق الملفات ← استعراض ← التنزيلات. أو تحقق من مدير التحميل في Safari (الأيقونة في أعلى اليمين).',
+        faq5_title: 'خطأ "تم اكتشاف حزمة مكررة"',
+        faq5_sub: 'خطأ عند استيراد مود',
+        faq5_f1_title: 'احذف الإصدار القديم أولاً',
+        faq5_f1_desc: 'هذا المود مثبّت مسبقاً. اذهب إلى Minecraft ← الإعدادات ← التخزين ← حزم الموارد أو حزم السلوك ← ابحث عن الإصدار القديم ← احذفه. ثم أعد استيراد الملف الجديد.',
+        faq6_title: 'هل أحتاج إلى الإنترنت لاستخدام المودات بعد التثبيت؟',
+        faq6_sub: 'اللعب دون اتصال مع المودات',
+        faq6_ans_title: 'لا! تعمل المودات دون اتصال تماماً.',
+        faq6_ans_desc: 'بعد تثبيت المود وتفعيله على عالم، يمكنك اللعب دون اتصال بالإنترنت. تحتاج الإنترنت فقط لتحميل المودات من BNcraft. بعد التثبيت، تُخزَّن جميع الملفات محلياً على جهازك.',
+        discord_title: 'لا تزال بحاجة إلى مساعدة؟',
+        discord_desc: 'امجتمع Discord لدينا للحصول على دعم مباشر من فريق BNcraft والمجتمع.',
+discord_btn: 'انضم إلى Discord'
+}
+// ADD NEW LANGUAGE TRANSLATIONS HERE
+// Copy the structure above and translate all values
+};
+// ============================================================
+// CURRENT LANGUAGE STATE
+// ============================================================
+let currentLang = 'en';
+// ============================================================
+// APPLY LANGUAGE
+// ============================================================
+function applyLang(lang) {
+const t = TRANSLATIONS[lang];
+const config = LANG_CONFIG[lang];
+if (!t || !config) return;
+currentLang = lang;
+
+// Set dir and lang on html element
+document.documentElement.setAttribute('lang', lang);
+document.documentElement.setAttribute('dir', config.dir);
+
+// Update all data-i18n elements
+document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+    }
+});
+
+// Update active lang button
+document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.remove('active-lang');
+});
+const activeBtn = document.getElementById('lang-' + lang);
+if (activeBtn) activeBtn.classList.add('active-lang');
+
+// Save to localStorage
+localStorage.setItem('bncraft-lang', lang);
+}
+function setLang(lang) {
+applyLang(lang);
+closeLangSub();
+closeMenu();
+}
+// ============================================================
+// PLATFORM SWITCHER
+// ============================================================
+function showPlatform(platform, btn) {
+document.querySelectorAll('.platform-panel').forEach(p => p.classList.remove('active'));
+document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+document.getElementById('panel-' + platform).classList.add('active');
+btn.classList.add('active');
+}
+// ============================================================
+// ACCORDION TOGGLES
+// ============================================================
+function toggleCard(id) {
+const card = document.getElementById(id);
+card.classList.toggle('open');
+}
+function toggleFaq(id) {
+const card = document.getElementById(id);
+card.classList.toggle('open');
+}
+// ============================================================
+// HAMBURGER MENU
+// ============================================================
+function toggleMenu() {
+const menu = document.getElementById('hamburgerMenu');
+const btn = document.getElementById('hamburgerBtn');
+menu.classList.toggle('open');
+btn.classList.toggle('open');
+}
+function closeMenu() {
+document.getElementById('hamburgerMenu').classList.remove('open');
+document.getElementById('hamburgerBtn').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+const menu = document.getElementById('hamburgerMenu');
+const btn = document.getElementById('hamburgerBtn');
+if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+menu.classList.remove('open');
+btn.classList.remove('open');
+}
+});
+// ============================================================
+// THEME SYSTEM
+// ============================================================
+function setTheme(theme) {
+document.documentElement.setAttribute('data-theme', theme);
+localStorage.setItem('bncraft-theme', theme);
+document.querySelectorAll('.theme-dot').forEach(d => {
+d.classList.toggle('active-theme', d.getAttribute('data-t') === theme);
+});
+}
+function toggleThemeSub() {
+const sub = document.getElementById('themeSub');
+const arrow = document.getElementById('themeArrow');
+const langSub = document.getElementById('langSub');
+langSub.classList.remove('open');
+sub.classList.toggle('open');
+arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+// ============================================================
+// LANGUAGE SUB PANEL
+// ============================================================
+function toggleLangSub() {
+const sub = document.getElementById('langSub');
+const arrow = document.getElementById('langArrow');
+const themeSub = document.getElementById('themeSub');
+themeSub.classList.remove('open');
+sub.classList.toggle('open');
+arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+function closeLangSub() {
+document.getElementById('langSub').classList.remove('open');
+const arrow = document.getElementById('langArrow');
+if (arrow) arrow.style.transform = 'rotate(0deg)';
+}
+// ============================================================
+// INIT
+// ============================================================
+(function init() {
+// Theme
+const savedTheme = localStorage.getItem('bncraft-theme') || 'blue';
+setTheme(savedTheme);
+// Language
+const savedLang = localStorage.getItem('bncraft-lang') || 'en';
+applyLang(savedLang);
+})();
+</script>
+</body>
+</html>نضم إلى
