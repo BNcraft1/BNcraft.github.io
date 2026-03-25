@@ -1,1 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BNcraft | MarketPlace Mods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           THEME VARIABLES
+        ============================================================ */
+        :root,
+        [data-theme="blue"] {
+            --bg-dark: #000b10;
+            --card-bg: #00161f;
+            --accent: #00e5ff;
+            --modal-bg: #001a24;
+            --glow: 0 0 25px rgba(0,229,255,0.4);
+            --coin-gold: #ffcc00;
+            --mash-up-yellow: #ffd700;
+            --text-main: #ffffff;
+            --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5);
+            --nav-bg: rgba(0,11,16,0.95);
+            --grid-color: rgba(0,229,255,0.03);
+            --border-color: rgba(0,229,255,0.15);
+            --border-hover: rgba(0,229,255,0.8);
+            --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2);
+            --menu-item-hover: rgba(0,229,255,0.08);
+        }
+        [data-theme="purple"] {
+            --bg-dark: #080010; --card-bg: #12001e; --accent: #bf00ff;
+            --modal-bg: #160022; --glow: 0 0 25px rgba(191,0,255,0.4);
+            --coin-gold: #ffcc00; --mash-up-yellow: #ffd700;
+            --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(8,0,16,0.95);
+            --grid-color: rgba(191,0,255,0.03); --border-color: rgba(191,0,255,0.15);
+            --border-hover: rgba(191,0,255,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(191,0,255,0.08);
+        }
+        [data-theme="red"] {
+            --bg-dark: #0f0000; --card-bg: #1e0000; --accent: #ff2222;
+            --modal-bg: #220000; --glow: 0 0 25px rgba(255,34,34,0.4);
+            --coin-gold: #ffcc00; --mash-up-yellow: #ffd700;
+            --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(15,0,0,0.95);
+            --grid-color: rgba(255,34,34,0.03); --border-color: rgba(255,34,34,0.15);
+            --border-hover: rgba(255,34,34,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,34,34,0.08);
+        }
+        [data-theme="green"] {
+            --bg-dark: #001008; --card-bg: #001d10; --accent: #00ff88;
+            --modal-bg: #001a10; --glow: 0 0 25px rgba(0,255,136,0.4);
+            --coin-gold: #ffcc00; --mash-up-yellow: #ffd700;
+            --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(0,16,8,0.95);
+            --grid-color: rgba(0,255,136,0.03); --border-color: rgba(0,255,136,0.15);
+            --border-hover: rgba(0,255,136,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(0,255,136,0.08);
+        }
+        [data-theme="yellow"] {
+            --bg-dark: #0e0e00; --card-bg: #1c1c00; --accent: #ffe000;
+            --modal-bg: #1a1900; --glow: 0 0 25px rgba(255,224,0,0.4);
+            --coin-gold: #ffaa00; --mash-up-yellow: #ffaa00;
+            --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(14,14,0,0.95);
+            --grid-color: rgba(255,224,0,0.03); --border-color: rgba(255,224,0,0.15);
+            --border-hover: rgba(255,224,0,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,224,0,0.08);
+        }
+        [data-theme="orange"] {
+            --bg-dark: #0e0700; --card-bg: #1e1000; --accent: #ff8c00;
+            --modal-bg: #1a0d00; --glow: 0 0 25px rgba(255,140,0,0.4);
+            --coin-gold: #ffcc00; --mash-up-yellow: #ffd700;
+            --text-main: #ffffff; --text-sub: rgba(255,255,255,0.8);
+            --text-label: rgba(255,255,255,0.5); --nav-bg: rgba(14,7,0,0.95);
+            --grid-color: rgba(255,140,0,0.03); --border-color: rgba(255,140,0,0.15);
+            --border-hover: rgba(255,140,0,0.8); --info-card-bg: rgba(255,255,255,0.03);
+            --desc-bg: rgba(0,0,0,0.2); --menu-item-hover: rgba(255,140,0,0.08);
+        }
+        [data-theme="white"] {
+            --bg-dark: #eef2f7; --card-bg: #ffffff; --accent: #0077cc;
+            --modal-bg: #f4f8fc; --glow: 0 0 20px rgba(0,119,204,0.25);
+            --coin-gold: #bb7700; --mash-up-yellow: #bb7700;
+            --text-main: #111111; --text-sub: rgba(0,0,0,0.75);
+            --text-label: rgba(0,0,0,0.5); --nav-bg: rgba(238,242,247,0.97);
+            --grid-color: rgba(0,119,204,0.05); --border-color: rgba(0,119,204,0.2);
+            --border-hover: rgba(0,119,204,0.8); --info-card-bg: rgba(0,0,0,0.04);
+            --desc-bg: rgba(0,0,0,0.04); --menu-item-hover: rgba(0,119,204,0.08);
+        }
 
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+        body::before {
+            content:''; position:fixed; inset:0;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size:40px 40px; pointer-events:none; z-index:0;
+        }
+        body::after {
+            content:''; position:fixed; top:-150px; left:50%; transform:translateX(-50%);
+            width:600px; height:600px;
+            background:radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events:none; z-index:0; animation:pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}
+            50%{opacity:1;transform:translateX(-50%) scale(1.1);}
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        nav {
+            width:100%; height:70px;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:0 20px;
+            border-bottom:1px solid var(--border-color);
+            background:var(--nav-bg); backdrop-filter:blur(10px);
+            position:sticky; top:0; z-index:1000;
+            transition: background 0.35s ease, border-color 0.35s ease;
+        }
+        .nav-logo-img { height:45px; filter:drop-shadow(0 0 8px var(--accent)); }
+        .nav-right { display:flex; align-items:center; gap:10px; }
+        .nav-btn {
+            background:var(--accent); color:#000; border:none;
+            padding:10px 22px; border-radius:10px; font-weight:800;
+            cursor:pointer; font-size:13px; transition:.3s; text-transform:uppercase;
+            text-decoration:none; display:inline-flex; align-items:center;
+        }
+        .nav-btn:hover { opacity:.85; box-shadow:var(--glow); }
+
+        /* Hamburger */
+        .hamburger-btn {
+            background:transparent; border:1px solid var(--border-color); color:var(--text-main);
+            width:42px; height:42px; border-radius:10px; cursor:pointer;
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; transition:.3s;
+        }
+        .hamburger-btn:hover { border-color:var(--accent); box-shadow:var(--glow); }
+        .hamburger-btn span { display:block; width:18px; height:2px; background:var(--text-main); border-radius:2px; transition:.3s; }
+        .hamburger-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity:0; }
+        .hamburger-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+        /* Dropdown */
+        .hamburger-menu {
+            position:fixed; top:80px; right:20px; background:var(--modal-bg);
+            border:1px solid var(--border-color); border-radius:16px; padding:10px;
+            z-index:5000; display:none; min-width:220px; box-shadow:var(--glow); transition: background 0.35s ease;
+        }
+        .hamburger-menu.open { display:block; animation:menuSlide .2s ease; }
+        @keyframes menuSlide { from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);} }
+        .menu-item {
+            display:flex; align-items:center; gap:12px; padding:12px 16px;
+            border-radius:10px; cursor:pointer; text-decoration:none; color:var(--text-main);
+            font-weight:700; font-size:14px; transition:.2s; background:transparent; border:none;
+            width:100%; text-align:left;
+        }
+        .menu-item:hover { background:var(--menu-item-hover); color:var(--accent); }
+        .menu-item svg { width:18px; height:18px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .menu-divider { height:1px; background:var(--border-color); margin:6px 0; }
+
+        /* Theme sub */
+        .theme-sub { display:none; padding:10px 8px 4px; }
+        .theme-sub.open { display:block; }
+        .theme-sub-title { font-size:10px; font-weight:900; text-transform:uppercase; color:var(--text-label); letter-spacing:1px; margin-bottom:10px; padding-left:8px; }
+        .theme-dots-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding-bottom:6px; }
+        .theme-dot-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+        .theme-dot { width:32px; height:32px; border-radius:50%; cursor:pointer; border:2px solid transparent; transition:.25s; }
+        .theme-dot:hover { transform:scale(1.15); }
+        .theme-dot.active-theme { border-color:var(--text-main); box-shadow:0 0 8px rgba(255,255,255,0.35); }
+        .theme-dot[data-t="blue"]   { background:radial-gradient(circle at 35% 35%,#00e5ff,#002d3f); }
+        .theme-dot[data-t="purple"] { background:radial-gradient(circle at 35% 35%,#bf00ff,#200035); }
+        .theme-dot[data-t="red"]    { background:radial-gradient(circle at 35% 35%,#ff2222,#380000); }
+        .theme-dot[data-t="green"]  { background:radial-gradient(circle at 35% 35%,#00ff88,#003015); }
+        .theme-dot[data-t="yellow"] { background:radial-gradient(circle at 35% 35%,#ffe000,#302e00); }
+        .theme-dot[data-t="orange"] { background:radial-gradient(circle at 35% 35%,#ff8c00,#351c00); }
+        .theme-dot[data-t="white"]  { background:radial-gradient(circle at 35% 35%,#ffffff,#aabbd0); border-color:#bbb; }
+        .theme-dot-lbl { font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-label); }
+
+        .fav-count-badge {
+            background:var(--accent); color:#000; font-size:9px; font-weight:900;
+            border-radius:10px; padding:1px 6px; margin-left:auto; display:none;
+        }
+        .fav-count-badge.visible { display:inline-block; }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        .header-section { padding:40px 20px 20px; text-align:center; }
+        .header-title { font-size:clamp(24px,8vw,42px); font-weight:900; text-transform:uppercase; color:var(--text-main); }
+
+        /* ============================================================
+           CONTROLS
+        ============================================================ */
+        .controls { max-width:800px; margin:0 auto 30px; padding:0 15px; }
+        .search-input {
+            width:100%; padding:15px; background:var(--info-card-bg);
+            border:1px solid var(--accent); border-radius:12px; color:var(--text-main);
+            outline:none; font-size:16px; text-align:center; margin-bottom:20px;
+            transition: background 0.35s ease;
+        }
+        .search-input::placeholder { color:var(--text-label); }
+        .category-container { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+        .cat-btn {
+            background:transparent; border:1px solid var(--border-color); color:var(--text-main);
+            padding:8px 20px; border-radius:20px; cursor:pointer; font-weight:600;
+            font-size:13px; transition:all .3s ease; text-transform:uppercase;
+        }
+        .cat-btn:hover { border-color:var(--accent); transform:translateY(-2px); }
+        .cat-btn.active { background:var(--accent); color:#000; box-shadow:0 0 15px rgba(0,0,0,0.3); border-color:var(--accent); }
+
+        /* ============================================================
+           MOD GRID & CARDS
+        ============================================================ */
+        .mod-grid {
+            display:grid; gap:20px; width:95%; max-width:1200px;
+            margin:0 auto 60px;
+            grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+        }
+        .mod-card {
+            background:var(--card-bg); border-radius:20px; overflow:hidden;
+            border:1px solid var(--border-color); transition:all .3s ease;
+            position:relative; cursor:pointer;
+        }
+        .mod-card:hover { transform:translateY(-5px); border-color:var(--accent); box-shadow:var(--glow); }
+        .type-badge {
+            position:absolute; top:10px; left:10px; z-index:5;
+            background:rgba(0,0,0,0.8); color:var(--accent);
+            padding:5px 12px; border-radius:8px; font-size:10px; font-weight:900;
+            text-transform:uppercase; border:1px solid var(--accent); backdrop-filter:blur(6px); pointer-events:none;
+        }
+        .type-badge.mash-up { color:var(--mash-up-yellow); border-color:var(--mash-up-yellow); }
+
+        /* Rating badge on card */
+        .card-rating-badge {
+            position:absolute; top:10px; right:10px; z-index:5;
+            background:rgba(0,0,0,0.85); backdrop-filter:blur(6px);
+            border-radius:8px; padding:4px 9px;
+            display:flex; align-items:center; gap:4px;
+            font-size:11px; font-weight:900; color:#ffd700;
+            border:1px solid rgba(255,215,0,0.3);
+        }
+        .card-rating-badge svg { width:11px; height:11px; fill:#ffd700; }
+
+        .img-container { position:relative; width:100%; padding-top:56%; }
+        .mod-card img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+        .mod-info { padding:16px 20px 20px; text-align:center; }
+        .mod-name {
+            font-size:17px; font-weight:800; margin-bottom:8px;
+            display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+            overflow:hidden; color:var(--text-main); min-height:44px;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .card-meta { display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:12px; }
+        .card-price {
+            display:flex; align-items:center; gap:4px;
+            font-size:13px; font-weight:900; color:var(--coin-gold);
+        }
+        .card-price img { height:16px; }
+        .card-studio { font-size:11px; color:var(--text-label); font-weight:600; }
+        .dl-trigger {
+            width:100%; background:var(--accent); color:#000; border:none;
+            padding:12px; border-radius:10px; font-weight:800; cursor:pointer;
+            transition:all .3s ease; font-size:14px;
+        }
+        .dl-trigger:hover { opacity:.85; transform:scale(1.02); }
+
+        /* Empty state */
+        .empty-state { grid-column:1/-1; text-align:center; padding:80px 20px; color:var(--text-label); }
+        .empty-state svg { width:80px; height:80px; margin-bottom:20px; opacity:.25; stroke:var(--accent); fill:none; stroke-width:1; }
+        .empty-state p { font-size:22px; font-weight:900; margin-bottom:8px; }
+        .empty-state span { font-size:13px; opacity:.6; display:block; }
+
+        /* ============================================================
+           MODAL — UPGRADED
+        ============================================================ */
+        .modal-overlay {
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.95); display:none;
+            justify-content:center; align-items:center; z-index:9999;
+            backdrop-filter:blur(12px); padding:15px;
+        }
+        .modal-content {
+            background:var(--modal-bg); border:2px solid var(--accent);
+            border-radius:24px; width:100%; max-width:560px;
+            position:relative; max-height:92vh; overflow-y:auto;
+            box-shadow:var(--glow); transition: background 0.35s ease, border-color 0.35s ease;
+        }
+        .modal-content::-webkit-scrollbar { width:5px; }
+        .modal-content::-webkit-scrollbar-track { background:rgba(0,0,0,0.3); border-radius:10px; }
+        .modal-content::-webkit-scrollbar-thumb { background:var(--accent); border-radius:10px; }
+
+        /* Cover + gallery */
+        .modal-gallery-wrap { position:relative; padding:10px 10px 0; }
+        .modal-main-img {
+            width:100%; border-radius:16px; display:block;
+            aspect-ratio:16/9; object-fit:cover;
+            transition:opacity .25s ease;
+        }
+        .modal-actions {
+            position:absolute; top:20px; right:20px;
+            display:flex; gap:8px; z-index:10;
+        }
+        .modal-heart-btn {
+            width:32px; height:32px; background:rgba(0,0,0,0.8);
+            border:1px solid rgba(255,80,120,0.6); color:rgba(255,80,120,0.7);
+            border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s ease;
+        }
+        .modal-heart-btn:hover { background:rgba(255,80,120,0.15); }
+        .modal-heart-btn.faved { background:rgba(255,80,120,0.2); border-color:#ff5078; color:#ff5078; }
+        .modal-heart-btn svg { width:16px; height:16px; }
+        .close-btn {
+            width:32px; height:32px; background:rgba(0,0,0,0.8);
+            border:1px solid #ff4d4d; color:#ff4d4d; border-radius:50%; cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            font-size:18px; transition:all .3s ease;
+        }
+        .close-btn:hover { background:#ff4d4d; color:white; transform:rotate(90deg); }
+
+        /* Thumbnail strip */
+        .gallery-thumbs {
+            display:flex; gap:6px; padding:8px 4px 2px; overflow-x:auto;
+            scrollbar-width:none;
+        }
+        .gallery-thumbs::-webkit-scrollbar { display:none; }
+        .gallery-thumb {
+            width:60px; height:40px; border-radius:8px; overflow:hidden;
+            border:2px solid transparent; cursor:pointer; flex-shrink:0; transition:.2s;
+        }
+        .gallery-thumb.active { border-color:var(--accent); }
+        .gallery-thumb img { width:100%; height:100%; object-fit:cover; }
+
+        /* Body */
+        .modal-body { padding:0 22px 25px; }
+
+        /* Title row */
+        .m-title-row { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:14px 0 4px; }
+        .m-title { font-size:22px; font-weight:900; color:var(--text-main); line-height:1.2; text-align:left; }
+        .m-studio { font-size:12px; color:var(--text-label); font-weight:600; text-align:left; margin-top:4px; }
+        .realms-badge {
+            background:linear-gradient(135deg,#4CAF50,#2E7D32); color:#fff;
+            font-size:9px; font-weight:900; padding:4px 8px; border-radius:6px;
+            text-transform:uppercase; white-space:nowrap; letter-spacing:.5px; flex-shrink:0; margin-top:4px;
+        }
+
+        /* Rating row */
+        .m-rating-row {
+            display:flex; align-items:center; gap:10px; margin:10px 0;
+            padding:10px 14px; background:var(--info-card-bg);
+            border-radius:12px; border:1px solid var(--border-color);
+        }
+        .stars-display { display:flex; gap:2px; }
+        .star { font-size:17px; line-height:1; }
+        .star.filled { color:#ffd700; }
+        .star.half { color:#ffd700; opacity:.6; }
+        .star.empty { color:rgba(255,215,0,0.2); }
+        .rating-score { font-size:20px; font-weight:900; color:var(--text-main); }
+        .rating-count { font-size:11px; color:var(--text-label); }
+        .no-rating { font-size:13px; color:var(--text-label); }
+
+        /* Info grid */
+        .m-info-grid {
+            display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin:12px 0;
+        }
+        .info-card {
+            background:var(--info-card-bg); padding:10px 12px; border-radius:12px;
+            border:1px solid var(--border-color); text-align:left;
+        }
+        .info-card.full-width { grid-column:1/-1; }
+        .info-label {
+            display:flex; align-items:center; gap:5px;
+            font-size:9px; text-transform:uppercase; color:var(--text-label);
+            letter-spacing:.8px; margin-bottom:5px; font-weight:700;
+        }
+        .info-label svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; flex-shrink:0; }
+        .info-val { font-weight:900; font-size:14px; color:var(--accent); }
+        .coin-wrapper { display:flex; align-items:center; gap:5px; }
+        .coin-val { color:var(--coin-gold); font-size:16px; font-weight:900; }
+        .coin-icon { height:22px; }
+
+        /* Tags */
+        .m-tags-wrap { margin:10px 0; }
+        .m-tags-label { font-size:10px; font-weight:700; text-transform:uppercase; color:var(--text-label); letter-spacing:.8px; margin-bottom:6px; }
+        .tags-row { display:flex; flex-wrap:wrap; gap:6px; }
+        .tag-pill {
+            background:var(--info-card-bg); border:1px solid var(--border-color);
+            color:var(--text-sub); font-size:11px; font-weight:600;
+            padding:4px 10px; border-radius:20px; transition:.2s;
+        }
+        .tag-pill:hover { border-color:var(--accent); color:var(--accent); }
+
+        /* Trailer button */
+        .trailer-btn {
+            display:flex; align-items:center; gap:8px; justify-content:center;
+            background:rgba(255,0,0,0.12); border:1px solid rgba(255,0,0,0.35);
+            color:#ff5555; text-decoration:none; padding:10px 18px;
+            border-radius:10px; font-size:13px; font-weight:700; transition:.3s;
+            margin:10px 0;
+        }
+        .trailer-btn:hover { background:rgba(255,0,0,0.22); border-color:rgba(255,0,0,0.7); transform:translateY(-1px); }
+        .trailer-btn svg { width:18px; height:18px; fill:#ff5555; flex-shrink:0; }
+
+        /* Description */
+        .m-desc-wrap { margin:12px 0; }
+        .m-desc-label {
+            font-size:10px; font-weight:700; text-transform:uppercase;
+            color:var(--text-label); letter-spacing:.8px; margin-bottom:6px;
+            display:flex; align-items:center; gap:5px;
+        }
+        .m-desc-label svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2; }
+        .m-desc {
+            text-align:left; background:var(--desc-bg); padding:14px;
+            border-radius:12px; font-size:13px; line-height:1.7;
+            color:var(--text-sub); border-left:3px solid var(--accent);
+            white-space:pre-line; max-height:160px; overflow-y:auto;
+        }
+        .m-desc::-webkit-scrollbar { width:4px; }
+        .m-desc::-webkit-scrollbar-thumb { background:var(--accent); border-radius:10px; }
+
+        /* Marketplace link */
+        .market-link {
+            display:flex; align-items:center; justify-content:center; gap:6px;
+            color:var(--text-label); text-decoration:none;
+            padding:8px; border:1px solid var(--border-color); border-radius:10px;
+            font-size:11px; margin:10px 0; opacity:.7; transition:all .3s ease; font-weight:600;
+        }
+        .market-link:hover { opacity:1; border-color:var(--accent); color:var(--accent); }
+        .market-link svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; }
+
+        /* Download button */
+        .download-btn-wrap { margin-top:14px; }
+        .download-main-btn {
+            display:flex; align-items:center; justify-content:space-between;
+            background:var(--accent); color:#000; text-decoration:none;
+            padding:16px 20px; border-radius:14px; font-weight:900;
+            font-size:15px; transition:all .3s ease; border:none; width:100%; cursor:pointer;
+        }
+        .download-main-btn:hover { opacity:.88; transform:scale(1.02); box-shadow:var(--glow); }
+        .download-btn-left { display:flex; align-items:center; gap:10px; }
+        .download-btn-left svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; }
+        .download-btn-meta {
+            display:flex; align-items:center; justify-content:center; gap:6px;
+            margin-top:8px; font-size:10px; color:var(--text-label); font-weight:600;
+        }
+        .download-btn-meta span { display:flex; align-items:center; gap:3px; }
+        .download-btn-meta svg { width:11px; height:11px; stroke:currentColor; fill:none; stroke-width:2; }
+        .mediafire-logo {
+            display:flex; align-items:center; gap:4px;
+            background:rgba(0,174,239,0.12); border:1px solid rgba(0,174,239,0.3);
+            border-radius:6px; padding:2px 7px; font-size:10px; font-weight:800; color:#00aeef;
+        }
+
+        /* ============================================================
+           DOWNLOAD MC MODAL
+        ============================================================ */
+        .download-modal-overlay {
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center;
+            z-index:9999; backdrop-filter:blur(12px); padding:20px;
+        }
+        .download-modal-content {
+            background:var(--modal-bg); border:2px solid var(--accent);
+            border-radius:24px; width:90%; max-width:450px;
+            padding:40px 30px; position:relative; box-shadow:var(--glow);
+        }
+        .download-modal-title { font-size:26px; font-weight:900; margin-bottom:25px; text-align:center; color:var(--text-main); }
+        .dl-option {
+            display:flex; justify-content:space-between; align-items:center;
+            background:var(--info-card-bg); padding:18px 20px; border-radius:12px;
+            margin-bottom:12px; text-decoration:none; color:var(--text-main);
+            font-weight:700; transition:.3s; border:1px solid var(--border-color);
+        }
+        .dl-option:hover { background:var(--accent); color:#000; transform:translateY(-2px); }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .social-footer {
+            width:100%; padding:30px 20px;
+            display:flex; flex-wrap:wrap; gap:20px; justify-content:center;
+            border-top:1px solid var(--border-color); margin-top:20px;
+        }
+        .social-icon { width:45px; height:45px; transition:all .3s ease; opacity:.8; filter:drop-shadow(0 0 5px rgba(0,0,0,0.3)); }
+        .social-icon:hover { transform:translateY(-5px) scale(1.1); opacity:1; filter:drop-shadow(0 0 15px var(--accent)); }
+        .footer-text { text-align:center; font-size:12px; color:var(--text-label); letter-spacing:1px; padding-bottom:30px; }
+
+        /* ============================================================
+           WHITE THEME FIXES
+        ============================================================ */
+        [data-theme="white"] .header-title { color:#111; }
+        [data-theme="white"] .type-badge { background:rgba(255,255,255,0.92); }
+        [data-theme="white"] .search-input { background:#fff; }
+        [data-theme="white"] .cat-btn { color:#333; }
+        [data-theme="white"] .cat-btn.active { color:#fff; }
+        [data-theme="white"] .mod-name { color:#111; }
+        [data-theme="white"] .m-title { color:#111; }
+        [data-theme="white"] .download-modal-title { color:#111; }
+        [data-theme="white"] .dl-option:hover { color:#fff; }
+        [data-theme="white"] body::after { background:radial-gradient(circle,rgba(0,119,204,0.06) 0%,transparent 70%); }
+        [data-theme="white"] .download-main-btn { color:#fff; }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media(max-width:480px){
+            .m-info-grid { grid-template-columns:1fr 1fr; }
+            .m-title { font-size:18px; }
+            .modal-content { max-height:95vh; }
+            .gallery-thumb { width:50px; height:33px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/1735983257391_orig.png" class="nav-logo-img" alt="BNcraft">
+    <div class="nav-right">
+        <button class="nav-btn" onclick="openDownloadModal()">Download MC</button>
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HAMBURGER MENU -->
+<div class="hamburger-menu" id="hamburgerMenu">
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-Official-Links.html" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Social Media Links
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-tuturial.html" target="_blank">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Tutorial
+    </a>
+    <a class="menu-item" href="https://bncraft1.github.io/BNcraft.github.io/BNcraft-other-mods.html" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Other Mods
+    </a>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="toggleThemeSub()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20 5 5 0 010-10 5 5 0 000-10z"/></svg>
+        Themes
+        <svg id="themeArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="theme-sub" id="themeSub">
+        <div class="theme-sub-title">Select Theme</div>
+        <div class="theme-dots-row">
+            <div class="theme-dot-wrap"><div class="theme-dot active-theme" data-t="blue" onclick="setTheme('blue')"></div><div class="theme-dot-lbl">Blue</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="purple" onclick="setTheme('purple')"></div><div class="theme-dot-lbl">Purple</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="red" onclick="setTheme('red')"></div><div class="theme-dot-lbl">Red</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="green" onclick="setTheme('green')"></div><div class="theme-dot-lbl">Green</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="yellow" onclick="setTheme('yellow')"></div><div class="theme-dot-lbl">Yellow</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="orange" onclick="setTheme('orange')"></div><div class="theme-dot-lbl">Orange</div></div>
+            <div class="theme-dot-wrap"><div class="theme-dot" data-t="white" onclick="setTheme('white')"></div><div class="theme-dot-lbl">White</div></div>
+        </div>
+    </div>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="showFavorites()">
+        <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Favorites
+        <span class="fav-count-badge" id="favCountBadge">0</span>
+    </button>
+</div>
+
+<!-- HEADER -->
+<div class="header-section">
+    <h1 class="header-title" id="pageTitle">BNCRAFT MODS</h1>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍  Search mods..." onkeyup="filterMods()">
+    <div class="category-container">
+        <button class="cat-btn active" data-cat="ALL" onclick="filterCategory('ALL',this)">ALL</button>
+        <button class="cat-btn" data-cat="Add-Ons" onclick="filterCategory('Add-Ons',this)">⚙ ADD-ONS</button>
+        <button class="cat-btn" data-cat="Texture_Pack" onclick="filterCategory('Texture_Pack',this)">🎨 TEXTURES</button>
+        <button class="cat-btn" data-cat="World_Template" onclick="filterCategory('World_Template',this)">🗺 WORLDS</button>
+        <button class="cat-btn" data-cat="Skin_pack" onclick="filterCategory('Skin_pack',this)">👤 SKINS</button>
+        <button class="cat-btn" data-cat="Mash-Up" onclick="filterCategory('Mash-Up',this)">✨ MASH-UP</button>
+    </div>
+</div>
+
+<div class="mod-grid" id="mainGrid"></div>
+
+<!-- SOCIAL FOOTER -->
+<div class="social-footer">
+    <a href="https://youtube.com/@bncraft.2?si=_61i2hufMosswbwB" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075351849_orig.png" class="social-icon" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/bncraft.2?igsh=MTBtYjR4YXBya3c5YQ==" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075157287_orig.png" class="social-icon" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@bncraft2?_r=1&_t=ZS-942s1lX9Stc" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075231857_orig.png" class="social-icon" alt="TikTok">
+    </a>
+    <a href="https://www.facebook.com/share/18RcvbYuF1/" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075254063_orig.png" class="social-icon" alt="Facebook">
+    </a>
+    <a href="https://discord.gg/KHdG3A7dtw" target="_blank">
+        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/g-rsel-2026-02-21-075537841_orig.png" class="social-icon" alt="Discord">
+    </a>
+</div>
+<div class="footer-text">© 2026 BNcraft • Free MarketPlace Mods By Besir Has</div>
+
+<!-- ============================================================
+     MOD DETAIL MODAL
+============================================================ -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+
+        <!-- Gallery -->
+        <div class="modal-gallery-wrap">
+            <div class="modal-actions">
+                <button class="modal-heart-btn" id="modalHeartBtn" onclick="toggleFavorite()">
+                    <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                </button>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <img id="m-main-img" class="modal-main-img" src="" alt="">
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+
+            <!-- Title + Studio + Realms badge -->
+            <div class="m-title-row">
+                <div>
+                    <div class="m-title" id="m-title"></div>
+                    <div class="m-studio" id="m-studio"></div>
+                </div>
+                <div id="m-realms-badge"></div>
+            </div>
+
+            <!-- Rating -->
+            <div class="m-rating-row" id="m-rating-row">
+                <div class="stars-display" id="m-stars"></div>
+                <span class="rating-score" id="m-score"></span>
+                <span class="rating-count" id="m-count"></span>
+            </div>
+
+            <!-- Info grid -->
+            <div class="m-info-grid">
+                <div class="info-card">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+                        Price
+                    </div>
+                    <div class="coin-wrapper">
+                        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png" class="coin-icon" alt="coin">
+                        <span class="coin-val" id="m-coin"></span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        Pack Type
+                    </div>
+                    <div class="info-val" id="m-packtype"></div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+                        Genre
+                    </div>
+                    <div class="info-val" id="m-genre"></div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        Content
+                    </div>
+                    <div class="info-val" id="m-content"></div>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="m-tags-wrap" id="m-tags-wrap">
+                <div class="m-tags-label">Tags</div>
+                <div class="tags-row" id="m-tags"></div>
+            </div>
+
+            <!-- Trailer button -->
+            <div id="m-trailer-wrap"></div>
+
+            <!-- Description -->
+            <div class="m-desc-wrap">
+                <div class="m-desc-label">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Description
+                </div>
+                <div class="m-desc" id="m-desc"></div>
+            </div>
+
+            <!-- Marketplace link -->
+            <a href="#" id="m-origin" target="_blank" class="market-link">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View on Official Minecraft Marketplace
+            </a>
+
+            <!-- Download -->
+            <div class="download-btn-wrap">
+                <a id="m-download-btn" href="#" target="_blank" class="download-main-btn">
+                    <div class="download-btn-left">
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Download</span>
+                    </div>
+                    <span id="m-filesize"></span>
+                </a>
+                <div class="download-btn-meta">
+                    <span>
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Updated: <strong id="m-updated"></strong>
+                    </span>
+                    <span>·</span>
+                    <div class="mediafire-logo">
+                        <svg width="10" height="10" viewBox="0 0 24 24" style="fill:none;stroke:#00aeef;stroke-width:2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        MediaFire
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /modal-body -->
+    </div><!-- /modal-content -->
+</div>
+
+<!-- DOWNLOAD MC MODAL -->
+<div class="download-modal-overlay" id="downloadModal">
+    <div class="download-modal-content">
+        <button class="close-btn" onclick="closeDownloadModal()" style="position:absolute;top:20px;right:20px;">✕</button>
+        <div class="download-modal-title">Download Minecraft</div>
+        <a href="https://bedrocklauncher.github.io" class="dl-option" target="_blank"><span>Minecraft for Windows</span><span>→</span></a>
+        <a href="https://mcpedl.org/downloading/" class="dl-option" target="_blank"><span>Minecraft for Android</span><span>→</span></a>
+        <a href="https://www.mc-mod.net/mcpe-patched//" class="dl-option" target="_blank"><span>Minecraft Patched</span><span>→</span></a>
+    </div>
+</div>
+
+<script>
+// ============================================================
+// MOD DATABASE — bot tarafından doldurulur
+// Yeni mod yapısı:
+// {
+//   name, img, studio,
+//   cat: ["Add-Ons"|"Texture_Pack"|"Skin_pack"|"World_Template"|"Mash-Up"],
+//   packType: string,  // "Resource Pack", "Skin Pack", "Add-On", etc.
+//   genre: string,
+//   tags: [string],
+//   minecoin: number,
+//   rating: number,        // örn: 4.9
+//   ratingCount: number,   // örn: 123126
+//   content: { skins:n, textures:n, worlds:n, addons:n },  // opsiyonel
+//   realmsPlus: bool,
+//   gallery: [url, ...],   // cover dahil tüm fotoğraflar
+//   video: string,         // YouTube URL veya null
+//   desc: string,
+//   market: string,        // Marketplace URL
+//   downloadUrl: string,   // MediaFire URL
+//   downloadSize: string,  // "16.7 MB"
+//   lastUpdated: string    // "2026-03-25"
+// }
+// ============================================================
+const mods = [
+    // — Mods will be inserted here by the Discord bot —
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let currentModalName = '';
+let showingFavorites = false;
+
+// ============================================================
+// FAVORITES
+// ============================================================
+function getFavs() {
+    try { return JSON.parse(localStorage.getItem('bncraft-favs') || '[]'); } catch { return []; }
+}
+function saveFavs(f) { localStorage.setItem('bncraft-favs', JSON.stringify(f)); }
+function isFavorite(n) { return getFavs().includes(n); }
+function updateFavBadge() {
+    const f = getFavs();
+    const b = document.getElementById('favCountBadge');
+    if (f.length > 0) { b.textContent = f.length; b.classList.add('visible'); }
+    else { b.classList.remove('visible'); }
+}
+function toggleFavorite() {
+    let f = getFavs();
+    const btn = document.getElementById('modalHeartBtn');
+    if (isFavorite(currentModalName)) {
+        f = f.filter(x => x !== currentModalName);
+        btn.classList.remove('faved');
+        btn.innerHTML = heartOutline();
+    } else {
+        f.push(currentModalName);
+        btn.classList.add('faved');
+        btn.innerHTML = heartFill();
+    }
+    saveFavs(f);
+    updateFavBadge();
+    renderMods(getFilteredMods());
+}
+function heartOutline() {
+    return `<svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+}
+function heartFill() {
+    return `<svg viewBox="0 0 24 24" style="fill:#ff5078;stroke:#ff5078;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+}
+
+// ============================================================
+// FAVORITES VIEW
+// ============================================================
+function showFavorites() {
+    showingFavorites = true;
+    document.getElementById('pageTitle').textContent = 'MY FAVORITES';
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    closeMenu();
+    renderMods(getFilteredMods());
+}
+
+// ============================================================
+// THEME SYSTEM
+// ============================================================
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('bncraft-theme', theme);
+    document.querySelectorAll('.theme-dot').forEach(d => {
+        d.classList.toggle('active-theme', d.getAttribute('data-t') === theme);
+    });
+}
+function toggleThemeSub() {
+    const sub = document.getElementById('themeSub');
+    const arrow = document.getElementById('themeArrow');
+    sub.classList.toggle('open');
+    arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+// ============================================================
+// HAMBURGER
+// ============================================================
+function toggleMenu() {
+    const menu = document.getElementById('hamburgerMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+function closeMenu() {
+    document.getElementById('hamburgerMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('hamburgerMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+    }
+});
+
+// ============================================================
+// STAR RATING BUILDER
+// ============================================================
+function buildStars(rating) {
+    const total = 5;
+    const filled = Math.floor(rating);
+    const hasHalf = (rating - filled) >= 0.3;
+    let html = '';
+    for (let i = 1; i <= total; i++) {
+        if (i <= filled) html += `<span class="star filled">★</span>`;
+        else if (i === filled + 1 && hasHalf) html += `<span class="star half">★</span>`;
+        else html += `<span class="star empty">★</span>`;
+    }
+    return html;
+}
+function formatCount(n) {
+    if (!n) return '';
+    if (n >= 1000000) return `(${(n/1000000).toFixed(1)}M ratings)`;
+    if (n >= 1000) return `(${(n/1000).toFixed(n>=10000?0:1)}K ratings)`;
+    return `(${n.toLocaleString()} ratings)`;
+}
+
+// ============================================================
+// FORMAT DATE
+// ============================================================
+function formatDate(iso) {
+    if (!iso) return '—';
+    try {
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+    } catch { return iso; }
+}
+
+// ============================================================
+// RENDER CARDS
+// ============================================================
+function renderMods(data) {
+    const grid = document.getElementById('mainGrid');
+
+    if (data.length === 0) {
+        const msg = showingFavorites
+            ? ['No favorites yet', 'Open a mod and tap ♥ to add it here']
+            : mods.length === 0
+                ? ['No mods yet', 'Mods will appear here once they are added via Discord']
+                : ['No mods found', 'Try a different search or category'];
+        grid.innerHTML = `
+            <div class="empty-state">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5">
+                    <rect x="8" y="8" width="20" height="20" rx="3"/>
+                    <rect x="36" y="8" width="20" height="20" rx="3"/>
+                    <rect x="8" y="36" width="20" height="20" rx="3"/>
+                    <rect x="36" y="36" width="20" height="20" rx="3"/>
+                </svg>
+                <p>${msg[0]}</p>
+                <span>${msg[1]}</span>
+            </div>`;
+        return;
+    }
+
+    grid.innerHTML = data.map(m => {
+        const isMashUp = m.cat.includes('Mash-Up');
+        const displayCat = isMashUp ? 'MASH-UP' : (m.packType || m.cat[0].replace(/_/g,' ')).toUpperCase();
+        const badgeClass = 'type-badge' + (isMashUp ? ' mash-up' : '');
+        const favIcon = isFavorite(m.name)
+            ? `<svg viewBox="0 0 24 24" style="position:absolute;bottom:12px;right:12px;width:18px;height:18px;fill:#ff5078;stroke:#ff5078;stroke-width:1.5;z-index:6;pointer-events:none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`
+            : '';
+        const ratingBadge = m.rating
+            ? `<div class="card-rating-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>${m.rating}</div>`
+            : '';
+        return `
+            <div class="mod-card" onclick="openPopup('${m.name.replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">
+                <div class="${badgeClass}">${displayCat}</div>
+                ${ratingBadge}
+                ${favIcon}
+                <div class="img-container">
+                    <img src="${m.img}" alt="${m.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/640x360/001a24/00e5ff?text=No+Image'">
+                </div>
+                <div class="mod-info">
+                    <div class="mod-name">${m.name}</div>
+                    <div class="card-meta">
+                        <div class="card-price">
+                            <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png" alt="coin">
+                            ${Number(m.minecoin).toLocaleString()}
+                        </div>
+                        <span style="color:var(--border-color)">·</span>
+                        <div class="card-studio">${m.studio}</div>
+                    </div>
+                    <button class="dl-trigger">DETAILS & DOWNLOAD</button>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+// ============================================================
+// FILTER
+// ============================================================
+function getFilteredMods() {
+    const term = document.getElementById('searchInput').value.toLowerCase();
+    const activeBtn = document.querySelector('.cat-btn.active');
+    const targetCat = activeBtn ? activeBtn.getAttribute('data-cat') : 'ALL';
+    return mods.filter(m => {
+        if (!m.name.toLowerCase().includes(term) &&
+            !(m.studio||'').toLowerCase().includes(term) &&
+            !(m.tags||[]).join(' ').toLowerCase().includes(term)) return false;
+        if (showingFavorites) return isFavorite(m.name);
+        const isMashUp = m.cat.includes('Mash-Up');
+        if (targetCat === 'ALL') return true;
+        if (targetCat === 'Mash-Up') return isMashUp;
+        if (isMashUp) return false;
+        return m.cat[0] === targetCat;
+    });
+}
+function filterMods() { renderMods(getFilteredMods()); }
+function filterCategory(cat, btn) {
+    showingFavorites = false;
+    document.getElementById('pageTitle').textContent = 'BNCRAFT MODS';
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterMods();
+}
+
+// ============================================================
+// GALLERY SWITCHER
+// ============================================================
+function switchGallery(idx, allImages) {
+    const mainImg = document.getElementById('m-main-img');
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+        mainImg.src = allImages[idx];
+        mainImg.style.opacity = '1';
+    }, 150);
+    document.querySelectorAll('.gallery-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+    });
+}
+
+// ============================================================
+// OPEN MODAL
+// ============================================================
+function openPopup(name) {
+    const m = mods.find(x => x.name === name);
+    if (!m) return;
+    currentModalName = name;
+
+    // All images: cover first, then gallery (deduplicated)
+    const allImages = [m.img, ...(m.gallery || []).filter(u => u && u !== m.img)];
+
+    // Main image
+    document.getElementById('m-main-img').src = allImages[0];
+    document.getElementById('m-main-img').style.opacity = '1';
+
+    // Thumbnails
+    const thumbsEl = document.getElementById('galleryThumbs');
+    if (allImages.length > 1) {
+        thumbsEl.innerHTML = allImages.map((url, i) => `
+            <div class="gallery-thumb ${i===0?'active':''}" onclick="switchGallery(${i}, ${JSON.stringify(allImages).replace(/"/g,'&quot;')})">
+                <img src="${url}" alt="Screenshot ${i+1}" loading="lazy">
+            </div>`).join('');
+        thumbsEl.style.display = 'flex';
+    } else {
+        thumbsEl.innerHTML = '';
+        thumbsEl.style.display = 'none';
+    }
+
+    // Title & Studio
+    document.getElementById('m-title').textContent = m.name;
+    document.getElementById('m-studio').textContent = 'by ' + (m.studio || '—');
+
+    // Realms Plus badge
+    const realmsEl = document.getElementById('m-realms-badge');
+    realmsEl.innerHTML = m.realmsPlus ? '<div class="realms-badge">✔ Realms+</div>' : '';
+
+    // Rating
+    const ratingRow = document.getElementById('m-rating-row');
+    if (m.rating) {
+        document.getElementById('m-stars').innerHTML = buildStars(m.rating);
+        document.getElementById('m-score').textContent = m.rating + '/5.0';
+        document.getElementById('m-count').textContent = formatCount(m.ratingCount);
+        ratingRow.style.display = 'flex';
+    } else {
+        document.getElementById('m-stars').innerHTML = '';
+        document.getElementById('m-score').textContent = '';
+        document.getElementById('m-count').innerHTML = '<span class="no-rating">No ratings yet</span>';
+        ratingRow.style.display = 'flex';
+    }
+
+    // Price
+    document.getElementById('m-coin').textContent = Number(m.minecoin).toLocaleString();
+
+    // Pack type
+    document.getElementById('m-packtype').textContent = m.packType || m.cat[0].replace(/_/g,' ') || '—';
+
+    // Genre
+    document.getElementById('m-genre').textContent = m.genre || '—';
+
+    // Content counts
+    const c = m.content || {};
+    const contentParts = [];
+    if (c.skins)     contentParts.push(`👤 ${c.skins} Skins`);
+    if (c.textures)  contentParts.push(`🎨 ${c.textures} Tex`);
+    if (c.worlds)    contentParts.push(`🗺 ${c.worlds} Worlds`);
+    if (c.addons)    contentParts.push(`⚙ ${c.addons} Add-Ons`);
+    document.getElementById('m-content').textContent = contentParts.join('  ·  ') || '—';
+
+    // Tags
+    const tagsWrap = document.getElementById('m-tags-wrap');
+    const tagsEl = document.getElementById('m-tags');
+    if (m.tags && m.tags.length > 0) {
+        tagsEl.innerHTML = m.tags.map(t => `<span class="tag-pill">${t}</span>`).join('');
+        tagsWrap.style.display = 'block';
+    } else {
+        tagsWrap.style.display = 'none';
+    }
+
+    // Trailer
+    const trailerWrap = document.getElementById('m-trailer-wrap');
+    if (m.video) {
+        trailerWrap.innerHTML = `
+            <a href="${m.video}" target="_blank" class="trailer-btn">
+                <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#001a24" stroke="none"/></svg>
+                Watch Official Trailer
+            </a>`;
+    } else {
+        trailerWrap.innerHTML = '';
+    }
+
+    // Description
+    document.getElementById('m-desc').textContent = m.desc || 'No description available.';
+
+    // Marketplace link
+    document.getElementById('m-origin').href = m.market || '#';
+
+    // Download button
+    const dlBtn = document.getElementById('m-download-btn');
+    if (m.downloadUrl) {
+        dlBtn.href = m.downloadUrl;
+        dlBtn.style.pointerEvents = 'auto';
+        dlBtn.style.opacity = '1';
+    } else {
+        dlBtn.href = '#';
+        dlBtn.style.pointerEvents = 'none';
+        dlBtn.style.opacity = '.5';
+    }
+    document.getElementById('m-filesize').textContent = m.downloadSize || '';
+    document.getElementById('m-updated').textContent = formatDate(m.lastUpdated);
+
+    // Heart state
+    const heartBtn = document.getElementById('modalHeartBtn');
+    if (isFavorite(name)) { heartBtn.classList.add('faved'); heartBtn.innerHTML = heartFill(); }
+    else { heartBtn.classList.remove('faved'); heartBtn.innerHTML = heartOutline(); }
+
+    // Show
+    document.getElementById('modalOverlay').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.modal-content').scrollTop = 0;
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentModalName = '';
+}
+
+function openDownloadModal() {
+    document.getElementById('downloadModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeDownloadModal() {
+    document.getElementById('downloadModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+window.onclick = (e) => {
+    if (e.target == document.getElementById('modalOverlay')) closeModal();
+    if (e.target == document.getElementById('downloadModal')) closeDownloadModal();
+};
+
+// ============================================================
+// INIT
+// ============================================================
+(function init() {
+    const savedTheme = localStorage.getItem('bncraft-theme');
+    if (savedTheme) setTheme(savedTheme);
+    updateFavBadge();
+    renderMods(mods);
+})();
+</script>
+</body>
+</html>
