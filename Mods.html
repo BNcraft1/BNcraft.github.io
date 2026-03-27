@@ -281,7 +281,7 @@
         .empty-state span { font-size:13px; opacity:.6; display:block; }
 
         /* ============================================================
-           MODAL — MOBİL UYUMLU VERSİYON
+           MODAL — MOBİL FLOATING CARD (FIXED)
         ============================================================ */
         .modal-overlay {
             position: fixed;
@@ -293,7 +293,8 @@
             align-items: flex-end;
             z-index: 9999;
             backdrop-filter: blur(6px);
-            padding: 0;
+            /* ✅ FIX: Her tarafta boşluk — artık ekrana yapışmıyor */
+            padding: 10px 10px 14px;
         }
 
         @media (min-width: 601px) {
@@ -312,10 +313,10 @@
             box-shadow: var(--glow);
             transition: background 0.35s ease, border-color 0.35s ease;
 
-            /* MOBİL: bottom sheet — üstten boşluk bırak */
-            height: 92dvh;
-            max-height: 92dvh;
-            border-radius: 20px 20px 0 0;   /* sadece üst köşeler yuvarlak */
+            /* ✅ FIX: 4 köşe de yuvarlak, padding kadar küçüldü */
+            height: calc(92dvh - 24px);
+            max-height: calc(92dvh - 24px);
+            border-radius: 20px;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -361,7 +362,6 @@
             .modal-gallery-wrap { padding: 10px 10px 0; }
         }
 
-        /* Görseli ve butonları saran wrapper — her zaman görsel sınırı */
         .modal-img-wrap {
             position: relative;
             width: 100%;
@@ -374,6 +374,7 @@
             aspect-ratio: 16/9;
             object-fit: cover;
             transition: opacity .25s ease;
+            /* ✅ FIX: Mobilde de üst köşeler yuvarlak (alt köşeler de artık yuvarlak modal'dan geliyor) */
             border-radius: 18px 18px 0 0;
         }
 
@@ -381,7 +382,7 @@
             .modal-main-img { border-radius: 16px; }
         }
 
-        /* Butonlar her zaman görselin içinde — img-wrap'a göre konumlanır */
+        /* Butonlar görselin içinde */
         .modal-actions {
             position: absolute;
             top: 8px; right: 8px;
@@ -1193,7 +1194,6 @@ function scrollGallery(dir) {
     if (total === 0) return;
     _galleryActive = Math.max(0, Math.min(total - 1, _galleryActive + dir));
     switchGallery(_galleryActive, _galleryImages);
-    // scroll thumb into view
     const thumbs = document.getElementById('galleryThumbs');
     const activeThumb = thumbs.querySelectorAll('.gallery-thumb')[_galleryActive];
     if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -1207,7 +1207,6 @@ function updateGalleryArrows(total) {
     btnL.disabled = _galleryActive === 0;
     btnR.disabled = _galleryActive === total - 1;
 }
-
 
 function switchGallery(idx, allImages) {
     const mainImg = document.getElementById('m-main-img');
