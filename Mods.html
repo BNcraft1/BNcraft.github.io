@@ -290,11 +290,11 @@
             background: rgba(0,0,0,0.75);
             display: none;
             justify-content: center;
-            align-items: flex-end;
+            /* ✅ FIX: Ortalandı, her yandan eşit boşluk */
+            align-items: center;
             z-index: 9999;
             backdrop-filter: blur(6px);
-            /* ✅ FIX: Her tarafta boşluk — artık ekrana yapışmıyor */
-            padding: 10px 10px 14px;
+            padding: 12px;
         }
 
         @media (min-width: 601px) {
@@ -313,9 +313,9 @@
             box-shadow: var(--glow);
             transition: background 0.35s ease, border-color 0.35s ease;
 
-            /* ✅ FIX: 4 köşe de yuvarlak, padding kadar küçüldü */
-            height: calc(92dvh - 24px);
-            max-height: calc(92dvh - 24px);
+            /* ✅ FIX: Eşit padding'e göre yükseklik, 4 köşe yuvarlak */
+            height: calc(100dvh - 24px);
+            max-height: calc(100dvh - 24px);
             border-radius: 20px;
             overflow-y: auto;
             overflow-x: hidden;
@@ -417,7 +417,8 @@
             position: relative;
             display: flex;
             align-items: center;
-            padding: 6px 0 2px;
+            /* ✅ FIX: Yatay padding — oklar modal sınırı içinde kalıyor */
+            padding: 6px 8px 2px;
         }
 
         /* Arrow buttons */
