@@ -545,7 +545,7 @@
         .platform-panel.active { display:block; }
 
         /* ============================================================
-           FAQ / LOOTLABS SECTION
+           FAQ / WORKINK SECTION
         ============================================================ */
         .faq-card {
             background:var(--card-bg);
@@ -756,13 +756,6 @@
         <button class="lang-option" onclick="setLang('ja')" id="lang-ja">
             <span class="lang-flag">🇯🇵</span> 日本語
         </button>
-        <!-- ═══════════════════════════════════════════════════
-             TO ADD A NEW LANGUAGE:
-             1. Add a button here: <button class="lang-option" onclick="setLang('XX')" id="lang-XX"><span class="lang-flag">🏳️</span> Language Name</button>
-             2. Add the translation object in the TRANSLATIONS section in the <script> below.
-             3. If RTL language, add 'rtl' to the lang config object.
-             That's it!
-        ═══════════════════════════════════════════════════ -->
     </div>
     <div class="menu-divider"></div>
 
@@ -808,14 +801,12 @@
 ============================================================ -->
 <div class="platform-tabs">
     <button class="platform-tab active" onclick="showPlatform('android', this)">
-        <!-- Android icon -->
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 16V8a7 7 0 0114 0v8"/><rect x="3" y="16" width="18" height="5" rx="2"/><line x1="8" y1="5" x2="6" y2="3"/><line x1="16" y1="5" x2="18" y2="3"/>
         </svg>
         <span data-i18n="tab_android">Android</span>
     </button>
     <button class="platform-tab" onclick="showPlatform('ios', this)">
-        <!-- Apple icon -->
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3c-1.5 0-3 .8-3.8 2C7.3 6.4 7 8 7 8s-3 .5-3 4c0 5 4.5 9 4.5 9h7S20 17 20 12c0-3.5-3-4-3-4s-.3-1.6-1.2-3C14.9 3.8 13.5 3 12 3z"/>
             <line x1="12" y1="3" x2="12" y2="6"/>
@@ -823,21 +814,18 @@
         <span data-i18n="tab_ios">iPhone / iOS</span>
     </button>
     <button class="platform-tab" onclick="showPlatform('pc', this)">
-        <!-- Monitor icon -->
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
         </svg>
         <span data-i18n="tab_pc">Windows PC</span>
     </button>
-    <button class="platform-tab" onclick="showPlatform('lootlabs', this)">
-        <!-- Link icon -->
+    <button class="platform-tab" onclick="showPlatform('workink', this)">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M12 2v2"/><path d="M12 20v2"/>
         </svg>
-        <span data-i18n="tab_lootlabs">LootLabs</span>
+        <span data-i18n="tab_workink">Work.ink</span>
     </button>
     <button class="platform-tab" onclick="showPlatform('faq', this)">
-        <!-- Help circle icon -->
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
@@ -1532,175 +1520,170 @@
     </div><!-- /panel-pc -->
 
     <!-- ══════════════════════════════════════════════
-         LOOTLABS PANEL
+         WORK.INK PANEL
     ══════════════════════════════════════════════ -->
-    <div class="platform-panel" id="panel-lootlabs">
+    <div class="platform-panel" id="panel-workink">
 
         <div class="section-label">
-            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-            <span class="section-label-text" data-i18n="loot_section_title">LootLabs — Troubleshooting</span>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M12 2v2"/><path d="M12 20v2"/></svg>
+            <span class="section-label-text" data-i18n="workink_section_title">Work.ink — What is it and why do we use it?</span>
             <div class="section-label-line"></div>
         </div>
 
-        <!-- Frozen screen -->
-        <div class="faq-card" id="faq-l1">
-            <div class="faq-header" onclick="toggleFaq('faq-l1')">
+        <!-- What is Work.ink -->
+        <div class="faq-card" id="faq-w1">
+            <div class="faq-header" onclick="toggleFaq('faq-w1')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="w1_title">What is Work.ink?</div>
+                    <div class="faq-subtitle" data-i18n="w1_sub">Learn about the platform we use for file links</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">💡</div>
+                    <div class="fix-content">
+                        <strong data-i18n="w1_a1_title">A link shortening and monetization platform</strong>
+                        <p data-i18n="w1_a1_desc">Work.ink is a service that shortens download links and displays a short advertisement before taking you to the actual file. Think of it as a small gateway — you view one quick ad, and in return you get access to all our mods and add-ons completely free of charge. No subscription, no hidden fees, just a few seconds of your time.</p>
+                    </div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">🔗</div>
+                    <div class="fix-content">
+                        <strong data-i18n="w1_a2_title">How it works</strong>
+                        <p data-i18n="w1_a2_desc">When you click a BNcraft download link, you'll be taken to a Work.ink page. There you'll see a short advertisement for about 5 to 10 seconds. Once the timer runs out, a "Continue" or "Get Link" button will appear. Tap it, and you'll be redirected straight to your mod file on Mediafire or our direct storage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why we use Work.ink -->
+        <div class="faq-card" id="faq-w2">
+            <div class="faq-header" onclick="toggleFaq('faq-w2')">
                 <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                 <div class="faq-title-wrap">
-                    <div class="faq-title" data-i18n="l1_title">Screen freezing / page stuck loading</div>
-                    <div class="faq-subtitle" data-i18n="l1_sub">LootLabs page won't load or stays blank</div>
+                    <div class="faq-title" data-i18n="w2_title">Why does BNcraft use Work.ink?</div>
+                    <div class="faq-subtitle" data-i18n="w2_sub">The honest reason behind our choice</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">💰</div>
+                    <div class="fix-content">
+                        <strong data-i18n="w2_a1_title">To earn a small income and keep the site alive</strong>
+                        <p data-i18n="w2_a1_desc">Running BNcraft isn't free. We pay for website hosting, domain registration, file storage, and spend countless hours creating, testing, and updating mods. Work.ink generates a tiny bit of ad revenue every time someone downloads a file. That income goes straight back into the site — better servers, more mods, and a smoother experience for everyone.</p>
+                    </div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">🚀</div>
+                    <div class="fix-content">
+                        <strong data-i18n="w2_a2_title">To grow and improve BNcraft</strong>
+                        <p data-i18n="w2_a2_desc">Every download through Work.ink helps us invest in new tools, faster hosting, and more ambitious mod projects. The more the community supports us through these links, the more we can give back — with higher quality add-ons, quicker updates, and exclusive content.</p>
+                    </div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">✅</div>
+                    <div class="fix-content">
+                        <strong data-i18n="w2_a3_title">Everything stays completely free for you</strong>
+                        <p data-i18n="w2_a3_desc">We will never ask you to pay for mods. Never. Work.ink lets us cover our costs without putting up a paywall. You watch one short ad, we earn a little bit, and you get the mod. It's that simple, and it keeps the BNcraft community open to everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to download via Work.ink -->
+        <div class="faq-card" id="faq-w3">
+            <div class="faq-header" onclick="toggleFaq('faq-w3')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="w3_title">How to download files through Work.ink</div>
+                    <div class="faq-subtitle" data-i18n="w3_sub">Step-by-step guide to get your mods</div>
                 </div>
                 <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
             </div>
             <div class="faq-body">
                 <div class="fix-step">
                     <div class="fix-num">1</div>
-                    <div class="fix-content"><strong data-i18n="l1_f1_title">Turn OFF your VPN</strong><p data-i18n="l1_f1_desc">If you have an active VPN, disable it. LootLabs blocks many VPN IP addresses, causing the page to freeze or stay blank. This is the #1 fix.</p></div>
+                    <div class="fix-content"><strong data-i18n="w3_s1_title">Click the download link on BNcraft</strong><p data-i18n="w3_s1_desc">Find the mod you want and tap the download button. You'll be taken to a Work.ink page.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">2</div>
-                    <div class="fix-content"><strong data-i18n="l1_f2_title">Disable ad blockers</strong><p data-i18n="l1_f2_desc">LootLabs relies on ads to function. If you have AdBlock, uBlock Origin, or any ad blocker extension, disable it specifically for lootlabs.gg.</p></div>
+                    <div class="fix-content"><strong data-i18n="w3_s2_title">Wait for the timer to finish</strong><p data-i18n="w3_s2_desc">A short advertisement will appear. Wait about 5 to 10 seconds. You'll see a countdown or a progress bar at the top of the page.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">3</div>
-                    <div class="fix-content"><strong data-i18n="l1_f3_title">Clear browser cache</strong><p data-i18n="l1_f3_desc">In browser settings, clear cookies and cache for lootlabs.gg. In Chrome: Settings → Privacy → Clear browsing data.</p></div>
+                    <div class="fix-content"><strong data-i18n="w3_s3_title">Tap "Continue" or "Get Link"</strong><p data-i18n="w3_s3_desc">Once the button appears, tap it. You may need to complete a quick verification (like "I'm not a robot") — but most of the time it's just a single tap.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">4</div>
-                    <div class="fix-content"><strong data-i18n="l1_f4_title">Hard refresh the page</strong><p data-i18n="l1_f4_desc">Press <code>Ctrl+F5</code> (Windows) or <code>Cmd+Shift+R</code> (Mac) to reload without cache.</p></div>
+                    <div class="fix-content"><strong data-i18n="w3_s4_title">You'll arrive at the file</strong><p data-i18n="w3_s4_desc">After tapping, you'll be redirected to the actual file — usually on Mediafire or our direct download server. From there, download and install as normal.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work.ink issues -->
+        <div class="faq-card" id="faq-w4">
+            <div class="faq-header" onclick="toggleFaq('faq-w4')">
+                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="faq-title-wrap">
+                    <div class="faq-title" data-i18n="w4_title">Work.ink page not opening or stuck?</div>
+                    <div class="faq-subtitle" data-i18n="w4_sub">Troubleshooting common Work.ink problems</div>
+                </div>
+                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+            <div class="faq-body">
+                <div class="fix-step">
+                    <div class="fix-num">1</div>
+                    <div class="fix-content"><strong data-i18n="w4_f1_title">Turn off your VPN</strong><p data-i18n="w4_f1_desc">Work.ink sometimes blocks VPN IP addresses. If the page won't load or gets stuck, disable your VPN and try again. This fixes the issue most of the time.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">2</div>
+                    <div class="fix-content"><strong data-i18n="w4_f2_title">Disable ad blockers</strong><p data-i18n="w4_f2_desc">Work.ink needs to show an ad to work. Ad blockers like AdBlock or uBlock Origin will stop the page from loading properly. Disable them for Work.ink and refresh.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">3</div>
+                    <div class="fix-content"><strong data-i18n="w4_f3_title">Try a different browser</strong><p data-i18n="w4_f3_desc">If Chrome is giving you trouble, switch to Firefox, Edge, or Safari. Some browsers handle the redirect process better than others.</p></div>
+                </div>
+                <div class="fix-step">
+                    <div class="fix-num">4</div>
+                    <div class="fix-content"><strong data-i18n="w4_f4_title">Wait and refresh</strong><p data-i18n="w4_f4_desc">Sometimes the page just needs a moment. Wait a few seconds, then tap refresh. If the timer has reset, just wait through it again — it'll work on the second try.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">5</div>
-                    <div class="fix-content"><strong data-i18n="l1_f5_title">Try a different browser</strong><p data-i18n="l1_f5_desc">If Chrome is freezing, try Firefox or Edge. Some browsers work better with LootLabs.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">6</div>
-                    <div class="fix-content"><strong data-i18n="l1_f6_title">Change your DNS</strong><p data-i18n="l1_f6_desc">Switch DNS to Google: <code>8.8.8.8 / 8.8.4.4</code> or Cloudflare: <code>1.1.1.1 / 1.0.0.1</code>.</p></div>
+                    <div class="fix-content"><strong data-i18n="w4_f5_title">Use mobile data instead of Wi-Fi</strong><p data-i18n="w4_f5_desc">Some home or school networks block Work.ink. Switch to your phone's mobile data and the page should open instantly.</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Blank page -->
-        <div class="faq-card" id="faq-l2">
-            <div class="faq-header" onclick="toggleFaq('faq-l2')">
-                <div class="faq-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-                <div class="faq-title-wrap">
-                    <div class="faq-title" data-i18n="l2_title">Page showing blank / white screen</div>
-                    <div class="faq-subtitle" data-i18n="l2_sub">Nothing visible on the LootLabs page</div>
-                </div>
-                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </div>
-            <div class="faq-body">
-                <div class="fix-step">
-                    <div class="fix-num">1</div>
-                    <div class="fix-content"><strong data-i18n="l2_f1_title">Disable ALL browser extensions</strong><p data-i18n="l2_f1_desc">Temporarily disable every extension. Ad blockers, privacy tools, and tracker blockers all cause blank screens on LootLabs.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">2</div>
-                    <div class="fix-content"><strong data-i18n="l2_f2_title">Disable VPN / Proxy</strong><p data-i18n="l2_f2_desc">Make sure no VPN or proxy is running in the background. Also check your phone's settings.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">3</div>
-                    <div class="fix-content"><strong data-i18n="l2_f3_title">Flush DNS cache</strong><p data-i18n="l2_f3_desc">On Windows: open Command Prompt and type <code>ipconfig /flushdns</code> → press Enter. Then retry.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">4</div>
-                    <div class="fix-content"><strong data-i18n="l2_f4_title">Use Incognito / Private mode</strong><p data-i18n="l2_f4_desc">Open an incognito window (<code>Ctrl+Shift+N</code>) and access LootLabs from there. This disables most extensions automatically.</p></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tasks not completing -->
-        <div class="faq-card" id="faq-l3">
-            <div class="faq-header" onclick="toggleFaq('faq-l3')">
-                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-                <div class="faq-title-wrap">
-                    <div class="faq-title" data-i18n="l3_title">Tasks not completing / download button missing</div>
-                    <div class="faq-subtitle" data-i18n="l3_sub">LootLabs tasks aren't being saved</div>
-                </div>
-                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </div>
-            <div class="faq-body">
-                <div class="fix-step">
-                    <div class="fix-num">1</div>
-                    <div class="fix-content"><strong data-i18n="l3_f1_title">Complete tasks properly</strong><p data-i18n="l3_f1_desc">Every task must be fully completed. For YouTube tasks: watch the entire video. For Discord tasks: actually join the server.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">2</div>
-                    <div class="fix-content"><strong data-i18n="l3_f2_title">Wait a few seconds after completing</strong><p data-i18n="l3_f2_desc">After finishing a task, wait 5–10 seconds before clicking "Done". The system needs time to verify.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">3</div>
-                    <div class="fix-content"><strong data-i18n="l3_f3_title">Do not use bypass tools</strong><p data-i18n="l3_f3_desc">Don't use any scripts or extensions to skip tasks — LootLabs detects this and blocks the download.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">4</div>
-                    <div class="fix-content"><strong data-i18n="l3_f4_title">Try mobile data</strong><p data-i18n="l3_f4_desc">If tasks won't save on Wi-Fi, switch to mobile data. Some home networks block the tracking pixels LootLabs uses.</p></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slow loading -->
-        <div class="faq-card" id="faq-l4">
-            <div class="faq-header" onclick="toggleFaq('faq-l4')">
+        <!-- Continue button not appearing -->
+        <div class="faq-card" id="faq-w5">
+            <div class="faq-header" onclick="toggleFaq('faq-w5')">
                 <div class="faq-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                 <div class="faq-title-wrap">
-                    <div class="faq-title" data-i18n="l4_title">LootLabs loading very slowly</div>
-                    <div class="faq-subtitle" data-i18n="l4_sub">Pages taking minutes to load</div>
+                    <div class="faq-title" data-i18n="w5_title">"Continue" button isn't showing up</div>
+                    <div class="faq-subtitle" data-i18n="w5_sub">Timer finished but no button appears</div>
                 </div>
                 <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
             </div>
             <div class="faq-body">
                 <div class="fix-step">
                     <div class="fix-num">1</div>
-                    <div class="fix-content"><strong data-i18n="l4_f1_title">Check your internet speed</strong><p data-i18n="l4_f1_desc">LootLabs loads many ads. You need at least a stable 5 Mbps connection. Test your speed at fast.com or speedtest.net.</p></div>
+                    <div class="fix-content"><strong data-i18n="w5_f1_title">Scroll down the page</strong><p data-i18n="w5_f1_desc">Sometimes the button appears below the visible area of your screen. Scroll down slowly and look for a "Continue" or "Get Link" button.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">2</div>
-                    <div class="fix-content"><strong data-i18n="l4_f2_title">Close other tabs</strong><p data-i18n="l4_f2_desc">Close all unnecessary browser tabs. Too many open tabs can slow down LootLabs ad loading.</p></div>
+                    <div class="fix-content"><strong data-i18n="w5_f2_title">Make sure JavaScript is enabled</strong><p data-i18n="w5_f2_desc">Work.ink relies on JavaScript to show the button. Check your browser settings and make sure JavaScript is not blocked.</p></div>
                 </div>
                 <div class="fix-step">
                     <div class="fix-num">3</div>
-                    <div class="fix-content"><strong data-i18n="l4_f3_title">Switch DNS to Google</strong><p data-i18n="l4_f3_desc">Slow DNS resolution can cause delays. Set DNS to <code>8.8.8.8</code> for faster lookups.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">4</div>
-                    <div class="fix-content"><strong data-i18n="l4_f4_title">Try at a different time</strong><p data-i18n="l4_f4_desc">LootLabs servers may be congested during peak hours. Try downloading early morning or late at night.</p></div>
+                    <div class="fix-content"><strong data-i18n="w5_f3_title">Refresh and wait again</strong><p data-i18n="w5_f3_desc">Sometimes the timer glitches. Refresh the page, let the timer run again, and the button should appear normally.</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Captcha issues -->
-        <div class="faq-card" id="faq-l5">
-            <div class="faq-header" onclick="toggleFaq('faq-l5')">
-                <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-                <div class="faq-title-wrap">
-                    <div class="faq-title" data-i18n="l5_title">CAPTCHA keeps appearing / failing</div>
-                    <div class="faq-subtitle" data-i18n="l5_sub">Verification loop on LootLabs</div>
-                </div>
-                <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-            </div>
-            <div class="faq-body">
-                <div class="fix-step">
-                    <div class="fix-num">1</div>
-                    <div class="fix-content"><strong data-i18n="l5_f1_title">Disable VPN and try again</strong><p data-i18n="l5_f1_desc">CAPTCHAs appear more often with VPN IPs flagged as suspicious. Disable your VPN and refresh.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">2</div>
-                    <div class="fix-content"><strong data-i18n="l5_f2_title">Allow JavaScript</strong><p data-i18n="l5_f2_desc">Make sure JavaScript is enabled in your browser. CAPTCHAs won't load without it.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">3</div>
-                    <div class="fix-content"><strong data-i18n="l5_f3_title">Switch to a different network</strong><p data-i18n="l5_f3_desc">Try switching from Wi-Fi to mobile data, or vice versa. Your current IP may be flagged.</p></div>
-                </div>
-                <div class="fix-step">
-                    <div class="fix-num">4</div>
-                    <div class="fix-content"><strong data-i18n="l5_f4_title">Use a different browser</strong><p data-i18n="l5_f4_desc">Open the LootLabs link in a fresh browser that has no extensions installed.</p></div>
-                </div>
-            </div>
-        </div>
-
-    </div><!-- /panel-lootlabs -->
+    </div><!-- /panel-workink -->
 
     <!-- ══════════════════════════════════════════════
          FAQ PANEL
@@ -1850,20 +1833,11 @@
 // ============================================================
 // TRANSLATIONS
 // ============================================================
-// HOW TO ADD A NEW LANGUAGE:
-// 1. Copy one of the language blocks below (e.g. 'en')
-// 2. Paste it and rename the key (e.g. 'de' for German)
-// 3. Translate all the string values
-// 4. Add the button in the menu HTML above (search for "TO ADD A NEW LANGUAGE")
-// 5. Done! The system handles everything automatically.
-// ============================================================
 const LANG_CONFIG = {
     en: { dir: 'ltr', name: 'English' },
     tr: { dir: 'ltr', name: 'Türkçe' },
     ar: { dir: 'rtl', name: 'العربية' },
     ja: { dir: 'ltr', name: '日本語' }
-    // Add new language configs here, e.g:
-    // de: { dir: 'ltr', name: 'Deutsch' }
 };
 
 const TRANSLATIONS = {
@@ -1883,7 +1857,7 @@ const TRANSLATIONS = {
         tab_android: 'Android',
         tab_ios: 'iPhone / iOS',
         tab_pc: 'Windows PC',
-        tab_lootlabs: 'LootLabs',
+        tab_workink: 'Work.ink',
         tab_faq: 'FAQ',
         android_install_title: 'Android — Installation Guide',
         android_mcaddon_title: 'Install .mcaddon File (Add-Ons)',
@@ -1927,7 +1901,7 @@ const TRANSLATIONS = {
         a4_s4_title: 'Install in the correct order',
         a4_s4_desc: 'Recommended order: first the world template (.mctemplate), then texture/skin packs (.mcpack), then add-ons (.mcaddon).',
         android_zarch_title: 'ZArchiver: Apps Not Showing in "Date" Tab',
-        android_zarch_sub: 'Files visible in Date section but can\'t open in Minecraft',
+        android_zarch_sub: "Files visible in Date section but can't open in Minecraft",
         android_zarch_info: 'This happens because Android restricts access to the Downloads folder from certain apps. ZArchiver needs special storage permission to see files there.',
         az_s1_title: 'Grant Full Storage Access to ZArchiver',
         az_s1_desc: 'Go to Phone Settings → Apps → ZArchiver → Permissions → Storage → choose "Allow access to manage all files". Restart ZArchiver.',
@@ -1938,7 +1912,7 @@ const TRANSLATIONS = {
         shizuku_title: 'Shizuku Setup Guide',
         shizuku_warn: 'Shizuku requires ADB (Android Debug Bridge) from a PC or wireless ADB on Android 11+. No root needed.',
         sh_s1_title: 'Install Shizuku',
-        sh_s1_desc: 'Download Shizuku from Google Play Store. It\'s free and safe.',
+        sh_s1_desc: "Download Shizuku from Google Play Store. It's free and safe.",
         sh_s2_title: 'Enable Developer Options on your phone',
         sh_s2_desc: 'Go to Settings → About Phone → tap "Build Number" 7 times. Developer Options will appear in Settings.',
         sh_s3_title: 'Wireless ADB (Android 11+) — No PC needed',
@@ -1988,7 +1962,7 @@ const TRANSLATIONS = {
         pc_manual_sub: 'Full guide — behavior packs, resource packs, worlds',
         pc_manual_info: 'This method works when double-clicking fails, or when you want to install files directly without opening Minecraft.',
         pm_s1_title: 'Rename the file extension to .zip',
-        pm_s1_desc: 'Example: rename TrainHouse(skin_pack).mcpack → TrainHouse(skin_pack).zip. Right-click the file → Rename. If you don\'t see the extension, open File Explorer → View → check "File name extensions".',
+        pm_s1_desc: "Example: rename TrainHouse(skin_pack).mcpack → TrainHouse(skin_pack).zip. Right-click the file → Rename. If you don't see the extension, open File Explorer → View → check \"File name extensions\".",
         pm_s2_title: 'Extract the .zip',
         pm_s2_desc: 'Right-click the renamed .zip → "Extract All". Extract to a folder you can find easily, like your Desktop.',
         pm_s3_title: 'Find the correct Minecraft folder',
@@ -2022,63 +1996,53 @@ const TRANSLATIONS = {
         pct_s2_desc: 'Double-click the .mctemplate file. Minecraft will open and import it as a world template.',
         pct_s3_title: 'Create world from template',
         pct_s3_desc: 'In Minecraft → Create New World → Templates → My Templates → select and create.',
-        loot_section_title: 'LootLabs — Troubleshooting',
-        l1_title: 'Screen freezing / page stuck loading',
-        l1_sub: 'LootLabs page won\'t load or stays blank',
-        l1_f1_title: 'Turn OFF your VPN',
-        l1_f1_desc: 'If you have an active VPN, disable it. LootLabs blocks many VPN IP addresses, causing the page to freeze or stay blank. This is the #1 fix.',
-        l1_f2_title: 'Disable ad blockers',
-        l1_f2_desc: 'LootLabs relies on ads to function. Disable AdBlock, uBlock Origin, or any ad blocker extension specifically for lootlabs.gg.',
-        l1_f3_title: 'Clear browser cache',
-        l1_f3_desc: 'In browser settings, clear cookies and cache for lootlabs.gg. In Chrome: Settings → Privacy → Clear browsing data.',
-        l1_f4_title: 'Hard refresh the page',
-        l1_f4_desc: 'Press Ctrl+F5 (Windows) or Cmd+Shift+R (Mac) to reload without cache.',
-        l1_f5_title: 'Try a different browser',
-        l1_f5_desc: 'If Chrome is freezing, try Firefox or Edge.',
-        l1_f6_title: 'Change your DNS',
-        l1_f6_desc: 'Switch DNS to Google: 8.8.8.8 / 8.8.4.4 or Cloudflare: 1.1.1.1 / 1.0.0.1.',
-        l2_title: 'Page showing blank / white screen',
-        l2_sub: 'Nothing visible on the LootLabs page',
-        l2_f1_title: 'Disable ALL browser extensions',
-        l2_f1_desc: 'Temporarily disable every extension. Ad blockers, privacy tools, and tracker blockers all cause blank screens on LootLabs.',
-        l2_f2_title: 'Disable VPN / Proxy',
-        l2_f2_desc: 'Make sure no VPN or proxy is running in the background. Also check your phone\'s settings.',
-        l2_f3_title: 'Flush DNS cache',
-        l2_f3_desc: 'On Windows: open Command Prompt and type ipconfig /flushdns → press Enter. Then retry.',
-        l2_f4_title: 'Use Incognito / Private mode',
-        l2_f4_desc: 'Open an incognito window (Ctrl+Shift+N) and access LootLabs from there.',
-        l3_title: 'Tasks not completing / download button missing',
-        l3_sub: 'LootLabs tasks aren\'t being saved',
-        l3_f1_title: 'Complete tasks properly',
-        l3_f1_desc: 'Every task must be fully completed. For YouTube tasks: watch the entire video. For Discord tasks: actually join the server.',
-        l3_f2_title: 'Wait a few seconds after completing',
-        l3_f2_desc: 'After finishing a task, wait 5–10 seconds before clicking "Done". The system needs time to verify.',
-        l3_f3_title: 'Do not use bypass tools',
-        l3_f3_desc: 'Don\'t use any scripts or extensions to skip tasks — LootLabs detects this and blocks the download.',
-        l3_f4_title: 'Try mobile data',
-        l3_f4_desc: 'If tasks won\'t save on Wi-Fi, switch to mobile data. Some home networks block the tracking pixels LootLabs uses.',
-        l4_title: 'LootLabs loading very slowly',
-        l4_sub: 'Pages taking minutes to load',
-        l4_f1_title: 'Check your internet speed',
-        l4_f1_desc: 'LootLabs loads many ads. You need at least a stable 5 Mbps connection. Test at fast.com or speedtest.net.',
-        l4_f2_title: 'Close other tabs',
-        l4_f2_desc: 'Close all unnecessary browser tabs. Too many open tabs can slow down LootLabs ad loading.',
-        l4_f3_title: 'Switch DNS to Google',
-        l4_f3_desc: 'Slow DNS resolution can cause delays. Set DNS to 8.8.8.8 for faster lookups.',
-        l4_f4_title: 'Try at a different time',
-        l4_f4_desc: 'LootLabs servers may be congested during peak hours. Try early morning or late at night.',
-        l5_title: 'CAPTCHA keeps appearing / failing',
-        l5_sub: 'Verification loop on LootLabs',
-        l5_f1_title: 'Disable VPN and try again',
-        l5_f1_desc: 'CAPTCHAs appear more often with VPN IPs flagged as suspicious. Disable your VPN and refresh.',
-        l5_f2_title: 'Allow JavaScript',
-        l5_f2_desc: 'Make sure JavaScript is enabled in your browser. CAPTCHAs won\'t load without it.',
-        l5_f3_title: 'Switch to a different network',
-        l5_f3_desc: 'Try switching from Wi-Fi to mobile data, or vice versa. Your current IP may be flagged.',
-        l5_f4_title: 'Use a different browser',
-        l5_f4_desc: 'Open the LootLabs link in a fresh browser that has no extensions installed.',
+        workink_section_title: 'Work.ink — What is it and why do we use it?',
+        w1_title: 'What is Work.ink?',
+        w1_sub: 'Learn about the platform we use for file links',
+        w1_a1_title: 'A link shortening and monetization platform',
+        w1_a1_desc: 'Work.ink is a service that shortens download links and displays a short advertisement before taking you to the actual file. Think of it as a small gateway — you view one quick ad, and in return you get access to all our mods and add-ons completely free of charge. No subscription, no hidden fees, just a few seconds of your time.',
+        w1_a2_title: 'How it works',
+        w1_a2_desc: "When you click a BNcraft download link, you'll be taken to a Work.ink page. There you'll see a short advertisement for about 5 to 10 seconds. Once the timer runs out, a \"Continue\" or \"Get Link\" button will appear. Tap it, and you'll be redirected straight to your mod file on Mediafire or our direct storage.",
+        w2_title: 'Why does BNcraft use Work.ink?',
+        w2_sub: 'The honest reason behind our choice',
+        w2_a1_title: 'To earn a small income and keep the site alive',
+        w2_a1_desc: "Running BNcraft isn't free. We pay for website hosting, domain registration, file storage, and spend countless hours creating, testing, and updating mods. Work.ink generates a tiny bit of ad revenue every time someone downloads a file. That income goes straight back into the site — better servers, more mods, and a smoother experience for everyone.",
+        w2_a2_title: 'To grow and improve BNcraft',
+        w2_a2_desc: 'Every download through Work.ink helps us invest in new tools, faster hosting, and more ambitious mod projects. The more the community supports us through these links, the more we can give back — with higher quality add-ons, quicker updates, and exclusive content.',
+        w2_a3_title: 'Everything stays completely free for you',
+        w2_a3_desc: "We will never ask you to pay for mods. Never. Work.ink lets us cover our costs without putting up a paywall. You watch one short ad, we earn a little bit, and you get the mod. It's that simple, and it keeps the BNcraft community open to everyone.",
+        w3_title: 'How to download files through Work.ink',
+        w3_sub: 'Step-by-step guide to get your mods',
+        w3_s1_title: 'Click the download link on BNcraft',
+        w3_s1_desc: "Find the mod you want and tap the download button. You'll be taken to a Work.ink page.",
+        w3_s2_title: 'Wait for the timer to finish',
+        w3_s2_desc: "A short advertisement will appear. Wait about 5 to 10 seconds. You'll see a countdown or a progress bar at the top of the page.",
+        w3_s3_title: 'Tap "Continue" or "Get Link"',
+        w3_s3_desc: "Once the button appears, tap it. You may need to complete a quick verification (like \"I'm not a robot\") — but most of the time it's just a single tap.",
+        w3_s4_title: "You'll arrive at the file",
+        w3_s4_desc: "After tapping, you'll be redirected to the actual file — usually on Mediafire or our direct download server. From there, download and install as normal.",
+        w4_title: 'Work.ink page not opening or stuck?',
+        w4_sub: 'Troubleshooting common Work.ink problems',
+        w4_f1_title: 'Turn off your VPN',
+        w4_f1_desc: "Work.ink sometimes blocks VPN IP addresses. If the page won't load or gets stuck, disable your VPN and try again. This fixes the issue most of the time.",
+        w4_f2_title: 'Disable ad blockers',
+        w4_f2_desc: 'Work.ink needs to show an ad to work. Ad blockers like AdBlock or uBlock Origin will stop the page from loading properly. Disable them for Work.ink and refresh.',
+        w4_f3_title: 'Try a different browser',
+        w4_f3_desc: 'If Chrome is giving you trouble, switch to Firefox, Edge, or Safari. Some browsers handle the redirect process better than others.',
+        w4_f4_title: 'Wait and refresh',
+        w4_f4_desc: "Sometimes the page just needs a moment. Wait a few seconds, then tap refresh. If the timer has reset, just wait through it again — it'll work on the second try.",
+        w4_f5_title: 'Use mobile data instead of Wi-Fi',
+        w4_f5_desc: "Some home or school networks block Work.ink. Switch to your phone's mobile data and the page should open instantly.",
+        w5_title: '"Continue" button isn\'t showing up',
+        w5_sub: 'Timer finished but no button appears',
+        w5_f1_title: 'Scroll down the page',
+        w5_f1_desc: 'Sometimes the button appears below the visible area of your screen. Scroll down slowly and look for a "Continue" or "Get Link" button.',
+        w5_f2_title: 'Make sure JavaScript is enabled',
+        w5_f2_desc: 'Work.ink relies on JavaScript to show the button. Check your browser settings and make sure JavaScript is not blocked.',
+        w5_f3_title: 'Refresh and wait again',
+        w5_f3_desc: 'Sometimes the timer glitches. Refresh the page, let the timer run again, and the button should appear normally.',
         faq_section_title: 'Frequently Asked Questions',
-        faq1_title: 'What\'s the difference between .mcaddon, .mcpack, .mctemplate, and .zip?',
+        faq1_title: "What's the difference between .mcaddon, .mcpack, .mctemplate, and .zip?",
         faq1_sub: 'Understanding all Minecraft file types',
         faq1_mcaddon: 'A complete Add-On containing both a Behavior Pack and a Resource Pack in one file. The most common type for full mods.',
         faq1_mcpack: 'A single pack file — either a Skin Pack or a Texture/Resource Pack. Contains only one type of content.',
@@ -2102,10 +2066,10 @@ const TRANSLATIONS = {
         faq3_f2_desc: 'In world settings → Experiments → enable the required toggles.',
         faq3_f3_title: 'Fully close and reopen Minecraft',
         faq3_f3_desc: 'Completely close Minecraft from recent apps, then reopen. Some mods require a full restart.',
-        faq4_title: 'I downloaded the file but can\'t find it on my phone',
+        faq4_title: "I downloaded the file but can't find it on my phone",
         faq4_sub: 'File downloaded but missing from storage',
         faq4_android: 'Open your File Manager → Downloads folder. On some Android phones, check Internal Storage → Download. If missing, try a different browser.',
-        faq4_ios: 'Open the Files app → Browse → Downloads. Or check Safari\'s download manager (top right icon).',
+        faq4_ios: "Open the Files app → Browse → Downloads. Or check Safari's download manager (top right icon).",
         faq5_title: '"Duplicate Pack Detected" error',
         faq5_sub: 'Error when importing a mod',
         faq5_f1_title: 'Delete the old version first',
@@ -2131,136 +2095,136 @@ const TRANSLATIONS = {
         theme_select: 'Tema Seç',
         hero_badge: 'Destek Merkezi',
         hero_title: 'BNcraft <span>Yardım</span>',
-        hero_sub: 'Mod yüklemek, sorunları çözmek ve BNcraft\'tan en iyi şekilde yararlanmak için ihtiyacınız olan her şey.',
+        hero_sub: "Mod yüklemek, sorunları çözmek ve BNcraft'tan en iyi şekilde yararlanmak için ihtiyacınız olan her şey.",
         tab_android: 'Android',
         tab_ios: 'iPhone / iOS',
         tab_pc: 'Windows PC',
-        tab_lootlabs: 'LootLabs',
+        tab_workink: 'Work.ink',
         tab_faq: 'SSS',
         android_install_title: 'Android — Kurulum Rehberi',
         android_mcaddon_title: '.mcaddon Dosyası Kurma (Add-Ons)',
         android_mcaddon_sub: 'Behavior + resource pack içeren tam eklenti',
         a1_s1_title: 'Dosyayı indirin',
-        a1_s1_desc: 'BNcraft web sitesinden Add-On (.mcaddon) dosyasını indirin. İndirilenler (Downloads) klasörüne kaydedilecektir.',
+        a1_s1_desc: "BNcraft web sitesinden Add-On (.mcaddon) dosyasını indirin. İndirilenler (Downloads) klasörüne kaydedilecektir.",
         a1_s2_title: 'Dosya Yöneticisi ile açın',
-        a1_s2_desc: 'Telefonunuzun Dosya Yöneticisi uygulamasını açın ve İndirilenler klasörüne gidin.',
+        a1_s2_desc: "Telefonunuzun Dosya Yöneticisi uygulamasını açın ve İndirilenler klasörüne gidin.",
         a1_s3_title: '.mcaddon dosyasına bir kez dokunun',
-        a1_s3_desc: 'Telefonunuz hangi uygulama ile açmak istediğinizi soracaktır. Listeden Minecraft\'ı seçin.',
+        a1_s3_desc: "Telefonunuz hangi uygulama ile açmak istediğinizi soracaktır. Listeden Minecraft'ı seçin.",
         a1_s4_title: 'İçe aktarmayı bekleyin',
         a1_s4_desc: 'Minecraft otomatik olarak açılacak ve "İçe aktarma başladı..." yazısını gösterecektir. "Başarıyla içe aktarıldı" yazısını görene kadar bekleyin.',
         a1_s5_title: 'Dünyada etkinleştirin',
-        a1_s5_desc: 'Bir dünya oluşturun veya düzenleyin → Kaynak Paketleri ve Davranış Paketleri\'ne kaydırın → ikisini de etkinleştirin. Ardından Oyna\'ya basın.',
+        a1_s5_desc: "Bir dünya oluşturun veya düzenleyin → Kaynak Paketleri ve Davranış Paketleri'ne kaydırın → ikisini de etkinleştirin. Ardından Oyna'ya basın.",
         android_mcpack_title: '.mcpack Dosyası Kurma (Skin / Doku Paketleri)',
         android_mcpack_sub: 'Tek paket — yalnızca skin veya doku',
         a2_s1_title: '.mcpack dosyasını indirin',
-        a2_s1_desc: 'BNcraft\'tan skin paketi veya doku paketi (.mcpack) dosyasını indirin. İndirilenler klasörüne kaydedilir.',
+        a2_s1_desc: "BNcraft'tan skin paketi veya doku paketi (.mcpack) dosyasını indirin. İndirilenler klasörüne kaydedilir.",
         a2_s2_title: 'Dosyaya dokunarak açın',
-        a2_s2_desc: 'Dosya Yöneticisini açın, İndirilenler\'e gidin, .mcpack dosyasına dokunun. İstendiğinde Minecraft\'ı seçin.',
+        a2_s2_desc: "Dosya Yöneticisini açın, İndirilenler'e gidin, .mcpack dosyasına dokunun. İstendiğinde Minecraft'ı seçin.",
         a2_s3_title: 'Başarılı içe aktarmayı onaylayın',
-        a2_s3_desc: 'Minecraft paketi içe aktarır ve başarı mesajı gösterir. Skin paketleri için: Görünüm\'e gidin → yeni skininizi seçin. Doku paketleri için: dünya ayarlarında Kaynak Paketleri altında etkinleştirin.',
+        a2_s3_desc: "Minecraft paketi içe aktarır ve başarı mesajı gösterir. Skin paketleri için: Görünüm'e gidin → yeni skininizi seçin. Doku paketleri için: dünya ayarlarında Kaynak Paketleri altında etkinleştirin.",
         android_mctemplate_title: '.mctemplate Dosyası Kurma (Dünya Şablonları)',
         android_mctemplate_sub: 'Hazır dünyalar ve haritalar',
         a3_s1_title: '.mctemplate dosyasını indirin',
-        a3_s1_desc: 'BNcraft\'tan Dünya Şablonu dosyasını alın. İndirilenler klasörüne kaydedilir.',
+        a3_s1_desc: "BNcraft'tan Dünya Şablonu dosyasını alın. İndirilenler klasörüne kaydedilir.",
         a3_s2_title: 'Minecraft ile açın',
-        a3_s2_desc: 'Dosya Yöneticisinde dosyaya dokunun ve Minecraft\'ı seçin. Şablon içe aktarılacaktır.',
+        a3_s2_desc: "Dosya Yöneticisinde dosyaya dokunun ve Minecraft'ı seçin. Şablon içe aktarılacaktır.",
         a3_s3_title: 'Dünya Şablonlarında bulun',
-        a3_s3_desc: 'Minecraft\'ta Yeni Dünya Oluştur → Şablonlar → Şablonlarım\'a gidin. Şablonu seçin ve ondan yeni bir dünya oluşturun.',
+        a3_s3_desc: "Minecraft'ta Yeni Dünya Oluştur → Şablonlar → Şablonlarım'a gidin. Şablonu seçin ve ondan yeni bir dünya oluşturun.",
         a3_note: 'Dünya Şablonları yeni bir dünya oluşturur — mevcut bir dünyayı değiştirmez.',
         android_zip_title: '.zip Arşivi Kurma (Mash-Ups)',
         android_zip_sub: 'Birden fazla dosya türü içeren paket',
         android_zip_warn: 'Bir .zip Mash-Up, içinde birden fazla dosya barındırır (örn. dünya şablonu + skin paketi + doku paketi). Her dosyayı ayrı ayrı çıkarıp kurmanız gerekir.',
-        a4_s1_title: 'ZArchiver\'ı yükleyin',
-        a4_s1_desc: 'Google Play Store\'dan ZArchiver\'ı ücretsiz indirip yükleyin. Android\'de .zip dosyalarını açmak için en iyi araçtır.',
+        a4_s1_title: "ZArchiver'ı yükleyin",
+        a4_s1_desc: "Google Play Store'dan ZArchiver'ı ücretsiz indirip yükleyin. Android'de .zip dosyalarını açmak için en iyi araçtır.",
         a4_s2_title: '.zip dosyasını ZArchiver ile açın',
-        a4_s2_desc: 'ZArchiver\'ı açın, İndirilenler klasörüne gidin ve .zip dosyasına dokunun. "Buraya çıkar" veya "Klasöre çıkar"ı seçin.',
+        a4_s2_desc: "ZArchiver'ı açın, İndirilenler klasörüne gidin ve .zip dosyasına dokunun. \"Buraya çıkar\" veya \"Klasöre çıkar\"ı seçin.",
         a4_s3_title: 'İçindeki dosyaları tanımlayın',
-        a4_s3_desc: 'Çıkarma sonrasında şunlar gibi dosyalar göreceksiniz: .mctemplate .mcpack .mcaddon. Her birine dokunarak Minecraft\'ı seçin.',
+        a4_s3_desc: "Çıkarma sonrasında şunlar gibi dosyalar göreceksiniz: .mctemplate .mcpack .mcaddon. Her birine dokunarak Minecraft'ı seçin.",
         a4_s4_title: 'Doğru sırayla yükleyin',
         a4_s4_desc: 'Önerilen sıra: önce dünya şablonu (.mctemplate), sonra doku/skin paketleri (.mcpack), sonra eklentiler (.mcaddon).',
         android_zarch_title: 'ZArchiver: "Tarih" Sekmesinde Uygulamalar Görünmüyor',
         android_zarch_sub: 'Dosyalar Tarih bölümünde görünüyor ama Minecraft ile açılamıyor',
-        android_zarch_info: 'Bu sorun, Android\'in belirli uygulamaların İndirilenler klasörüne erişimini kısıtlamasından kaynaklanır. ZArchiver\'ın dosyaları görmesi için özel depolama izni gerekir.',
-        az_s1_title: 'ZArchiver\'a Tam Depolama Erişimi Ver',
-        az_s1_desc: 'Telefon Ayarları → Uygulamalar → ZArchiver → İzinler → Depolama → "Tüm dosyaları yönetmeye izin ver"i seçin. ZArchiver\'ı yeniden başlatın.',
+        android_zarch_info: "Bu sorun, Android'in belirli uygulamaların İndirilenler klasörüne erişimini kısıtlamasından kaynaklanır. ZArchiver'ın dosyaları görmesi için özel depolama izni gerekir.",
+        az_s1_title: "ZArchiver'a Tam Depolama Erişimi Ver",
+        az_s1_desc: "Telefon Ayarları → Uygulamalar → ZArchiver → İzinler → Depolama → \"Tüm dosyaları yönetmeye izin ver\"i seçin. ZArchiver'ı yeniden başlatın.",
         az_s2_title: 'Dosyayı İç Depolama köküne taşıyın',
-        az_s2_desc: 'ZArchiver\'da dosyanızı İndirilenler\'den çıkarıp İç Depolama\'nın köküne taşıyın. Oradan açmayı deneyin.',
+        az_s2_desc: "ZArchiver'da dosyanızı İndirilenler'den çıkarıp İç Depolama'nın köküne taşıyın. Oradan açmayı deneyin.",
         az_s3_title: 'Hâlâ çalışmıyor mu? Shizuku kullanın',
         az_s3_desc: 'Hiçbir çözüm işe yaramazsa Shizuku, root yapmadan uygulamalara yüksek dosya sistemi erişimi sağlar. Aşağıdaki rehberi izleyin.',
         shizuku_title: 'Shizuku Kurulum Rehberi',
-        shizuku_warn: 'Shizuku, PC\'den ADB (Android Debug Bridge) veya Android 11+ için kablosuz ADB gerektirir. Root gerekmez.',
-        sh_s1_title: 'Shizuku\'yu yükleyin',
-        sh_s1_desc: 'Google Play Store\'dan Shizuku\'yu indirin. Ücretsiz ve güvenlidir.',
+        shizuku_warn: "Shizuku, PC'den ADB (Android Debug Bridge) veya Android 11+ için kablosuz ADB gerektirir. Root gerekmez.",
+        sh_s1_title: "Shizuku'yu yükleyin",
+        sh_s1_desc: "Google Play Store'dan Shizuku'yu indirin. Ücretsiz ve güvenlidir.",
         sh_s2_title: 'Telefonunuzda Geliştirici Seçeneklerini etkinleştirin',
         sh_s2_desc: 'Ayarlar → Telefon Hakkında → "Derleme Numarası"na 7 kez dokunun. Geliştirici Seçenekleri Ayarlar\'da görünecektir.',
         sh_s3_title: 'Kablosuz ADB (Android 11+) — PC gerekmez',
         sh_s3_desc: 'Ayarlar → Geliştirici Seçenekleri → "Kablosuz hata ayıklama"yı etkinleştirin. "Kablosuz hata ayıklama" → "Eşleştirme kodu ile cihaz eşleştir"e dokunun. IP, port ve kodu not edin. Shizuku\'da → "Eşleştirme"ye dokunun → bilgileri girin. Ardından "Kablosuz ADB ile başlat"a dokunun.',
         sh_s4_title: 'PC kullanarak (ADB yöntemi)',
-        sh_s4_desc: 'PC\'nize ADB yükleyin. USB Hata Ayıklama etkinken telefonu USB ile bağlayın. Şunu çalıştırın: adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh — Shizuku etkinleşecek.',
-        sh_s5_title: 'Shizuku\'da ZArchiver\'a izin verin',
-        sh_s5_desc: 'Shizuku çalışırken (yeşil gösterge) ZArchiver\'ı açın → Shizuku izni isteyecek → İzin Ver\'e dokunun. ZArchiver artık İndirilenler klasörü dahil tüm dosyalara erişebilir.',
+        sh_s4_desc: "PC'nize ADB yükleyin. USB Hata Ayıklama etkinken telefonu USB ile bağlayın. Şunu çalıştırın: adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh — Shizuku etkinleşecek.",
+        sh_s5_title: "Shizuku'da ZArchiver'a izin verin",
+        sh_s5_desc: "Shizuku çalışırken (yeşil gösterge) ZArchiver'ı açın → Shizuku izni isteyecek → İzin Ver'e dokunun. ZArchiver artık İndirilenler klasörü dahil tüm dosyalara erişebilir.",
         ios_install_title: 'iPhone / iOS — Kurulum Rehberi',
         ios_mcaddon_title: '.mcaddon / .mcpack Dosyası Kurma',
         ios_mcaddon_sub: 'Eklentiler, skinler ve doku paketleri',
         ios1_s1_title: 'Dosyayı Safari veya Chrome ile indirin',
-        ios1_s1_desc: 'BNcraft\'tan .mcaddon veya .mcpack dosyasını indirin. İndirme tamamlandığında tarayıcınızın sağ üstündeki indirme simgesine dokunun.',
+        ios1_s1_desc: "BNcraft'tan .mcaddon veya .mcpack dosyasını indirin. İndirme tamamlandığında tarayıcınızın sağ üstündeki indirme simgesine dokunun.",
         ios1_s2_title: 'Dosyaya dokunun → Paylaş → Minecraft\'a Kopyala',
         ios1_s2_desc: 'İndirilenler panelinde dosyaya dokunun. Ardından Paylaş simgesine (ok çıkan kutu) dokunun → kaydırın ve "Minecraft\'a Kopyala"yı seçin. Minecraft açılıp otomatik olarak içe aktarır.',
         ios1_s3_title: 'Alternatif: Dosyalar uygulaması ile açın',
-        ios1_s3_desc: 'Dosyalar uygulamasını açın → Gözat → İndirilenler → dosyaya uzun basın → Paylaş → Minecraft\'a Kopyala.',
+        ios1_s3_desc: "Dosyalar uygulamasını açın → Gözat → İndirilenler → dosyaya uzun basın → Paylaş → Minecraft'a Kopyala.",
         ios1_s4_title: 'Dünya ayarlarında etkinleştirin',
         ios1_s4_desc: 'İçe aktarmadan sonra Minecraft\'ta bir dünya oluşturun veya düzenleyin. Paketi Kaynak Paketleri / Davranış Paketleri altında etkinleştirin.',
-        ios_safari_note: 'iOS\'ta en iyi indirme deneyimi için her zaman Safari kullanın. Chrome bazı dosya türlerini engelleyebilir.',
+        ios_safari_note: "iOS'ta en iyi indirme deneyimi için her zaman Safari kullanın. Chrome bazı dosya türlerini engelleyebilir.",
         ios_mctemplate_title: '.mctemplate Kurma (Dünya Şablonları)',
         ios_mctemplate_sub: 'iPhone için hazır dünyalar',
         ios2_s1_title: 'Safari ile .mctemplate indirin',
-        ios2_s1_desc: 'Safari kullanarak BNcraft\'tan indirin. Dosya İndirilenler\'de görünecektir.',
+        ios2_s1_desc: "Safari kullanarak BNcraft'tan indirin. Dosya İndirilenler'de görünecektir.",
         ios2_s2_title: 'Paylaş aracılığıyla Minecraft ile açın',
-        ios2_s2_desc: 'Dosyaya dokunun → Paylaş düğmesi → Minecraft\'a Kopyala. Minecraft şablonu içe aktarır.',
+        ios2_s2_desc: "Dosyaya dokunun → Paylaş düğmesi → Minecraft'a Kopyala. Minecraft şablonu içe aktarır.",
         ios2_s3_title: 'Şablondan dünya oluşturun',
-        ios2_s3_desc: 'Minecraft\'ta: Yeni Dünya Oluştur → Şablonlar → Şablonlarım. Şablonu seçin ve Oluştur\'a dokunun.',
+        ios2_s3_desc: "Minecraft'ta: Yeni Dünya Oluştur → Şablonlar → Şablonlarım. Şablonu seçin ve Oluştur'a dokunun.",
         ios_zip_title: '.zip Arşivi Kurma (Mash-Ups)',
         ios_zip_sub: 'Birden fazla dosyayı çıkarın ve kurun',
         ios3_s1_title: 'Safari ile .zip indirin',
-        ios3_s1_desc: 'Safari kullanarak BNcraft\'tan Mash-Up .zip dosyasını indirin.',
+        ios3_s1_desc: "Safari kullanarak BNcraft'tan Mash-Up .zip dosyasını indirin.",
         ios3_s2_title: 'Dosyalar uygulaması ile çıkarın',
         ios3_s2_desc: 'Dosyalar uygulamasını açın → İndirilenler → .zip dosyasına bir kez dokunun. iOS otomatik olarak bir klasöre çıkarır.',
         ios3_s3_title: 'İçindeki her dosyayı kurun',
-        ios3_s3_desc: 'Çıkarılan klasörü açın. Her .mctemplate, .mcpack veya .mcaddon dosyası için: uzun basın → Paylaş → Minecraft\'a Kopyala.',
+        ios3_s3_desc: "Çıkarılan klasörü açın. Her .mctemplate, .mcpack veya .mcaddon dosyası için: uzun basın → Paylaş → Minecraft'a Kopyala.",
         pc_install_title: 'Windows PC — Kurulum Rehberi',
         pc_auto_title: 'Hızlı Kurulum: .mcaddon / .mcpack (Çift Tıklama)',
         pc_auto_sub: 'En hızlı yöntem — çoğu dosya için çalışır',
         pc1_s1_title: 'Dosyayı indirin',
-        pc1_s1_desc: 'BNcraft\'tan .mcaddon veya .mcpack dosyasını indirin. İndirilenler klasöründe olacak.',
+        pc1_s1_desc: "BNcraft'tan .mcaddon veya .mcpack dosyasını indirin. İndirilenler klasöründe olacak.",
         pc1_s2_title: 'Dosyaya çift tıklayın',
         pc1_s2_desc: 'Dosyaya çift tıklayın. Windows otomatik olarak Minecraft ile açacak. Paket içe aktarılır ve başarı bildirimi görürsünüz.',
         pc1_s3_title: 'Dünyada etkinleştirin',
-        pc1_s3_desc: 'Minecraft\'ta bir dünya oluşturun veya düzenleyin → paketi Kaynak Paketleri / Davranış Paketleri altında etkinleştirin.',
+        pc1_s3_desc: "Minecraft'ta bir dünya oluşturun veya düzenleyin → paketi Kaynak Paketleri / Davranış Paketleri altında etkinleştirin.",
         pc_manual_title: 'Manuel Kurulum (Çift Tıklama Olmadan)',
         pc_manual_sub: 'Tam rehber — behavior, resource paketleri ve dünyalar',
-        pc_manual_info: 'Bu yöntem çift tıklama başarısız olduğunda veya dosyaları Minecraft\'ı açmadan doğrudan yüklemek istediğinizde kullanılır.',
+        pc_manual_info: "Bu yöntem çift tıklama başarısız olduğunda veya dosyaları Minecraft'ı açmadan doğrudan yüklemek istediğinizde kullanılır.",
         pm_s1_title: 'Dosya uzantısını .zip olarak yeniden adlandırın',
         pm_s1_desc: 'Örnek: TrainHouse(skin_pack).mcpack → TrainHouse(skin_pack).zip olarak yeniden adlandırın. Dosyaya sağ tıklayın → Yeniden Adlandır. Uzantıyı görmüyorsanız Dosya Gezgini → Görünüm → "Dosya adı uzantıları"nı işaretleyin.',
         pm_s2_title: '.zip dosyasını çıkarın',
         pm_s2_desc: 'Yeniden adlandırılan .zip\'e sağ tıklayın → "Tümünü Çıkar". Masaüstünüz gibi kolayca bulabileceğiniz bir klasöre çıkarın.',
         pm_s3_title: 'Doğru Minecraft klasörünü bulun',
-        pm_s3_desc: 'Win+R tuşlarına basın → com.mojang yolunu yazın → Enter\'a basın. Bu Minecraft veri klasörüdür.',
+        pm_s3_desc: "Win+R tuşlarına basın → com.mojang yolunu yazın → Enter'a basın. Bu Minecraft veri klasörüdür.",
         pm_s4_title: 'Doğru alt klasöre kopyalayın',
         pm_s4_desc: 'Çıkarılan klasörü, paketin türüne göre doğru konuma kopyalayın:',
         pm_resource_label: 'Kaynak Paketi / Doku Paketi / Skin Paketi (.mcpack):',
         pm_behavior_label: 'Davranış Paketi (.mcaddon behavior bölümü):',
         pm_addon_label: '.mcaddon dosyaları için (İKİ paketi de içerir)',
-        pm_addon_info: 'Bir .mcaddon dosyasının içinde İKİ klasör bulunur: biri behavior pack, diğeri resource pack klasörü. Çıkardıktan sonra behavior pack klasörünü behavior_packs\'a, resource pack klasörünü resource_packs\'a kopyalayın.',
+        pm_addon_info: "Bir .mcaddon dosyasının içinde İKİ klasör bulunur: biri behavior pack, diğeri resource pack klasörü. Çıkardıktan sonra behavior pack klasörünü behavior_packs'a, resource pack klasörünü resource_packs'a kopyalayın.",
         pm_template_label: '.mctemplate dosyaları için (Dünya Şablonları)',
         pmt_s1_title: '.zip olarak yeniden adlandırın ve çıkarın',
         pmt_s1_desc: '.mctemplate dosyasını .zip olarak yeniden adlandırın → çıkarın. Çıkarılan klasör dünya verinizdir.',
-        pmt_s2_title: 'minecraftWorlds\'e kopyalayın',
+        pmt_s2_title: "minecraftWorlds'e kopyalayın",
         pmt_s2_desc: 'Çıkarılan klasörü şuraya kopyalayın:',
-        pmt_s3_title: 'Minecraft\'ı açın ve dünyayı bulun',
-        pmt_s3_desc: 'Minecraft\'ı açın → Oyna → dünya listenizde görünecektir.',
+        pmt_s3_title: "Minecraft'ı açın ve dünyayı bulun",
+        pmt_s3_desc: "Minecraft'ı açın → Oyna → dünya listenizde görünecektir.",
         pm_multizip_label: '.zip Mash-Up için (İçinde birden fazla dosya)',
-        pm_multizip_warn: 'Bir Mash-Up .zip, içinde farklı paket türleri barındırır. Her biri kendi klasörüne gitmek zorundadır. Önce .zip\'i çıkarın, ardından her alt klasörü ayrı ayrı ele alın.',
-        pmz_s1_title: 'Ana .zip\'i çıkarın',
+        pm_multizip_warn: "Bir Mash-Up .zip, içinde farklı paket türleri barındırır. Her biri kendi klasörüne gitmek zorundadır. Önce .zip'i çıkarın, ardından her alt klasörü ayrı ayrı ele alın.",
+        pmz_s1_title: "Ana .zip'i çıkarın",
         pmz_s1_desc: 'Sağ tıklayın → Tümünü Çıkar. İçinde birden fazla klasör/dosya göreceksiniz.',
         pmz_s2_title: 'Her klasör türünü tanımlayın',
         pmz_s2_desc: 'Her alt klasörde manifest.json dosyasını açın. "type": "resources" → resource_packs. "type": "data" → behavior_packs. level.dat içeriyorsa → dünya → minecraftWorlds.',
@@ -2269,95 +2233,85 @@ const TRANSLATIONS = {
         pc_template_title: '.mctemplate Kurma (Hızlı Yöntem)',
         pc_template_sub: 'Dünya şablonları için çift tıklama ile içe aktarma',
         pct_s1_title: '.mctemplate dosyasını indirin',
-        pct_s1_desc: 'BNcraft\'tan indirin. İndirilenler klasörünüzde bulacaksınız.',
+        pct_s1_desc: "BNcraft'tan indirin. İndirilenler klasörünüzde bulacaksınız.",
         pct_s2_title: 'Çift tıklayarak içe aktarın',
         pct_s2_desc: '.mctemplate dosyasına çift tıklayın. Minecraft açılacak ve bir dünya şablonu olarak içe aktaracak.',
         pct_s3_title: 'Şablondan dünya oluşturun',
         pct_s3_desc: 'Minecraft → Yeni Dünya Oluştur → Şablonlar → Şablonlarım → seçin ve oluşturun.',
-        loot_section_title: 'LootLabs — Sorun Giderme',
-        l1_title: 'Ekran donuyor / sayfa yüklenirken takılıyor',
-        l1_sub: 'LootLabs sayfası yüklenmiyor veya boş kalıyor',
-        l1_f1_title: 'VPN\'inizi KAPATIN',
-        l1_f1_desc: 'Aktif bir VPN\'iniz varsa kapatın. LootLabs, sayfanın donmasına neden olan birçok VPN IP adresini engeller. Bu 1 numaralı çözümdür.',
-        l1_f2_title: 'Reklam engelleyicileri devre dışı bırakın',
-        l1_f2_desc: 'LootLabs çalışmak için reklamlara ihtiyaç duyar. AdBlock, uBlock Origin gibi uzantıları lootlabs.gg için devre dışı bırakın.',
-        l1_f3_title: 'Tarayıcı önbelleğini temizleyin',
-        l1_f3_desc: 'Tarayıcı ayarlarında lootlabs.gg için çerezleri ve önbelleği temizleyin. Chrome\'da: Ayarlar → Gizlilik → Tarama verilerini temizle.',
-        l1_f4_title: 'Sayfayı sert yenileyin',
-        l1_f4_desc: 'Önbellek olmadan yeniden yüklemek için Ctrl+F5 (Windows) veya Cmd+Shift+R (Mac) tuşlarına basın.',
-        l1_f5_title: 'Farklı bir tarayıcı deneyin',
-        l1_f5_desc: 'Chrome donuyorsa Firefox veya Edge\'i deneyin.',
-        l1_f6_title: 'DNS\'inizi değiştirin',
-        l1_f6_desc: 'DNS\'i Google\'a değiştirin: 8.8.8.8 / 8.8.4.4 veya Cloudflare: 1.1.1.1 / 1.0.0.1.',
-        l2_title: 'Sayfa boş / beyaz ekran gösteriyor',
-        l2_sub: 'LootLabs sayfasında hiçbir şey görünmüyor',
-        l2_f1_title: 'Tüm tarayıcı uzantılarını devre dışı bırakın',
-        l2_f1_desc: 'TÜM uzantıları geçici olarak devre dışı bırakın. Reklam engelleyiciler, gizlilik araçları ve izleyici engelleyiciler LootLabs\'ta boş ekranlara neden olur.',
-        l2_f2_title: 'VPN / Proxy\'yi kapatın',
-        l2_f2_desc: 'Arka planda hiçbir VPN veya proxy çalışmadığından emin olun. Telefonunuzun ayarlarını da kontrol edin.',
-        l2_f3_title: 'DNS önbelleğini temizleyin',
-        l2_f3_desc: 'Windows\'ta: Komut İstemi\'ni açın ve ipconfig /flushdns yazın → Enter\'a basın. Ardından yeniden deneyin.',
-        l2_f4_title: 'Gizli / özel mod kullanın',
-        l2_f4_desc: 'Gizli bir pencere açın (Ctrl+Shift+N) ve LootLabs\'a oradan erişin.',
-        l3_title: 'Görevler tamamlanmıyor / indirme düğmesi eksik',
-        l3_sub: 'LootLabs görevleri kaydedilmiyor',
-        l3_f1_title: 'Görevleri doğru şekilde tamamlayın',
-        l3_f1_desc: 'Her görevin tamamen tamamlanması gerekir. YouTube görevleri için videonun tamamını izleyin. Discord görevleri için sunucuya gerçekten katılın.',
-        l3_f2_title: 'Birkaç saniye bekleyin',
-        l3_f2_desc: 'Bir görevi tamamladıktan sonra "Bitti"yi tıklamadan önce 5-10 saniye bekleyin. Sistemin doğrulama yapması için zaman gerekir.',
-        l3_f3_title: 'Atlama araçları kullanmayın',
-        l3_f3_desc: 'Görevleri atlamak için herhangi bir komut dosyası veya uzantı kullanmayın — LootLabs bunu algılar ve indirmeyi engeller.',
-        l3_f4_title: 'Mobil veri ile deneyin',
-        l3_f4_desc: 'Wi-Fi\'de görevler kaydedilmiyorsa mobil veriye geçin. Bazı ev ağları LootLabs\'ın kullandığı izleme piksellerini engeller.',
-        l4_title: 'LootLabs çok yavaş yükleniyor',
-        l4_sub: 'Sayfaların yüklenmesi dakikalar alıyor',
-        l4_f1_title: 'İnternet hızınızı kontrol edin',
-        l4_f1_desc: 'LootLabs çok sayıda reklam yükler. En az 5 Mbps kararlı bağlantıya ihtiyacınız var. Hızınızı fast.com veya speedtest.net\'te test edin.',
-        l4_f2_title: 'Diğer sekmeleri kapatın',
-        l4_f2_desc: 'Gereksiz tüm tarayıcı sekmelerini kapatın. Çok fazla sekme LootLabs reklam yüklemesini yavaşlatabilir.',
-        l4_f3_title: 'DNS\'i Google\'a değiştirin',
-        l4_f3_desc: 'Yavaş DNS çözümlemesi gecikmelere neden olabilir. Daha hızlı aramalar için DNS\'i 8.8.8.8 olarak ayarlayın.',
-        l4_f4_title: 'Farklı bir zamanda deneyin',
-        l4_f4_desc: 'LootLabs sunucuları yoğun saatlerde sıkışık olabilir. Sabah erken veya gece geç indirmeyi deneyin.',
-        l5_title: 'CAPTCHA sürekli çıkıyor / başarısız oluyor',
-        l5_sub: 'LootLabs\'ta doğrulama döngüsü',
-        l5_f1_title: 'VPN\'i devre dışı bırakın ve tekrar deneyin',
-        l5_f1_desc: 'VPN IP\'leri şüpheli olarak işaretlendiğinden CAPTCHA\'lar daha sık görünür. VPN\'i kapatın ve yenileyin.',
-        l5_f2_title: 'JavaScript\'e izin verin',
-        l5_f2_desc: 'Tarayıcınızda JavaScript\'in etkin olduğundan emin olun. CAPTCHA\'lar onsuz yüklenmez.',
-        l5_f3_title: 'Farklı bir ağa geçin',
-        l5_f3_desc: 'Wi-Fi\'den mobil veriye veya tersine geçin. Mevcut IP\'niz işaretlenmiş olabilir.',
-        l5_f4_title: 'Farklı bir tarayıcı kullanın',
-        l5_f4_desc: 'LootLabs bağlantısını uzantı kurulmamış temiz bir tarayıcıda açın.',
+        workink_section_title: 'Work.ink — Nedir ve neden kullanıyoruz?',
+        w1_title: 'Work.ink nedir?',
+        w1_sub: 'Dosya bağlantıları için kullandığımız platform hakkında bilgi edinin',
+        w1_a1_title: 'Bir bağlantı kısaltma ve gelir platformu',
+        w1_a1_desc: "Work.ink, indirme bağlantılarını kısaltan ve sizi gerçek dosyaya yönlendirmeden önce kısa bir reklam gösteren bir hizmettir. Küçük bir geçit gibi düşünün — hızlı bir reklam izlersiniz ve karşılığında tüm modlarımıza ve eklentilerimize tamamen ücretsiz erişirsiniz. Abonelik yok, gizli ücret yok, sadece birkaç saniyenizi alır.",
+        w1_a2_title: 'Nasıl çalışır',
+        w1_a2_desc: "Bir BNcraft indirme bağlantısına tıkladığınızda, sizi bir Work.ink sayfasına yönlendirir. Orada yaklaşık 5 ila 10 saniye süren kısa bir reklam görürsünüz. Sayaç bittiğinde \"Devam Et\" veya \"Bağlantıyı Al\" düğmesi belirir. Ona dokunun, doğrudan Mediafire veya kendi depolama alanımızdaki mod dosyanıza yönlendirilirsiniz.",
+        w2_title: 'BNcraft neden Work.ink kullanıyor?',
+        w2_sub: 'Tercihimizin ardındaki dürüst sebep',
+        w2_a1_title: 'Küçük bir gelir elde etmek ve siteyi ayakta tutmak',
+        w2_a1_desc: "BNcraft'ı yönetmek ücretsiz değil. Web sitesi barındırma, alan adı kaydı, dosya depolama için ödeme yapıyor ve modları oluşturmak, test etmek ve güncellemek için sayısız saat harcıyoruz. Work.ink, biri dosya indirdiğinde çok küçük bir reklam geliri sağlar. Bu gelir doğrudan siteye geri döner — daha iyi sunucular, daha fazla mod ve herkes için daha akıcı bir deneyim.",
+        w2_a2_title: "BNcraft'ı büyütmek ve geliştirmek",
+        w2_a2_desc: "Work.ink üzerinden yapılan her indirme, yeni araçlara, daha hızlı barındırmaya ve daha iddialı mod projelerine yatırım yapmamıza yardımcı olur. Topluluk bizi bu bağlantılar aracılığıyla ne kadar desteklerse, biz de o kadar karşılık verebiliriz — daha kaliteli eklentiler, daha hızlı güncellemeler ve özel içeriklerle.",
+        w2_a3_title: 'Her şey sizin için tamamen ücretsiz kalır',
+        w2_a3_desc: "Modlar için sizden asla ücret talep etmeyeceğiz. Asla. Work.ink, bir ödeme duvarı koymadan maliyetlerimizi karşılamamızı sağlar. Siz kısa bir reklam izlersiniz, biz biraz kazanırız ve siz modu alırsınız. Bu kadar basit ve BNcraft topluluğunu herkese açık tutar.",
+        w3_title: 'Work.ink üzerinden dosya nasıl indirilir',
+        w3_sub: 'Modlarınızı almak için adım adım rehber',
+        w3_s1_title: "BNcraft'taki indirme bağlantısına tıklayın",
+        w3_s1_desc: "İstediğiniz modu bulun ve indirme düğmesine dokunun. Bir Work.ink sayfasına yönlendirileceksiniz.",
+        w3_s2_title: 'Sayacın bitmesini bekleyin',
+        w3_s2_desc: 'Kısa bir reklam belirecek. Yaklaşık 5 ila 10 saniye bekleyin. Sayfanın üstünde bir geri sayım veya ilerleme çubuğu göreceksiniz.',
+        w3_s3_title: '"Devam Et" veya "Bağlantıyı Al" düğmesine dokunun',
+        w3_s3_desc: "Düğme belirdiğinde ona dokunun. Hızlı bir doğrulama yapmanız gerekebilir (\"Robot değilim\" gibi) — ancak çoğu zaman sadece tek bir dokunuş yeterlidir.",
+        w3_s4_title: 'Dosyaya ulaşacaksınız',
+        w3_s4_desc: 'Dokunduktan sonra gerçek dosyaya yönlendirileceksiniz — genellikle Mediafire veya doğrudan indirme sunucumuzda. Oradan normal şekilde indirip kurun.',
+        w4_title: 'Work.ink sayfası açılmıyor veya takılıyor mu?',
+        w4_sub: 'Yaygın Work.ink sorunlarını giderme',
+        w4_f1_title: "VPN'inizi kapatın",
+        w4_f1_desc: "Work.ink bazen VPN IP adreslerini engeller. Sayfa yüklenmez veya takılırsa VPN'inizi devre dışı bırakıp tekrar deneyin. Bu, çoğu zaman sorunu çözer.",
+        w4_f2_title: 'Reklam engelleyicileri devre dışı bırakın',
+        w4_f2_desc: "Work.ink'in çalışması için reklam göstermesi gerekir. AdBlock veya uBlock Origin gibi reklam engelleyiciler sayfanın düzgün yüklenmesini engeller. Work.ink için bunları devre dışı bırakın ve yenileyin.",
+        w4_f3_title: 'Farklı bir tarayıcı deneyin',
+        w4_f3_desc: 'Chrome sorun çıkarıyorsa Firefox, Edge veya Safari\'ye geçin. Bazı tarayıcılar yönlendirme sürecini diğerlerinden daha iyi yönetir.',
+        w4_f4_title: 'Bekleyin ve yenileyin',
+        w4_f4_desc: "Bazen sayfanın sadece biraz zamana ihtiyacı vardır. Birkaç saniye bekleyin, ardından yenile düğmesine dokunun. Sayaç sıfırlanmışsa tekrar bekleyin — ikinci denemede çalışacaktır.",
+        w4_f5_title: 'Wi-Fi yerine mobil veri kullanın',
+        w4_f5_desc: "Bazı ev veya okul ağları Work.ink'i engeller. Telefonunuzun mobil verisine geçin, sayfa anında açılacaktır.",
+        w5_title: '"Devam Et" düğmesi görünmüyor',
+        w5_sub: 'Sayaç bitti ama düğme belirmiyor',
+        w5_f1_title: 'Sayfayı aşağı kaydırın',
+        w5_f1_desc: 'Bazen düğme ekranın görünen alanının altında belirir. Yavaşça aşağı kaydırın ve "Devam Et" veya "Bağlantıyı Al" düğmesini arayın.',
+        w5_f2_title: "JavaScript'in etkin olduğundan emin olun",
+        w5_f2_desc: "Work.ink, düğmeyi göstermek için JavaScript'e ihtiyaç duyar. Tarayıcı ayarlarınızı kontrol edin ve JavaScript'in engellenmediğinden emin olun.",
+        w5_f3_title: 'Yenileyin ve tekrar bekleyin',
+        w5_f3_desc: "Bazen sayaç hata yapar. Sayfayı yenileyin, sayacın tekrar çalışmasına izin verin, düğme normal şekilde görünecektir.",
         faq_section_title: 'Sıkça Sorulan Sorular',
         faq1_title: '.mcaddon, .mcpack, .mctemplate ve .zip arasındaki fark nedir?',
         faq1_sub: 'Tüm Minecraft dosya türlerini anlama',
         faq1_mcaddon: 'Tek dosyada hem Davranış Paketi hem de Kaynak Paketi içeren eksiksiz bir Eklenti. Tam modlar için en yaygın tür.',
         faq1_mcpack: 'Tek paket dosyası — ya Skin Paketi ya da Doku/Kaynak Paketi. Yalnızca bir tür içerik barındırır.',
         faq1_mctemplate: 'Hazır bir dünya oluşturan Dünya Şablonu dosyası. Macera haritaları, hayatta kalma dünyaları ve oyun modları için kullanılır.',
-        faq1_zip: 'Birden fazla dosya içeren arşiv — genellikle bir dünya + skinler + dokular içeren Mash-Up paketlerinde kullanılır. Önce .zip\'i çıkarın, ardından içindeki her dosyayı ayrı ayrı yükleyin.',
+        faq1_zip: "Birden fazla dosya içeren arşiv — genellikle bir dünya + skinler + dokular içeren Mash-Up paketlerinde kullanılır. Önce .zip'i çıkarın, ardından içindeki her dosyayı ayrı ayrı yükleyin.",
         faq2_title: 'Mod oyunumu çökertiyor — ne yapmalıyım?',
         faq2_sub: 'Modlu dünyaya girerken oyun kapanıyor',
         faq2_f1_title: 'Minecraft sürüm uyumluluğunu kontrol edin',
         faq2_f1_desc: 'Mod belirli bir Minecraft sürümü için yapılmıştır. O sürümü kullandığınızdan emin olun.',
-        faq2_f2_title: 'Deneysel Oyun\'u etkinleştirin',
+        faq2_f2_title: "Deneysel Oyun'u etkinleştirin",
         faq2_f2_desc: 'Dünya ayarları → Deneyler → ilgili tüm geçişleri etkinleştirin.',
         faq2_f3_title: 'Çakışan modları kaldırın',
         faq2_f3_desc: 'Diğer aktif modları tek tek devre dışı bırakmayı deneyin. İki mod birbirleriyle çakışıyor olabilir.',
         faq2_f4_title: 'Modu yeniden yükleyin',
-        faq2_f4_desc: 'Paketi Minecraft depolama alanından silin ve BNcraft\'tan dosyayı yeniden içe aktarın.',
+        faq2_f4_desc: "Paketi Minecraft depolama alanından silin ve BNcraft'tan dosyayı yeniden içe aktarın.",
         faq3_title: 'Modu etkinleştirdim ama dünyamda hiçbir şey değişmedi',
         faq3_sub: 'Mod çalışmıyor gibi görünüyor',
         faq3_f1_title: 'HEM Davranış Paketi HEM de Kaynak Paketi\'ni etkinleştirin',
         faq3_f1_desc: 'Modun iki parçası varsa ikisi de etkinleştirilmelidir. Dünya ayarları → Kaynak Paketleri → etkinleştir VE → Davranış Paketleri → etkinleştir.',
-        faq3_f2_title: 'Deneysel Oyun\'u açın',
+        faq3_f2_title: "Deneysel Oyun'u açın",
         faq3_f2_desc: 'Dünya ayarları → Deneyler → gerekli geçişleri etkinleştirin.',
-        faq3_f3_title: 'Minecraft\'ı tamamen kapatıp yeniden açın',
-        faq3_f3_desc: 'Minecraft\'ı son açık uygulamalardan tamamen kapatın, ardından yeniden açın. Bazı modların yüklenmesi için yeniden başlatma gerekir.',
+        faq3_f3_title: "Minecraft'ı tamamen kapatıp yeniden açın",
+        faq3_f3_desc: "Minecraft'ı son açık uygulamalardan tamamen kapatın, ardından yeniden açın. Bazı modların yüklenmesi için yeniden başlatma gerekir.",
         faq4_title: 'Dosyayı indirdim ama telefonumda bulamıyorum',
         faq4_sub: 'Dosya indirildi ama hiçbir yerde bulunamıyor',
         faq4_android: 'Dosya Yöneticinizde İndirilenler klasörünü açın. Bazı Android telefonlarda İç Depolama → Download konumunda olabilir. Hâlâ bulamıyorsanız farklı bir tarayıcı deneyin.',
-        faq4_ios: 'Dosyalar uygulamasını açın → Gözat → İndirilenler. Ya da Safari\'nin indirme yöneticisini (sağ üst simge) kontrol edin.',
+        faq4_ios: "Dosyalar uygulamasını açın → Gözat → İndirilenler. Ya da Safari'nin indirme yöneticisini (sağ üst simge) kontrol edin.",
         faq5_title: '"Yinelenen Paket Algılandı" hatası',
         faq5_sub: 'Mod içe aktarılırken hata',
         faq5_f1_title: 'Önce eski sürümü silin',
@@ -2365,10 +2319,10 @@ const TRANSLATIONS = {
         faq6_title: 'Kurulumdan sonra modları kullanmak için internete ihtiyacım var mı?',
         faq6_sub: 'Modlarla çevrimdışı oynama',
         faq6_ans_title: 'Hayır! Modlar tamamen çevrimdışı çalışır.',
-        faq6_ans_desc: 'Bir mod kurulup bir dünyada etkinleştirildikten sonra tamamen çevrimdışı oynayabilirsiniz. BNcraft\'tan mod indirmek için yalnızca internete ihtiyacınız var. Kurulumdan sonra tüm dosyalar cihazınızda yerel olarak saklanır.',
+        faq6_ans_desc: "Bir mod kurulup bir dünyada etkinleştirildikten sonra tamamen çevrimdışı oynayabilirsiniz. BNcraft'tan mod indirmek için yalnızca internete ihtiyacınız var. Kurulumdan sonra tüm dosyalar cihazınızda yerel olarak saklanır.",
         discord_title: 'Hâlâ yardıma mı ihtiyacınız var?',
-        discord_desc: 'BNcraft ekibinden ve topluluğundan canlı destek için Discord\'umuza katılın.',
-        discord_btn: 'Discord\'a Katıl'
+        discord_desc: "BNcraft ekibinden ve topluluğundan canlı destek için Discord'umuza katılın.",
+        discord_btn: "Discord'a Katıl"
     },
 
     ar: {
@@ -2387,7 +2341,7 @@ const TRANSLATIONS = {
         tab_android: 'أندرويد',
         tab_ios: 'آيفون / iOS',
         tab_pc: 'كمبيوتر Windows',
-        tab_lootlabs: 'LootLabs',
+        tab_workink: 'Work.ink',
         tab_faq: 'الأسئلة الشائعة',
         android_install_title: 'أندرويد — دليل التثبيت',
         android_mcaddon_title: 'تثبيت ملف .mcaddon (الإضافات)',
@@ -2430,7 +2384,7 @@ const TRANSLATIONS = {
         a4_s3_desc: 'بعد الاستخراج ستجد ملفات مثل: .mctemplate .mcpack .mcaddon. ثبّت كل منها بالنقر عليه واختيار Minecraft.',
         a4_s4_title: 'التثبيت بالترتيب الصحيح',
         a4_s4_desc: 'الترتيب الموصى به: أولاً قالب العالم (.mctemplate)، ثم حزم القوام/السكن (.mcpack)، ثم الإضافات (.mcaddon).',
-        android_zarch_title: 'ZArchiver:Date التطبيقات لا تظهر في تبويب ""',
+        android_zarch_title: 'ZArchiver: التطبيقات لا تظهر في تبويب "التاريخ"',
         android_zarch_sub: 'الملفات مرئية في قسم التاريخ لكن لا يمكن فتحها في Minecraft',
         android_zarch_info: 'يحدث هذا لأن أندرويد يقيّد وصول بعض التطبيقات إلى مجلد التنزيلات. يحتاج ZArchiver إلى إذن تخزين خاص لرؤية الملفات هناك.',
         az_s1_title: 'منح ZArchiver وصولاً كاملاً للتخزين',
@@ -2526,61 +2480,51 @@ const TRANSLATIONS = {
         pct_s2_desc: 'انقر نقراً مزدوجاً على ملف .mctemplate. سيفتح Minecraft ويستورده كقالب عالم.',
         pct_s3_title: 'إنشاء عالم من القالب',
         pct_s3_desc: 'في Minecraft ← إنشاء عالم جديد ← القوالب ← قوالبي ← اختر وأنشئ.',
-        loot_section_title: 'LootLabs — استكشاف الأخطاء وإصلاحها',
-        l1_title: 'تجمد الشاشة / الصفحة عالقة في التحميل',
-        l1_sub: 'صفحة LootLabs لا تُحمَّل أو تظل فارغة',
-        l1_f1_title: 'أوقف تشغيل VPN',
-        l1_f1_desc: 'إذا كان لديك VPN نشط، أوقف تشغيله. تحجب LootLabs كثيراً من عناوين IP الخاصة بـ VPN مما يتسبب في تجمد الصفحة. هذا هو الحل الأول.',
-        l1_f2_title: 'عطّل أدوات حجب الإعلانات',
-        l1_f2_desc: 'تعمل LootLabs بالاعتماد على الإعلانات. عطّل AdBlock أو uBlock Origin أو أي امتداد لحجب الإعلانات خصيصاً لـ lootlabs.gg.',
-        l1_f3_title: 'امسح ذاكرة التخزين المؤقت للمتصفح',
-        l1_f3_desc: 'في إعدادات المتصفح، امسح ملفات تعريف الارتباط والذاكرة المؤقتة لـ lootlabs.gg. في Chrome: الإعدادات ← الخصوصية ← مسح بيانات التصفح.',
-        l1_f4_title: 'إعادة التحميل القسرية للصفحة',
-        l1_f4_desc: 'اضغط Ctrl+F5 (Windows) أو Cmd+Shift+R (Mac) لإعادة التحميل بدون ذاكرة مؤقتة.',
-        l1_f5_title: 'جرّب متصفحاً مختلفاً',
-        l1_f5_desc: 'إذا كان Chrome يتجمد، جرّب Firefox أو Edge.',
-        l1_f6_title: 'غيّر إعدادات DNS',
-        l1_f6_desc: 'غيّر DNS إلى Google: 8.8.8.8 / 8.8.4.4 أو Cloudflare: 1.1.1.1 / 1.0.0.1.',
-        l2_title: 'الصفحة تظهر فارغة / شاشة بيضاء',
-        l2_sub: 'لا شيء مرئي على صفحة LootLabs',
-        l2_f1_title: 'عطّل جميع امتدادات المتصفح',
-        l2_f1_desc: 'عطّل مؤقتاً جميع الامتدادات. أدوات حجب الإعلانات والخصوصية وحاجب المتتبعين جميعها تتسبب في شاشات بيضاء على LootLabs.',
-        l2_f2_title: 'عطّل VPN / Proxy',
-        l2_f2_desc: 'تأكد من عدم تشغيل أي VPN أو proxy في الخلفية. تحقق أيضاً من إعدادات هاتفك.',
-        l2_f3_title: 'مسح ذاكرة تخزين DNS المؤقتة',
-        l2_f3_desc: 'على Windows: افتح موجه الأوامر واكتب ipconfig /flushdns ← اضغط Enter. ثم أعد المحاولة.',
-        l2_f4_title: 'استخدم وضع التصفح الخاص',
-        l2_f4_desc: 'افتح نافذة تصفح خاص (Ctrl+Shift+N) وادخل إلى LootLabs منها.',
-        l3_title: 'المهام لا تكتمل / زر التحميل مفقود',
-        l3_sub: 'مهام LootLabs لا تُحفظ',
-        l3_f1_title: 'أكمل المهام بشكل صحيح',
-        l3_f1_desc: 'يجب إكمال كل مهمة بالكامل. لمهام YouTube: شاهد الفيديو كاملاً. لمهام Discord: انضم للخادم فعلياً.',
-        l3_f2_title: 'انتظر بضع ثوانٍ بعد الإكمال',
-        l3_f2_desc: 'بعد إنهاء المهمة، انتظر 5-10 ثوانٍ قبل النقر على "تم". يحتاج النظام وقتاً للتحقق.',
-        l3_f3_title: 'لا تستخدم أدوات التجاوز',
-        l3_f3_desc: 'لا تستخدم أي سكريبت أو امتداد لتخطي المهام — تكتشف LootLabs ذلك وتحجب التحميل.',
-        l3_f4_title: 'جرّب بيانات الجوال',
-        l3_f4_desc: 'إذا لم تُحفظ المهام على Wi-Fi، انتقل إلى بيانات الجوال. بعض الشبكات المنزلية تحجب بكسلات التتبع التي تستخدمها LootLabs.',
-        l4_title: 'LootLabs يحمّل ببطء شديد',
-        l4_sub: 'تحميل الصفحات يستغرق دقائق',
-        l4_f1_title: 'تحقق من سرعة الإنترنت',
-        l4_f1_desc: 'تحمّل LootLabs إعلانات كثيرة. تحتاج اتصالاً مستقراً لا يقل عن 5 ميغابت/ثانية. اختبر سرعتك على fast.com أو speedtest.net.',
-        l4_f2_title: 'أغلق التبويبات الأخرى',
-        l4_f2_desc: 'أغلق جميع تبويبات المتصفح غير الضرورية. كثرة التبويبات المفتوحة قد تبطئ تحميل إعلانات LootLabs.',
-        l4_f3_title: 'بدّل DNS إلى Google',
-        l4_f3_desc: 'قد يتسبب حل DNS البطيء في تأخيرات. اضبط DNS على 8.8.8.8 لبحث أسرع.',
-        l4_f4_title: 'جرّب في وقت مختلف',
-        l4_f4_desc: 'قد تكون خوادم LootLabs مزدحمة في ساعات الذروة. جرّب التحميل في الصباح الباكر أو في وقت متأخر من الليل.',
-        l5_title: 'CAPTCHA يظهر باستمرار / يفشل',
-        l5_sub: 'حلقة التحقق على LootLabs',
-        l5_f1_title: 'عطّل VPN وأعد المحاولة',
-        l5_f1_desc: 'تظهر CAPTCHA بشكل متكرر مع عناوين IP لـ VPN المشبوهة. عطّل VPN وأعد التحديث.',
-        l5_f2_title: 'اسمح بـ JavaScript',
-        l5_f2_desc: 'تأكد من تفعيل JavaScript في متصفحك. لن تُحمَّل CAPTCHA بدونه.',
-        l5_f3_title: 'انتقل إلى شبكة مختلفة',
-        l5_f3_desc: 'جرّب التبديل من Wi-Fi إلى بيانات الجوال أو العكس. ربما تم تصنيف عنوان IP الحالي.',
-        l5_f4_title: 'استخدم متصفحاً مختلفاً',
-        l5_f4_desc: 'افتح رابط LootLabs في متصفح جديد لا توجد فيه امتدادات.',
+        workink_section_title: 'Work.ink — ما هو ولماذا نستخدمه؟',
+        w1_title: 'ما هو Work.ink؟',
+        w1_sub: 'تعرف على المنصة التي نستخدمها لروابط الملفات',
+        w1_a1_title: 'منصة تقصير الروابط وتحقيق الدخل',
+        w1_a1_desc: 'Work.ink هي خدمة تقصّر روابط التحميل وتعرض إعلاناً قصيراً قبل توجيهك إلى الملف الفعلي. فكّر فيها كبوابة صغيرة — تشاهد إعلاناً سريعاً واحداً، وفي المقابل تحصل على وصول كامل لجميع موداتنا وإضافاتنا مجاناً بالكامل. لا اشتراكات، لا رسوم مخفية، فقط بضع ثوانٍ من وقتك.',
+        w1_a2_title: 'كيف يعمل',
+        w1_a2_desc: 'عندما تنقر على رابط تحميل BNcraft، سيتم نقلك إلى صفحة Work.ink. هناك سترى إعلاناً قصيراً لمدة 5 إلى 10 ثوانٍ تقريباً. بمجرد انتهاء العداد، سيظهر زر "متابعة" أو "احصل على الرابط". انقر عليه، وستتم إعادة توجيهك مباشرة إلى ملف المود على Mediafire أو خادم التخزين المباشر الخاص بنا.',
+        w2_title: 'لماذا يستخدم BNcraft منصة Work.ink؟',
+        w2_sub: 'السبب الصريح وراء اختيارنا',
+        w2_a1_title: 'لتحقيق دخل بسيط والحفاظ على استمرارية الموقع',
+        w2_a1_desc: 'إدارة BNcraft ليست مجانية. نحن ندفع تكاليف استضافة الموقع، وتسجيل النطاق، وتخزين الملفات، ونقضي ساعات لا تُحصى في إنشاء المودات واختبارها وتحديثها. تولّد Work.ink دخلاً إعلانياً صغيراً جداً في كل مرة يقوم فيها شخص بتحميل ملف. يعود هذا الدخل مباشرة إلى الموقع — خوادم أفضل، مودات أكثر، وتجربة أكثر سلاسة للجميع.',
+        w2_a2_title: 'لتطوير وتحسين BNcraft',
+        w2_a2_desc: 'كل تحميل عبر Work.ink يساعدنا في الاستثمار في أدوات جديدة، واستضافة أسرع، ومشاريع مودات أكثر طموحاً. كلما دعمنا المجتمع أكثر من خلال هذه الروابط، استطعنا تقديم المزيد — بإضافات ذات جودة أعلى، وتحديثات أسرع، ومحتوى حصري.',
+        w2_a3_title: 'كل شيء يبقى مجانياً بالكامل لك',
+        w2_a3_desc: 'لن نطلب منك أبداً أن تدفع مقابل المودات. أبداً. تتيح لنا Work.ink تغطية تكاليفنا دون وضع حاجز دفع. تشاهد إعلاناً قصيراً واحداً، نربح نحن القليل، وتحصل أنت على المود. الأمر بهذه البساطة، وهو ما يبقي مجتمع BNcraft مفتوحاً للجميع.',
+        w3_title: 'كيفية تحميل الملفات عبر Work.ink',
+        w3_sub: 'دليل خطوة بخطوة للحصول على موداتك',
+        w3_s1_title: 'انقر على رابط التحميل في BNcraft',
+        w3_s1_desc: 'ابحث عن المود الذي تريده وانقر على زر التحميل. سيتم نقلك إلى صفحة Work.ink.',
+        w3_s2_title: 'انتظر انتهاء العداد',
+        w3_s2_desc: 'سيظهر إعلان قصير. انتظر حوالي 5 إلى 10 ثوانٍ. سترى عداً تنازلياً أو شريط تقدم في أعلى الصفحة.',
+        w3_s3_title: 'انقر على "متابعة" أو "احصل على الرابط"',
+        w3_s3_desc: 'بمجرد ظهور الزر، انقر عليه. قد تحتاج إلى إكمال تحقق سريع (مثل "أنا لست روبوتاً") — لكن في معظم الأحيان يكون الأمر مجرد نقرة واحدة.',
+        w3_s4_title: 'ستصل إلى الملف',
+        w3_s4_desc: 'بعد النقر، ستتم إعادة توجيهك إلى الملف الفعلي — عادة على Mediafire أو خادم التحميل المباشر الخاص بنا. من هناك، قم بالتحميل والتثبيت كالمعتاد.',
+        w4_title: 'صفحة Work.ink لا تفتح أو عالقة؟',
+        w4_sub: 'استكشاف مشاكل Work.ink الشائعة وإصلاحها',
+        w4_f1_title: 'أوقف تشغيل VPN',
+        w4_f1_desc: 'تحجب Work.ink أحياناً عناوين IP الخاصة بـ VPN. إذا لم يتم تحميل الصفحة أو علقت، قم بتعطيل VPN وحاول مرة أخرى. هذا يحل المشكلة في معظم الأحيان.',
+        w4_f2_title: 'عطّل أدوات حجب الإعلانات',
+        w4_f2_desc: 'تحتاج Work.ink إلى عرض إعلان لتعمل. ستمنع أدوات حجب الإعلانات مثل AdBlock أو uBlock Origin الصفحة من التحميل بشكل صحيح. قم بتعطيلها لـ Work.ink وتحديث الصفحة.',
+        w4_f3_title: 'جرّب متصفحاً مختلفاً',
+        w4_f3_desc: 'إذا كان Chrome يسبب لك مشكلة، انتقل إلى Firefox أو Edge أو Safari. بعض المتصفحات تتعامل مع عملية إعادة التوجيه بشكل أفضل من غيرها.',
+        w4_f4_title: 'انتظر وقم بالتحديث',
+        w4_f4_desc: 'في بعض الأحيان تحتاج الصفحة فقط إلى لحظة. انتظر بضع ثوانٍ، ثم انقر على تحديث. إذا تم إعادة تعيين العداد، فقط انتظر من خلاله مرة أخرى — سيعمل في المحاولة الثانية.',
+        w4_f5_title: 'استخدم بيانات الجوال بدلاً من Wi-Fi',
+        w4_f5_desc: 'بعض الشبكات المنزلية أو المدرسية تحجب Work.ink. انتقل إلى بيانات الجوال في هاتفك وستفتح الصفحة فوراً.',
+        w5_title: 'زر "متابعة" لا يظهر',
+        w5_sub: 'انتهى العداد لكن لا يظهر زر',
+        w5_f1_title: 'مرّر الصفحة للأسفل',
+        w5_f1_desc: 'في بعض الأحيان يظهر الزر أسفل المنطقة المرئية من شاشتك. مرر للأسفل ببطء وابحث عن زر "متابعة" أو "احصل على الرابط".',
+        w5_f2_title: 'تأكد من تفعيل JavaScript',
+        w5_f2_desc: 'تعتمد Work.ink على JavaScript لإظهار الزر. تحقق من إعدادات متصفحك وتأكد من أن JavaScript غير محظورة.',
+        w5_f3_title: 'قم بالتحديث وانتظر مرة أخرى',
+        w5_f3_desc: 'في بعض الأحيان يحدث خلل في العداد. قم بتحديث الصفحة، ودع العداد يعمل مرة أخرى، وسيظهر الزر بشكل طبيعي.',
         faq_section_title: 'الأسئلة المتكررة',
         faq1_title: 'ما الفرق بين .mcaddon و .mcpack و .mctemplate و .zip؟',
         faq1_sub: 'فهم جميع أنواع ملفات Minecraft',
@@ -2619,8 +2563,8 @@ const TRANSLATIONS = {
         faq6_ans_title: 'لا! تعمل المودات دون اتصال تماماً.',
         faq6_ans_desc: 'بعد تثبيت المود وتفعيله على عالم، يمكنك اللعب دون اتصال بالإنترنت. تحتاج الإنترنت فقط لتحميل المودات من BNcraft. بعد التثبيت، تُخزَّن جميع الملفات محلياً على جهازك.',
         discord_title: 'لا تزال بحاجة إلى مساعدة؟',
-        discord_desc: 'امجتمع Discord لدينا للحصول على دعم مباشر من فريق BNcraft والمجتمع.',
-discord_btn: 'انضم إلى Discord'
+        discord_desc: 'انضم إلى مجتمع Discord للحصول على دعم مباشر من فريق BNcraft والمجتمع.',
+        discord_btn: 'انضم إلى Discord'
     },
 
     ja: {
@@ -2639,7 +2583,7 @@ discord_btn: 'انضم إلى Discord'
         tab_android: 'Android',
         tab_ios: 'iPhone / iOS',
         tab_pc: 'Windows PC',
-        tab_lootlabs: 'LootLabs',
+        tab_workink: 'Work.ink',
         tab_faq: 'よくある質問',
         android_install_title: 'Android — インストールガイド',
         android_mcaddon_title: '.mcaddon ファイルのインストール（Add-Ons）',
@@ -2778,61 +2722,51 @@ discord_btn: 'انضم إلى Discord'
         pct_s2_desc: '.mctemplate ファイルをダブルクリックします。Minecraftが起動してワールドテンプレートとしてインポートします。',
         pct_s3_title: 'テンプレートからワールドを作成する',
         pct_s3_desc: 'Minecraft → 「新しいワールドを作成」→「テンプレート」→「マイテンプレート」→ 選んで作成します。',
-        loot_section_title: 'LootLabs — トラブルシューティング',
-        l1_title: '画面がフリーズする / ページが読み込み中のまま止まる',
-        l1_sub: 'LootLabsのページが読み込めないor真っ白になる',
-        l1_f1_title: 'VPNをオフにする',
-        l1_f1_desc: 'VPNが有効になっている場合は無効にしてください。LootLabsは多くのVPNのIPアドレスをブロックしており、それがページのフリーズや真っ白表示の原因になります。これが一番よく効く解決策です。',
-        l1_f2_title: '広告ブロッカーを無効にする',
-        l1_f2_desc: 'LootLabsは動作するために広告が必要です。AdBlock・uBlock Originなどの拡張機能を lootlabs.gg に対して無効にしてください。',
-        l1_f3_title: 'ブラウザのキャッシュをクリアする',
-        l1_f3_desc: 'ブラウザの設定で lootlabs.gg のCookieとキャッシュをクリアします。Chromeの場合：設定 → プライバシーとセキュリティ → 閲覧履歴データの削除。',
-        l1_f4_title: 'ページを強制リロードする',
-        l1_f4_desc: 'キャッシュなしで再読み込みするには Ctrl+F5（Windows）または Cmd+Shift+R（Mac）を押します。',
-        l1_f5_title: '別のブラウザを試す',
-        l1_f5_desc: 'Chromeで固まる場合は、FirefoxやEdgeを試してみてください。',
-        l1_f6_title: 'DNSを変更する',
-        l1_f6_desc: 'DNSをGoogleに変更する：8.8.8.8 / 8.8.4.4、またはCloudflare：1.1.1.1 / 1.0.0.1。',
-        l2_title: 'ページが真っ白 / 何も表示されない',
-        l2_sub: 'LootLabsのページに何も表示されない',
-        l2_f1_title: 'すべてのブラウザ拡張機能を無効にする',
-        l2_f1_desc: 'すべての拡張機能を一時的に無効にしてください。広告ブロッカー・プライバシーツール・トラッカーブロッカーはすべて LootLabs で真っ白表示の原因になります。',
-        l2_f2_title: 'VPN / プロキシをオフにする',
-        l2_f3_title: 'DNSキャッシュをフラッシュする',
-        l2_f2_desc: 'バックグラウンドでVPNやプロキシが動いていないか確認してください。スマホの設定も確認しましょう。',
-        l2_f3_desc: 'Windowsの場合：コマンドプロンプトを開いて ipconfig /flushdns と入力 → Enterを押します。そのあと再試行します。',
-        l2_f4_title: 'シークレット / プライベートモードで開く',
-        l2_f4_desc: 'シークレットウィンドウ（Ctrl+Shift+N）を開いて、そこからLootLabsにアクセスします。',
-        l3_title: 'タスクが完了にならない / ダウンロードボタンが出ない',
-        l3_sub: 'LootLabsのタスクが保存されない',
-        l3_f1_title: 'タスクをきちんと完了させる',
-        l3_f1_desc: 'すべてのタスクを最後まで完了する必要があります。YouTubeのタスクは動画を最後まで視聴すること。Discordのタスクは実際にサーバーに参加すること。',
-        l3_f2_title: '完了後に少し待つ',
-        l3_f2_desc: 'タスクを終えたら「完了」をクリックする前に5〜10秒待ちます。システムが確認するための時間が必要です。',
-        l3_f3_title: 'バイパスツールを使わない',
-        l3_f3_desc: 'タスクをスキップするためのスクリプトや拡張機能は使わないでください — LootLabsがそれを検知してダウンロードをブロックします。',
-        l3_f4_title: 'モバイルデータを試す',
-        l3_f4_desc: 'Wi-Fiでタスクが保存されない場合、モバイルデータに切り替えてみてください。一部のホームネットワークがLootLabsのトラッキングピクセルをブロックしていることがあります。',
-        l4_title: 'LootLabsの読み込みがとても遅い',
-        l4_sub: 'ページの読み込みに数分かかる',
-        l4_f1_title: 'インターネット速度を確認する',
-        l4_f1_desc: 'LootLabsは広告を多く読み込みます。少なくとも安定した5Mbpsの接続が必要です。fast.comやspeedtest.netで速度を確認してください。',
-        l4_f2_title: '他のタブを閉じる',
-        l4_f2_desc: '不要なブラウザのタブをすべて閉じます。タブが多すぎると LootLabs の広告読み込みが遅くなることがあります。',
-        l4_f3_title: 'DNSをGoogleに切り替える',
-        l4_f3_desc: 'DNSの解決が遅いと遅延の原因になります。DNSを8.8.8.8に設定すると速くなります。',
-        l4_f4_title: '時間を変えて試す',
-        l4_f4_desc: 'LootLabsのサーバーはピーク時間帯に混雑することがあります。早朝や深夜に試してみてください。',
-        l5_title: 'CAPTCHAが何度も出る / 認証が通らない',
-        l5_sub: 'LootLabsで確認ループが起きている',
-        l5_f1_title: 'VPNをオフにして再試行する',
-        l5_f1_desc: 'VPNのIPは不審なものとしてフラグが立てられやすいため、CAPTCHAがより頻繁に表示されます。VPNをオフにしてページを再読み込みしてください。',
-        l5_f2_title: 'JavaScriptを許可する',
-        l5_f2_desc: 'ブラウザでJavaScriptが有効になっていることを確認してください。これがないとCAPTCHAが読み込めません。',
-        l5_f3_title: '別のネットワークに切り替える',
-        l5_f3_desc: 'Wi-Fiからモバイルデータ、またはその逆に切り替えてみてください。今使っているIPがフラグを立てられている可能性があります。',
-        l5_f4_title: '別のブラウザを使う',
-        l5_f4_desc: '拡張機能が一切入っていないクリーンなブラウザでLootLabsのリンクを開いてください。',
+        workink_section_title: 'Work.ink — その仕組みと利用理由について',
+        w1_title: 'Work.ink とは何ですか？',
+        w1_sub: 'ファイルリンクに使用しているプラットフォームについて',
+        w1_a1_title: 'リンク短縮と収益化のプラットフォーム',
+        w1_a1_desc: 'Work.inkは、ダウンロードリンクを短縮し、実際のファイルに移動する前に短い広告を表示するサービスです。小さなゲートウェイのようなもので、簡単な広告を一度見るだけで、完全無料ですべてのMODやアドオンにアクセスできます。サブスクリプションも隠れた料金も一切なく、ほんの数秒お時間をいただくだけです。',
+        w1_a2_title: '仕組み',
+        w1_a2_desc: 'BNcraftのダウンロードリンクをクリックすると、Work.inkのページに移動します。そこで5〜10秒程度の短い広告が表示されます。タイマーが終了すると「続行」または「リンクを取得」ボタンが表示されるので、それをタップすればMediaFireまたは弊社の直接ストレージ上のMODファイルにリダイレクトされます。',
+        w2_title: 'なぜBNcraftはWork.inkを使っているのですか？',
+        w2_sub: '私たちの選択の正直な理由',
+        w2_a1_title: 'わずかな収入を得てサイトを存続させるため',
+        w2_a1_desc: 'BNcraftの運営にはコストがかかります。ウェブサイトのホスティング、ドメイン登録、ファイルストレージの費用を支払い、MODの作成、テスト、更新に膨大な時間を費やしています。Work.inkは誰かがファイルをダウンロードするたびにごくわずかな広告収入を生み出します。その収入はすべてサイトに還元され、より良いサーバー、より多くのMOD、より快適な体験へとつながります。',
+        w2_a2_title: 'BNcraftを成長させ改善するため',
+        w2_a2_desc: 'Work.inkを通じたダウンロードのおかげで、新しいツールへの投資、より高速なホスティング、より野心的なMODプロジェクトが可能になります。コミュニティがこれらのリンクを通じて私たちをサポートしてくれればくれるほど、より高品質なアドオン、より迅速なアップデート、そして特別なコンテンツでお返しすることができます。',
+        w2_a3_title: 'すべてはあなたにとって完全無料のままです',
+        w2_a3_desc: 'MODに対して料金を請求することは決してありません。一切ありません。Work.inkのおかげで、ペイウォールを設けることなく運営コストをまかなえます。あなたは短い広告を一度見るだけ、私たちは少しの収入を得て、あなたはMODを手に入れる。それだけのシンプルな仕組みで、BNcraftコミュニティを誰にでも開かれたままにしています。',
+        w3_title: 'Work.inkを通じたファイルのダウンロード方法',
+        w3_sub: 'MODを入手するためのステップバイステップガイド',
+        w3_s1_title: 'BNcraftのダウンロードリンクをクリックする',
+        w3_s1_desc: '欲しいMODを見つけてダウンロードボタンをタップします。Work.inkのページに移動します。',
+        w3_s2_title: 'タイマーが終了するのを待つ',
+        w3_s2_desc: '短い広告が表示されます。約5〜10秒待ちます。ページ上部にカウントダウンまたはプログレスバーが表示されます。',
+        w3_s3_title: '「続行」または「リンクを取得」をタップする',
+        w3_s3_desc: 'ボタンが表示されたら、タップします。「私はロボットではありません」などの簡単な認証を求められることもありますが、ほとんどの場合はワンタップで済みます。',
+        w3_s4_title: 'ファイルにたどり着きます',
+        w3_s4_desc: 'タップすると実際のファイルにリダイレクトされます。通常はMediaFireまたは弊社の直接ダウンロードサーバーです。あとは通常通りダウンロードしてインストールしてください。',
+        w4_title: 'Work.inkのページが開かない、または固まる場合',
+        w4_sub: 'よくあるWork.inkの問題のトラブルシューティング',
+        w4_f1_title: 'VPNをオフにする',
+        w4_f1_desc: 'Work.inkはVPNのIPアドレスをブロックすることがあります。ページが読み込めない、または固まる場合はVPNを無効にして再試行してください。これでほとんどの場合解決します。',
+        w4_f2_title: '広告ブロッカーを無効にする',
+        w4_f2_desc: 'Work.inkが機能するには広告を表示する必要があります。AdBlockやuBlock Originなどの広告ブロッカーはページの正常な読み込みを妨げます。Work.inkに対してはこれらを無効にして更新してください。',
+        w4_f3_title: '別のブラウザを試す',
+        w4_f3_desc: 'Chromeで問題が起きている場合はFirefox、Edge、Safariに切り替えてみてください。ブラウザによってリダイレクト処理の性能が異なります。',
+        w4_f4_title: '少し待ってから更新する',
+        w4_f4_desc: 'ページが少し時間を必要としているだけの場合もあります。数秒待ってから更新ボタンをタップしてください。タイマーがリセットされても、もう一度待てば次の試行でうまくいきます。',
+        w4_f5_title: 'Wi-Fiの代わりにモバイルデータを使う',
+        w4_f5_desc: '家庭や学校のネットワークがWork.inkをブロックしている場合があります。スマホのモバイルデータに切り替えれば即座にページが開くはずです。',
+        w5_title: '「続行」ボタンが表示されない',
+        w5_sub: 'タイマーは終わったのにボタンが出てこない',
+        w5_f1_title: 'ページを下にスクロールする',
+        w5_f1_desc: 'ボタンが画面の表示領域より下に表示されていることがあります。ゆっくり下にスクロールして「続行」または「リンクを取得」ボタンを探してください。',
+        w5_f2_title: 'JavaScriptが有効か確認する',
+        w5_f2_desc: 'Work.inkはボタンを表示するためにJavaScriptに依存しています。ブラウザの設定を確認し、JavaScriptがブロックされていないことを確認してください。',
+        w5_f3_title: '更新してもう一度待つ',
+        w5_f3_desc: 'タイマーが誤作動することがあります。ページを更新して、もう一度タイマーを動作させれば、ボタンは正常に表示されるはずです。',
         faq_section_title: 'よくある質問',
         faq1_title: '.mcaddon・.mcpack・.mctemplate・.zip の違いは何ですか？',
         faq1_sub: 'Minecraftのファイル形式をすべて理解する',
@@ -2874,8 +2808,6 @@ discord_btn: 'انضم إلى Discord'
         discord_desc: 'BNcraftチームとコミュニティからの直接サポートを受けるには、Discordに参加してください。',
         discord_btn: 'Discordに参加する'
     }
-// ADD NEW LANGUAGE TRANSLATIONS HERE
-// Copy the structure above and translate all values
 };
 // ============================================================
 // CURRENT LANGUAGE STATE
@@ -2889,27 +2821,19 @@ const t = TRANSLATIONS[lang];
 const config = LANG_CONFIG[lang];
 if (!t || !config) return;
 currentLang = lang;
-
-// Set dir and lang on html element
 document.documentElement.setAttribute('lang', lang);
 document.documentElement.setAttribute('dir', config.dir);
-
-// Update all data-i18n elements
 document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) {
         el.innerHTML = t[key];
     }
 });
-
-// Update active lang button
 document.querySelectorAll('.lang-option').forEach(btn => {
     btn.classList.remove('active-lang');
 });
 const activeBtn = document.getElementById('lang-' + lang);
 if (activeBtn) activeBtn.classList.add('active-lang');
-
-// Save to localStorage
 localStorage.setItem('bncraft-lang', lang);
 }
 function setLang(lang) {
@@ -2996,10 +2920,8 @@ if (arrow) arrow.style.transform = 'rotate(0deg)';
 // INIT
 // ============================================================
 (function init() {
-// Theme
 const savedTheme = localStorage.getItem('bncraft-theme') || 'blue';
 setTheme(savedTheme);
-// Language
 const savedLang = localStorage.getItem('bncraft-lang') || 'en';
 applyLang(savedLang);
 })();
