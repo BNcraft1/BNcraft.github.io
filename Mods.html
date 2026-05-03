@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BNcraft | MarketPlace Mods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Press+Start+2P&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
            THEME VARIABLES
@@ -702,6 +702,204 @@
         [data-theme="white"] .dl-option:hover { color:#fff; }
         [data-theme="white"] body::after { background:radial-gradient(circle,rgba(0,119,204,0.06) 0%,transparent 70%); }
         [data-theme="white"] .download-main-btn { color:#fff; }
+
+        /* ============================================================
+           FONT STYLES
+        ============================================================ */
+        [data-font="default"] body,
+        [data-font="default"] input,
+        [data-font="default"] button,
+        [data-font="default"] select {
+            font-family: 'Inter', sans-serif;
+        }
+        [data-font="minecraft"] body,
+        [data-font="minecraft"] input,
+        [data-font="minecraft"] button,
+        [data-font="minecraft"] select,
+        [data-font="minecraft"] .mod-name,
+        [data-font="minecraft"] .header-title,
+        [data-font="minecraft"] .nav-btn,
+        [data-font="minecraft"] .cat-btn,
+        [data-font="minecraft"] .dl-trigger,
+        [data-font="minecraft"] .m-title,
+        [data-font="minecraft"] .menu-item {
+            font-family: 'Press Start 2P', cursive !important;
+            letter-spacing: -0.5px;
+        }
+        [data-font="minecraft"] .mod-name { font-size: 11px !important; line-height: 1.6 !important; }
+        [data-font="minecraft"] .header-title { letter-spacing: 2px; }
+        [data-font="minecraft"] .cat-btn { font-size: 9px !important; padding: 10px 14px !important; }
+        [data-font="alt"] body,
+        [data-font="alt"] input,
+        [data-font="alt"] button,
+        [data-font="alt"] select {
+            font-family: 'Outfit', sans-serif !important;
+            letter-spacing: 0.2px;
+        }
+
+        /* Font sub menu */
+        .font-sub { display:none; padding:10px 8px 4px; }
+        .font-sub.open { display:block; }
+        .font-sub-title { font-size:10px; font-weight:900; text-transform:uppercase; color:var(--text-label); letter-spacing:1px; margin-bottom:10px; padding-left:8px; }
+        .font-options { display:flex; flex-direction:column; gap:6px; }
+        .font-opt {
+            background: var(--info-card-bg); border: 1px solid var(--border-color);
+            color: var(--text-sub); padding: 9px 14px; border-radius: 10px;
+            cursor: pointer; font-size: 13px; font-weight: 700; transition:.2s;
+            text-align:left; width:100%;
+        }
+        .font-opt:hover { border-color:var(--accent); color:var(--accent); }
+        .font-opt.active-font { background:var(--accent); color:#000; border-color:var(--accent); }
+        .font-opt[data-f="minecraft"] { font-family:'Press Start 2P', cursive; font-size:10px; }
+        .font-opt[data-f="alt"] { font-family:'Outfit', sans-serif; }
+
+        /* Reset button */
+        .reset-defaults-btn {
+            display:flex; align-items:center; gap:12px; padding:12px 16px;
+            border-radius:10px; cursor:pointer; text-decoration:none; color:#ff6b6b;
+            font-weight:700; font-size:14px; transition:.2s; background:transparent;
+            border:1px solid rgba(255,107,107,0.25); width:100%; text-align:left; margin-top:4px;
+        }
+        .reset-defaults-btn:hover { background:rgba(255,107,107,0.1); border-color:rgba(255,107,107,0.6); }
+        .reset-defaults-btn svg { width:18px; height:18px; flex-shrink:0; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ============================================================
+           FILTER BAR (Sort + Price)
+        ============================================================ */
+        .filter-bar {
+            display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;
+            margin-top:16px; padding:16px; background:var(--info-card-bg);
+            border:1px solid var(--border-color); border-radius:16px;
+            transition: background 0.35s ease, border-color 0.35s ease;
+        }
+        .filter-group { display:flex; flex-direction:column; gap:6px; flex:1; min-width:160px; }
+        .filter-label {
+            font-size:10px; font-weight:900; text-transform:uppercase;
+            color:var(--text-label); letter-spacing:1px;
+        }
+        .sort-select {
+            background:var(--card-bg); border:1px solid var(--border-color);
+            color:var(--text-main); padding:10px 14px; border-radius:10px;
+            font-size:13px; font-weight:700; cursor:pointer; outline:none;
+            transition:.25s; appearance:none; -webkit-appearance:none;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:right 12px center;
+            padding-right:32px;
+        }
+        .sort-select:focus { border-color:var(--accent); }
+        [data-theme="white"] .sort-select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(0,0,0,0.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); }
+
+        /* Dual range price slider */
+        .dual-range-wrap {
+            position:relative; height:28px; display:flex; align-items:center;
+        }
+        .dual-range-wrap input[type=range] {
+            position:absolute; width:100%; pointer-events:none;
+            -webkit-appearance:none; appearance:none; height:4px; background:transparent;
+            outline:none; margin:0;
+        }
+        .dual-range-wrap input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance:none; appearance:none;
+            width:18px; height:18px; border-radius:50%; background:var(--accent);
+            cursor:pointer; pointer-events:all; border:2px solid var(--bg-dark);
+            box-shadow:0 0 6px var(--accent); transition:transform .15s;
+        }
+        .dual-range-wrap input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); }
+        .dual-range-wrap input[type=range]::-moz-range-thumb {
+            width:18px; height:18px; border-radius:50%; background:var(--accent);
+            cursor:pointer; pointer-events:all; border:2px solid var(--bg-dark);
+        }
+        .range-track {
+            position:absolute; height:4px; width:100%; border-radius:4px;
+            background:var(--border-color); pointer-events:none;
+        }
+        .range-fill {
+            position:absolute; height:4px; border-radius:4px;
+            background:var(--accent); pointer-events:none; transition:left .05s, right .05s;
+        }
+        .price-display {
+            font-size:11px; font-weight:900; color:var(--accent);
+            display:flex; align-items:center; gap:4px;
+        }
+        .price-display img { height:14px; }
+
+        /* ============================================================
+           DISCORD BANNER
+        ============================================================ */
+        .discord-banner {
+            width:95%; max-width:1200px; margin:0 auto 24px;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(88,101,242,0.12) 100%);
+            border:1px solid rgba(88,101,242,0.35); border-radius:20px;
+            padding:20px 28px; display:flex; align-items:center; gap:20px;
+            flex-wrap:wrap; position:relative; overflow:hidden;
+            transition: background 0.35s, border-color 0.35s;
+        }
+        .discord-banner::before {
+            content:''; position:absolute; top:-40px; right:-40px;
+            width:180px; height:180px; border-radius:50%;
+            background:radial-gradient(circle, rgba(88,101,242,0.2) 0%, transparent 70%);
+            pointer-events:none;
+        }
+        .discord-banner-icon {
+            width:52px; height:52px; flex-shrink:0;
+            background:rgba(88,101,242,0.2); border-radius:14px;
+            display:flex; align-items:center; justify-content:center;
+            border:1px solid rgba(88,101,242,0.4);
+        }
+        .discord-banner-icon svg { width:28px; height:28px; fill:#5865f2; }
+        .discord-banner-text { flex:1; min-width:180px; }
+        .discord-banner-title {
+            font-size:16px; font-weight:900; color:var(--text-main);
+            margin-bottom:4px; line-height:1.3;
+        }
+        .discord-banner-sub {
+            font-size:12px; color:var(--text-label); font-weight:600;
+        }
+        .discord-banner-btn {
+            background:linear-gradient(135deg,#5865f2,#7289da);
+            color:#fff; border:none; padding:12px 24px;
+            border-radius:12px; font-weight:800; cursor:pointer;
+            font-size:13px; transition:.3s; text-transform:uppercase;
+            text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+            white-space:nowrap; flex-shrink:0;
+            box-shadow:0 4px 20px rgba(88,101,242,0.35);
+        }
+        .discord-banner-btn:hover {
+            opacity:.9; transform:translateY(-2px);
+            box-shadow:0 8px 28px rgba(88,101,242,0.5);
+        }
+        .discord-banner-btn svg { width:16px; height:16px; fill:#fff; }
+
+        /* ============================================================
+           CARD STARS
+        ============================================================ */
+        .card-stars {
+            display:flex; gap:1px; justify-content:center;
+            margin-bottom:8px;
+        }
+        .card-stars .star { font-size:12px; line-height:1; }
+
+        /* ============================================================
+           LAZY LOADING SENTINEL
+        ============================================================ */
+        .loading-more {
+            grid-column:1/-1; display:flex; align-items:center; justify-content:center;
+            gap:12px; padding:30px 20px; color:var(--text-label);
+            font-size:13px; font-weight:700;
+        }
+        .loading-spinner {
+            width:22px; height:22px; border-radius:50%;
+            border:2px solid var(--border-color);
+            border-top-color:var(--accent);
+            animation:spin .7s linear infinite; flex-shrink:0;
+        }
+        @keyframes spin { to{transform:rotate(360deg);} }
+        .load-sentinel { height:1px; width:100%; }
+        .results-count {
+            text-align:center; color:var(--text-label);
+            font-size:11px; font-weight:700; margin-bottom:12px;
+            letter-spacing:.5px; text-transform:uppercase;
+        }
     </style>
 </head>
 <body>
@@ -759,6 +957,25 @@
         Favorites
         <span class="fav-count-badge" id="favCountBadge">0</span>
     </button>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="toggleFontSub()">
+        <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        Font Style
+        <svg id="fontArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="font-sub" id="fontSub">
+        <div class="font-sub-title">Select Font</div>
+        <div class="font-options">
+            <button class="font-opt active-font" data-f="default" onclick="setFont('default')">Default (Inter)</button>
+            <button class="font-opt" data-f="minecraft" onclick="setFont('minecraft')">Minecraft</button>
+            <button class="font-opt" data-f="alt" onclick="setFont('alt')">Alternative (Outfit)</button>
+        </div>
+    </div>
+    <div class="menu-divider"></div>
+    <button class="reset-defaults-btn" onclick="resetDefaults()">
+        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Reset to Defaults
+    </button>
 </div>
 
 <!-- HEADER -->
@@ -801,9 +1018,52 @@
             Mash-Up
         </button>
     </div>
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <div class="filter-label">⬆ Sort By</div>
+            <select class="sort-select" id="sortSelect" onchange="filterMods()">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="name_az">Name (A → Z)</option>
+                <option value="rating">Top Rated</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <div class="filter-label">💰 Minecoin Range: <span class="price-display" id="priceDisplay">0 – 1690</span></div>
+            <div class="dual-range-wrap" id="dualRange">
+                <div class="range-track"></div>
+                <div class="range-fill" id="rangeFill"></div>
+                <input type="range" id="minCoinSlider" min="0" max="1690" step="10" value="0" oninput="updatePriceRange()">
+                <input type="range" id="maxCoinSlider" min="0" max="1690" step="10" value="1690" oninput="updatePriceRange()">
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- DISCORD BANNER -->
+<div class="discord-banner">
+    <div class="discord-banner-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+    </div>
+    <div class="discord-banner-text">
+        <div class="discord-banner-title">Can't find the mod you're looking for?</div>
+        <div class="discord-banner-sub">Join our Discord server — request mods, get updates & connect with the community!</div>
+    </div>
+    <a href="https://discord.gg/KHdG3A7dtw" target="_blank" class="discord-banner-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+        Join Discord
+    </a>
+</div>
+
+<div id="resultsCount" class="results-count" style="width:95%;max-width:1200px;margin:0 auto 10px;"></div>
 <div class="mod-grid" id="mainGrid"></div>
+<div class="load-sentinel" id="loadSentinel">
+    <div class="loading-more" id="loadingMore" style="display:none;">
+        <div class="loading-spinner"></div>
+        <span>Loading more mods...</span>
+    </div>
+</div>
 
 <!-- SOCIAL FOOTER -->
 <div class="social-footer">
@@ -8546,6 +8806,10 @@ const mods = [
 // ============================================================
 let currentModalName = '';
 let showingFavorites = false;
+let filteredModsCache = [];
+let renderedCount = 0;
+const BATCH_SIZE = 30;
+const PRICE_MAX = 1690;
 
 // ============================================================
 // FAVORITES
@@ -8613,6 +8877,65 @@ function toggleThemeSub() {
 }
 
 // ============================================================
+// FONT SYSTEM
+// ============================================================
+function setFont(font) {
+    document.documentElement.setAttribute('data-font', font || 'default');
+    localStorage.setItem('bncraft-font', font || 'default');
+    document.querySelectorAll('.font-opt').forEach(b => {
+        b.classList.toggle('active-font', b.getAttribute('data-f') === (font || 'default'));
+    });
+}
+function toggleFontSub() {
+    const sub = document.getElementById('fontSub');
+    const arrow = document.getElementById('fontArrow');
+    sub.classList.toggle('open');
+    arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+// ============================================================
+// RESET DEFAULTS
+// ============================================================
+function resetDefaults() {
+    if (confirm('Reset to default Blue theme and Default font style?')) {
+        setTheme('blue');
+        setFont('default');
+    }
+}
+
+// ============================================================
+// PRICE RANGE
+// ============================================================
+function updatePriceRange() {
+    const minEl = document.getElementById('minCoinSlider');
+    const maxEl = document.getElementById('maxCoinSlider');
+    const fill = document.getElementById('rangeFill');
+    const display = document.getElementById('priceDisplay');
+    if (!minEl || !maxEl) return;
+
+    let minVal = parseInt(minEl.value);
+    let maxVal = parseInt(maxEl.value);
+
+    // Prevent crossing
+    if (minVal > maxVal - 10) {
+        minVal = maxVal - 10;
+        minEl.value = minVal;
+    }
+
+    const pct = (v) => (v / PRICE_MAX) * 100;
+    if (fill) {
+        fill.style.left = pct(minVal) + '%';
+        fill.style.right = (100 - pct(maxVal)) + '%';
+    }
+    if (display) {
+        const minLabel = minVal === 0 ? 'Free' : minVal;
+        const maxLabel = maxVal >= PRICE_MAX ? '1690+' : maxVal;
+        display.textContent = minLabel + ' – ' + maxLabel;
+    }
+    filterMods();
+}
+
+// ============================================================
 // HAMBURGER
 // ============================================================
 function toggleMenu() {
@@ -8668,10 +8991,54 @@ function formatDate(iso) {
 }
 
 // ============================================================
-// RENDER CARDS
+// BUILD CARD HTML
+// ============================================================
+function buildCardHTML(m) {
+    const isMashUp = m.cat.includes('Mash-Up');
+    const displayCat = isMashUp ? 'MASH-UP' : (m.packType || m.cat[0].replace(/_/g,' ')).toUpperCase();
+    const badgeClass = 'type-badge' + (isMashUp ? ' mash-up' : '');
+    const favIcon = isFavorite(m.name)
+        ? `<svg viewBox="0 0 24 24" style="position:absolute;bottom:12px;right:12px;width:18px;height:18px;fill:#ff5078;stroke:#ff5078;stroke-width:1.5;z-index:6;pointer-events:none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`
+        : '';
+    const ratingBadge = m.rating
+        ? `<div class="card-rating-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>${m.rating}</div>`
+        : '';
+    const cardStars = m.rating
+        ? `<div class="card-stars">${buildStars(m.rating)}</div>`
+        : '';
+    return `
+        <div class="mod-card" onclick="openPopup('${m.name.replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">
+            <div class="${badgeClass}">${displayCat}</div>
+            ${ratingBadge}
+            ${favIcon}
+            <div class="img-container">
+                <img src="${m.img}" alt="${m.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/640x360/001a24/00e5ff?text=No+Image'">
+            </div>
+            <div class="mod-info">
+                <div class="mod-name">${m.name}</div>
+                ${cardStars}
+                <div class="card-meta">
+                    <div class="card-price">
+                        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png" alt="coin" style="height:16px;">
+                        ${Number(m.minecoin).toLocaleString()}
+                    </div>
+                    <span style="color:var(--border-color)">·</span>
+                    <div class="card-studio">${m.studio}</div>
+                </div>
+                <button class="dl-trigger">DETAILS & DOWNLOAD</button>
+            </div>
+        </div>`;
+}
+
+// ============================================================
+// RENDER CARDS (with lazy loading)
 // ============================================================
 function renderMods(data) {
     const grid = document.getElementById('mainGrid');
+    const countEl = document.getElementById('resultsCount');
+    filteredModsCache = data;
+    renderedCount = 0;
+    grid.innerHTML = '';
 
     if (data.length === 0) {
         const msg = showingFavorites
@@ -8690,61 +9057,99 @@ function renderMods(data) {
                 <p>${msg[0]}</p>
                 <span>${msg[1]}</span>
             </div>`;
+        if (countEl) countEl.textContent = '';
+        document.getElementById('loadingMore').style.display = 'none';
         return;
     }
 
-    grid.innerHTML = data.map(m => {
-        const isMashUp = m.cat.includes('Mash-Up');
-        const displayCat = isMashUp ? 'MASH-UP' : (m.packType || m.cat[0].replace(/_/g,' ')).toUpperCase();
-        const badgeClass = 'type-badge' + (isMashUp ? ' mash-up' : '');
-        const favIcon = isFavorite(m.name)
-            ? `<svg viewBox="0 0 24 24" style="position:absolute;bottom:12px;right:12px;width:18px;height:18px;fill:#ff5078;stroke:#ff5078;stroke-width:1.5;z-index:6;pointer-events:none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`
-            : '';
-        const ratingBadge = m.rating
-            ? `<div class="card-rating-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>${m.rating}</div>`
-            : '';
-        return `
-            <div class="mod-card" onclick="openPopup('${m.name.replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">
-                <div class="${badgeClass}">${displayCat}</div>
-                ${ratingBadge}
-                ${favIcon}
-                <div class="img-container">
-                    <img src="${m.img}" alt="${m.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/640x360/001a24/00e5ff?text=No+Image'">
-                </div>
-                <div class="mod-info">
-                    <div class="mod-name">${m.name}</div>
-                    <div class="card-meta">
-                        <div class="card-price">
-                            <img src="" alt="">
-                            ${Number(m.minecoin).toLocaleString()}
-                        </div>
-                        <span style="color:var(--border-color)">·</span>
-                        <div class="card-studio">${m.studio}</div>
-                    </div>
-                    <button class="dl-trigger">DETAILS & DOWNLOAD</button>
-                </div>
-            </div>`;
-    }).join('');
+    if (countEl) countEl.textContent = `${data.length} mod${data.length !== 1 ? 's' : ''} found`;
+    appendNextBatch();
 }
 
+function appendNextBatch() {
+    const grid = document.getElementById('mainGrid');
+    const loadingEl = document.getElementById('loadingMore');
+    const batch = filteredModsCache.slice(renderedCount, renderedCount + BATCH_SIZE);
+
+    batch.forEach(m => {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = buildCardHTML(m);
+        grid.appendChild(tmp.firstElementChild);
+    });
+
+    renderedCount += batch.length;
+
+    if (loadingEl) {
+        loadingEl.style.display = renderedCount < filteredModsCache.length ? 'flex' : 'none';
+    }
+}
+
+// IntersectionObserver for infinite scroll
+(function initObserver() {
+    const sentinel = document.getElementById('loadSentinel');
+    if (!sentinel) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && renderedCount < filteredModsCache.length) {
+                appendNextBatch();
+            }
+        });
+    }, { rootMargin: '300px' });
+    observer.observe(sentinel);
+})();
+
 // ============================================================
-// FILTER
+// FILTER & SORT
 // ============================================================
 function getFilteredMods() {
     const term = document.getElementById('searchInput').value.toLowerCase();
     const activeBtn = document.querySelector('.cat-btn.active');
     const targetCat = activeBtn ? activeBtn.getAttribute('data-cat') : 'ALL';
-    return mods.filter(m => {
+    const sortVal = (document.getElementById('sortSelect') || {}).value || 'newest';
+    const minCoin = parseInt((document.getElementById('minCoinSlider') || {}).value || '0');
+    const maxCoin = parseInt((document.getElementById('maxCoinSlider') || {}).value || String(PRICE_MAX));
+
+    let result = mods.filter(m => {
         if (!m.name.toLowerCase().includes(term) &&
             !(m.studio||'').toLowerCase().includes(term) &&
             !(m.tags||[]).join(' ').toLowerCase().includes(term)) return false;
         if (showingFavorites) return isFavorite(m.name);
         const isMashUp = m.cat.includes('Mash-Up');
-        if (targetCat === 'ALL') return true;
-        if (targetCat === 'Mash-Up') return isMashUp;
-        if (isMashUp) return false;
-        return m.cat[0] === targetCat;
+        if (targetCat === 'ALL') { /* no category filter */ }
+        else if (targetCat === 'Mash-Up') { if (!isMashUp) return false; }
+        else { if (isMashUp) return false; if (m.cat[0] !== targetCat) return false; }
+        // Price range filter
+        const coin = Number(m.minecoin);
+        if (coin < minCoin) return false;
+        if (maxCoin < PRICE_MAX && coin > maxCoin) return false;
+        return true;
     });
+
+    // Sort
+    switch (sortVal) {
+        case 'newest':
+            result.sort((a, b) => {
+                const da = a.lastUpdated ? new Date(a.lastUpdated) : new Date(0);
+                const db = b.lastUpdated ? new Date(b.lastUpdated) : new Date(0);
+                return db - da || mods.indexOf(a) - mods.indexOf(b);
+            });
+            break;
+        case 'oldest':
+            result.sort((a, b) => {
+                const da = a.lastUpdated ? new Date(a.lastUpdated) : new Date(0);
+                const db = b.lastUpdated ? new Date(b.lastUpdated) : new Date(0);
+                return da - db || mods.indexOf(a) - mods.indexOf(b);
+            });
+            break;
+        case 'name_az':
+            result.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'rating':
+            result.sort((a, b) => (b.rating || 0) - (a.rating || 0) || (b.ratingCount || 0) - (a.ratingCount || 0));
+            break;
+    }
+
+    return result;
 }
 function filterMods() { renderMods(getFilteredMods()); }
 function filterCategory(cat, btn) {
@@ -8923,8 +9328,15 @@ window.onclick = (e) => {
 (function init() {
     const savedTheme = localStorage.getItem('bncraft-theme');
     if (savedTheme) setTheme(savedTheme);
+
+    const savedFont = localStorage.getItem('bncraft-font') || 'default';
+    setFont(savedFont);
+
+    // Initialize price range fill
+    updatePriceRange();
+
     updateFavBadge();
-    renderMods(mods);
+    renderMods(getFilteredMods());
 })();
 </script>
 </body>
