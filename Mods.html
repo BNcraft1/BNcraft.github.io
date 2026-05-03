@@ -900,6 +900,107 @@
             font-size:11px; font-weight:700; margin-bottom:12px;
             letter-spacing:.5px; text-transform:uppercase;
         }
+
+        /* ============================================================
+           STATISTICS PANEL
+        ============================================================ */
+        .stats-section {
+            width:95%; max-width:1200px; margin:0 auto 28px;
+            background: var(--card-bg);
+            border:1px solid var(--border-color); border-radius:20px;
+            padding:20px; transition: background 0.35s, border-color 0.35s;
+        }
+        .stats-header {
+            display:flex; align-items:center; gap:8px;
+            font-size:14px; font-weight:900; color:var(--text-main);
+            text-transform:uppercase; letter-spacing:1.5px;
+            margin-bottom:16px; padding-bottom:12px;
+            border-bottom:1px solid var(--border-color);
+        }
+        .stats-header svg {
+            width:18px; height:18px; stroke:var(--accent); fill:none;
+            stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;
+        }
+        .stats-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:10px;
+        }
+        .stat-card {
+            background: var(--info-card-bg);
+            border:1px solid var(--border-color); border-radius:14px;
+            padding:14px 16px; display:flex; align-items:center; gap:12px;
+            transition: border-color .25s, box-shadow .25s;
+        }
+        .stat-card:hover { border-color:var(--accent); box-shadow:var(--glow); }
+        .stat-card.full-width { grid-column:1/-1; }
+        .stat-icon-wrap {
+            width:38px; height:38px; border-radius:10px; flex-shrink:0;
+            background:rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:center;
+        }
+        .stat-icon-wrap svg {
+            width:20px; height:20px; stroke:#fff; fill:none;
+            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+        }
+        .stat-icon-wrap img { width:22px; height:22px; object-fit:contain; }
+        .stat-icon-wrap.fav svg { stroke:#ff5078; }
+        .stat-text { display:flex; flex-direction:column; gap:1px; }
+        .stat-number {
+            font-size:22px; font-weight:900; color:var(--text-main); line-height:1.1;
+        }
+        .stat-sublabel {
+            font-size:9px; font-weight:800; text-transform:uppercase;
+            color:var(--text-label); letter-spacing:1.2px;
+        }
+
+        /* ============================================================
+           SEARCH INPUT WRAPPER
+        ============================================================ */
+        .search-wrap {
+            position:relative; margin-bottom:20px;
+        }
+        .search-wrap svg {
+            position:absolute; left:16px; top:50%; transform:translateY(-50%);
+            width:18px; height:18px; stroke:var(--text-label); fill:none;
+            stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+            pointer-events:none; transition: stroke .2s;
+        }
+        .search-wrap:focus-within svg { stroke:var(--accent); }
+        .search-wrap .search-input {
+            padding-left:46px; margin-bottom:0;
+        }
+
+        /* Stats sub inside hamburger menu */
+        .stats-sub { display:none; padding:10px 4px 6px; }
+        .stats-sub.open { display:block; }
+        .stats-sub .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+        .stats-sub .stat-card {
+            background:var(--info-card-bg); border:1px solid var(--border-color);
+            border-radius:12px; padding:11px 12px;
+            display:flex; align-items:center; gap:10px;
+            transition:border-color .2s;
+        }
+        .stats-sub .stat-card:hover { border-color:var(--accent); }
+        .stats-sub .stat-card.full-width { grid-column:1/-1; }
+        .stats-sub .stat-icon-wrap {
+            width:32px; height:32px; border-radius:8px; flex-shrink:0;
+            background:rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:center;
+        }
+        .stats-sub .stat-icon-wrap svg {
+            width:16px; height:16px; stroke:#fff; fill:none;
+            stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+        }
+        .stats-sub .stat-icon-wrap.fav svg { stroke:#ff5078; }
+        .stats-sub .stat-number { font-size:18px; font-weight:900; color:var(--text-main); line-height:1.1; }
+        .stats-sub .stat-sublabel { font-size:8px; font-weight:800; text-transform:uppercase; color:var(--text-label); letter-spacing:1px; }
+
+        /* Filter label icon */
+        .filter-label-icon {
+            display:flex; align-items:center; gap:6px;
+        }
+        .filter-label-icon img { height:16px; width:auto; }
+        .filter-label-icon svg {
+            width:14px; height:14px; stroke:currentColor; fill:none;
+            stroke-width:2; stroke-linecap:round; flex-shrink:0;
+        }
     </style>
 </head>
 <body>
@@ -976,6 +1077,23 @@
         <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
         Reset to Defaults
     </button>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="toggleStatsSub()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Statistics
+        <svg id="statsArrow" viewBox="0 0 24 24" style="margin-left:auto;width:14px;height:14px;transition:.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="stats-sub" id="statsSub">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3"/><path d="M21 8V5a2 2 0 00-2-2h-3"/><path d="M3 16v3a2 2 0 002 2h3"/><path d="M16 21h3a2 2 0 002-2v-3"/><line x1="7" y1="12" x2="17" y2="12"/></svg></div><div class="stat-text"><div class="stat-number" id="statTotal">0</div><div class="stat-sublabel">Total</div></div></div>
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2c-2.76 3.58-4 7.4-4 10s1.24 6.42 4 10"/><path d="M12 2c2.76 3.58 4 7.4 4 10s-1.24 6.42-4 10"/></svg></div><div class="stat-text"><div class="stat-number" id="statWorlds">0</div><div class="stat-sublabel">Worlds</div></div></div>
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="stat-text"><div class="stat-number" id="statAddons">0</div><div class="stat-sublabel">Addons</div></div></div>
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="stat-text"><div class="stat-number" id="statMashups">0</div><div class="stat-sublabel">Mashups</div></div></div>
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></div><div class="stat-text"><div class="stat-number" id="statTextures">0</div><div class="stat-sublabel">Textures</div></div></div>
+            <div class="stat-card"><div class="stat-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="stat-text"><div class="stat-number" id="statSkins">0</div><div class="stat-sublabel">Skins</div></div></div>
+            <div class="stat-card full-width"><div class="stat-icon-wrap fav"><svg viewBox="0 0 24 24" style="stroke:#ff5078;fill:none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div class="stat-text"><div class="stat-number" id="statFavourites">0</div><div class="stat-sublabel">Favourites</div></div></div>
+        </div>
+    </div>
 </div>
 
 <!-- HEADER -->
@@ -985,7 +1103,10 @@
 
 <!-- CONTROLS -->
 <div class="controls">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍  Search mods..." onkeyup="filterMods()">
+    <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search mods..." onkeyup="filterMods()">
+    </div>
     <div class="category-container">
         <!-- ALL -->
         <button class="cat-btn active" data-cat="ALL" onclick="filterCategory('ALL',this)">
@@ -1021,16 +1142,34 @@
     <!-- FILTER BAR -->
     <div class="filter-bar">
         <div class="filter-group">
-            <div class="filter-label">⬆ Sort By</div>
+            <div class="filter-label filter-label-icon">
+                <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Sort By
+            </div>
             <select class="sort-select" id="sortSelect" onchange="filterMods()">
-                <option value="newest">Newest First</option>
+                <option value="newest" selected>Newest First</option>
                 <option value="oldest">Oldest First</option>
                 <option value="name_az">Name (A → Z)</option>
                 <option value="rating">Top Rated</option>
             </select>
         </div>
         <div class="filter-group">
-            <div class="filter-label"> Minecoin Range: <span class="price-display" id="priceDisplay">0 – 1690</span></div>
+            <div class="filter-label filter-label-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Size Range: <span class="price-display" id="sizeDisplay">All</span>
+            </div>
+            <div class="dual-range-wrap" id="sizeRangeWrap">
+                <div class="range-track"></div>
+                <div class="range-fill" id="sizeRangeFill"></div>
+                <input type="range" id="minSizeSlider" min="0" max="255" step="1" value="0" oninput="updateSizeRange()">
+                <input type="range" id="maxSizeSlider" min="0" max="255" step="1" value="255" oninput="updateSizeRange()">
+            </div>
+        </div>
+        <div class="filter-group">
+            <div class="filter-label filter-label-icon">
+                <img src="" alt="coin" style="height:16px;">
+                Minecoin Range: <span class="price-display" id="priceDisplay">0 – 1690</span>
+            </div>
             <div class="dual-range-wrap" id="dualRange">
                 <div class="range-track"></div>
                 <div class="range-fill" id="rangeFill"></div>
@@ -1142,7 +1281,7 @@
                         Price
                     </div>
                     <div class="coin-wrapper">
-                        <img src="https://bncraft9.weebly.com/uploads/1/5/1/8/151839741/cml0sz9co08r60ia1833na15u_orig.png" class="coin-icon" alt="coin">
+                        <img src="" class="coin-icon" alt="coin">
                         <span class="coin-val" id="m-coin"></span>
                     </div>
                 </div>
@@ -8798,140 +8937,6 @@ const mods = [
         "lastUpdated": "2026-05-03",
         "_uuid": "9afc43e7-dc2c-44c0-a3b8-7107fa9da196",
         "_typeKey": "AddOn"
-    },
-    {
-        "name": "FURNITURE",
-        "img": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/6da5605f-fa75-4d40-809c-4858adfbd09e/FurInf_thumbnail_0.jpg",
-        "studio": "Honeyfrost",
-        "cat": [
-            "World_Template"
-        ],
-        "packType": "WorldTemplate",
-        "genre": "Roleplaying Game",
-        "tags": [
-            "Giant",
-            "Modern",
-            "City",
-            "Decorate",
-            "Colorful",
-            "Craftable Furniture"
-        ],
-        "minecoin": 660,
-        "rating": 3.6,
-        "ratingCount": 1102,
-        "content": {
-            "skins": 0,
-            "textures": 0,
-            "worlds": 1,
-            "addons": 0
-        },
-        "realmsPlus": false,
-        "gallery": [
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/8f2fee03-2b85-4540-9b51-7eb8569a6fe6/FurInf_Screenshot_0.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/02b178b6-ac58-4ef4-bf80-baa0ac5c63e2/FurInf_Screenshot_1.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/37b21963-8c17-4ebe-b0df-47b057f23699/FurInf_Screenshot_2.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/7b7b2012-53c7-41c3-93fb-f1ff8c95ea7a/FurInf_Screenshot_3.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/7a964895-9be6-4129-b467-693f152c7555/FurInf_Screenshot_4.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/15fe2f91-ac15-45b5-917c-866c1d08e459/FurInf_Screenshot_5.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/833cb5ba-2fa4-4fcb-942d-e8e073db7e89/FurInf_Screenshot_6.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/523719ae-72c2-4d2b-927f-7b2c25c0f9b1/FurInf_Screenshot_7.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/7502a44f-889a-4fa0-8903-908e4dd7e98d/FurInf_Screenshot_8.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/03dbec84-231e-411d-91e5-5f28212b3e99/FurInf_Screenshot_9.jpg"
-        ],
-        "video": null,
-        "desc": "FURNITURE! features over 1000 craftable furniture options; say goodbye to using stairs as chairs! Each piece of furniture comes in 10 colors, and furniture tools let you customize them even more!",
-        "market": "https://www.minecraft.net/en-us/marketplace/pdp/honeyfrost/furniture/9842dbfc-d5f7-4a43-8685-db7b59c88655",
-        "downloadUrl": "https://work.ink/2xDV/furniture",
-        "downloadSize": "182.5 MB",
-        "lastUpdated": "2026-05-03",
-        "_uuid": "9842dbfc-d5f7-4a43-8685-db7b59c88655",
-        "_typeKey": "WorldTemplate"
-    },
-    {
-        "name": "Candy Biomes",
-        "img": "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/48b29135-4bb3-47df-93fc-9af32dddc94c/CandyBiomes_Thumbnail_0.jpg",
-        "studio": "Yeggs",
-        "cat": [
-            "Add-Ons"
-        ],
-        "packType": "AddOn",
-        "genre": "Survival",
-        "tags": [
-            "Candy",
-            "Diverse Biomes",
-            "Food",
-            "Monster"
-        ],
-        "minecoin": 660,
-        "rating": 4.3,
-        "ratingCount": 28,
-        "content": {
-            "skins": 0,
-            "textures": 0,
-            "worlds": 0,
-            "addons": 1
-        },
-        "realmsPlus": false,
-        "gallery": [
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/532b89a1-48e1-4bf6-92ef-428d8ac704f0/CandyBiomes_screenshot_0.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/f58f76b0-a846-4d4d-94e3-6eae743312b9/CandyBiomes_screenshot_1.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/d1155cdb-d1b4-4c95-8909-ba6bb3319354/CandyBiomes_screenshot_2.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/9d5b0b1d-2f84-4300-ae1a-0cb9848e1822/CandyBiomes_screenshot_3.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/e3e4d64c-1a05-416a-a054-1de60febf7fc/CandyBiomes_screenshot_4.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/94b6c2e1-097a-4a0f-9700-b2d84ad1c5e8/CandyBiomes_screenshot_5.jpg",
-            "https://xforgeassets001.xboxlive.com/pf-namespace-b63a0803d3653643/545cf951-8d21-46a2-81c1-d11ab7a929e7/CandyBiomes_screenshot_6.jpg"
-        ],
-        "video": null,
-        "desc": "Step into the magical world of Candy Biomes. Explore new structures, trade with the locals, and try new foods! Battle candy-themed mobs with powerful new weapons and uncover sweet secrets hidden throughout the biomes!\r\n+ New Biomes\r\n+ Candy-inspired mobs and tools\r\n+ By Yeggs",
-        "market": "https://www.minecraft.net/en-us/marketplace/pdp/yeggs/candy-biomes/31d306c6-c858-49dd-8ab5-8bba3f6550c6",
-        "downloadUrl": "https://work.ink/2xDV/candy-biomes",
-        "downloadSize": "1.3 MB",
-        "lastUpdated": "2026-05-03",
-        "_uuid": "31d306c6-c858-49dd-8ab5-8bba3f6550c6",
-        "_typeKey": "AddOn"
-    },
-    {
-        "name": "Ultimate Waystones",
-        "img": "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/86e9b5cb-39f2-4a67-91a1-6f1135451db5/ultimate_waystones_Thumbnail_0.jpg",
-        "studio": "Nexus Mob",
-        "cat": [
-            "Add-Ons"
-        ],
-        "packType": "AddOn",
-        "genre": "Survival",
-        "tags": [
-            "Base Building",
-            "Craftable Blocks",
-            "Fantasy",
-            "Nature",
-            "Utilities",
-            "Discover"
-        ],
-        "minecoin": 990,
-        "rating": 4.7,
-        "ratingCount": 22,
-        "content": {
-            "skins": 0,
-            "textures": 0,
-            "worlds": 0,
-            "addons": 1
-        },
-        "realmsPlus": false,
-        "gallery": [
-            "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/ef60b3af-72d6-4bba-b9f2-f069c78b6dd1/ultimate_waystones_screenshot_0.jpg",
-            "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/158c7897-85d3-4393-8bbe-208835791077/ultimate_waystones_screenshot_1.jpg",
-            "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/fa3bfe81-33c8-45de-b500-426ca8765a35/ultimate_waystones_screenshot_2.jpg",
-            "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/41101c10-ef73-4fdc-a9d1-d1f8954ccf69/ultimate_waystones_screenshot_3.jpg",
-            "https://xforgeassets002.xboxlive.com/pf-namespace-b63a0803d3653643/6e072ed1-e98b-48c2-8ebe-361607c30fbb/ultimate_waystones_screenshot_4.jpg"
-        ],
-        "video": null,
-        "desc": "Explore your world in style! ULTIMATE WAYSTONES Add-On has added:\r\n- No-cost dimensional teleportation\r\n- Teleport with friends and friendly mobs\r\n- 20+ unique craftable Waystones\r\n- 3000+ visual combinations\r\n- 100+ new blocks\r\n- 5 new tree types\r\n- New mobs\r\n- Multiplayer friendly + configurable settings\r\n\r\nAdd this Add-On to your world today!",
-        "market": "https://www.minecraft.net/en-us/marketplace/pdp/nexus-mob/ultimate-waystones/d3eb6bd0-ec93-4090-9bf2-4ebb07056123",
-        "downloadUrl": "https://work.ink/2xDV/ultimate-waystones",
-        "downloadSize": "2.8 MB",
-        "lastUpdated": "2026-05-03",
-        "_uuid": "d3eb6bd0-ec93-4090-9bf2-4ebb07056123",
-        "_typeKey": "AddOn"
     }
 ];
 
@@ -8973,6 +8978,7 @@ function toggleFavorite() {
     }
     saveFavs(f);
     updateFavBadge();
+    updateStats();
     renderMods(getFilteredMods());
 }
 function heartOutline() {
@@ -9026,6 +9032,14 @@ function toggleFontSub() {
     sub.classList.toggle('open');
     arrow.style.transform = sub.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
+function toggleStatsSub() {
+    const sub = document.getElementById('statsSub');
+    const arrow = document.getElementById('statsArrow');
+    const isOpening = !sub.classList.contains('open');
+    sub.classList.toggle('open');
+    arrow.style.transform = isOpening ? 'rotate(180deg)' : 'rotate(0deg)';
+    if (isOpening) updateStats();
+}
 
 // ============================================================
 // RESET DEFAULTS
@@ -9035,6 +9049,55 @@ function resetDefaults() {
         setTheme('blue');
         setFont('default');
     }
+}
+
+// ============================================================
+// SIZE HELPERS & RANGE
+// ============================================================
+function parseSizeMB(sizeStr) {
+    if (!sizeStr || sizeStr === 'null') return null;
+    const s = String(sizeStr).trim().toUpperCase();
+    const num = parseFloat(s);
+    if (isNaN(num)) return null;
+    if (s.endsWith('KB')) return num / 1024;
+    if (s.endsWith('MB')) return num;
+    if (s.endsWith('GB')) return num * 1024;
+    return num; // assume MB
+}
+
+function formatSizeLabel(mb) {
+    if (mb < 1) return Math.round(mb * 1024) + ' KB';
+    if (mb >= 1000) return (mb / 1024).toFixed(1) + ' GB';
+    return mb % 1 === 0 ? mb + ' MB' : mb.toFixed(1) + ' MB';
+}
+
+function updateSizeRange() {
+    const minEl = document.getElementById('minSizeSlider');
+    const maxEl = document.getElementById('maxSizeSlider');
+    const fill  = document.getElementById('sizeRangeFill');
+    const disp  = document.getElementById('sizeDisplay');
+    if (!minEl || !maxEl) return;
+
+    let minVal = parseInt(minEl.value);
+    let maxVal = parseInt(maxEl.value);
+    const SIZE_MAX = 255;
+
+    if (minVal > maxVal - 1) { minVal = maxVal - 1; minEl.value = minVal; }
+
+    const pct = v => (v / SIZE_MAX) * 100;
+    if (fill) {
+        fill.style.left  = pct(minVal) + '%';
+        fill.style.right = (100 - pct(maxVal)) + '%';
+    }
+    if (disp) {
+        const isMin = minVal === 0;
+        const isMax = maxVal >= SIZE_MAX;
+        if (isMin && isMax) disp.textContent = 'All';
+        else if (isMin)     disp.textContent = '≤ ' + formatSizeLabel(maxVal);
+        else if (isMax)     disp.textContent = '≥ ' + formatSizeLabel(minVal);
+        else                disp.textContent = formatSizeLabel(minVal) + ' – ' + formatSizeLabel(maxVal);
+    }
+    filterMods();
 }
 
 // ============================================================
@@ -9176,7 +9239,7 @@ function renderMods(data) {
 
     if (data.length === 0) {
         const msg = showingFavorites
-            ? ['No favorites yet', 'Open a mod and tap ♥ to add it here']
+            ? ['No favorites yet', 'Open a mod and tap the heart icon to add it here']
             : mods.length === 0
                 ? ['No mods yet', 'Mods will appear here once they are added via Discord']
                 : ['No mods found', 'Try a different search or category'];
@@ -9242,6 +9305,9 @@ function getFilteredMods() {
     const sortVal = (document.getElementById('sortSelect') || {}).value || 'newest';
     const minCoin = parseInt((document.getElementById('minCoinSlider') || {}).value || '0');
     const maxCoin = parseInt((document.getElementById('maxCoinSlider') || {}).value || String(PRICE_MAX));
+    const minSize = parseInt((document.getElementById('minSizeSlider') || {}).value || '0');
+    const maxSize = parseInt((document.getElementById('maxSizeSlider') || {}).value || '255');
+    const sizeFilterActive = minSize > 0 || maxSize < 255;
 
     let result = mods.filter(m => {
         if (!m.name.toLowerCase().includes(term) &&
@@ -9256,23 +9322,41 @@ function getFilteredMods() {
         const coin = Number(m.minecoin);
         if (coin < minCoin) return false;
         if (maxCoin < PRICE_MAX && coin > maxCoin) return false;
+        // Size range filter
+        if (sizeFilterActive) {
+            const sizeMB = parseSizeMB(m.downloadSize);
+            if (sizeMB === null) return false; // exclude mods with no size data when filter active
+            if (sizeMB < minSize) return false;
+            if (maxSize < 255 && sizeMB > maxSize) return false;
+        }
         return true;
     });
 
     // Sort
     switch (sortVal) {
         case 'newest':
+            // Bot appends to the END of the array — reverse index puts newest first.
+            // If lastUpdated is present, use it as the primary key for finer precision.
             result.sort((a, b) => {
-                const da = a.lastUpdated ? new Date(a.lastUpdated) : new Date(0);
-                const db = b.lastUpdated ? new Date(b.lastUpdated) : new Date(0);
-                return db - da || mods.indexOf(a) - mods.indexOf(b);
+                const hasDateA = !!a.lastUpdated;
+                const hasDateB = !!b.lastUpdated;
+                if (hasDateA && hasDateB) {
+                    const diff = new Date(b.lastUpdated) - new Date(a.lastUpdated);
+                    if (diff !== 0) return diff;
+                }
+                // Fall back to reverse insertion order (highest index = newest)
+                return mods.indexOf(b) - mods.indexOf(a);
             });
             break;
         case 'oldest':
             result.sort((a, b) => {
-                const da = a.lastUpdated ? new Date(a.lastUpdated) : new Date(0);
-                const db = b.lastUpdated ? new Date(b.lastUpdated) : new Date(0);
-                return da - db || mods.indexOf(a) - mods.indexOf(b);
+                const hasDateA = !!a.lastUpdated;
+                const hasDateB = !!b.lastUpdated;
+                if (hasDateA && hasDateB) {
+                    const diff = new Date(a.lastUpdated) - new Date(b.lastUpdated);
+                    if (diff !== 0) return diff;
+                }
+                return mods.indexOf(a) - mods.indexOf(b);
             });
             break;
         case 'name_az':
@@ -9364,7 +9448,7 @@ function openPopup(name) {
     document.getElementById('m-studio').textContent = 'by ' + (m.studio || '—');
 
     const realmsEl = document.getElementById('m-realms-badge');
-    realmsEl.innerHTML = m.realmsPlus ? '<div class="realms-badge">✔ Realms+</div>' : '';
+    realmsEl.innerHTML = m.realmsPlus ? '<div class="realms-badge"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-right:4px;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg>Realms+</div>' : '';
 
     const ratingRow = document.getElementById('m-rating-row');
     if (m.rating) {
@@ -9385,10 +9469,10 @@ function openPopup(name) {
 
     const c = m.content || {};
     const contentParts = [];
-    if (c.skins)    contentParts.push(`👤 ${c.skins} Skins`);
-    if (c.textures) contentParts.push(`🎨 ${c.textures} Tex`);
-    if (c.worlds)   contentParts.push(`🗺 ${c.worlds} Worlds`);
-    if (c.addons)   contentParts.push(`⚙ ${c.addons} Add-Ons`);
+    if (c.skins)    contentParts.push(`${c.skins} Skins`);
+    if (c.textures) contentParts.push(`${c.textures} Textures`);
+    if (c.worlds)   contentParts.push(`${c.worlds} Worlds`);
+    if (c.addons)   contentParts.push(`${c.addons} Add-Ons`);
     document.getElementById('m-content').textContent = contentParts.join(' · ') || '—';
 
     const tagsWrap = document.getElementById('m-tags-wrap');
@@ -9457,6 +9541,41 @@ window.onclick = (e) => {
 };
 
 // ============================================================
+// STATISTICS
+// ============================================================
+function updateStats() {
+    const total     = mods.length;
+    const worlds    = mods.filter(m => m.cat.includes('World_Template') || m.cat.includes('WorldTemplate')).length;
+    const addons    = mods.filter(m => m.cat.includes('Add-Ons') || m.cat.includes('Add-On')).length;
+    const mashups   = mods.filter(m => m.cat.includes('Mash-Up')).length;
+    const textures  = mods.filter(m => m.cat.includes('Texture_Pack') || m.cat.includes('TexturePack')).length;
+    const skins     = mods.filter(m => m.cat.includes('Skin_pack') || m.cat.includes('SkinPack')).length;
+    const favCount  = JSON.parse(localStorage.getItem('bncraft-favorites') || '[]').length;
+
+    function animateCount(el, target) {
+        if (!el) return;
+        const duration = 600;
+        const start = performance.now();
+        const from = parseInt(el.textContent) || 0;
+        function step(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(from + (target - from) * ease);
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    animateCount(document.getElementById('statTotal'),      total);
+    animateCount(document.getElementById('statWorlds'),     worlds);
+    animateCount(document.getElementById('statAddons'),     addons);
+    animateCount(document.getElementById('statMashups'),    mashups);
+    animateCount(document.getElementById('statTextures'),   textures);
+    animateCount(document.getElementById('statSkins'),      skins);
+    animateCount(document.getElementById('statFavourites'), favCount);
+}
+
+// ============================================================
 // INIT
 // ============================================================
 (function init() {
@@ -9466,10 +9585,16 @@ window.onclick = (e) => {
     const savedFont = localStorage.getItem('bncraft-font') || 'default';
     setFont(savedFont);
 
+    // Ensure sort dropdown defaults to "newest" on every page load
+    const sortEl = document.getElementById('sortSelect');
+    if (sortEl) sortEl.value = 'newest';
+
     // Initialize price range fill
     updatePriceRange();
+    updateSizeRange();
 
     updateFavBadge();
+    updateStats();
     renderMods(getFilteredMods());
 })();
 </script>
